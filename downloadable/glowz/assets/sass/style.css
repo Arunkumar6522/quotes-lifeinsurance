@@ -11789,3 +11789,128 @@ img {
     }
 }
 
+
+
+/* ============================================================
+   Policy Pages — Privacy Policy & Terms of Service
+   ============================================================ */
+
+.policy-page {
+    background: #fff;
+}
+
+.policy-content {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #4B5563;
+}
+
+.policy-intro {
+    font-size: 17px;
+    color: #374151;
+    border-left: 4px solid #63a066;
+    padding: 16px 20px;
+    background: #f3f8f4;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 32px;
+}
+
+.policy-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0E152B;
+    margin: 36px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f0f0;
+    position: relative;
+}
+
+.policy-content h3::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 48px;
+    height: 2px;
+    background: #63a066;
+}
+
+.policy-content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.policy-content ul li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.policy-content ul li::marker {
+    color: #63a066;
+}
+
+.policy-content a {
+    color: #63a066;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.policy-content a:hover {
+    color: #522d4c;
+}
+
+.policy-content strong {
+    color: #1F2937;
+}
+
+.policy-contact-box {
+    background: #f3f8f4;
+    border: 1px solid #d1e8d4;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 20px;
+}
+
+.policy-contact-box p {
+    margin-bottom: 10px;
+    color: #374151;
+}
+
+.policy-contact-box a {
+    font-weight: 600;
+}
+
+.policy-contact-box em {
+    font-size: 13px;
+    color: #9CA3AF;
+}
+
+/* ── Footer policy links bar ──────────────────────────────── */
+.footer-policy-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-policy-links li a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-policy-links li a:hover {
+    color: #63a066;
+}
+
+@media (max-width: 991px) {
+    .footer-policy-links {
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+}
