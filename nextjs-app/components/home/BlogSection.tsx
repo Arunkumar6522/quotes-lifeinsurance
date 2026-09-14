@@ -1,182 +1,121 @@
 import Link from "next/link";
+import { getAllPosts } from "@/lib/blogger";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
-interface BlogPost {
-  title: string;
-  link: string;
-  thumb: string;
-  date: string;
-  category: string;
-}
-
-// ── Server-side fetch (runs at build time / ISR) ──────────────────────────────
-async function getPosts(): Promise<BlogPost[]> {
-  try {
-    const res = await fetch(
-      "https://artstarofficial.blogspot.com/feeds/posts/default?alt=json&max-results=6",
-      { next: { revalidate: 3600 } } // refresh every hour
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    const entries: any[] = data?.feed?.entry ?? [];
-
-    return entries.map((e) => {
-      // Title
-      const title: string = e.title?.$t ?? "Untitled";
-
-      // Link
-      const altLink = (e.link ?? []).find((l: any) => l.rel === "alternate");
-      const link: string = altLink?.href ?? "https://artstarofficial.blogspot.com";
-
-      // Thumbnail — prefer media$thumbnail, fall back to first <img> in content
-      let thumb: string = e.media$thumbnail?.url ?? "";
-      if (thumb) {
-        // Upgrade small thumbnail to 600px version
-        thumb = thumb.replace(/\/s\d+-c\//, "/s600/").replace(/\/s\d+\//, "/s600/");
-      } else {
-        const content: string = e.content?.$t ?? "";
-        const match = content.match(/src="(https?:\/\/[^"]+)"/);
-        thumb = match?.[1] ?? "";
-      }
-
-      // Date
-      const rawDate: string = e.published?.$t ?? "";
-      const date = rawDate
-        ? new Date(rawDate).toLocaleDateString("en-CA", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-        : "";
-
-      // Category
-      const cats: any[] = e.category ?? [];
-      const category: string = cats[0]?.term ?? "Blog";
-
-      return { title, link, thumb, date, category };
-    });
-  } catch {
-    return [];
-  }
-}
-
-// ── Component ─────────────────────────────────────────────────────────────────
 export default async function BlogSection() {
-  const posts = await getPosts();
+  const posts = await getAllPosts(6);
 
   return (
-    <section className="section-padding bg-white">
+    <section style={{ padding: "80px 0", background: "#fff" }}>
       <div className="container">
+
         {/* Heading */}
-        <div className="text-center mb-12">
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <span className="section-label">News &amp; Blog</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold mt-2">
+          <h2 style={{
+            fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)",
+            fontWeight: 800, marginTop: "8px", color: "var(--dark)",
+          }}>
             Latest Tips &amp;{" "}
             <span style={{ color: "var(--green)" }}>News</span>
           </h2>
         </div>
 
         {posts.length === 0 ? (
-          /* Fallback if feed fails */
-          <div className="text-center py-12">
-            <p className="text-gray-400 mb-4">Could not load articles right now.</p>
-            <Link
-              href="https://artstarofficial.blogspot.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              Visit Our Blog ↗
-            </Link>
+          <div style={{ textAlign: "center", padding: "40px 0" }}>
+            <p style={{ color: "var(--muted)", marginBottom: "16px" }}>Could not load articles right now.</p>
+            <Link href="/blog" className="btn-outline">View Blog</Link>
           </div>
         ) : (
           <>
-            {/* Cards grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            {/* 3-col cards grid */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: "24px",
+            }}>
               {posts.map((post) => (
-                <a
-                  key={post.link}
-                  href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                  style={{ border: "1px solid var(--border)", display: "block" }}
+                /* Internal link — opens in our site */
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  style={{ textDecoration: "none", display: "block" }}
                 >
-                  {/* Thumbnail */}
-                  <div
-                    className="overflow-hidden bg-gray-100"
-                    style={{ height: "200px" }}
+                  <article style={{
+                    borderRadius: "16px", overflow: "hidden",
+                    border: "1px solid var(--border)", background: "#fff",
+                    transition: "box-shadow 0.25s, transform 0.25s",
+                    height: "100%",
+                  }}
+                    className="blog-card"
                   >
-                    {post.thumb ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={post.thumb}
-                        alt={post.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div
-                        className="w-full h-full flex items-center justify-center text-5xl"
-                        style={{ background: "var(--bg-soft)" }}
-                      >
-                        📰
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5">
-                    {/* Category + date */}
-                    <div className="flex items-center justify-between mb-3">
-                      <span
-                        className="text-xs font-bold px-2.5 py-1 rounded-full"
-                        style={{
-                          background: "var(--bg-soft)",
-                          color: "var(--green)",
-                        }}
-                      >
-                        {post.category}
-                      </span>
-                      <span className="text-xs text-gray-400">{post.date}</span>
+                    {/* Thumbnail */}
+                    <div style={{
+                      height: "200px", overflow: "hidden",
+                      background: "var(--bg-soft)",
+                    }}>
+                      {post.thumb ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={post.thumb} alt={post.title}
+                          loading="lazy"
+                          style={{ width: "100%", height: "100%", objectFit: "cover",
+                            transition: "transform 0.4s" }}
+                          className="blog-thumb"
+                        />
+                      ) : (
+                        <div style={{
+                          width: "100%", height: "100%",
+                          display: "flex", alignItems: "center",
+                          justifyContent: "center", fontSize: "48px",
+                        }}>📰</div>
+                      )}
                     </div>
 
-                    {/* Title */}
-                    <h3
-                      className="font-bold text-base leading-snug mb-3 group-hover:text-[var(--green)] transition-colors"
-                      style={{ color: "var(--dark)" }}
-                    >
-                      {post.title.length > 72
-                        ? post.title.slice(0, 72) + "…"
-                        : post.title}
-                    </h3>
-
-                    {/* Read more */}
-                    <p
-                      className="text-sm font-semibold"
-                      style={{ color: "var(--green)" }}
-                    >
-                      Read article →
-                    </p>
-                  </div>
-                </a>
+                    {/* Content */}
+                    <div style={{ padding: "18px 18px 22px" }}>
+                      <div style={{
+                        display: "flex", alignItems: "center",
+                        justifyContent: "space-between", marginBottom: "10px",
+                      }}>
+                        <span style={{
+                          fontSize: "11px", fontWeight: 700,
+                          background: "var(--bg-soft)", color: "var(--green)",
+                          padding: "3px 10px", borderRadius: "20px",
+                        }}>
+                          {post.category}
+                        </span>
+                        <span style={{ fontSize: "11px", color: "var(--muted)" }}>
+                          {post.date}
+                        </span>
+                      </div>
+                      <h3 style={{
+                        fontSize: "15px", fontWeight: 700,
+                        color: "var(--dark)", lineHeight: 1.4, marginBottom: "8px",
+                      }}>
+                        {post.title.length > 72 ? post.title.slice(0, 72) + "…" : post.title}
+                      </h3>
+                      <p style={{ fontSize: "13px", fontWeight: 600, color: "var(--green)", marginTop: "12px" }}>
+                        Read article →
+                      </p>
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
 
-            {/* View all */}
-            <div className="text-center mt-10">
-              <Link
-                href="https://artstarofficial.blogspot.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-              >
-                View All Articles ↗
+            {/* View all — internal /blog page */}
+            <div style={{ textAlign: "center", marginTop: "40px" }}>
+              <Link href="/blog" className="btn-outline">
+                View All Articles →
               </Link>
             </div>
           </>
         )}
       </div>
+
+      <style>{`
+        .blog-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09) !important; transform: translateY(-4px) !important; }
+        .blog-card:hover .blog-thumb { transform: scale(1.05); }
+      `}</style>
     </section>
   );
 }

@@ -109,7 +109,7 @@ export const translations = {
 } as const;
 
 export type Lang = keyof typeof translations;
-export type T    = typeof translations.en;
+export type T    = (typeof translations)[Lang];
 
 // ── Context ───────────────────────────────────────────────
 interface LangCtx { lang: Lang; t: T; setLang: (l: Lang) => void; }

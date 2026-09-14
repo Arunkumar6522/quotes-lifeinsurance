@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Nunito, Sora } from "next/font/google";
 import { LangProvider } from "@/lib/i18n";
+import { ModalProvider } from "@/lib/modal";
 import SmoothScroll from "@/components/SmoothScroll";
+import PageLoader from "@/components/PageLoader";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -31,9 +33,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${nunito.variable} ${sora.variable}`}>
       <body style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
         <LangProvider>
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
+          <ModalProvider>
+            <PageLoader />
+            <SmoothScroll>
+              {children}
+            </SmoothScroll>
+          </ModalProvider>
         </LangProvider>
       </body>
     </html>

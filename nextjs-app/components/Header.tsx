@@ -1,4 +1,5 @@
 "use client";
+import QuoteButton from "@/components/QuoteButton";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -10,11 +11,11 @@ export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
 
   const serviceItems = [
-    { label: t.termLife,       href: "/services#term" },
-    { label: t.wholeLife,      href: "/services#whole" },
-    { label: t.universalLife,  href: "/services#universal" },
-    { label: t.criticalIllness,href: "/services#critical" },
-    { label: t.disability,     href: "/services#disability" },
+    { label: t.termLife,        href: "/services/term-life" },
+    { label: t.wholeLife,       href: "/services/whole-life" },
+    { label: t.universalLife,   href: "/services/universal-life" },
+    { label: t.criticalIllness, href: "/services/critical-illness" },
+    { label: t.disability,      href: "/services/disability" },
   ];
 
   return (
@@ -22,7 +23,7 @@ export default function Header() {
 
       {/* ── Topbar ──────────────────────────────────────── */}
       <div style={{
-        background: "var(--green)", padding: "7px 0",
+        background: "var(--plum)", padding: "7px 0",
         fontSize: "12px", color: "#fff",
       }}>
         <div className="container" style={{
@@ -53,7 +54,7 @@ export default function Header() {
             {/* AMF */}
             <span style={{
               display: "flex", alignItems: "center", gap: "5px",
-              background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.35)",
+              background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)",
               borderRadius: "20px", padding: "3px 10px",
               fontSize: "11px", fontWeight: 700, color: "#fff",
             }}>
@@ -63,8 +64,8 @@ export default function Header() {
             {/* Language toggle */}
             <div style={{
               display: "flex", alignItems: "center",
-              background: "rgba(255,255,255,0.15)",
-              border: "1px solid rgba(255,255,255,0.3)",
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.25)",
               borderRadius: "20px", overflow: "hidden",
             }}>
               {(["en", "fr"] as Lang[]).map((l) => (
@@ -77,7 +78,7 @@ export default function Header() {
                     letterSpacing: "1px", textTransform: "uppercase",
                     border: "none", cursor: "pointer",
                     background: lang === l ? "#fff" : "transparent",
-                    color: lang === l ? "var(--green)" : "rgba(255,255,255,0.8)",
+                    color: lang === l ? "var(--plum)" : "rgba(255,255,255,0.8)",
                     transition: "all 0.2s",
                     borderRadius: "20px",
                   }}
@@ -117,52 +118,60 @@ export default function Header() {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <Link href="/services" style={{ ...navLink, display: "flex", alignItems: "center", gap: "4px" }}>
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                style={{ ...navLink, display: "flex", alignItems: "center", gap: "4px", background: "none", border: "none", cursor: "pointer" }}>
                 {t.services}
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
                   style={{ transition: "transform 0.2s", transform: servicesOpen ? "rotate(180deg)" : "none" }}>
                   <path d="m6 9 6 6 6-6"/>
                 </svg>
-              </Link>
+              </button>
               {servicesOpen && (
                 <div style={{
-                  position: "absolute", top: "calc(100% + 8px)", left: "50%",
+                  position: "absolute",
+                  /* top: 100% with paddingTop bridges the gap — no mouseleave fires */
+                  top: "100%", left: "50%",
                   transform: "translateX(-50%)",
-                  background: "#fff", borderRadius: "16px",
-                  boxShadow: "0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
-                  padding: "8px", minWidth: "220px", zIndex: 200,
+                  paddingTop: "8px", /* bridge — keeps hover active */
+                  zIndex: 200, minWidth: "220px",
                 }}>
-                  {serviceItems.map((s) => (
-                    <Link key={s.href} href={s.href} style={{
-                      display: "block", padding: "10px 14px", fontSize: "13px",
-                      fontWeight: 600, color: "#374151", borderRadius: "10px",
-                      transition: "all 0.15s",
-                    }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.background = "var(--bg-soft)";
-                        (e.currentTarget as HTMLElement).style.color = "var(--green)";
+                  <div style={{
+                    background: "#fff", borderRadius: "16px",
+                    boxShadow: "0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
+                    padding: "8px",
+                  }}>
+                    {serviceItems.map((s) => (
+                      <Link key={s.href} href={s.href} style={{
+                        display: "block", padding: "10px 14px", fontSize: "13px",
+                        fontWeight: 600, color: "#374151", borderRadius: "10px",
+                        transition: "all 0.15s",
                       }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.background = "transparent";
-                        (e.currentTarget as HTMLElement).style.color = "#374151";
-                      }}
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLElement).style.background = "var(--bg-soft)";
+                          (e.currentTarget as HTMLElement).style.color = "var(--green)";
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLElement).style.background = "transparent";
+                          (e.currentTarget as HTMLElement).style.color = "#374151";
+                        }}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
 
             <Link href="/about"   style={navLink}>{t.about}</Link>
+            <Link href="/blog"    style={navLink}>Blog</Link>
             <Link href="/contact" style={navLink}>{t.contact}</Link>
           </div>
 
           {/* CTA */}
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }} className="desktop-nav">
-            <Link href="/contact" className="btn-primary" style={{ fontSize: "13px", padding: "10px 22px" }}>
-              {t.getQuote}
-            </Link>
+            <QuoteButton label={t.getQuote} style={{ fontSize: "13px", padding: "10px 22px" }} />
           </div>
 
           {/* Mobile hamburger */}
@@ -197,8 +206,9 @@ export default function Header() {
           }}>
             {[
               { label: t.home,    href: "/" },
-              { label: t.services,href: "/services" },
+              { label: t.services, href: "/services/term-life" },
               { label: t.about,   href: "/about" },
+              { label: "Blog",    href: "/blog" },
               { label: t.contact, href: "/contact" },
             ].map((item) => (
               <Link key={item.href} href={item.href}
@@ -211,15 +221,15 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/contact" onClick={() => setMobileOpen(false)}
-              className="btn-primary" style={{ marginTop: "16px", display: "block", textAlign: "center" }}>
-              {t.getQuote}
-            </Link>
+            <QuoteButton
+              label={t.getQuote}
+              style={{ marginTop: "16px", width: "100%", justifyContent: "center" }}
+            />
           </div>
         )}
       </nav>
 
-      <style jsx>{`
+      <style>{`
         .hide-sm { display: flex; }
         .desktop-nav { display: flex; }
         .mobile-btn { display: none; }

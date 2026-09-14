@@ -1,13 +1,13 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Animate from "@/components/Animate";
 
 const services = [
-  { icon: "📋", title: "Term Life Insurance",       tag: "Most Popular", desc: "Affordable coverage for a set term. Lock in low rates while your family needs protection most.",   href: "/services#term" },
-  { icon: "🏦", title: "Whole Life Insurance",       tag: "Permanent",    desc: "Lifetime coverage that builds guaranteed cash value — never expires, never changes in cost.",        href: "/services#whole" },
-  { icon: "🔄", title: "Universal Life Insurance",  tag: "Flexible",     desc: "Adjustable premiums + a tax-sheltered investment account. Coverage and wealth in one policy.",        href: "/services#universal" },
-  { icon: "🏥", title: "Critical Illness Coverage", tag: "Lump-Sum",     desc: "Tax-free cash if you're diagnosed with cancer, heart attack, stroke or 25+ covered conditions.",     href: "/services#critical" },
-  { icon: "🦽", title: "Disability Insurance",      tag: "Income Protection", desc: "Replace up to 70% of your income if illness or injury stops you from working.",                href: "/services#disability" },
-  { icon: "💼", title: "Business Protection",       tag: "For Owners",   desc: "Key-person insurance, buy-sell agreements, and corporate coverage for entrepreneurs.",                href: "/services" },
+  { icon: "ðŸ“‹", title: "Term Life Insurance",       tag: "Most Popular", desc: "Affordable coverage for a set term. Lock in low rates while your family needs protection most.",   href: "/services#term" },
+  { icon: "ðŸ¦", title: "Whole Life Insurance",       tag: "Permanent",    desc: "Lifetime coverage that builds guaranteed cash value â€” never expires, never changes in cost.",        href: "/services#whole" },
+  { icon: "ðŸ”„", title: "Universal Life Insurance",  tag: "Flexible",     desc: "Adjustable premiums + a tax-sheltered investment account. Coverage and wealth in one policy.",        href: "/services#universal" },
+  { icon: "ðŸ¥", title: "Critical Illness Coverage", tag: "Lump-Sum",     desc: "Tax-free cash if you're diagnosed with cancer, heart attack, stroke or 25+ covered conditions.",     href: "/services#critical" },
+  { icon: "ðŸ¦½", title: "Disability Insurance",      tag: "Income Protection", desc: "Replace up to 70% of your income if illness or injury stops you from working.",                href: "/services#disability" },
+  { icon: "ðŸ’¼", title: "Business Protection",       tag: "For Owners",   desc: "Key-person insurance, buy-sell agreements, and corporate coverage for entrepreneurs.",                href: "/services" },
 ];
 
 export default function ServicesSection() {
@@ -19,10 +19,10 @@ export default function ServicesSection() {
           <span className="section-label light">Our Services</span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-2">
             Coverage for Every{" "}
-            <span className="gradient-text">Stage of Life</span>
+            <span style={{ color: "var(--green)" }}>Stage of Life</span>
           </h2>
           <p className="text-white/50 mt-4 max-w-lg mx-auto text-sm leading-relaxed">
-            Compare policies across 20+ carriers — one call, zero fees.
+            Compare policies across 20+ carriers â€” one call, zero fees.
           </p>
         </Animate>
 
@@ -51,7 +51,7 @@ export default function ServicesSection() {
                   </h3>
                   <p className="text-white/50 text-sm leading-relaxed flex-1">{s.desc}</p>
                   <p className="text-[var(--green)] text-sm font-bold mt-auto">
-                    Learn more →
+                    Learn more â†’
                   </p>
                 </div>
               </Link>
@@ -66,3 +66,4 @@ export default function ServicesSection() {
     </section>
   );
 }
+

@@ -1,12 +1,12 @@
-import Animate from "@/components/Animate";
+﻿import Animate from "@/components/Animate";
 
 const reasons = [
-  { icon: "🆓", title: "100% Free Advice",         desc: "You never pay us a dollar. We earn a commission only if you take a policy — so our guidance is always in your interest.", accent: "green" },
-  { icon: "⚖️", title: "Truly Independent",         desc: "Not tied to any insurer. We compare 20+ carriers to find what's genuinely best for you.", accent: "plum" },
-  { icon: "🛡️", title: "AMF Licensed",             desc: "Fully regulated by the Autorité des marchés financiers. Licence #179631, Firm #608808.", accent: "green" },
-  { icon: "👨‍👩‍👧", title: "Family-Built",             desc: "Founded by Denesh Logeswaran & Lucia Medina — advisors who treat every client like family.", accent: "plum" },
-  { icon: "🇨🇦", title: "Canadian Specialists",     desc: "We specialize exclusively in Canadian life insurance with deep carrier and provincial knowledge.", accent: "green" },
-  { icon: "⚡", title: "Fast & Easy",              desc: "Get your free quote in minutes. We handle all the paperwork so you can focus on life.", accent: "plum" },
+  { icon: "ðŸ†“", title: "100% Free Advice",         desc: "You never pay us a dollar. We earn a commission only if you take a policy â€” so our guidance is always in your interest.", accent: "green" },
+  { icon: "âš–ï¸", title: "Truly Independent",         desc: "Not tied to any insurer. We compare 20+ carriers to find what's genuinely best for you.", accent: "plum" },
+  { icon: "ðŸ›¡ï¸", title: "AMF Licensed",             desc: "Fully regulated by the AutoritÃ© des marchÃ©s financiers. Licence #179631, Firm #608808.", accent: "green" },
+  { icon: "ðŸ‘¨â€ðŸ‘©â€ðŸ‘§", title: "Family-Built",             desc: "Founded by Denesh Logeswaran & Lucia Medina â€” advisors who treat every client like family.", accent: "plum" },
+  { icon: "ðŸ‡¨ðŸ‡¦", title: "Canadian Specialists",     desc: "We specialize exclusively in Canadian life insurance with deep carrier and provincial knowledge.", accent: "green" },
+  { icon: "âš¡", title: "Fast & Easy",              desc: "Get your free quote in minutes. We handle all the paperwork so you can focus on life.", accent: "plum" },
 ];
 
 export default function WhyUsSection() {
@@ -17,8 +17,8 @@ export default function WhyUsSection() {
         <Animate className="max-w-2xl mb-14">
           <span className="section-label">Why Choose Us</span>
           <h2 className="text-3xl md:text-4xl font-extrabold mt-2 leading-tight">
-            Your Family Deserves the Best —{" "}
-            <span className="gradient-text-plum">Here&apos;s Why We&apos;re It</span>
+            Your Family Deserves the Best â€”{" "}
+            <span style={{ color: "var(--plum)" }}>Here&apos;s Why We&apos;re It</span>
           </h2>
         </Animate>
 
@@ -43,3 +43,4 @@ export default function WhyUsSection() {
     </section>
   );
 }
+

@@ -7,9 +7,9 @@
   --green:      #63a066;
   --green-dark: #4e8051;
   --green-light:#e8f3e9;
-  --plum:       #522d4c;
+  --plum:       #532e4d;
   --plum-dark:  #3d1f38;
-  --plum-light: #f0e8ef;
+  --plum-light: #f2eaf0;
   --dark:       #0f1623;
   --dark-mid:   #1a2335;
   --body:       #4b5563;
@@ -271,18 +271,154 @@ button { cursor: pointer; }
 }
 .pulse-green { animation: pulseGlow 2.4s ease-in-out infinite; }
 
-/* ─────────────────────────────────────────────────────────────
-   GRADIENT TEXT
-───────────────────────────────────────────────────────────── */
-.gradient-text {
-  background: linear-gradient(135deg, var(--green) 0%, #8bc48e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Gradient text — REMOVED, use solid colors instead ── */
+.gradient-text      { color: var(--green); }
+.gradient-text-plum { color: var(--plum); }
+
+/* ── Hide Question Scout widget scrollbar ─── */
+#qs-embed-6aa7eb9fc1c5e04d74de874e {
+  scrollbar-width: none !important;
+  overflow: hidden !important;
 }
-.gradient-text-plum {
-  background: linear-gradient(135deg, var(--plum) 0%, #8b5a82 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+#qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* ── QS widget — clip to container, no page scrollbar ─── */
+#qs-embed-6aa7eb9fc1c5e04d74de874e {
+  overflow: hidden !important;
+  max-height: 480px !important;
+}
+#qs-embed-6aa7eb9fc1c5e04d74de874e > * {
+  overflow: hidden !important;
+}
+#qs-embed-6aa7eb9fc1c5e04d74de874e iframe,
+#qs-embed-6aa7eb9fc1c5e04d74de874e .qs-form {
+  max-height: 480px !important;
+  overflow: hidden !important;
+}
+/* Remove scrollbar from QS wrapper */
+#qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar,
+#qs-embed-6aa7eb9fc1c5e04d74de874e::-webkit-scrollbar { display: none !important; }
+
+/* ── QS widget internal scroll fix ──────────────────────────
+   Targets the generated class from QS's CSS-in-JS renderer.
+   Forces the widget to expand to its natural height with no scroll.
+─────────────────────────────────────────────────────────── */
+.css-1nh8hsr,
+[class^="css-"] [class*="nh8hsr"],
+#qs-embed-6aa7eb9fc1c5e04d74de874e,
+#qs-embed-6aa7eb9fc1c5e04d74de874e > div,
+#qs-embed-6aa7eb9fc1c5e04d74de874e > div > div {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  scrollbar-width: none !important;
+}
+
+#qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar,
+.css-1nh8hsr::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* Hero section — allow natural height so QS form is fully visible */
+.hero-grid {
+  align-items: flex-start;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS — comprehensive fixes
+   ============================================================ */
+
+/* ── Container ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .container { padding: 0 16px !important; }
+  .section-padding   { padding: 48px 0 !important; }
+  .section-padding-sm{ padding: 32px 0 !important; }
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  h1 { font-size: clamp(1.8rem, 8vw, 2.5rem) !important; }
+  h2 { font-size: clamp(1.4rem, 6vw, 2rem) !important; }
+}
+
+/* ── Hero grid — stack on mobile ───────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+/* ── Services two-column layout ────────────────────────────── */
+@media (max-width: 900px) {
+  .service-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+/* ── Blog post layout ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .post-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* ── Partners marquee logos smaller on mobile ──────────────── */
+@media (max-width: 640px) {
+  .pm-item { width: 120px !important; height: 66px !important; }
+}
+
+/* ── Reviews track cards narrower on mobile ───────────────── */
+@media (max-width: 640px) {
+  .reviews-track > a { width: 270px !important; }
+}
+
+/* ── Buttons full-width on tiny screens ───────────────────── */
+@media (max-width: 480px) {
+  .btn-primary, .btn-outline, .btn-plum, .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ── Footer grid single column ─────────────────────────────── */
+@media (max-width: 640px) {
+  .container > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── AMF strip wrap ────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .amf-strip-inner-mobile {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+/* ── CTA buttons stack ─────────────────────────────────────── */
+@media (max-width: 500px) {
+  .cta-buttons {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-buttons > * {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ── Skeleton shimmer ──────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
