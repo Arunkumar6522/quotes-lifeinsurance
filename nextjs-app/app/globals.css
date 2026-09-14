@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────────────────────── */
+:root {
+  --green:      #63a066;
+  --green-dark: #4e8051;
+  --green-light:#e8f3e9;
+  --plum:       #522d4c;
+  --plum-dark:  #3d1f38;
+  --plum-light: #f0e8ef;
+  --dark:       #0f1623;
+  --dark-mid:   #1a2335;
+  --body:       #4b5563;
+  --muted:      #6b7280;
+  --bg-soft:    #f4f8f4;
+  --border:     #e2e8f0;
+  --white:      #ffffff;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BASE RESET
+───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { 
+  /* Lenis handles smooth scroll — browser native smooth-scroll must be off */
+  scroll-behavior: auto !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: "Nunito", system-ui, -apple-system, sans-serif;
+  color: var(--body);
+  background: #fff;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-sora), "Nunito", system-ui, sans-serif;
+  color: var(--dark);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+button { cursor: pointer; }
+
+/* ─────────────────────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.section-padding   { padding: 96px 0; }
+.section-padding-sm{ padding: 56px 0; }
+
+@media (max-width: 768px) {
+  .section-padding    { padding: 64px 0; }
+  .section-padding-sm { padding: 40px 0; }
+  .container          { padding: 0 20px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TYPOGRAPHY — SECTION LABELS
+───────────────────────────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.section-label.light { color: rgba(255,255,255,0.55); }
+.section-label.light::before { background: rgba(255,255,255,0.35); }
+
+/* ─────────────────────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: 2px solid var(--green);
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99,160,102,0.35);
+}
+
+.btn-plum {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--plum);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: 2px solid var(--plum);
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-plum:hover {
+  background: var(--plum-dark);
+  border-color: var(--plum-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(82,45,76,0.35);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.45);
+  transition: all 0.25s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.8);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px solid var(--green);
+  transition: all 0.25s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-outline:hover { background: var(--green); color: #fff; }
+
+/* ─────────────────────────────────────────────────────────────
+   CARDS — shared shadow style
+───────────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CONTINUOUS MARQUEES
+───────────────────────────────────────────────────────────── */
+@keyframes marqueeLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  gap: 16px;
+  animation: marqueeLeft 12s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* No hover pause — continuous loop */
+
+@keyframes reviewsLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.reviews-track {
+  display: flex;
+  gap: 24px;
+  animation: reviewsLeft 18s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* No hover pause — continuous loop */
+
+/* ─────────────────────────────────────────────────────────────
+   PAGE TRANSITIONS  (Framer Motion drives opacity/y,
+   these are just fallback keyframes for elements not using FM)
+───────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FLOATING ANIMATION (hero background orbs)
+───────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-18px) rotate(2deg); }
+  66%       { transform: translateY(-8px) rotate(-1deg); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-24px); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PULSE GLOW  (used on CTA button / trust badges)
+───────────────────────────────────────────────────────────── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99,160,102,0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(99,160,102,0); }
+}
+.pulse-green { animation: pulseGlow 2.4s ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────────────────────
+   GRADIENT TEXT
+───────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--green) 0%, #8bc48e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-plum {
+  background: linear-gradient(135deg, var(--plum) 0%, #8b5a82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
