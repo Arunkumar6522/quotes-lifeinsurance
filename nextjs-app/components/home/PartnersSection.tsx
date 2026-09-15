@@ -14,70 +14,58 @@ const logos = [
   { file: "uv insurance.png",      name: "UV Insurance" },
 ];
 
-// Triple for seamless fast loop
 const allLogos = [...logos, ...logos, ...logos];
 
 export default function PartnersSection() {
   return (
-    <section style={{ padding: "72px 0 80px", background: "#fff" }}>
+    <section className="section-padding-sm" style={{ background: "#fff", overflow: "hidden" }}>
 
-      {/* Heading — with bottom spacing */}
-      <div style={{ textAlign: "center", marginBottom: "48px" }}>
+      <div className="container" style={{ textAlign: "center", marginBottom: "40px" }}>
         <Animate>
           <span className="section-label">Our Carriers</span>
           <h2 style={{
             fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-            fontWeight: 800, marginTop: "8px",
-            color: "var(--dark)",
+            fontWeight: 800, marginTop: "8px", color: "var(--dark)",
           }}>
             Insurance Companies We Represent
           </h2>
         </Animate>
       </div>
 
-      {/* Marquee track — edge fades */}
+      {/* Marquee */}
       <div style={{
         overflow: "hidden",
-        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)",
-        maskImage: "linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
       }}>
-        <div className="marquee-track">
+        <div className="marquee-track" style={{ gap: "16px" }}>
           {allLogos.map((logo, i) => (
-            <div
-              key={`${logo.name}-${i}`}
-              style={{
-                flexShrink: 0,
-                width: "168px",
-                height: "88px",
-                padding: "14px 20px",
-                borderRadius: "16px",
-                background: "#fff",
-                border: "1.5px solid var(--border)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "border-color 0.2s, box-shadow 0.2s",
-              }}
-            >
+            <div key={`${logo.name}-${i}`} style={{
+              flexShrink: 0,
+              width: "156px",
+              height: "80px",
+              padding: "14px 18px",
+              borderRadius: "12px",
+              background: "#fff",
+              border: "1px solid var(--border)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "border-color 0.2s, box-shadow 0.2s",
+            }}>
               <Image
                 src={`/company/${logo.file}`}
                 alt={logo.name}
-                width={120}
-                height={52}
-                style={{
-                  maxHeight: "52px",
-                  width: "auto",
-                  objectFit: "contain",
-                  opacity: 0.8,
-                }}
+                width={110}
+                height={48}
+                style={{ maxHeight: "48px", width: "auto", objectFit: "contain", opacity: 0.8 }}
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Bottom spacing block */}
-      <div style={{ height: "48px" }} />
+      <div style={{ height: "40px" }} />
     </section>
   );
 }

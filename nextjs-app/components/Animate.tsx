@@ -5,6 +5,7 @@ import { useRef } from "react";
 interface Props {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   delay?: number;
   direction?: "up" | "left" | "right" | "none";
   once?: boolean;
@@ -29,7 +30,7 @@ const variants: Record<string, Variants> = {
   },
 };
 
-export default function Animate({ children, className, delay = 0, direction = "up", once = true }: Props) {
+export default function Animate({ children, className, style, delay = 0, direction = "up", once = true }: Props) {
   const ref    = useRef(null);
   const inView = useInView(ref, { once, margin: "-80px" });
   const v      = variants[direction];
@@ -38,6 +39,7 @@ export default function Animate({ children, className, delay = 0, direction = "u
     <motion.div
       ref={ref}
       className={className}
+      style={style}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
       variants={v}
