@@ -275,25 +275,25 @@ button { cursor: pointer; }
 .gradient-text      { color: var(--green); }
 .gradient-text-plum { color: var(--plum); }
 
-/* ── QuestionScout embed — no scrollbar, auto height ─────────
-   Single authoritative block. MutationObserver in HeroSection.tsx
+/* ── QuestionScout embed — full height, zero scroll ──────────
+   Single authoritative block. JS unlock() in HeroSection.tsx
    also enforces this at runtime on every QS step change.
 ─────────────────────────────────────────────────────────── */
 #qs-embed-6aa7eb9fc1c5e04d74de874e,
-#qs-embed-6aa7eb9fc1c5e04d74de874e *,
-#qs-embed-6aa7eb9fc1c5e04d74de874e > div,
-#qs-embed-6aa7eb9fc1c5e04d74de874e > div > div {
-  overflow:   hidden !important;
-  overflow-y: hidden !important;
-  max-height: none !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
+#qs-embed-6aa7eb9fc1c5e04d74de874e * {
+  height:     auto    !important;
+  max-height: none    !important;
+  overflow:   visible !important;
+  overflow-y: visible !important;
+  overflow-x: hidden  !important;
+  scrollbar-width:       none !important;
+  -ms-overflow-style:    none !important;
 }
 #qs-embed-6aa7eb9fc1c5e04d74de874e::-webkit-scrollbar,
 #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar {
   display: none !important;
-  width: 0 !important;
-  height: 0 !important;
+  width:   0    !important;
+  height:  0    !important;
 }
 
 /* Hero section — allow natural height so QS form is fully visible */

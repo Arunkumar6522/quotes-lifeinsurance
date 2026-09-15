@@ -20,51 +20,62 @@ export default function HeroSection() {
   const { openModal } = useModal();
 
   useEffect(() => {
-    if (document.getElementById("qs-script")) return;
-    const s = document.createElement("script");
-    s.id  = "qs-script";
-    s.src = "https://form.questionscout.com/qs-form-script.min.js";
-    s.setAttribute("data-form-id",    "616e35ca63bd79140f61b3ef");
-    s.setAttribute("data-url-params", JSON.stringify([{ key: "campaign", value: "" }]));
-    s.setAttribute("data-runner-id",  "qs-embed-6aa7eb9fc1c5e04d74de874e");
-    // Smaller height — prevents scroll on all screen sizes
-    s.setAttribute("data-dimensions", JSON.stringify(["100%", "420px"]));
-    s.async = true;
-
-    s.onload = () => {
-      // Strip every scrollable div inside the embed
-      const strip = () => {
-        const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
-        if (!embed) return;
-        embed.querySelectorAll<HTMLElement>("*").forEach((el) => {
-          const cs = window.getComputedStyle(el);
-          if (cs.overflow === "scroll" || cs.overflow === "auto" ||
-              cs.overflowY === "scroll" || cs.overflowY === "auto") {
-            el.style.setProperty("overflow",   "visible", "important");
-            el.style.setProperty("overflow-y", "visible", "important");
-            el.style.setProperty("height",     "auto",    "important");
-            el.style.setProperty("max-height", "none",    "important");
-          }
-          // Also kill any explicit scrollbar via scrollbar-width
-          el.style.setProperty("scrollbar-width", "none", "important");
-        });
-      };
-
-      // Run immediately
-      strip();
-
-      // Watch for ANY DOM change inside the embed — catches every QS step re-render
+    // ── Aggressively unlock QS embed: remove ALL height caps and overflow scroll
+    const unlock = () => {
       const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
-      if (embed) {
-        const observer = new MutationObserver(strip);
-        observer.observe(embed, { childList: true, subtree: true, attributes: true, attributeFilter: ["style"] });
-        // Keep a fallback interval just in case
-        const iv = setInterval(strip, 800);
-        setTimeout(() => clearInterval(iv), 30000); // 30s — covers most multi-step forms
-      }
+      if (!embed) return;
+
+      // Walk every element inside the embed
+      const all = [embed, ...Array.from(embed.querySelectorAll<HTMLElement>("*"))];
+      all.forEach((el) => {
+        // Kill any fixed pixel height set by QS inline styles
+        if (el.style.height && el.style.height !== "auto" && el.style.height !== "100%") {
+          el.style.setProperty("height", "auto", "important");
+        }
+        // Remove max-height caps
+        el.style.setProperty("max-height", "none", "important");
+        // Kill overflow scroll / auto
+        el.style.setProperty("overflow",   "visible", "important");
+        el.style.setProperty("overflow-y", "visible", "important");
+        el.style.setProperty("overflow-x", "hidden",  "important");
+        // Kill scrollbar
+        el.style.setProperty("scrollbar-width", "none", "important");
+      });
     };
 
-    document.head.appendChild(s);
+    // Load QS script only once
+    const loadScript = () => {
+      if (document.getElementById("qs-script")) { unlock(); return; }
+      const s = document.createElement("script");
+      s.id  = "qs-script";
+      s.src = "https://form.questionscout.com/qs-form-script.min.js";
+      s.setAttribute("data-form-id",    "616e35ca63bd79140f61b3ef");
+      s.setAttribute("data-url-params", JSON.stringify([{ key: "campaign", value: "" }]));
+      s.setAttribute("data-runner-id",  "qs-embed-6aa7eb9fc1c5e04d74de874e");
+      // Pass "100%" for height so QS never sets a fixed pixel height
+      s.setAttribute("data-dimensions", JSON.stringify(["100%", "100%"]));
+      s.async = true;
+      s.onload = () => {
+        // Run immediately, then watch permanently for step changes
+        unlock();
+        const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
+        if (embed) {
+          const observer = new MutationObserver(unlock);
+          observer.observe(embed, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["style", "class"],
+          });
+          // Belt-and-suspenders: poll for first 60s to catch any lazy renders
+          const iv = setInterval(unlock, 500);
+          setTimeout(() => clearInterval(iv), 60_000);
+        }
+      };
+      document.head.appendChild(s);
+    };
+
+    loadScript();
   }, []);
 
   return (
@@ -196,22 +207,38 @@ export default function HeroSection() {
           flex-wrap: wrap;
           gap: 14px;
         }
-        /* ── QS form column ── */
+        /* ── QS form column — let it grow naturally ── */
         .hero-form-col {
-          overflow: hidden;
+          overflow: visible;
           max-width: 100%;
+          width: 100%;
         }
-        /* QS embed wrapper — scale it, no scroll */
+        /* QS embed wrapper — full width, auto height, NO scroll */
         #qs-embed-6aa7eb9fc1c5e04d74de874e {
           width: 100% !important;
           max-width: 100% !important;
-          overflow: hidden !important;
+          height: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
         }
-        /* Kill scrollbar on every child QS renders */
-        #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
-        #qs-embed-6aa7eb9fc1c5e04d74de874e * { scrollbar-width: none !important; -ms-overflow-style: none !important; overflow-x: hidden !important; }
-        /* QS sets inline height on its root div — override it */
-        #qs-embed-6aa7eb9fc1c5e04d74de874e > div { height: auto !important; min-height: unset !important; overflow: hidden !important; }
+        /* Every element QS renders — no scroll, no cap */
+        #qs-embed-6aa7eb9fc1c5e04d74de874e,
+        #qs-embed-6aa7eb9fc1c5e04d74de874e * {
+          height: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          overflow-y: visible !important;
+          overflow-x: hidden !important;
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+        }
+        /* Hide webkit scrollbar on everything inside */
+        #qs-embed-6aa7eb9fc1c5e04d74de874e::-webkit-scrollbar,
+        #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+        }
 
         /* ══════════════════════════════════════
            MOBILE — single column stack
