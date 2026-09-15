@@ -109,14 +109,14 @@ export default function ServicesSection() {
             fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
             fontWeight: 800, color: "#fff", marginTop: "8px", lineHeight: 1.2,
           }}>
-            Coverage for Every{" "}
-            <span style={{ color: "var(--green)" }}>Stage of Life</span>
+            Explore Our{" "}
+            <span style={{ color: "var(--green)" }}>Insurance Products</span>
           </h2>
           <p style={{
             color: "rgba(255,255,255,0.5)", marginTop: "12px",
             fontSize: "15px", maxWidth: "480px", margin: "12px auto 0",
           }}>
-            Compare policies across 20+ carriers — one call, zero fees.
+            Tailored policies from 20+ top Canadian carriers — we find the right fit for your life and budget.
           </p>
         </Animate>
 

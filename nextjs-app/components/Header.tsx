@@ -84,13 +84,18 @@ export default function Header() {
       <nav className="main-nav">
         <div className="container main-nav-inner">
 
-          {/* Logo + tagline */}
+          {/* Logo — PNG with mix-blend-mode so white bg disappears on white nav */}
           <Link href="/" className="logo-wrap">
             <Image
               src="/logo.png"
               alt="Quotes Life Insurance"
-              width={160} height={52} priority
-              style={{ height: "46px", width: "auto", objectFit: "contain" }}
+              width={200} height={60} priority
+              style={{
+                height: "52px",
+                width: "auto",
+                objectFit: "contain",
+                mixBlendMode: "multiply",
+              }}
             />
           </Link>
 
@@ -217,7 +222,7 @@ export default function Header() {
       <style>{`
         /* ── Topbar ── */
         .topbar {
-          background: #2d6a42;
+          background: #4f8854;
           padding: 7px 0;
           font-size: 12px;
           color: #fff;
@@ -312,10 +317,8 @@ export default function Header() {
         .logo-wrap {
           flex-shrink: 0;
           display: flex;
-          align-items: flex-start;
-          flex-direction: column;
+          align-items: center;
           text-decoration: none;
-          gap: 1px;
         }
 
         /* Nav links */

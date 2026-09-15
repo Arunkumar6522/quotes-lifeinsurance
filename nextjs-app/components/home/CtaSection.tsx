@@ -1,92 +1,182 @@
 "use client";
 import Animate from "@/components/Animate";
 import { useModal } from "@/lib/modal";
+import { useLang } from "@/lib/i18n";
 
 export default function CtaSection() {
   const { openModal } = useModal();
+  const { t } = useLang();
 
   return (
-    <section className="section-padding" style={{
-      background: "var(--plum)",
-      position: "relative",
-      overflow: "hidden",
-    }}>
-      {/* Subtle top edge highlight */}
-      <div style={{
-        position: "absolute", top: 0, left: 0, right: 0,
-        height: "1px", background: "rgba(255,255,255,0.1)",
-        pointerEvents: "none",
-      }} />
+    <section className="cta-section">
+      <div className="container cta-inner">
+        <Animate className="cta-content">
 
-      <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-        <Animate>
-          {/* Eyebrow — use the class so it matches all other sections */}
-          <span className="section-label light" style={{ justifyContent: "center" }}>
-            Free Consultation
-          </span>
+          {/* Label */}
+          <span className="cta-eyebrow">Free Consultation</span>
 
-          <h2 style={{
-            fontSize: "clamp(1.9rem, 3vw, 2.8rem)",
-            fontWeight: 900, color: "#fff", lineHeight: 1.15,
-            marginTop: "8px", marginBottom: "16px",
-            fontFamily: "var(--font-sora), sans-serif",
-            letterSpacing: "-0.02em",
-          }}>
-            Ready to Protect Your Family?
+          {/* Heading */}
+          <h2 className="cta-heading">
+            {t.ctaH2}
           </h2>
 
-          <p style={{
-            fontSize: "15px", color: "rgba(255,255,255,0.7)",
-            maxWidth: "460px", margin: "0 auto 40px", lineHeight: 1.75,
-          }}>
-            Get your free quote in minutes. No fees, no pressure — just expert advice from licensed Canadian brokers.
-          </p>
+          {/* Sub */}
+          <p className="cta-sub">{t.ctaSub}</p>
 
-          <div style={{
-            display: "flex", flexWrap: "wrap",
-            gap: "14px", justifyContent: "center",
-            marginBottom: "28px",
-          }}
-            className="cta-buttons"
-          >
-            <button
-              onClick={openModal}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                background: "#fff", color: "var(--plum)",
-                fontWeight: 800, fontSize: "14px",
-                padding: "14px 32px", borderRadius: "50px",
-                border: "none", cursor: "pointer",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
-              }}
-              className="cta-btn-primary"
-            >
-              Get My Free Quote →
+          {/* Buttons */}
+          <div className="cta-btns">
+            <button onClick={openModal} className="cta-btn-main">
+              {t.ctaBtn}
             </button>
-            <a href="tel:+15146620403" style={{
-              display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "rgba(255,255,255,0.1)",
-              border: "1.5px solid rgba(255,255,255,0.35)",
-              color: "#fff", fontWeight: 700, fontSize: "14px",
-              padding: "13px 28px", borderRadius: "50px",
-              textDecoration: "none", transition: "background 0.2s",
-            }}>
-              📞 514-662-0403
+            <a href="tel:+15146620403" className="cta-btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.84a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              514-662-0403
             </a>
           </div>
 
-          <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.3px" }}>
-            Mon–Fri: 9AM–8PM EST &nbsp;·&nbsp; Sat: 10AM–4PM EST &nbsp;·&nbsp; AMF Lic. #179631
+          {/* Trust line */}
+          <p className="cta-trust">
+            Mon–Fri 9AM–8PM &nbsp;·&nbsp; Sat 10AM–4PM &nbsp;·&nbsp; AMF Lic. #179631 &nbsp;·&nbsp; No fees ever
           </p>
+
         </Animate>
       </div>
 
       <style>{`
-        .cta-btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important; }
+        .cta-section {
+          background: var(--green);
+          position: relative;
+          padding: 80px 0;
+          overflow: hidden;
+        }
+        /* Subtle decorative circle */
+        .cta-section::before {
+          content: "";
+          position: absolute;
+          right: -120px; top: -120px;
+          width: 400px; height: 400px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.06);
+          pointer-events: none;
+        }
+        .cta-section::after {
+          content: "";
+          position: absolute;
+          left: -80px; bottom: -80px;
+          width: 280px; height: 280px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.04);
+          pointer-events: none;
+        }
+
+        .cta-inner {
+          position: relative;
+          z-index: 1;
+        }
+        .cta-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          max-width: 620px;
+          margin: 0 auto;
+        }
+
+        /* Eyebrow */
+        .cta-eyebrow {
+          display: inline-block;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.75);
+          background: rgba(255,255,255,0.12);
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 50px;
+          padding: 5px 16px;
+          margin-bottom: 20px;
+        }
+
+        /* Heading */
+        .cta-heading {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 900;
+          color: #fff;
+          line-height: 1.1;
+          letter-spacing: -0.025em;
+          font-family: var(--font-sora), sans-serif;
+          margin-bottom: 16px;
+        }
+
+        /* Sub */
+        .cta-sub {
+          font-size: 15px;
+          color: rgba(255,255,255,0.78);
+          line-height: 1.75;
+          max-width: 480px;
+          margin-bottom: 36px;
+        }
+
+        /* Buttons */
+        .cta-btns {
+          display: flex;
+          gap: 14px;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-bottom: 28px;
+        }
+        .cta-btn-main {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #fff;
+          color: var(--green);
+          font-weight: 800;
+          font-size: 14px;
+          padding: 15px 36px;
+          border-radius: 50px;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+          transition: transform 0.2s, box-shadow 0.2s;
+          font-family: inherit;
+        }
+        .cta-btn-main:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+        }
+        .cta-btn-ghost {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: transparent;
+          color: #fff;
+          font-weight: 700;
+          font-size: 14px;
+          padding: 14px 28px;
+          border-radius: 50px;
+          border: 2px solid rgba(255,255,255,0.4);
+          text-decoration: none;
+          transition: background 0.2s, border-color 0.2s;
+        }
+        .cta-btn-ghost:hover {
+          background: rgba(255,255,255,0.1);
+          border-color: rgba(255,255,255,0.7);
+        }
+
+        /* Trust */
+        .cta-trust {
+          font-size: 11.5px;
+          color: rgba(255,255,255,0.5);
+          letter-spacing: 0.3px;
+        }
+
         @media (max-width: 500px) {
-          .cta-buttons { flex-direction: column; align-items: stretch; }
-          .cta-buttons > * { width: 100%; justify-content: center; }
+          .cta-btns { flex-direction: column; width: 100%; }
+          .cta-btn-main, .cta-btn-ghost { width: 100%; justify-content: center; }
+          .cta-section { padding: 56px 0; }
         }
       `}</style>
     </section>

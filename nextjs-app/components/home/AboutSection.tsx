@@ -3,7 +3,7 @@ import Link from "next/link";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
 
-const statValues = ["40K+", "20+", "25+", "4.9?"];
+const statValues = ["40K+", "20+", "25+", "4.9★"];
 
 export default function AboutSection() {
   const { t } = useLang();
@@ -74,7 +74,10 @@ export default function AboutSection() {
               borderRadius: "14px", padding: "14px 16px", marginBottom: "28px",
               background: "var(--bg-soft)", border: "1px solid rgba(74,164,97,0.25)",
             }}>
-              <span style={{ fontSize: "1.2rem", flexShrink: 0, marginTop: "1px" }}>???</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: "1px" }}>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
               <div>
                 <p style={{ fontSize: "13px", fontWeight: 700, color: "var(--green)", marginBottom: "3px" }}>
                   {t.aboutAmf}

@@ -17,7 +17,7 @@ export const translations = {
     universalLife: "Universal Life Insurance", criticalIllness: "Critical Illness Coverage",
     disability: "Disability Insurance",
     // Insurance strip (below hero)
-    stripH2a: "Coverage for", stripH2b: "Every Stage of Life",
+    stripH2a: "Find the Right", stripH2b: "Coverage for You",
     stripSub: "From protecting your loved ones to securing your assets, we help you find the right coverage at the right price — with no obligation and no cost to compare.",
     strip1Title: "Life Insurance",      strip1Desc: "Protect the people who depend on you.",
     strip2Title: "Critical Illness",    strip2Desc: "A lump-sum payout on serious diagnosis.",
@@ -90,7 +90,7 @@ export const translations = {
     termLife: "Assurance vie temporaire", wholeLife: "Assurance vie entière",
     universalLife: "Assurance vie universelle", criticalIllness: "Couverture maladies graves",
     disability: "Assurance invalidité",
-    stripH2a: "Couverture pour", stripH2b: "chaque étape de vie",
+    stripH2a: "Trouvez la bonne", stripH2b: "couverture pour vous",
     stripSub: "De la protection de vos proches à la sécurisation de vos actifs, nous vous aidons à trouver la bonne couverture au bon prix — sans obligation et sans frais de comparaison.",
     strip1Title: "Assurance vie",         strip1Desc: "Protégez ceux qui dépendent de vous.",
     strip2Title: "Maladies graves",       strip2Desc: "Un versement forfaitaire en cas de diagnostic grave.",

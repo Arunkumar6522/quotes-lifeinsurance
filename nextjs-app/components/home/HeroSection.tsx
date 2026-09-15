@@ -5,67 +5,75 @@ import { useLang } from "@/lib/i18n";
 import { useModal } from "@/lib/modal";
 
 const fadeUp = (delay = 0): Variants => ({
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] } },
 });
 
 const fadeLeft = (delay = 0): Variants => ({
-  hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, x: 48 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } },
 });
+
+const ShieldCheck = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    <polyline points="9 12 11 14 15 10"/>
+  </svg>
+);
+const DollarFree = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="1" x2="12" y2="23"/>
+    <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+  </svg>
+);
+const Carriers = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2"/>
+    <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+  </svg>
+);
+const StarRating = () => (
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </svg>
+);
 
 export default function HeroSection() {
   const { t }         = useLang();
   const { openModal } = useModal();
 
+  const trustItems = [
+    { Icon: ShieldCheck, text: t.trust1 },
+    { Icon: DollarFree,  text: t.trust2 },
+    { Icon: Carriers,    text: t.trust3 },
+    { Icon: StarRating,  text: t.trust4 },
+  ];
+
   return (
-    <section style={{ background: "#f4f5f7", position: "relative" }}>
+    <section className="hero-section">
       <div className="container hero-container">
         <div className="hero-grid">
 
-          {/* ── LEFT: copy ─────────────────────── */}
-          <motion.div initial="hidden" animate="show"
-            style={{ display: "flex", flexDirection: "column" }}>
+          {/* ── LEFT: copy ─────────────────────────── */}
+          <motion.div initial="hidden" animate="show" className="hero-copy">
 
             {/* AMF badge */}
-            <motion.div variants={fadeUp(0)} style={{ marginBottom: "20px" }}>
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: "7px",
-                padding: "6px 14px", borderRadius: "50px",
-                background: "rgba(74,164,97,0.1)",
-                border: "1px solid rgba(74,164,97,0.28)",
-                fontSize: "11px", fontWeight: 800, letterSpacing: "1.5px",
-                textTransform: "uppercase", color: "var(--green)",
-              }}>
-                <span style={{
-                  width: "6px", height: "6px", borderRadius: "50%",
-                  background: "var(--green)", flexShrink: 0,
-                  animation: "pulseGlow 2.5s ease-in-out infinite",
-                }} />
+            <motion.div variants={fadeUp(0)} style={{ marginBottom: "24px" }}>
+              <span className="hero-badge">
+                <span className="hero-badge-dot" />
                 {t.heroLabel}
               </span>
             </motion.div>
 
             {/* Heading */}
-            <motion.h1 variants={fadeUp(0.08)} style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              fontWeight: 900, lineHeight: 1.1,
-              letterSpacing: "-0.025em", color: "var(--dark)",
-              marginBottom: "16px",
-              fontFamily: "var(--font-sora), sans-serif",
-            }}>
+            <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
               {t.heroH1a}<br />
               <span style={{ color: "var(--green)" }}>{t.heroH1b}</span><br />
-              <span style={{ fontSize: "0.72em", fontWeight: 700, color: "#6b7280" }}>
-                {t.heroH1c}
-              </span>
+              <span className="hero-h1-sub">{t.heroH1c}</span>
             </motion.h1>
 
             {/* Sub */}
-            <motion.p variants={fadeUp(0.15)} style={{
-              fontSize: "15px", color: "#4b5563",
-              lineHeight: 1.75, marginBottom: "28px", maxWidth: "440px",
-            }}>
+            <motion.p variants={fadeUp(0.15)} className="hero-sub">
               {t.heroSub}{" "}
               <strong style={{ color: "var(--green)", fontWeight: 800 }}>{t.heroFree}</strong>.
             </motion.p>
@@ -76,30 +84,18 @@ export default function HeroSection() {
               <Link href="/about" className="hero-learn-more">{t.heroCta2}</Link>
             </motion.div>
 
-            {/* Trust badges */}
+            {/* Trust — SVG icons, no emoji */}
             <motion.div variants={fadeUp(0.3)} className="hero-trust">
-              {[
-                { icon: "🛡️", text: t.trust1 },
-                { icon: "💸", text: t.trust2 },
-                { icon: "🏦", text: t.trust3 },
-                { icon: "⭐", text: t.trust4 },
-              ].map((b) => (
-                <div key={b.text} style={{
-                  display: "flex", alignItems: "center", gap: "6px",
-                  fontSize: "12px", fontWeight: 600, color: "#6b7280",
-                }}>
-                  <span>{b.icon}</span>{b.text}
+              {trustItems.map(({ Icon, text }) => (
+                <div key={text} className="hero-trust-item">
+                  <span className="hero-trust-icon"><Icon /></span>
+                  <span>{text}</span>
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: QS form via iframe ────────────────────────────────
-              Direct iframe = we own the height. No QS script running in
-              our page, no inline-style height injection, no clipping.
-              The iframe height is tall enough to show all options in the
-              conversational form without any scroll at any screen size.
-          ─────────────────────────────────────────────────────────── */}
+          {/* ── RIGHT: QS form only ─────────────────── */}
           <motion.div
             initial="hidden"
             animate="show"
@@ -120,78 +116,85 @@ export default function HeroSection() {
       </div>
 
       <style>{`
-        .hero-container {
-          padding-top: 48px;
-          padding-bottom: 48px;
-        }
+        .hero-section { background: #f4f6f8; position: relative; }
+        .hero-container { padding-top: 60px; padding-bottom: 60px; }
+
         .hero-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 40px;
+          grid-template-columns: 55fr 45fr;
+          gap: 48px;
           align-items: flex-start;
         }
-        .hero-ctas {
-          display: flex;
-          gap: 12px;
-          flex-wrap: wrap;
-          margin-bottom: 32px;
+        .hero-copy { display: flex; flex-direction: column; }
+
+        .hero-badge {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 7px 16px; border-radius: 50px;
+          background: rgba(74,164,97,0.1); border: 1px solid rgba(74,164,97,0.3);
+          font-size: 11px; font-weight: 800; letter-spacing: 1.4px;
+          text-transform: uppercase; color: var(--green);
         }
+        .hero-badge-dot {
+          width: 7px; height: 7px; border-radius: 50%;
+          background: var(--green); flex-shrink: 0;
+          animation: pulseGlow 2.5s ease-in-out infinite;
+        }
+
+        .hero-h1 {
+          font-size: clamp(2.4rem, 5.5vw, 4rem);
+          font-weight: 900; line-height: 1.08;
+          letter-spacing: -0.03em; color: var(--dark);
+          margin-bottom: 20px;
+          font-family: var(--font-sora), sans-serif;
+        }
+        .hero-h1-sub {
+          font-size: 0.68em; font-weight: 700;
+          color: #6b7280; letter-spacing: -0.01em;
+        }
+
+        .hero-sub {
+          font-size: 16px; color: #4b5563;
+          line-height: 1.8; margin-bottom: 32px; max-width: 460px;
+        }
+
+        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
         .hero-learn-more {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 24px;
-          border-radius: 50px;
-          border: 1.5px solid #d1d5db;
-          color: #374151;
-          font-size: 14px;
-          font-weight: 600;
-          background: #fff;
-          text-decoration: none;
-          transition: all 0.2s;
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 13px 26px; border-radius: 50px;
+          border: 1.5px solid #d1d5db; color: #374151;
+          font-size: 14px; font-weight: 600; background: #fff;
+          text-decoration: none; transition: border-color 0.2s, color 0.2s;
         }
-        .hero-trust {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 14px;
-        }
+        .hero-learn-more:hover { border-color: var(--green); color: var(--green); }
 
-        /* QS iframe — full width, tall enough to never scroll */
-        .hero-form-col {
-          width: 100%;
+        .hero-trust { display: flex; flex-wrap: wrap; gap: 18px; }
+        .hero-trust-item {
+          display: flex; align-items: center; gap: 7px;
+          font-size: 12.5px; font-weight: 700; color: #374151;
         }
+        .hero-trust-icon { color: var(--green); display: flex; align-items: center; }
+
+        .hero-form-col { width: 100%; }
         .qs-iframe {
-          width: 100%;
-          height: 640px;
-          border: none;
-          border-radius: 12px;
-          display: block;
-          background: #fff;
+          width: 100%; height: 640px; border: none;
+          border-radius: 16px; display: block; background: #fff;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.07);
         }
 
-        /* MOBILE */
         @media (max-width: 900px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            gap: 28px !important;
-          }
+          .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .hero-form-col { order: 2; }
           .qs-iframe { height: 600px; }
         }
         @media (max-width: 600px) {
-          .hero-container {
-            padding-top: 28px !important;
-            padding-bottom: 28px !important;
-          }
+          .hero-container { padding-top: 32px !important; padding-bottom: 32px !important; }
+          .hero-h1 { font-size: clamp(2rem, 9vw, 2.8rem) !important; }
           .hero-ctas { flex-direction: column; gap: 10px; }
-          .hero-ctas button,
-          .hero-ctas .hero-learn-more {
-            width: 100%;
-            justify-content: center;
-            text-align: center;
+          .hero-ctas button, .hero-ctas .hero-learn-more {
+            width: 100%; justify-content: center; text-align: center;
           }
-          .hero-trust { gap: 10px; }
-          .qs-iframe { height: 580px; }
+          .hero-trust { gap: 12px; }
+          .qs-iframe { height: 560px; }
         }
       `}</style>
     </section>
