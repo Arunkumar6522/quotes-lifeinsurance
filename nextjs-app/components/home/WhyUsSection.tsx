@@ -135,7 +135,7 @@ export default function WhyUsSection() {
         .why-card:hover {
           box-shadow: 0 8px 28px rgba(0,0,0,0.07);
           transform: translateY(-4px);
-          border-color: rgba(99,160,102,0.35);
+          border-color: rgba(74,164,97,0.35);
         }
 
         /* Icon badge — green */
@@ -143,7 +143,7 @@ export default function WhyUsSection() {
           width: 52px;
           height: 52px;
           border-radius: 14px;
-          background: rgba(99,160,102,0.1);
+          background: rgba(74,164,97,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -152,7 +152,7 @@ export default function WhyUsSection() {
           transition: background 0.25s;
         }
         .why-card:hover .why-icon {
-          background: rgba(99,160,102,0.18);
+          background: rgba(74,164,97,0.18);
         }
 
         /* Title */

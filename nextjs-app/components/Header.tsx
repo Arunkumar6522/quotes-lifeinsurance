@@ -335,7 +335,7 @@ export default function Header() {
           transition: color 0.15s, background 0.15s;
           position: relative;
         }
-        .nav-link:hover { color: var(--green); background: rgba(99,160,102,0.07); }
+        .nav-link:hover { color: var(--green); background: rgba(74,164,97,0.07); }
         /* Active underline */
         .nav-link.active::after {
           content: "";
@@ -382,7 +382,7 @@ export default function Header() {
           transition: background 0.15s, color 0.15s;
         }
         .dropdown-item:hover {
-          background: rgba(99,160,102,0.08);
+          background: rgba(74,164,97,0.08);
           color: var(--green);
         }
 

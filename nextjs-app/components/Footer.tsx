@@ -50,8 +50,8 @@ export default function Footer() {
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             <div style={{
               width: "44px", height: "44px", borderRadius: "50%",
-              background: "rgba(99,160,102,0.15)",
-              border: "1.5px solid rgba(99,160,102,0.4)",
+              background: "rgba(74,164,97,0.15)",
+              border: "1.5px solid rgba(74,164,97,0.4)",
               display: "flex", alignItems: "center",
               justifyContent: "center", fontSize: "20px", flexShrink: 0,
             }}>
@@ -73,7 +73,7 @@ export default function Footer() {
             style={{
               fontSize: "12px", fontWeight: 700,
               padding: "8px 18px", borderRadius: "50px",
-              border: "1.5px solid rgba(99,160,102,0.5)",
+              border: "1.5px solid rgba(74,164,97,0.5)",
               color: "var(--green)", textDecoration: "none",
               transition: "all 0.2s",
             }}

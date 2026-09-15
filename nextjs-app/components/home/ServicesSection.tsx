@@ -210,7 +210,7 @@ export default function ServicesSection() {
 
         /* Green accent card hover */
         .service-card--green:hover {
-          border-color: rgba(99,160,102,0.45);
+          border-color: rgba(74,164,97,0.45);
         }
         /* Plum accent card hover */
         .service-card--plum:hover {
@@ -227,7 +227,7 @@ export default function ServicesSection() {
           opacity: 0;
           transition: opacity 0.3s;
         }
-        .service-card--green::before { background: rgba(99,160,102,0.12); }
+        .service-card--green::before { background: rgba(74,164,97,0.12); }
         .service-card--plum::before  { background: rgba(83,46,77,0.25); }
         .service-card:hover::before  { opacity: 1; }
 
@@ -243,7 +243,7 @@ export default function ServicesSection() {
           margin-bottom: 4px;
         }
         .service-icon--green {
-          background: rgba(99,160,102,0.15);
+          background: rgba(74,164,97,0.15);
           color: var(--green);
         }
         .service-icon--plum {
@@ -263,7 +263,7 @@ export default function ServicesSection() {
           align-self: flex-start;
         }
         .service-tag--green {
-          background: rgba(99,160,102,0.15);
+          background: rgba(74,164,97,0.15);
           color: var(--green);
         }
         .service-tag--plum {

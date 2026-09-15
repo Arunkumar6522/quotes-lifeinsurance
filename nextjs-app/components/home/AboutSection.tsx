@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
 
-const statValues = ["40K+", "20+", "25+", "4.9★"];
+const statValues = ["40K+", "20+", "25+", "4.9?"];
 
 export default function AboutSection() {
   const { t } = useLang();
@@ -72,9 +72,9 @@ export default function AboutSection() {
             <div style={{
               display: "flex", alignItems: "flex-start", gap: "12px",
               borderRadius: "14px", padding: "14px 16px", marginBottom: "28px",
-              background: "var(--bg-soft)", border: "1px solid rgba(99,160,102,0.25)",
+              background: "var(--bg-soft)", border: "1px solid rgba(74,164,97,0.25)",
             }}>
-              <span style={{ fontSize: "1.2rem", flexShrink: 0, marginTop: "1px" }}>🛡️</span>
+              <span style={{ fontSize: "1.2rem", flexShrink: 0, marginTop: "1px" }}>???</span>
               <div>
                 <p style={{ fontSize: "13px", fontWeight: 700, color: "var(--green)", marginBottom: "3px" }}>
                   {t.aboutAmf}

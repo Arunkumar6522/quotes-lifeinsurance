@@ -32,8 +32,8 @@ export default function HeroSection() {
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: "7px",
                 padding: "6px 14px", borderRadius: "50px",
-                background: "rgba(99,160,102,0.1)",
-                border: "1px solid rgba(99,160,102,0.28)",
+                background: "rgba(74,164,97,0.1)",
+                border: "1px solid rgba(74,164,97,0.28)",
                 fontSize: "11px", fontWeight: 800, letterSpacing: "1.5px",
                 textTransform: "uppercase", color: "var(--green)",
               }}>

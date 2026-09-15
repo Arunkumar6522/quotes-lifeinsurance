@@ -39,7 +39,7 @@ export default function PageLoader() {
         background: "var(--green)",
         transition: "width 0.3s ease",
         borderRadius: "0 2px 2px 0",
-        boxShadow: "0 0 10px rgba(99,160,102,0.6)",
+        boxShadow: "0 0 10px rgba(74,164,97,0.6)",
       }} />
     </div>
   );

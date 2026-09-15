@@ -142,7 +142,7 @@ export default function InsuranceSolutionsStrip() {
         .strip-card:hover {
           box-shadow: 0 8px 32px rgba(0,0,0,0.08);
           transform: translateY(-4px);
-          border-color: rgba(99,160,102,0.4);
+          border-color: rgba(74,164,97,0.4);
         }
 
         /* Circular icon — large, light green bg, dark green icon */
@@ -150,7 +150,7 @@ export default function InsuranceSolutionsStrip() {
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          background: rgba(99,160,102,0.12);
+          background: rgba(74,164,97,0.12);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -160,7 +160,7 @@ export default function InsuranceSolutionsStrip() {
           transition: background 0.25s;
         }
         .strip-card:hover .strip-icon {
-          background: rgba(99,160,102,0.2);
+          background: rgba(74,164,97,0.2);
         }
 
         /* Title */

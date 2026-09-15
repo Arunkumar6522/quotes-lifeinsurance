@@ -114,7 +114,7 @@ export default function AboutPage() {
               {/* Insurance */}
               <div className="rounded-2xl p-8" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
                 <div className="w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl"
-                  style={{ background: "rgba(99,160,102,0.2)" }}>
+                  style={{ background: "rgba(74,164,97,0.2)" }}>
                   🛡️
                 </div>
                 <h3 className="text-lg font-bold text-white mb-4">Insurance Planning</h3>
