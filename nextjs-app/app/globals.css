@@ -4,9 +4,9 @@
    DESIGN TOKENS
 ───────────────────────────────────────────────────────────── */
 :root {
-  --green:      #63a066;
-  --green-dark: #4e8051;
-  --green-light:#e8f3e9;
+  --green:      #4aa461;
+  --green-dark: #3a8a4e;
+  --green-light:#e6f4ea;
   --plum:       #532e4d;
   --plum-dark:  #3d1f38;
   --plum-light: #f2eaf0;

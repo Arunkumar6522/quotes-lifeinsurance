@@ -1,6 +1,5 @@
 ﻿"use client";
 import { motion, type Variants } from "framer-motion";
-import { useEffect } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { useModal } from "@/lib/modal";
@@ -19,67 +18,8 @@ export default function HeroSection() {
   const { t }         = useLang();
   const { openModal } = useModal();
 
-  useEffect(() => {
-    // ── Aggressively unlock QS embed: remove ALL height caps and overflow scroll
-    const unlock = () => {
-      const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
-      if (!embed) return;
-
-      // Walk every element inside the embed
-      const all = [embed, ...Array.from(embed.querySelectorAll<HTMLElement>("*"))];
-      all.forEach((el) => {
-        // Kill any fixed pixel height set by QS inline styles
-        if (el.style.height && el.style.height !== "auto" && el.style.height !== "100%") {
-          el.style.setProperty("height", "auto", "important");
-        }
-        // Remove max-height caps
-        el.style.setProperty("max-height", "none", "important");
-        // Kill overflow scroll / auto
-        el.style.setProperty("overflow",   "visible", "important");
-        el.style.setProperty("overflow-y", "visible", "important");
-        el.style.setProperty("overflow-x", "hidden",  "important");
-        // Kill scrollbar
-        el.style.setProperty("scrollbar-width", "none", "important");
-      });
-    };
-
-    // Load QS script only once
-    const loadScript = () => {
-      if (document.getElementById("qs-script")) { unlock(); return; }
-      const s = document.createElement("script");
-      s.id  = "qs-script";
-      s.src = "https://form.questionscout.com/qs-form-script.min.js";
-      s.setAttribute("data-form-id",    "616e35ca63bd79140f61b3ef");
-      s.setAttribute("data-url-params", JSON.stringify([{ key: "campaign", value: "" }]));
-      s.setAttribute("data-runner-id",  "qs-embed-6aa7eb9fc1c5e04d74de874e");
-      // Pass "100%" for height so QS never sets a fixed pixel height
-      s.setAttribute("data-dimensions", JSON.stringify(["100%", "100%"]));
-      s.async = true;
-      s.onload = () => {
-        // Run immediately, then watch permanently for step changes
-        unlock();
-        const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
-        if (embed) {
-          const observer = new MutationObserver(unlock);
-          observer.observe(embed, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ["style", "class"],
-          });
-          // Belt-and-suspenders: poll for first 60s to catch any lazy renders
-          const iv = setInterval(unlock, 500);
-          setTimeout(() => clearInterval(iv), 60_000);
-        }
-      };
-      document.head.appendChild(s);
-    };
-
-    loadScript();
-  }, []);
-
   return (
-    <section style={{ background: "#f4f5f7", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "#f4f5f7", position: "relative" }}>
       <div className="container hero-container">
         <div className="hero-grid">
 
@@ -154,33 +94,42 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: QS form ──────────────────── */}
+          {/* ── RIGHT: QS form via iframe ────────────────────────────────
+              Direct iframe = we own the height. No QS script running in
+              our page, no inline-style height injection, no clipping.
+              The iframe height is tall enough to show all options in the
+              conversational form without any scroll at any screen size.
+          ─────────────────────────────────────────────────────────── */}
           <motion.div
             initial="hidden"
             animate="show"
             variants={fadeLeft(0.18)}
             className="hero-form-col"
           >
-            <div id="qs-embed-6aa7eb9fc1c5e04d74de874e" style={{ width: "100%" }} />
+            <iframe
+              src="https://form.questionscout.com/616e35ca63bd79140f61b3ef"
+              className="qs-iframe"
+              title="Get a Free Life Insurance Quote"
+              frameBorder="0"
+              scrolling="no"
+              allow="clipboard-write"
+            />
           </motion.div>
 
         </div>
       </div>
 
       <style>{`
-        /* ── Hero container ── */
         .hero-container {
           padding-top: 48px;
           padding-bottom: 48px;
         }
-        /* ── Two-col desktop grid ── */
         .hero-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 40px;
           align-items: flex-start;
         }
-        /* ── CTA row ── */
         .hero-ctas {
           display: flex;
           gap: 12px;
@@ -201,67 +150,40 @@ export default function HeroSection() {
           text-decoration: none;
           transition: all 0.2s;
         }
-        /* ── Trust badges row ── */
         .hero-trust {
           display: flex;
           flex-wrap: wrap;
           gap: 14px;
         }
-        /* ── QS form column — let it grow naturally ── */
+
+        /* QS iframe — full width, tall enough to never scroll */
         .hero-form-col {
-          overflow: visible;
-          max-width: 100%;
           width: 100%;
         }
-        /* QS embed wrapper — full width, auto height, NO scroll */
-        #qs-embed-6aa7eb9fc1c5e04d74de874e {
-          width: 100% !important;
-          max-width: 100% !important;
-          height: auto !important;
-          max-height: none !important;
-          overflow: visible !important;
-        }
-        /* Every element QS renders — no scroll, no cap */
-        #qs-embed-6aa7eb9fc1c5e04d74de874e,
-        #qs-embed-6aa7eb9fc1c5e04d74de874e * {
-          height: auto !important;
-          max-height: none !important;
-          overflow: visible !important;
-          overflow-y: visible !important;
-          overflow-x: hidden !important;
-          scrollbar-width: none !important;
-          -ms-overflow-style: none !important;
-        }
-        /* Hide webkit scrollbar on everything inside */
-        #qs-embed-6aa7eb9fc1c5e04d74de874e::-webkit-scrollbar,
-        #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar {
-          display: none !important;
-          width: 0 !important;
-          height: 0 !important;
+        .qs-iframe {
+          width: 100%;
+          height: 640px;
+          border: none;
+          border-radius: 12px;
+          display: block;
+          background: #fff;
         }
 
-        /* ══════════════════════════════════════
-           MOBILE — single column stack
-        ══════════════════════════════════════ */
+        /* MOBILE */
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
           }
-          /* Copy side comes first, form below */
           .hero-form-col { order: 2; }
+          .qs-iframe { height: 600px; }
         }
-
         @media (max-width: 600px) {
           .hero-container {
             padding-top: 28px !important;
             padding-bottom: 28px !important;
           }
-          /* Full-width buttons on small phones */
-          .hero-ctas {
-            flex-direction: column;
-            gap: 10px;
-          }
+          .hero-ctas { flex-direction: column; gap: 10px; }
           .hero-ctas button,
           .hero-ctas .hero-learn-more {
             width: 100%;
@@ -269,6 +191,7 @@ export default function HeroSection() {
             text-align: center;
           }
           .hero-trust { gap: 10px; }
+          .qs-iframe { height: 580px; }
         }
       `}</style>
     </section>

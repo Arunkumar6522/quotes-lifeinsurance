@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/home/HeroSection";
+import InsuranceSolutionsStrip from "@/components/home/InsuranceSolutionsStrip";
 import AboutSection from "@/components/home/AboutSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import WhyUsSection from "@/components/home/WhyUsSection";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
+        <InsuranceSolutionsStrip />
         <AboutSection />
         <ServicesSection />
         <WhyUsSection />

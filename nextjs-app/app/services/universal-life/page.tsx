@@ -11,7 +11,7 @@ const data = {
   titleFr: "Assurance vie universelle",
   tagline: "Flexible permanent coverage with a tax-sheltered investment component.",
   icon: "🔄",
-  color: "#63a066",
+  color: "#4aa461",
   description: "Universal life insurance combines permanent death benefit coverage with a tax-sheltered investment account. You can adjust your premiums and death benefit over time as your needs change, and the investment portion grows tax-deferred inside the policy. It's a powerful wealth-building tool for high-income Canadians who've maximized their RRSP and TFSA.",
   highlights: [
     {

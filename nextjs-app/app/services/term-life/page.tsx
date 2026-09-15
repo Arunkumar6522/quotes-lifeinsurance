@@ -11,7 +11,7 @@ const data = {
   titleFr: "Assurance vie temporaire",
   tagline: "The most affordable way to protect your family during the years they need it most.",
   icon: "📋",
-  color: "#63a066",
+  color: "#4aa461",
   description: "Term life insurance provides pure death benefit coverage for a fixed period — typically 10, 20, or 30 years. If you pass away during the term, your beneficiaries receive the tax-free death benefit. It's the simplest, most cost-effective form of life insurance and is ideal for families who need large coverage amounts at low premiums.",
   highlights: [
     {

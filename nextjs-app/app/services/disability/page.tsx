@@ -11,7 +11,7 @@ const data = {
   titleFr: "Assurance invalidité",
   tagline: "Your income is your most valuable asset — protect it.",
   icon: "🦽",
-  color: "#63a066",
+  color: "#4aa461",
   description: "Disability insurance replaces a portion of your income — typically 60–70% — if illness or injury prevents you from working. Statistics show 1 in 3 Canadians will experience a disability lasting 90 days or more before age 65. Yet most Canadians have no private disability coverage. Without income, even a few months off work can be financially devastating.",
   highlights: [
     {
