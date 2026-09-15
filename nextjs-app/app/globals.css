@@ -275,53 +275,25 @@ button { cursor: pointer; }
 .gradient-text      { color: var(--green); }
 .gradient-text-plum { color: var(--plum); }
 
-/* ── Hide Question Scout widget scrollbar ─── */
-#qs-embed-6aa7eb9fc1c5e04d74de874e {
-  scrollbar-width: none !important;
-  overflow: hidden !important;
-}
-#qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-}
-
-/* ── QS widget — clip to container, no page scrollbar ─── */
-#qs-embed-6aa7eb9fc1c5e04d74de874e {
-  overflow: hidden !important;
-  max-height: 480px !important;
-}
-#qs-embed-6aa7eb9fc1c5e04d74de874e > * {
-  overflow: hidden !important;
-}
-#qs-embed-6aa7eb9fc1c5e04d74de874e iframe,
-#qs-embed-6aa7eb9fc1c5e04d74de874e .qs-form {
-  max-height: 480px !important;
-  overflow: hidden !important;
-}
-/* Remove scrollbar from QS wrapper */
-#qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar,
-#qs-embed-6aa7eb9fc1c5e04d74de874e::-webkit-scrollbar { display: none !important; }
-
-/* ── QS widget internal scroll fix ──────────────────────────
-   Targets the generated class from QS's CSS-in-JS renderer.
-   Forces the widget to expand to its natural height with no scroll.
+/* ── QuestionScout embed — no scrollbar, auto height ─────────
+   Single authoritative block. MutationObserver in HeroSection.tsx
+   also enforces this at runtime on every QS step change.
 ─────────────────────────────────────────────────────────── */
-.css-1nh8hsr,
-[class^="css-"] [class*="nh8hsr"],
 #qs-embed-6aa7eb9fc1c5e04d74de874e,
+#qs-embed-6aa7eb9fc1c5e04d74de874e *,
 #qs-embed-6aa7eb9fc1c5e04d74de874e > div,
 #qs-embed-6aa7eb9fc1c5e04d74de874e > div > div {
-  height: auto !important;
+  overflow:   hidden !important;
+  overflow-y: hidden !important;
   max-height: none !important;
-  overflow: visible !important;
-  overflow-y: visible !important;
   scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
-
-#qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar,
-.css-1nh8hsr::-webkit-scrollbar {
+#qs-embed-6aa7eb9fc1c5e04d74de874e::-webkit-scrollbar,
+#qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
+  height: 0 !important;
 }
 
 /* Hero section — allow natural height so QS form is fully visible */

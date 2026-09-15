@@ -27,30 +27,41 @@ export default function HeroSection() {
     s.setAttribute("data-form-id",    "616e35ca63bd79140f61b3ef");
     s.setAttribute("data-url-params", JSON.stringify([{ key: "campaign", value: "" }]));
     s.setAttribute("data-runner-id",  "qs-embed-6aa7eb9fc1c5e04d74de874e");
-    // On mobile use a shorter height so it fits without scrolling
-    const isMobile = window.innerWidth < 768;
-    s.setAttribute("data-dimensions", JSON.stringify(["100%", isMobile ? "480px" : "620px"]));
+    // Smaller height — prevents scroll on all screen sizes
+    s.setAttribute("data-dimensions", JSON.stringify(["100%", "420px"]));
     s.async = true;
 
     s.onload = () => {
+      // Strip every scrollable div inside the embed
       const strip = () => {
         const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
         if (!embed) return;
-        embed.querySelectorAll<HTMLElement>("div").forEach((div) => {
-          const cs = window.getComputedStyle(div);
+        embed.querySelectorAll<HTMLElement>("*").forEach((el) => {
+          const cs = window.getComputedStyle(el);
           if (cs.overflow === "scroll" || cs.overflow === "auto" ||
               cs.overflowY === "scroll" || cs.overflowY === "auto") {
-            div.style.setProperty("overflow",   "visible", "important");
-            div.style.setProperty("overflow-y", "visible", "important");
-            div.style.setProperty("height",     "auto",    "important");
-            div.style.setProperty("max-height", "none",    "important");
+            el.style.setProperty("overflow",   "visible", "important");
+            el.style.setProperty("overflow-y", "visible", "important");
+            el.style.setProperty("height",     "auto",    "important");
+            el.style.setProperty("max-height", "none",    "important");
           }
+          // Also kill any explicit scrollbar via scrollbar-width
+          el.style.setProperty("scrollbar-width", "none", "important");
         });
       };
-      // Run immediately and every 400ms for 6s as QS re-renders each step
+
+      // Run immediately
       strip();
-      const iv = setInterval(strip, 400);
-      setTimeout(() => clearInterval(iv), 6000);
+
+      // Watch for ANY DOM change inside the embed — catches every QS step re-render
+      const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
+      if (embed) {
+        const observer = new MutationObserver(strip);
+        observer.observe(embed, { childList: true, subtree: true, attributes: true, attributeFilter: ["style"] });
+        // Keep a fallback interval just in case
+        const iv = setInterval(strip, 800);
+        setTimeout(() => clearInterval(iv), 30000); // 30s — covers most multi-step forms
+      }
     };
 
     document.head.appendChild(s);
@@ -188,11 +199,19 @@ export default function HeroSection() {
         /* ── QS form column ── */
         .hero-form-col {
           overflow: hidden;
+          max-width: 100%;
         }
-        /* QS scrollbar kill */
-        #qs-embed-6aa7eb9fc1c5e04d74de874e { overflow: hidden !important; }
-        #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar { display: none !important; width: 0 !important; }
-        #qs-embed-6aa7eb9fc1c5e04d74de874e * { scrollbar-width: none !important; }
+        /* QS embed wrapper — scale it, no scroll */
+        #qs-embed-6aa7eb9fc1c5e04d74de874e {
+          width: 100% !important;
+          max-width: 100% !important;
+          overflow: hidden !important;
+        }
+        /* Kill scrollbar on every child QS renders */
+        #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+        #qs-embed-6aa7eb9fc1c5e04d74de874e * { scrollbar-width: none !important; -ms-overflow-style: none !important; overflow-x: hidden !important; }
+        /* QS sets inline height on its root div — override it */
+        #qs-embed-6aa7eb9fc1c5e04d74de874e > div { height: auto !important; min-height: unset !important; overflow: hidden !important; }
 
         /* ══════════════════════════════════════
            MOBILE — single column stack
