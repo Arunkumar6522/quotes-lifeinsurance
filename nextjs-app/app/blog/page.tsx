@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Insurance Tips & News — Quotes Life Insurance Blog",
-  description: "Expert life insurance tips, guides, and news from Quotes Life Insurance. Learn about term life, whole life, critical illness, and more.",
+  description: "Expert life insurance tips, guides, and news from Quotes Life Insurance.",
 };
 
 export default async function BlogPage() {
@@ -18,79 +18,71 @@ export default async function BlogPage() {
       <main>
 
         {/* Hero */}
-        <div style={{
-          background: "var(--dark)", padding: "56px 0 48px", textAlign: "center",
-        }}>
+        <div style={{ background: "var(--dark)", padding: "48px 0 40px", textAlign: "center" }}>
           <div className="container">
             <span style={{
               display: "inline-block", fontSize: "11px", fontWeight: 800,
               letterSpacing: "2px", textTransform: "uppercase",
-              color: "var(--green)", marginBottom: "14px",
+              color: "var(--green)", marginBottom: "12px",
             }}>
               Insurance Tips &amp; News
             </span>
             <h1 style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 900, color: "#fff",
+              fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 900, color: "#fff",
               fontFamily: "var(--font-sora), sans-serif", letterSpacing: "-0.02em",
             }}>
               Our Blog
             </h1>
-            <p style={{ color: "rgba(255,255,255,0.55)", marginTop: "12px", fontSize: "15px" }}>
+            <p style={{
+              color: "rgba(255,255,255,0.55)", marginTop: "10px",
+              fontSize: "15px", maxWidth: "480px", margin: "10px auto 0",
+            }}>
               Tips, guides and news to help you make smarter life insurance decisions.
             </p>
           </div>
         </div>
 
-        {/* Posts grid */}
-        <section style={{ padding: "64px 0", background: "#fff" }}>
+        {/* Posts */}
+        <section style={{ padding: "48px 0 64px", background: "#fff" }}>
           <div className="container">
             {posts.length === 0 ? (
-              <div style={{ textAlign: "center", padding: "48px 0" }}>
-                <p style={{ color: "var(--muted)" }}>No posts found.</p>
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <p style={{ color: "var(--muted)", marginBottom: "16px" }}>No posts found.</p>
                 <a href="https://artstarofficial.blogspot.com" target="_blank" rel="noopener"
-                  className="btn-primary" style={{ marginTop: "16px", display: "inline-flex" }}>
+                  className="btn-primary" style={{ display: "inline-flex" }}>
                   Visit Blog ↗
                 </a>
               </div>
             ) : (
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                gap: "28px",
-              }}>
+              <div className="blog-grid">
                 {posts.map((post) => (
                   <Link key={post.slug} href={`/blog/${post.slug}`}
-                    style={{ textDecoration: "none", display: "block" }}
-                  >
-                    <article style={{
+                    style={{ textDecoration: "none", display: "block" }}>
+                    <article className="blog-card" style={{
                       borderRadius: "16px", overflow: "hidden",
                       border: "1px solid var(--border)", background: "#fff",
-                      transition: "box-shadow 0.25s, transform 0.25s",
-                      height: "100%",
-                    }}
-                      className="blog-card"
-                    >
+                      height: "100%", transition: "box-shadow 0.25s, transform 0.25s",
+                    }}>
                       {/* Thumbnail */}
-                      <div style={{ height: "200px", overflow: "hidden", background: "var(--bg-soft)" }}>
+                      <div style={{ height: "190px", overflow: "hidden", background: "var(--bg-soft)" }}>
                         {post.thumb ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img src={post.thumb} alt={post.title}
-                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                          />
+                            style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         ) : (
                           <div style={{
                             width: "100%", height: "100%",
-                            display: "flex", alignItems: "center", justifyContent: "center",
-                            fontSize: "48px",
+                            display: "flex", alignItems: "center",
+                            justifyContent: "center", fontSize: "42px",
                           }}>📰</div>
                         )}
                       </div>
-
                       {/* Content */}
-                      <div style={{ padding: "20px 20px 24px" }}>
+                      <div style={{ padding: "16px 16px 20px" }}>
                         <div style={{
                           display: "flex", alignItems: "center",
-                          justifyContent: "space-between", marginBottom: "10px",
+                          justifyContent: "space-between", marginBottom: "8px",
+                          flexWrap: "wrap", gap: "4px",
                         }}>
                           <span style={{
                             fontSize: "11px", fontWeight: 700,
@@ -102,18 +94,15 @@ export default async function BlogPage() {
                           <span style={{ fontSize: "11px", color: "var(--muted)" }}>{post.date}</span>
                         </div>
                         <h2 style={{
-                          fontSize: "15px", fontWeight: 700,
-                          color: "var(--dark)", lineHeight: 1.45, marginBottom: "10px",
+                          fontSize: "14px", fontWeight: 700, color: "var(--dark)",
+                          lineHeight: 1.45, marginBottom: "8px",
                         }}>
-                          {post.title.length > 72 ? post.title.slice(0, 72) + "…" : post.title}
+                          {post.title.length > 70 ? post.title.slice(0, 70) + "…" : post.title}
                         </h2>
-                        <p style={{ fontSize: "13px", color: "var(--muted)", lineHeight: 1.65 }}>
-                          {post.excerpt.slice(0, 120)}…
+                        <p style={{ fontSize: "12px", color: "var(--muted)", lineHeight: 1.6 }}>
+                          {post.excerpt.slice(0, 110)}…
                         </p>
-                        <p style={{
-                          marginTop: "14px", fontSize: "13px",
-                          fontWeight: 700, color: "var(--green)",
-                        }}>
+                        <p style={{ marginTop: "10px", fontSize: "13px", fontWeight: 700, color: "var(--green)" }}>
                           Read more →
                         </p>
                       </div>
@@ -129,9 +118,20 @@ export default async function BlogPage() {
       <Footer />
 
       <style>{`
+        .blog-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        @media (max-width: 900px) {
+          .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 560px) {
+          .blog-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+        }
         .blog-card:hover {
-          box-shadow: 0 8px 32px rgba(0,0,0,0.10) !important;
-          transform: translateY(-4px) !important;
+          box-shadow: 0 8px 28px rgba(0,0,0,0.09) !important;
+          transform: translateY(-3px) !important;
         }
       `}</style>
     </>

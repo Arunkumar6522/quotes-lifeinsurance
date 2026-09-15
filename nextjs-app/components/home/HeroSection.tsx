@@ -16,60 +16,57 @@ const fadeLeft = (delay = 0): Variants => ({
 });
 
 export default function HeroSection() {
-  const { t }       = useLang();
+  const { t }         = useLang();
   const { openModal } = useModal();
 
   useEffect(() => {
     if (document.getElementById("qs-script")) return;
     const s = document.createElement("script");
-    s.id = "qs-script";
+    s.id  = "qs-script";
     s.src = "https://form.questionscout.com/qs-form-script.min.js";
     s.setAttribute("data-form-id",    "616e35ca63bd79140f61b3ef");
     s.setAttribute("data-url-params", JSON.stringify([{ key: "campaign", value: "" }]));
     s.setAttribute("data-runner-id",  "qs-embed-6aa7eb9fc1c5e04d74de874e");
-    s.setAttribute("data-dimensions", JSON.stringify(["100%", "620px"]));
+    // On mobile use a shorter height so it fits without scrolling
+    const isMobile = window.innerWidth < 768;
+    s.setAttribute("data-dimensions", JSON.stringify(["100%", isMobile ? "480px" : "620px"]));
     s.async = true;
 
     s.onload = () => {
-      // Poll until QS renders, then remove all internal scrollbars
-      const interval = setInterval(() => {
+      const strip = () => {
         const embed = document.getElementById("qs-embed-6aa7eb9fc1c5e04d74de874e");
         if (!embed) return;
-        const divs = embed.querySelectorAll("div");
-        divs.forEach((el) => {
-          const div = el as HTMLElement;
+        embed.querySelectorAll<HTMLElement>("div").forEach((div) => {
           const cs = window.getComputedStyle(div);
-          if (cs.overflow === "scroll" || cs.overflow === "auto" || cs.overflowY === "scroll" || cs.overflowY === "auto") {
-            div.style.cssText += ";overflow:visible!important;overflow-y:visible!important;height:auto!important;max-height:none!important;";
+          if (cs.overflow === "scroll" || cs.overflow === "auto" ||
+              cs.overflowY === "scroll" || cs.overflowY === "auto") {
+            div.style.setProperty("overflow",   "visible", "important");
+            div.style.setProperty("overflow-y", "visible", "important");
+            div.style.setProperty("height",     "auto",    "important");
+            div.style.setProperty("max-height", "none",    "important");
           }
         });
-      }, 400);
-      setTimeout(() => clearInterval(interval), 6000);
+      };
+      // Run immediately and every 400ms for 6s as QS re-renders each step
+      strip();
+      const iv = setInterval(strip, 400);
+      setTimeout(() => clearInterval(iv), 6000);
     };
 
     document.head.appendChild(s);
   }, []);
 
   return (
-    <section style={{
-      background: "#f4f5f7",
-      position: "relative",
-      overflow: "hidden",
-    }}>
-      <div className="container" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
-        <div className="hero-grid" style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "40px",
-          alignItems: "flex-start",
-        }}>
+    <section style={{ background: "#f4f5f7", position: "relative", overflow: "hidden" }}>
+      <div className="container hero-container">
+        <div className="hero-grid">
 
-          {/* ── LEFT: Copy ─────────────────────── */}
+          {/* ── LEFT: copy ─────────────────────── */}
           <motion.div initial="hidden" animate="show"
             style={{ display: "flex", flexDirection: "column" }}>
 
             {/* AMF badge */}
-            <motion.div variants={fadeUp(0)} style={{ marginBottom: "22px" }}>
+            <motion.div variants={fadeUp(0)} style={{ marginBottom: "20px" }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: "7px",
                 padding: "6px 14px", borderRadius: "50px",
@@ -89,10 +86,9 @@ export default function HeroSection() {
 
             {/* Heading */}
             <motion.h1 variants={fadeUp(0.08)} style={{
-              fontSize: "clamp(2.3rem, 3.6vw, 3.5rem)",
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: 900, lineHeight: 1.1,
-              letterSpacing: "-0.025em",
-              color: "var(--dark)",
+              letterSpacing: "-0.025em", color: "var(--dark)",
               marginBottom: "16px",
               fontFamily: "var(--font-sora), sans-serif",
             }}>
@@ -106,33 +102,20 @@ export default function HeroSection() {
             {/* Sub */}
             <motion.p variants={fadeUp(0.15)} style={{
               fontSize: "15px", color: "#4b5563",
-              lineHeight: 1.75, marginBottom: "30px", maxWidth: "420px",
+              lineHeight: 1.75, marginBottom: "28px", maxWidth: "440px",
             }}>
               {t.heroSub}{" "}
               <strong style={{ color: "var(--green)", fontWeight: 800 }}>{t.heroFree}</strong>.
             </motion.p>
 
             {/* CTAs */}
-            <motion.div variants={fadeUp(0.22)} style={{
-              display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "36px",
-            }}>
+            <motion.div variants={fadeUp(0.22)} className="hero-ctas">
               <button onClick={openModal} className="btn-primary">{t.heroCta1}</button>
-              <Link href="/about" style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                padding: "12px 24px", borderRadius: "50px",
-                border: "1.5px solid #d1d5db",
-                color: "#374151", fontSize: "14px", fontWeight: 600,
-                transition: "all 0.2s", textDecoration: "none",
-                background: "#fff",
-              }}>
-                {t.heroCta2}
-              </Link>
+              <Link href="/about" className="hero-learn-more">{t.heroCta2}</Link>
             </motion.div>
 
             {/* Trust badges */}
-            <motion.div variants={fadeUp(0.3)} style={{
-              display: "flex", flexWrap: "wrap", gap: "16px",
-            }}>
+            <motion.div variants={fadeUp(0.3)} className="hero-trust">
               {[
                 { icon: "🛡️", text: t.trust1 },
                 { icon: "💸", text: t.trust2 },
@@ -143,36 +126,104 @@ export default function HeroSection() {
                   display: "flex", alignItems: "center", gap: "6px",
                   fontSize: "12px", fontWeight: 600, color: "#6b7280",
                 }}>
-                  <span style={{ fontSize: "14px" }}>{b.icon}</span>
-                  {b.text}
+                  <span>{b.icon}</span>{b.text}
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: Question Scout form ──────── */}
+          {/* ── RIGHT: QS form ──────────────────── */}
           <motion.div
             initial="hidden"
             animate="show"
             variants={fadeLeft(0.18)}
+            className="hero-form-col"
           >
-            <div
-              id="qs-embed-6aa7eb9fc1c5e04d74de874e"
-              style={{ width: "100%" }}
-            />
+            <div id="qs-embed-6aa7eb9fc1c5e04d74de874e" style={{ width: "100%" }} />
           </motion.div>
 
         </div>
       </div>
 
       <style>{`
-        .hero-grid { grid-template-columns: 1fr 1fr; }
-        @media (max-width: 960px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        /* ── Hero container ── */
+        .hero-container {
+          padding-top: 48px;
+          padding-bottom: 48px;
         }
-        /* Clip QS widget so page doesn't scroll */
+        /* ── Two-col desktop grid ── */
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          align-items: flex-start;
+        }
+        /* ── CTA row ── */
+        .hero-ctas {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-bottom: 32px;
+        }
+        .hero-learn-more {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 24px;
+          border-radius: 50px;
+          border: 1.5px solid #d1d5db;
+          color: #374151;
+          font-size: 14px;
+          font-weight: 600;
+          background: #fff;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+        /* ── Trust badges row ── */
+        .hero-trust {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+        }
+        /* ── QS form column ── */
+        .hero-form-col {
+          overflow: hidden;
+        }
+        /* QS scrollbar kill */
         #qs-embed-6aa7eb9fc1c5e04d74de874e { overflow: hidden !important; }
-        #qs-embed-6aa7eb9fc1c5e04d74de874e ::-webkit-scrollbar { display: none !important; }
+        #qs-embed-6aa7eb9fc1c5e04d74de874e *::-webkit-scrollbar { display: none !important; width: 0 !important; }
+        #qs-embed-6aa7eb9fc1c5e04d74de874e * { scrollbar-width: none !important; }
+
+        /* ══════════════════════════════════════
+           MOBILE — single column stack
+        ══════════════════════════════════════ */
+        @media (max-width: 900px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 28px !important;
+          }
+          /* Copy side comes first, form below */
+          .hero-form-col { order: 2; }
+        }
+
+        @media (max-width: 600px) {
+          .hero-container {
+            padding-top: 28px !important;
+            padding-bottom: 28px !important;
+          }
+          /* Full-width buttons on small phones */
+          .hero-ctas {
+            flex-direction: column;
+            gap: 10px;
+          }
+          .hero-ctas button,
+          .hero-ctas .hero-learn-more {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+          }
+          .hero-trust { gap: 10px; }
+        }
       `}</style>
     </section>
   );
