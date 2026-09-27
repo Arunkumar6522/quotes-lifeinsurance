@@ -63,7 +63,14 @@ export default function CareersPage() {
   const [jobs, setJobs] = useState<JobListing[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedJob, setSelectedJob] = useState<JobListing | null>(null);
-  const { t } = useLang();
+  const [videoReady, setVideoReady] = useState(false);
+  const { t, lang } = useLang();
+
+  // Auto-play video after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => setVideoReady(true), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     // Fetch jobs from Google Sheet
@@ -264,6 +271,35 @@ export default function CareersPage() {
                   <h4>{t.careersBenefit4Title}</h4>
                   <p>{t.careersBenefit4Desc}</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Why DCW Video Section */}
+            <div className="video-section">
+              <div className="video-section-text">
+                <span className="section-label">{lang === "fr" ? "Pourquoi nous rejoindre ?" : "Why DCW Financial?"}</span>
+                <h2>{lang === "fr" ? "Entendez directement nos conseillers" : "Hear Directly From Our Advisors"}</h2>
+                <p>{lang === "fr"
+                  ? "Regardez comment nos conseillers construisent des carrières enrichissantes tout en aidant les familles canadiennes."
+                  : "Watch how our advisors build rewarding careers while helping Canadian families protect what matters most."
+                }</p>
+              </div>
+              <div className="video-wrap">
+                <iframe
+                  src={`https://www.youtube.com/embed/Wdc-FX2zWlE?si=HN1kHoDYgdgaF-9e${videoReady ? "&autoplay=1" : ""}&rel=0&modestbranding=1`}
+                  title="Why DCW Financial - Advisor Testimonial"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+                {!videoReady && (
+                  <div className="video-countdown">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>{lang === "fr" ? "Lecture dans 4 secondes..." : "Playing in 4 seconds..."}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -798,6 +834,70 @@ export default function CareersPage() {
           min-height: 600px;
         }
 
+        /* Video Section */
+        .video-section {
+          margin-top: 64px;
+          background: var(--dark);
+          border-radius: 24px;
+          padding: 52px 48px;
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: 48px;
+          align-items: center;
+        }
+        .video-section-text .section-label {
+          color: var(--green);
+        }
+        .video-section-text h2 {
+          font-size: clamp(1.5rem, 2.5vw, 2rem);
+          font-weight: 800;
+          color: #fff;
+          margin: 10px 0 14px;
+          line-height: 1.2;
+        }
+        .video-section-text p {
+          font-size: 15px;
+          color: rgba(255,255,255,0.6);
+          line-height: 1.7;
+        }
+        .video-wrap {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          aspect-ratio: 16/9;
+          background: #000;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .video-wrap iframe {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          border: none;
+        }
+        .video-countdown {
+          position: absolute;
+          bottom: 16px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(0,0,0,0.7);
+          color: #fff;
+          padding: 8px 16px;
+          border-radius: 50px;
+          font-size: 13px;
+          font-weight: 600;
+          backdrop-filter: blur(8px);
+          pointer-events: none;
+          animation: pulse 1s ease-in-out infinite;
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.8; }
+          50% { opacity: 1; }
+        }
+        .video-countdown svg { color: var(--green); }
+
         @media (max-width: 900px) {
           .benefits-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -806,13 +906,17 @@ export default function CareersPage() {
             grid-template-columns: 1fr;
             gap: 20px;
           }
+          .video-section {
+            grid-template-columns: 1fr;
+            padding: 36px 28px;
+            gap: 28px;
+          }
         }
 
         @media (max-width: 600px) {
           .benefits-grid {
             grid-template-columns: 1fr;
-          }
-          .job-card-top {
+          }          .job-card-top {
             flex-direction: row;
           }
           .job-title {
