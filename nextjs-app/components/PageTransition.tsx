@@ -9,14 +9,14 @@ export default function PageTransition({ children }: { children: React.ReactNode
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, y: 4 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -3 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{
           duration: 0.15,
-          ease: [0.22, 1, 0.36, 1],
+          ease: "easeOut",
         }}
-        style={{ willChange: "opacity, transform" }}
+        // NO transform/y — transforms break position:sticky inside
       >
         {children}
       </motion.div>

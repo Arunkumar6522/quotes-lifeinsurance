@@ -1,5 +1,6 @@
 ﻿"use client";
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 interface Props {
   open: boolean;
@@ -7,16 +8,19 @@ interface Props {
 }
 
 const FORM_ID = "616e35ca63bd79140f61b3ef";
-const FORM_URL = `https://form.questionscout.com/${FORM_ID}`;
 
 export default function QuoteModal({ open, onClose }: Props) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const { lang } = useLang();
+
+  // Use French form URL when in French mode
+  const FORM_URL = `https://form.questionscout.com/${FORM_ID}${lang === "fr" ? "?lang=fr" : ""}`;
 
   // Lock body scroll when open
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = "hidden";
-    setIframeLoaded(false); // Reset loading state when opening
+    setIframeLoaded(false);
     return () => {
       document.body.style.overflow = "";
     };
@@ -25,12 +29,18 @@ export default function QuoteModal({ open, onClose }: Props) {
   // Close on Escape
   useEffect(() => {
     if (!open) return;
-    const handler = (e: KeyboardEvent) => { 
-      if (e.key === "Escape") onClose(); 
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [open, onClose]);
+
+  if (!open) return null;
+
+  const headerLabel = lang === "fr" ? "Consultation gratuite, sans obligation" : "Free Consultation, No Obligation";
+  const headerTitle = lang === "fr" ? "Obtenez votre devis gratuit d'assurance vie" : "Get Your Free Life Insurance Quote";
+  const loadingText = lang === "fr" ? "Chargement du formulaire..." : "Loading form...";
 
   if (!open) return null;
 
@@ -88,7 +98,7 @@ export default function QuoteModal({ open, onClose }: Props) {
               color: "rgba(255,255,255,0.7)",
               marginBottom: "3px",
             }}>
-              Free Consultation, No Obligation
+              {headerLabel}
             </p>
             <h3 style={{ 
               color: "#fff", 
@@ -96,7 +106,7 @@ export default function QuoteModal({ open, onClose }: Props) {
               fontWeight: 800, 
               margin: 0 
             }}>
-              Get Your Free Life Insurance Quote
+              {headerTitle}
             </h3>
           </div>
           <button
@@ -151,7 +161,7 @@ export default function QuoteModal({ open, onClose }: Props) {
                 color: "#6b7280",
                 fontWeight: 500,
               }}>
-                Loading form...
+                {loadingText}
               </p>
             </div>
           )}

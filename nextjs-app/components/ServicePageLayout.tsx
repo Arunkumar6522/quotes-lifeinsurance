@@ -11,12 +11,17 @@ export interface ServicePageProps {
   title: string;
   titleFr: string;
   tagline: string;
-  icon: string;       // kept in data shape but no longer rendered
+  taglineFr?: string;
+  icon: string;
   color: string;
   description: string;
+  descriptionFr?: string;
   highlights: { heading: string; text: string }[];
+  highlightsFr?: { heading: string; text: string }[];
   bestFor: string[];
+  bestForFr?: string[];
   faqs: { q: string; a: string }[];
+  faqsFr?: { q: string; a: string }[];
 }
 
 /* ── Per-service SVG icons ─────────────────────────────── */
@@ -56,7 +61,7 @@ const ServiceIcons: Record<string, React.ReactElement> = {
 /* ── Per-service cover images ─────────────────────────────── */
 const ServiceCovers: Record<string, { image: string; position: string; gradient?: string }> = {
   "Term Life Insurance":       { image: "/cover-term-life.jpg",        position: "center center" },
-  "Whole Life Insurance":      { image: "",                            position: "center center", gradient: "linear-gradient(135deg, #0a1628 0%, #1a2f4a 35%, #1e4d3a 65%, #2d7a52 100%)" },
+  "Whole Life Insurance":      { image: "/cover-whole-life.jpg",       position: "center 40%" },
   "Universal Life Insurance":  { image: "/cover-universal-life.jpg",   position: "center center" },
   "Critical Illness Coverage": { image: "/cover-critical-illness.jpg", position: "center 40%" },
   "Disability Insurance":      { image: "/cover-disability.jpg",       position: "center 35%" },
@@ -115,6 +120,11 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
   const ServiceIcon = ServiceIcons[data.title] ?? ServiceIcons["Term Life Insurance"];
   const cover = ServiceCovers[data.title] ?? ServiceCovers["Term Life Insurance"];
   const displayTitle = lang === "fr" && data.titleFr ? data.titleFr : data.title;
+  const displayTagline = lang === "fr" && data.taglineFr ? data.taglineFr : data.tagline;
+  const displayDescription = lang === "fr" && data.descriptionFr ? data.descriptionFr : data.description;
+  const displayHighlights = lang === "fr" && data.highlightsFr ? data.highlightsFr : data.highlights;
+  const displayBestFor = lang === "fr" && data.bestForFr ? data.bestForFr : data.bestFor;
+  const displayFaqs = lang === "fr" && data.faqsFr ? data.faqsFr : data.faqs;
 
   const isLifeInsurance = ["Term Life Insurance","Whole Life Insurance","Universal Life Insurance"].includes(data.title);
   const handleQuoteClick = () => { if (isLifeInsurance) { openModal(); } else { router.push("/contact"); } };
@@ -126,11 +136,10 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
         {/* ── Cover Image Hero ─────────────────────── */}
         <section className="sp-cover" style={{
-          backgroundImage: cover.image ? `url('${cover.image}')` : undefined,
-          backgroundPosition: cover.position,
-          background: !cover.image && cover.gradient ? cover.gradient : undefined,
+          background: cover.image
+            ? `linear-gradient(180deg, rgba(15,22,35,0.3) 0%, rgba(15,22,35,0.88) 70%, rgba(15,22,35,0.98) 100%), url('${cover.image}') ${cover.position} / cover no-repeat`
+            : (cover.gradient ?? "linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%)"),
         }}>
-          <div className="sp-cover-overlay" />
           <div className="container sp-cover-content">
             {/* Back button & Breadcrumb */}
             <div className="sp-nav-row">
@@ -150,7 +159,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
             {/* Hero content */}
             <div className="sp-hero-body">
               <h1 className="sp-hero-h1">{displayTitle}</h1>
-              <p className="sp-hero-tagline">{data.tagline}</p>
+              <p className="sp-hero-tagline">{displayTagline}</p>
               <div className="sp-hero-actions">
                 <button onClick={handleQuoteClick} className="sp-hero-cta">
                   {t.spGetFreeQuote}
@@ -169,13 +178,13 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
               <div className="sp-left">
 
                 {/* Overview */}
-                <p className="sp-overview">{data.description}</p>
+                <p className="sp-overview">{displayDescription}</p>
 
                 {/* Highlights */}
                 <div className="sp-highlights">
                   <h2 className="sp-section-h2">{t.spKeyBenefits}</h2>
                   <div className="sp-highlights-grid">
-                    {data.highlights.map((h, i) => (
+                    {displayHighlights.map((h, i) => (
                       <div key={i} className="sp-highlight-card">
                         <div className="sp-highlight-icon">
                           {HighlightIcons[i % HighlightIcons.length]}
@@ -191,7 +200,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                 <div className="sp-bestfor">
                   <h2 className="sp-section-h2">{t.spBestFor}</h2>
                   <div className="sp-bestfor-list">
-                    {data.bestFor.map((b) => (
+                    {displayBestFor.map((b) => (
                       <div key={b} className="sp-bestfor-item">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "var(--green)" }}>
                           <polyline points="20 6 9 17 4 12"/>
@@ -205,7 +214,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                 {/* FAQs */}
                 <div className="sp-faqs">
                   <h2 className="sp-section-h2">{t.spFaq}</h2>
-                  {data.faqs.map((faq, i) => (
+                  {displayFaqs.map((faq, i) => (
                     <div key={i} className="sp-faq">
                       <div className="sp-faq-q">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "var(--green)" }}>
@@ -223,7 +232,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
               </div>
 
               {/* ── Right sidebar ────────────────────── */}
-              <aside className="sp-sidebar">
+              <aside className="sp-sidebar" style={{ position: "sticky", top: "90px", alignSelf: "start" }}>
 
                 {/* Quote CTA card */}
                 <div className="sp-cta-card">
@@ -264,12 +273,12 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         /* ── Cover Hero with background image ── */
         .sp-cover {
           position: relative;
-          background: linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%);
-          background-size: cover;
           min-height: 400px;
           display: flex;
           align-items: flex-end;
           padding: 0 0 52px;
+          background-size: cover !important;
+          background-position: center !important;
         }
         .sp-cover-overlay {
           position: absolute;
@@ -383,6 +392,10 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           align-items: start;
         }
 
+        .sp-left {
+          min-width: 0;
+        }
+
         /* ── Left content ── */
         .sp-overview {
           font-size: 16px; color: var(--body);
@@ -462,7 +475,9 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
         /* ── Sidebar ── */
         .sp-sidebar {
-          position: sticky; top: 88px;
+          position: sticky;
+          top: 90px;
+          align-self: start;
           display: flex; flex-direction: column; gap: 14px;
         }
 

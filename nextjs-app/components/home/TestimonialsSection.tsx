@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import { useLang } from "@/lib/i18n";
 
 interface Testimonial {
   id: number;
@@ -156,20 +157,48 @@ function TestimonialListSkeleton() {
   );
 }
 
+const TESTIMONIALS_CACHE_KEY = "dcw_testimonials_cache";
+const TESTIMONIALS_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+function getCachedTestimonials(): Testimonial[] | null {
+  try {
+    const raw = localStorage.getItem(TESTIMONIALS_CACHE_KEY);
+    if (!raw) return null;
+    const { data, timestamp } = JSON.parse(raw);
+    if (Date.now() - timestamp > TESTIMONIALS_CACHE_TTL) return null;
+    return data;
+  } catch { return null; }
+}
+
+function setCachedTestimonials(t: Testimonial[]) {
+  try {
+    localStorage.setItem(TESTIMONIALS_CACHE_KEY, JSON.stringify({ data: t, timestamp: Date.now() }));
+  } catch {}
+}
+
 export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>(fallbackTestimonials);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
+  const { t } = useLang();
 
   useEffect(() => {
+    // Load from cache instantly
+    const cached = getCachedTestimonials();
+    if (cached) {
+      setTestimonials(cached);
+      setLoading(false);
+    }
+
+    // Always refresh in background
     const sheetUrl = "https://script.google.com/macros/s/AKfycbwzoJbeZvpRY3_pVNgjgDuLqBSsJ9GVuu5MdVTvtne2vIpVyX8YBPWFg23aQ0mhKPFqkg/exec";
-    
     fetch(sheetUrl)
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data.length > 0) {
           setTestimonials(data.data);
+          setCachedTestimonials(data.data);
         }
         setLoading(false);
       })
@@ -229,9 +258,9 @@ export default function TestimonialsSection() {
       <div className="container">
         {/* Header */}
         <div className="header">
-          <span className="badge">Client Stories</span>
-          <h2>What Our Clients Say</h2>
-          <p>Real experiences from families we&apos;ve helped protect</p>
+          <span className="badge">{t.clientStoriesLabel}</span>
+          <h2>{t.clientStoriesH2}</h2>
+          <p>{t.clientStoriesSub}</p>
         </div>
 
         {/* Main Content */}

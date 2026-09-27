@@ -135,9 +135,15 @@ export default function Header() {
               {servicesOpen && (
                 <div className="mega-dropdown">
                   <div className="flat-services-list">
-                    {serviceCategories.flatMap((cat) => cat.items).map((item) => (
+                    {[
+                      { label: t.termLife,       href: "/services/term-life" },
+                      { label: t.wholeLife,      href: "/services/whole-life" },
+                      { label: t.universalLife,  href: "/services/universal-life" },
+                      { label: t.criticalIllness,href: "/services/critical-illness" },
+                      { label: t.disability,     href: "/services/disability" },
+                    ].map((item) => (
                       <Link
-                        key={item.label}
+                        key={item.href}
                         href={item.href}
                         className="flat-service-item"
                         onClick={() => setServicesOpen(false)}

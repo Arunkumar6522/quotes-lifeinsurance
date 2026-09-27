@@ -83,6 +83,7 @@ export default async function BlogPostPage(
           <div className="container">
             <div style={{
               display: "grid", gridTemplateColumns: "1fr 340px", gap: "56px",
+              alignItems: "start",
             }}
               className="post-layout"
             >
@@ -138,10 +139,8 @@ export default async function BlogPostPage(
                 position: "sticky",
                 top: "100px",
                 alignSelf: "start",
-                maxHeight: "calc(100vh - 120px)",
-                overflowY: "auto",
                 transition: "top 0.3s ease",
-              }}>
+              }} data-lenis-prevent>
 
                 {/* Get quote CTA */}
                 <div style={{

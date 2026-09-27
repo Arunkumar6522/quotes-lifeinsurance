@@ -59,33 +59,50 @@ function JobCardSkeleton() {
   );
 }
 
+const JOBS_CACHE_KEY = "dcw_jobs_cache";
+const JOBS_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+
+function getCachedJobs(): JobListing[] | null {
+  try {
+    const raw = localStorage.getItem(JOBS_CACHE_KEY);
+    if (!raw) return null;
+    const { data, timestamp } = JSON.parse(raw);
+    if (Date.now() - timestamp > JOBS_CACHE_TTL) return null; // expired
+    return data;
+  } catch { return null; }
+}
+
+function setCachedJobs(jobs: JobListing[]) {
+  try {
+    localStorage.setItem(JOBS_CACHE_KEY, JSON.stringify({ data: jobs, timestamp: Date.now() }));
+  } catch {}
+}
+
 export default function CareersPage() {
   const [jobs, setJobs] = useState<JobListing[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedJob, setSelectedJob] = useState<JobListing | null>(null);
-  const [videoReady, setVideoReady] = useState(false);
   const { t, lang } = useLang();
 
-  // Auto-play video after 4 seconds
   useEffect(() => {
-    const timer = setTimeout(() => setVideoReady(true), 4000);
-    return () => clearTimeout(timer);
-  }, []);
+    // 1. Load from cache instantly if available
+    const cached = getCachedJobs();
+    if (cached) {
+      setJobs(cached);
+      setLoading(false);
+    }
 
-  useEffect(() => {
-    // Fetch jobs from Google Sheet
+    // 2. Always fetch fresh data in background
     fetch("https://script.google.com/macros/s/AKfycbwzoJbeZvpRY3_pVNgjgDuLqBSsJ9GVuu5MdVTvtne2vIpVyX8YBPWFg23aQ0mhKPFqkg/exec?action=getJobs")
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && data.data.length > 0) {
-          setJobs(data.data);
-        } else {
-          setJobs(fallbackJobs);
-        }
+        const fresh = data.success && data.data.length > 0 ? data.data : fallbackJobs;
+        setJobs(fresh);
+        setCachedJobs(fresh);
         setLoading(false);
       })
       .catch(() => {
-        setJobs(fallbackJobs);
+        if (!cached) { setJobs(fallbackJobs); }
         setLoading(false);
       });
   }, []);
@@ -98,14 +115,62 @@ export default function CareersPage() {
     <>
       <Header />
       <main>
-        {/* Hero */}
-        <section className="careers-hero">
-          <div className="careers-hero-bg"></div>
-          <div className="container careers-hero-content">
-            <Breadcrumb crumbs={[{ label: t.home, href: "/" }, { label: t.joinTeam }]} />
-            <div className="careers-hero-text">
-              <h1>{t.careersHeroTitle}</h1>
-              <p>{t.careersHeroSub}</p>
+        {/* ── New Hero: Text Left + Video Right ── */}
+        <section className="careers-hero-new">
+          <div className="container">
+            <div className="careers-hero-grid">
+
+              {/* Left — Text */}
+              <div className="careers-hero-left">
+                <Breadcrumb crumbs={[{ label: t.home, href: "/" }, { label: t.joinTeam }]} />
+                <span className="careers-hero-label">
+                  {lang === "fr" ? "Carrières chez DCW Financial" : "Careers at DCW Financial"}
+                </span>
+                <h1 className="careers-hero-h1">{t.careersHeroTitle}</h1>
+                <p className="careers-hero-sub">{t.careersHeroSub}</p>
+
+                <div className="careers-hero-btns">
+                  {/* Primary CTA — Calendly */}
+                  <a
+                    href="https://calendly.com/dcwfinancial/experior-discovery-call"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="careers-btn-primary"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                      <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                      <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    {lang === "fr" ? "Réserver un appel découverte" : "Book a Discovery Call"}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                    </svg>
+                  </a>
+
+                  {/* Secondary — View Positions */}
+                  <a href="#open-positions" className="careers-btn-ghost">
+                    {lang === "fr" ? "Voir les postes ouverts" : "View Open Positions"}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right — Video */}
+              <div className="careers-hero-video">
+                <div className="careers-video-wrap">
+                  <iframe
+                    src="https://www.youtube.com/embed/Wdc-FX2zWlE?si=HN1kHoDYgdgaF-9e&start=3&rel=0&modestbranding=1"
+                    title="Why DCW Financial"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
@@ -113,8 +178,8 @@ export default function CareersPage() {
         {/* Job Listings */}
         <section className="careers-section">
           <div className="container">
-            {/* Open Positions - Now at top */}
-            <div className="jobs-section">
+            {/* Open Positions */}
+            <div className="jobs-section" id="open-positions">
               <h2>{t.careersOpenPositions}</h2>
               
               {loading ? (
@@ -274,34 +339,6 @@ export default function CareersPage() {
               </div>
             </div>
 
-            {/* Why DCW Video Section */}
-            <div className="video-section">
-              <div className="video-section-text">
-                <span className="section-label">{lang === "fr" ? "Pourquoi nous rejoindre ?" : "Why DCW Financial?"}</span>
-                <h2>{lang === "fr" ? "Entendez directement nos conseillers" : "Hear Directly From Our Advisors"}</h2>
-                <p>{lang === "fr"
-                  ? "Regardez comment nos conseillers construisent des carrières enrichissantes tout en aidant les familles canadiennes."
-                  : "Watch how our advisors build rewarding careers while helping Canadian families protect what matters most."
-                }</p>
-              </div>
-              <div className="video-wrap">
-                <iframe
-                  src={`https://www.youtube.com/embed/Wdc-FX2zWlE?si=HN1kHoDYgdgaF-9e${videoReady ? "&autoplay=1" : ""}&rel=0&modestbranding=1`}
-                  title="Why DCW Financial - Advisor Testimonial"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-                {!videoReady && (
-                  <div className="video-countdown">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <polygon points="5 3 19 12 5 21 5 3"/>
-                    </svg>
-                    <span>{lang === "fr" ? "Lecture dans 4 secondes..." : "Playing in 4 seconds..."}</span>
-                  </div>
-                )}
-              </div>
-            </div>
           </div>
         </section>
 
@@ -336,44 +373,76 @@ export default function CareersPage() {
       <Footer />
 
       <style>{`
+        /* ── New Hero Layout ── */
+        .careers-hero-new {
+          background: #fff; padding: 56px 0 64px; border-bottom: 1px solid var(--border);
+        }
+        .careers-hero-grid {
+          display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+        }
+        .careers-hero-left { display: flex; flex-direction: column; }
+        .careers-hero-label {
+          font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+          color: var(--green); margin-bottom: 12px; margin-top: 12px; display: block;
+        }
+        .careers-hero-h1 {
+          font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--dark);
+          line-height: 1.1; letter-spacing: -0.025em;
+          font-family: var(--font-sora), sans-serif; margin-bottom: 16px;
+        }
+        .careers-hero-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
+        .careers-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+        .careers-btn-primary {
+          display: inline-flex; align-items: center; gap: 8px;
+          background: var(--green); color: #fff !important; font-weight: 800; font-size: 14px;
+          padding: 14px 28px; border-radius: 50px; text-decoration: none;
+          transition: background 0.2s, transform 0.2s;
+          box-shadow: 0 4px 20px rgba(74,164,97,0.3);
+        }
+        .careers-btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+        .careers-btn-ghost {
+          display: inline-flex; align-items: center; gap: 8px;
+          background: transparent; color: var(--dark); font-weight: 700; font-size: 14px;
+          padding: 13px 24px; border-radius: 50px; border: 1.5px solid var(--border);
+          text-decoration: none; transition: border-color 0.2s, color 0.2s;
+        }
+        .careers-btn-ghost:hover { border-color: var(--green); color: var(--green); }
+        .careers-video-wrap {
+          position: relative; border-radius: 20px; overflow: hidden;
+          aspect-ratio: 16/9; background: #0f1623;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .careers-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .careers-video-badge {
+          position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+          display: flex; align-items: center; gap: 6px;
+          background: rgba(0,0,0,0.75); color: #fff; padding: 6px 14px;
+          border-radius: 50px; font-size: 12px; font-weight: 600;
+          backdrop-filter: blur(8px); pointer-events: none;
+          animation: pulse 1s ease-in-out infinite;
+        }
+        .careers-video-badge svg { color: var(--green); }
+        @media (max-width: 900px) {
+          .careers-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+          .careers-hero-new { padding: 40px 0 48px; }
+        }
+        @media (max-width: 600px) {
+          .careers-btn-primary, .careers-btn-ghost { width: 100%; justify-content: center; }
+          .careers-hero-btns { flex-direction: column; }
+        }
+
         .careers-hero {
-          position: relative;
-          padding: 80px 0 100px;
-          text-align: center;
-          overflow: hidden;
+          position: relative; padding: 80px 0 100px; text-align: center; overflow: hidden;
         }
         .careers-hero-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, rgba(15, 22, 35, 0.88) 0%, rgba(74, 164, 97, 0.75) 100%),
-                      url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80') center/cover no-repeat;
+          position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+          background: linear-gradient(135deg, rgba(15,22,35,0.88) 0%, rgba(74,164,97,0.75) 100%);
           z-index: 0;
         }
-        .careers-hero-content {
-          position: relative;
-          z-index: 1;
-        }
-        .careers-hero-text {
-          max-width: 600px;
-          margin: 0 auto;
-        }
-        .careers-hero h1 {
-          font-size: clamp(2.2rem, 5vw, 3.5rem);
-          font-weight: 900;
-          color: #fff;
-          margin-bottom: 16px;
-          line-height: 1.1;
-        }
-        .careers-hero p {
-          font-size: 17px;
-          color: rgba(255,255,255,0.75);
-          max-width: 480px;
-          margin: 0 auto;
-          line-height: 1.6;
-        }
+        .careers-hero-content { position: relative; z-index: 1; }
+        .careers-hero-text { max-width: 600px; margin: 0 auto; }
+        .careers-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: 16px; line-height: 1.1; }
+        .careers-hero p { font-size: 17px; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
         .careers-section {
           padding: 60px 0 80px;

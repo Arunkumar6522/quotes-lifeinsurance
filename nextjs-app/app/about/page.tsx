@@ -41,23 +41,6 @@ const investmentItems = [
   { icon: "tax", text: "Tax-aware beneficiary structuring" },
 ];
 
-const founders = [
-  {
-    initials: "DL",
-    name: "Denesh Logeswaran",
-    role: "Co-Founder & Director",
-    bio: "A builder and mentor to a growing team of licensed agents across Canada, Denesh focuses on practical, tax-aware protection strategies for families and entrepreneurs.",
-    image: "/testimonials/denesh.jpg",
-  },
-  {
-    initials: "LM",
-    name: "Lucia Medina",
-    role: "Co-Founder & Director",
-    bio: "Known for her client advocacy and meticulous service standards, Lucia leads our service operations to ensure prompt follow-through and proactive policy maintenance.",
-    image: "/testimonials/lucia.jpg",
-  },
-];
-
 const CheckIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: "2px" }}>
     <polyline points="20 6 9 17 4 12"/>
@@ -67,6 +50,21 @@ const CheckIcon = () => (
 export default function AboutPage() {
   const { openModal } = useModal();
   const { t, lang } = useLang();
+
+  const founders = [
+    {
+      name: "Denesh Logeswaran",
+      role: lang === "fr" ? t.founderDeneshRole : "Co-Founder & Director",
+      bio: lang === "fr" ? t.founderDeneshBio : "A builder and mentor to a growing team of licensed agents across Canada, Denesh focuses on practical, tax-aware protection strategies for families and entrepreneurs.",
+      image: "/testimonials/denesh.jpg",
+    },
+    {
+      name: "Lucia Medina",
+      role: lang === "fr" ? t.founderLuciaRole : "Co-Founder & Director",
+      bio: lang === "fr" ? t.founderLuciaBio : "Known for her client advocacy and meticulous service standards, Lucia leads our service operations to ensure prompt follow-through and proactive policy maintenance.",
+      image: "/testimonials/lucia.jpg",
+    },
+  ];
 
   return (
     <>
@@ -190,7 +188,7 @@ export default function AboutPage() {
                   ))}
                 </motion.div>
                 <motion.p variants={fadeUp(0.14)} className="ab-disclosure">
-                  <strong>Disclosure:</strong> DCW Financial Inc. is independently owned and operated. Experior Financial Group Inc. is our contracted Managing General Agency (MGA) and is not an insurer. Carrier availability and product eligibility may vary by province and client circumstances.
+                  {t.aboutDisclosureText}
                 </motion.p>
               </motion.div>
 
@@ -321,7 +319,10 @@ export default function AboutPage() {
                 </motion.div>
                 <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3">{t.aboutOurTeam}</motion.h3>
                 <motion.p variants={fadeUp(0.08)} className="ab-info-p">
-                  DCW Financial Inc. is supported by a network of licensed agents who share our standards for compliance, education, and client care. Working under Experior Financial Group Inc. (MGA), our advisors maintain provincial licensing, continuing education, and mandatory Errors & Omissions (E&O) coverage.
+                  {t.aboutOurTeamDesc}
+                </motion.p>
+                <motion.p variants={fadeUp(0.1)} className="ab-info-p">
+                  {t.aboutOurTeamP2}
                 </motion.p>
               </motion.div>
 
@@ -339,10 +340,10 @@ export default function AboutPage() {
                 </motion.div>
                 <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3 ab-info-h3--white">{t.aboutCompensation}</motion.h3>
                 <motion.p variants={fadeUp(0.08)} className="ab-info-p ab-info-p--white">
-                  At Quotes-LifeInsurance, you'll <strong>never pay a fee</strong> to use our services or to speak with one of our licensed brokers. We operate on a commission basis, and we are only compensated by the insurance carrier if you choose to put a policy in place through us.
+                  {t.aboutCompensationP1}
                 </motion.p>
                 <motion.p variants={fadeUp(0.12)} className="ab-info-p ab-info-p--white">
-                  In other words, <strong>our advice is completely free to you</strong>. Our role is to listen, educate, and guide you toward protection that makes a meaningful difference in your financial future. If we leave you with value and a solution that improves your financial position, we've done our job.
+                  {t.aboutCompensationP2}
                 </motion.p>
                 <motion.div variants={fadeUp(0.16)} className="ab-free-badge">
                   {t.aboutFreeAdvice}

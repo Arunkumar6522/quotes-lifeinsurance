@@ -255,9 +255,11 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: 0.2, ease: [0.22,1,0.36,1] }}
             >
-              <p>{t.contactFaqNotFound}</p>
-              <button onClick={openModal} className="contact-cta-btn">
-                {t.contactFaqCta}
+              <p style={{ fontSize: "16px", fontWeight: 600, color: "var(--dark)" }}>
+                {lang === "fr" ? "Vous n'avez pas trouvé votre réponse ?" : "Didn't find your answer?"}
+              </p>
+              <button onClick={openModal} className="contact-cta-btn" style={{ color: "#fff", fontSize: "14px", fontWeight: 800 }}>
+                {lang === "fr" ? "Parler à un conseiller gratuit →" : "Talk to a Free Advisor →"}
               </button>
             </motion.div>
           </div>
