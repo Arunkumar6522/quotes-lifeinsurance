@@ -86,6 +86,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${nunito.variable} ${sora.variable}`}>
       <head>
+        {/* iPhone Dynamic Island + Samsung Fold viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         {/* Preconnect to QuestionScout for faster form loading */}
         <link rel="preconnect" href="https://form.questionscout.com" />
         <link rel="preconnect" href="https://cdn.questionscout.com" />
