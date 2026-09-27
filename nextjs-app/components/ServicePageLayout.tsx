@@ -53,12 +53,12 @@ const ServiceIcons: Record<string, React.ReactElement> = {
 };
 
 /* ── Per-service cover images ─────────────────────────────── */
-const ServiceCovers: Record<string, string> = {
-  "Term Life Insurance": "/cover-term-life.jpg",
-  "Whole Life Insurance": "/cover-whole-life.jpg",
-  "Universal Life Insurance": "/cover-universal-life.jpg",
-  "Critical Illness Coverage": "/cover-critical-illness.jpg",
-  "Disability Insurance": "/cover-disability.jpg",
+const ServiceCovers: Record<string, { image: string; position: string; gradient?: string }> = {
+  "Term Life Insurance":       { image: "/cover-term-life.jpg",        position: "center center" },
+  "Whole Life Insurance":      { image: "",                            position: "center center", gradient: "linear-gradient(135deg, #0a1628 0%, #1a2f4a 35%, #1e4d3a 65%, #2d7a52 100%)" },
+  "Universal Life Insurance":  { image: "/cover-universal-life.jpg",   position: "center center" },
+  "Critical Illness Coverage": { image: "/cover-critical-illness.jpg", position: "center 40%" },
+  "Disability Insurance":      { image: "/cover-disability.jpg",       position: "center 35%" },
 };
 
 const otherServices = [
@@ -103,7 +103,22 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
   const { openModal } = useModal();
   const router = useRouter();
   const ServiceIcon = ServiceIcons[data.title] ?? ServiceIcons["Term Life Insurance"];
-  const coverImage = ServiceCovers[data.title] ?? "/cover-term-life.jpg";
+  const cover = ServiceCovers[data.title] ?? ServiceCovers["Term Life Insurance"];
+
+  // Life insurance pages show the quote modal; others redirect to contact
+  const isLifeInsurance = [
+    "Term Life Insurance",
+    "Whole Life Insurance",
+    "Universal Life Insurance",
+  ].includes(data.title);
+
+  const handleQuoteClick = () => {
+    if (isLifeInsurance) {
+      openModal();
+    } else {
+      router.push("/contact");
+    }
+  };
 
   return (
     <>
@@ -111,7 +126,11 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
       <main>
 
         {/* ── Cover Image Hero ─────────────────────── */}
-        <section className="sp-cover" style={{ backgroundImage: `url('${coverImage}')` }}>
+        <section className="sp-cover" style={{
+          backgroundImage: cover.image ? `url('${cover.image}')` : undefined,
+          backgroundPosition: cover.position,
+          background: !cover.image && cover.gradient ? cover.gradient : undefined,
+        }}>
           <div className="sp-cover-overlay" />
           <div className="container sp-cover-content">
             {/* Back button & Breadcrumb */}
@@ -131,13 +150,10 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
             {/* Hero content */}
             <div className="sp-hero-body">
-              <div className="sp-hero-icon">
-                {ServiceIcon}
-              </div>
               <h1 className="sp-hero-h1">{data.title}</h1>
               <p className="sp-hero-tagline">{data.tagline}</p>
               <div className="sp-hero-actions">
-                <button onClick={openModal} className="sp-hero-cta">
+                <button onClick={handleQuoteClick} className="sp-hero-cta">
                   Get My Free Quote →
                 </button>
               </div>
@@ -217,7 +233,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                   <p className="sp-cta-sub">
                     Compare {data.title} rates from 20+ top Canadian carriers in minutes.
                   </p>
-                  <button onClick={openModal} className="sp-cta-btn">
+                  <button onClick={handleQuoteClick} className="sp-cta-btn">
                     Get My Free Quote →
                   </button>
                 </div>
@@ -253,7 +269,6 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           position: relative;
           background: linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%);
           background-size: cover;
-          background-position: center top;
           min-height: 400px;
           display: flex;
           align-items: flex-end;

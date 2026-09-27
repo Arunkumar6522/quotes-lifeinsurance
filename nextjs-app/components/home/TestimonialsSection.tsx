@@ -256,14 +256,22 @@ export default function TestimonialsSection() {
 
             <div className="featured-content" key={activeIndex}>
               {youtubeId ? (
-                <div className="video-container">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={`${current.name} testimonial`}
-                  />
-                </div>
+                <>
+                  <div className="video-container">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={`${current.name} testimonial`}
+                    />
+                  </div>
+                  {/* Show text below video if available */}
+                  {current?.testimonial && (
+                    <div className="video-quote-text">
+                      <p>&ldquo;{current.testimonial}&rdquo;</p>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="featured-quote">
                   <svg className="quote-icon" viewBox="0 0 24 24" fill="var(--green)" opacity="0.15">
@@ -473,7 +481,7 @@ const styles = `
 
   /* Featured Content with Animation */
   .featured-content {
-    animation: fadeIn 0.4s ease-out;
+    animation: fadeIn 0.3s ease-out;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -495,6 +503,22 @@ const styles = `
     width: 100%;
     height: 100%;
     border: none;
+  }
+
+  /* Text shown below video */
+  .video-quote-text {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, rgba(74,164,97,0.05) 0%, rgba(74,164,97,0.1) 100%);
+    border-radius: 12px;
+    border-left: 3px solid var(--green);
+  }
+  .video-quote-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--body);
+    font-style: italic;
+    margin: 0;
   }
 
   .featured-quote {

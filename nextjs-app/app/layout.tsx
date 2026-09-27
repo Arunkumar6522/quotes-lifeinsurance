@@ -91,9 +91,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://cdn.questionscout.com" />
         <link rel="dns-prefetch" href="https://form.questionscout.com" />
         <link rel="dns-prefetch" href="https://cdn.questionscout.com" />
-      </head>
-      {/* JSON-LD Structured Data — for Google, LLMs & AI search */}
-      <Script id="jsonld-org" type="application/ld+json" strategy="beforeInteractive">{`
+        {/* JSON-LD Structured Data — for Google, LLMs & AI search */}
+        <Script id="jsonld-org" type="application/ld+json" strategy="afterInteractive">{`
         {
           "@context": "https://schema.org",
           "@graph": [
@@ -231,6 +230,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         gtag('js', new Date());
         gtag('config', 'G-0RZQ0JT92X', { page_path: window.location.pathname });
       `}</Script>
+      </head>
       <body style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
         <LangProvider>
           <ModalProvider>

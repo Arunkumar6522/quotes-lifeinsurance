@@ -279,7 +279,7 @@ export default function ContactPage() {
         </section>
 
         {/* JSON-LD FAQ Schema */}
-        <Script id="jsonld-faq" type="application/ld+json" strategy="beforeInteractive">{`
+        <Script id="jsonld-faq" type="application/ld+json" strategy="afterInteractive">{`
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
@@ -309,8 +309,18 @@ export default function ContactPage() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, rgba(15, 22, 35, 0.88) 0%, rgba(74, 164, 97, 0.75) 100%),
-                      url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80') center/cover no-repeat;
+          background: linear-gradient(135deg, #0f1623 0%, #1a3a2a 40%, #2d6a4a 70%, #4aa461 100%);
+          z-index: 0;
+        }
+        /* Decorative circles */
+        .contact-hero::after {
+          content: '';
+          position: absolute;
+          top: -80px; right: -80px;
+          width: 400px; height: 400px;
+          border-radius: 50%;
+          background: rgba(74,164,97,0.12);
+          pointer-events: none;
           z-index: 0;
         }
         .contact-hero .container {

@@ -9,7 +9,7 @@ import QuoteButton from "@/components/QuoteButton";
 
 // Allow rendering any slug dynamically (not just pre-built ones)
 export const dynamicParams = true;
-export const revalidate = 3600;
+export const revalidate = 300; // 5 minutes — so blog updates appear quickly
 
 // ── Static params — pre-build all blog post routes ────────────────────────────
 export async function generateStaticParams() {
@@ -64,9 +64,6 @@ export default async function BlogPostPage(
               </span>
               <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
                 {post.date}
-              </span>
-              <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-                By {post.author}
               </span>
             </div>
             <h1 style={{
@@ -124,15 +121,27 @@ export default async function BlogPostPage(
                   }}>
                     ← Back to all articles
                   </Link>
-                  <a href={post.link} target="_blank" rel="noopener noreferrer"
-                    style={{ fontSize: "12px", color: "var(--muted)", textDecoration: "none" }}>
-                    View original on Blogger ↗
-                  </a>
+                  <Link href="/articles" style={{
+                    fontSize: "13px", color: "var(--muted)", textDecoration: "none",
+                    display: "inline-flex", alignItems: "center", gap: "4px"
+                  }}>
+                    ← Back to all articles
+                  </Link>
                 </div>
               </article>
 
               {/* ── Sidebar ──────────────────────── */}
-              <aside style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              <aside style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                position: "sticky",
+                top: "100px",
+                alignSelf: "start",
+                maxHeight: "calc(100vh - 120px)",
+                overflowY: "auto",
+                transition: "top 0.3s ease",
+              }}>
 
                 {/* Get quote CTA */}
                 <div style={{

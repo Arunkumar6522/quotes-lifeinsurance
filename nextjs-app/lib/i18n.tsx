@@ -264,7 +264,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Auto-detect language based on location (Quebec = French, else English)
+  // Auto-detect language based on location (Quebec + Germany = French, else English)
   useEffect(() => {
     const detectLanguage = async () => {
       // Check if user has a saved preference first
@@ -278,7 +278,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
       // Check browser language preference
       const browserLang = navigator.language.toLowerCase();
       if (browserLang.startsWith("fr")) {
-        // Browser is French, likely Quebec or France
+        // Browser is set to French
         setLangState("fr");
         setInitialized(true);
         return;
@@ -292,13 +292,17 @@ export function LangProvider({ children }: { children: ReactNode }) {
         
         if (response.ok) {
           const data = await response.json();
-          // Check if user is in Quebec (region_code: "QC" or region contains "Quebec")
+
+          // Quebec, Canada → French
           const isQuebec = 
             data.region_code === "QC" || 
             data.region?.toLowerCase().includes("quebec") ||
             data.region?.toLowerCase().includes("québec");
-          
-          if (isQuebec) {
+
+          // Germany (Frankfurt etc.) → French
+          const isGermany = data.country_code === "DE";
+
+          if (isQuebec || isGermany) {
             setLangState("fr");
           } else {
             setLangState("en");

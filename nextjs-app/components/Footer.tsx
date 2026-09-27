@@ -31,7 +31,7 @@ export default function Footer() {
               alt="Quotes Life Insurance" 
               width={180} 
               height={50}
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "contain", maxWidth: "160px", height: "auto" }}
             />
           </Link>
 
@@ -116,10 +116,11 @@ export default function Footer() {
         }
         @media (max-width: 800px) {
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; padding: 40px 0 32px; }
-          .footer-brand { grid-column: 1 / -1; }
+          .footer-brand { grid-column: 1 / -1; padding-top: 8px; }
         }
         @media (max-width: 500px) {
           .footer-grid { grid-template-columns: 1fr; }
+          .footer-brand { padding-top: 8px; }
         }
 
         /* Brand col */

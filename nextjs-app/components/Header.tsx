@@ -118,7 +118,7 @@ export default function Header() {
 
           {/* Desktop nav — clean & minimal */}
           <div className="desktop-nav">
-            <Link href="/" className="nav-link">{t.home}</Link>
+            <Link href="/" className="nav-link" prefetch={true}>{t.home}</Link>
 
             {/* Services mega dropdown — click to toggle */}
             <div className="dropdown-wrap" ref={dropdownRef}>
@@ -134,33 +134,20 @@ export default function Header() {
               </button>
               {servicesOpen && (
                 <div className="mega-dropdown">
-                  <div className="mega-grid">
-                    {serviceCategories.map((cat) => (
-                      <div key={cat.title} className="mega-category">
-                        <div className="mega-cat-header">
-                          <span className="mega-cat-icon">{cat.icon}</span>
-                          <span className="mega-cat-title">{cat.title}</span>
-                        </div>
-                        <div className="mega-cat-items">
-                          {cat.items.map((item) => (
-                            <Link 
-                              key={item.label} 
-                              href={item.href} 
-                              className="mega-item"
-                              onClick={() => setServicesOpen(false)}
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                  <div className="flat-services-list">
+                    {serviceCategories.flatMap((cat) => cat.items).map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="flat-service-item"
+                        onClick={() => setServicesOpen(false)}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        {item.label}
+                      </Link>
                     ))}
-                  </div>
-                  <div className="mega-footer">
-                    <span>Need help choosing?</span>
-                    <Link href="/contact" onClick={() => setServicesOpen(false)}>
-                      Get Free Consultation →
-                    </Link>
                   </div>
                 </div>
               )}
@@ -317,30 +304,37 @@ export default function Header() {
           left: 50%;
           transform: translateX(-50%);
           z-index: 200;
-          width: 680px;
+          width: 280px;
           background: #fff;
           border-radius: 16px;
           box-shadow: 0 12px 48px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
-          padding: 20px;
+          padding: 10px;
           animation: fadeIn 0.2s ease;
         }
         @keyframes fadeIn {
           from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
           to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
-        
-        .mega-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-        }
-        
-        .mega-category {
-          padding: 0;
-        }
-        
-        .mega-cat-header {
+
+        .flat-services-list {
           display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .flat-service-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 14px;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--dark);
+          text-decoration: none;
+          transition: background 0.15s, color 0.15s;
+        }
+        .flat-service-item svg { color: var(--green); flex-shrink: 0; }
+        .flat-service-item:hover { background: var(--bg-soft); color: var(--green); }
           align-items: center;
           gap: 8px;
           padding-bottom: 10px;

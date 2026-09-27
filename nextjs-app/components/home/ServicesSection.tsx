@@ -54,7 +54,7 @@ const services = [
     tag: "Most Popular",
     desc: "Affordable coverage for a set term. Lock in low rates while your family needs protection most.",
     href: "/services/term-life",
-    accent: "green",   // green icon bg
+    accent: "green",
   },
   {
     Icon: IconWholeLife,
@@ -88,14 +88,6 @@ const services = [
     href: "/services/disability",
     accent: "green",
   },
-  {
-    Icon: IconBusiness,
-    title: "Business Protection",
-    tag: "For Owners",
-    desc: "Key-person insurance, buy-sell agreements, and corporate coverage for entrepreneurs.",
-    href: "/services/whole-life",
-    accent: "green",
-  },
 ];
 
 export default function ServicesSection() {
@@ -125,11 +117,6 @@ export default function ServicesSection() {
             <Animate key={s.title} delay={i * 0.07}>
               <Link href={s.href} className="service-card-link">
                 <div className={`service-card service-card--${s.accent}`}>
-
-                  {/* Icon badge */}
-                  <div className={`service-icon service-icon--${s.accent}`}>
-                    <s.Icon />
-                  </div>
 
                   {/* Tag pill */}
                   <span className={`service-tag service-tag--${s.accent}`}>
@@ -172,6 +159,17 @@ export default function ServicesSection() {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 20px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+        /* Last row: 2 cards centered */
+        .services-grid > *:nth-child(4) {
+          grid-column: 1 / 2;
+          margin-left: auto;
+        }
+        .services-grid > *:nth-child(5) {
+          grid-column: 2 / 3;
+          margin-right: auto;
         }
         @media (max-width: 1024px) {
           .services-grid { grid-template-columns: repeat(2, 1fr); }

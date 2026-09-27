@@ -662,3 +662,42 @@ img[loading="lazy"] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   BUTTER SMOOTH SCROLL — GPU ACCELERATION
+───────────────────────────────────────────────────────────── */
+
+/* Force GPU compositing on the whole page */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Promote sticky/animated elements to their own GPU layer */
+header,
+footer,
+.marquee-track,
+.reviews-track {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Smooth image rendering */
+img {
+  image-rendering: auto;
+  -webkit-transform: translateZ(0);
+}
+
+/* Remove scroll anchoring jumps */
+* {
+  overflow-anchor: none;
+}
+
+/* Silky hover transitions globally */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}

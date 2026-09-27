@@ -7,21 +7,20 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     const lenis = new Lenis({
-      // Snappy but smooth - reduced for faster feel
-      duration: 1.0,
-      // Faster easing curve - more responsive
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
+      // Butter-smooth: longer duration with silky easing
+      duration: 1.4,
+      // Expo out easing — fast start, glides to stop like butter
+      easing: (t: number) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
       smoothWheel: true,
-      // Slightly faster wheel response
-      touchMultiplier: 1.8,
-      wheelMultiplier: 1.1,
+      wheelMultiplier: 0.9,   // Slightly slower wheel for silky feel
+      touchMultiplier: 1.5,   // Natural touch on mobile
       infinite: false,
       syncTouch: false,
     });
 
     lenisRef.current = lenis;
 
-    // Use a single rAF loop — most efficient
+    // High-performance RAF loop — synced to display refresh rate
     let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
