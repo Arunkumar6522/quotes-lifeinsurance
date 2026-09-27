@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "middleware": {},
+  "sortedMiddleware": [],
+  "functions": {
+    "/api/google-reviews/route": {
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "required-server-files.js",
+        "server/server-reference-manifest.js",
+        "server/app/api/google-reviews/route_client-reference-manifest.js",
+        "server/edge/chunks/_next-internal_server_app_api_google-reviews_route_actions_0zsk9yj.js",
+        "server/edge/chunks/node_modules_next_dist_esm_1q-29lp._.js",
+        "server/edge/chunks/[root-of-the-server]__1_ak6gl._.js",
+        "server/edge/chunks/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_1ltaof8.js"
+      ],
+      "name": "app/api/google-reviews/route",
+      "page": "/api/google-reviews/route",
+      "entrypoint": "server/edge/chunks/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_1ltaof8.js",
+      "matchers": [
+        {
+          "regexp": "^/api/google-reviews(?:/)?$",
+          "originalSource": "/api/google-reviews"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "p1VZM80BWqVH-RG68u1hA",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "RqijW5FOvsc+bRLxfPQQt05ng2YVBspGEk18SFE0Azo=",
+        "__NEXT_PREVIEW_MODE_ID": "6127c1d407cf803fd25cb7802556cd7b",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "2182cfeb7093d1ab66af4cfab7aa74732534903e01742850ecb7a4e265fd648c",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "0d6d52077b154eaccca1d1b807bb00b54baf82a3eed2854b129130fea0c0bd10"
+      }
+    }
+  }
+}

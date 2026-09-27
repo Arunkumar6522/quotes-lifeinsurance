@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Required for Cloudflare Pages deployment
+  output: "standalone",
+
   // Allow images from Blogger/Google CDN
   images: {
     remotePatterns: [

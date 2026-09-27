@@ -1,0 +1,22 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/api/google-reviews/route": "/api/google-reviews",
+  "/articles/[slug]/page": "/articles/[slug]",
+  "/articles/page": "/articles",
+  "/careers/page": "/careers",
+  "/contact/page": "/contact",
+  "/favicon.ico/route": "/favicon.ico",
+  "/foresters/page": "/foresters",
+  "/manulife/page": "/manulife",
+  "/page": "/",
+  "/privacy-policy/page": "/privacy-policy",
+  "/quote-calculator/page": "/quote-calculator",
+  "/services/critical-illness/page": "/services/critical-illness",
+  "/services/disability/page": "/services/disability",
+  "/services/term-life/page": "/services/term-life",
+  "/services/universal-life/page": "/services/universal-life",
+  "/services/whole-life/page": "/services/whole-life",
+  "/terms/page": "/terms"
+}
