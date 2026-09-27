@@ -111,12 +111,6 @@ export default async function BlogPostPage(
                   }}>
                     ← Back to all articles
                   </Link>
-                  <Link href="/articles" style={{
-                    fontSize: "13px", color: "var(--muted)", textDecoration: "none",
-                    display: "inline-flex", alignItems: "center", gap: "4px"
-                  }}>
-                    ← Back to all articles
-                  </Link>
                 </div>
               </article>
 
