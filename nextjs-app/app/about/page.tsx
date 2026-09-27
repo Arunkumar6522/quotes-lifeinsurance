@@ -140,10 +140,14 @@ export default function AboutPage() {
                   <span style={{ color: "var(--green)" }}>{t.aboutIndependentH2b}</span>
                 </motion.h2>
                 <motion.p variants={fadeUp(0.06)} className="ab-p">
-                  DCW Financial Inc. is a family-built, client-first insurance and financial services brokerage led by co-founders and directors <strong>Denesh Logeswaran</strong> and <strong>Lucia Medina</strong>.
+                  {lang === "fr"
+                    ? <>DCW Financial Inc. est un courtage familial, axé sur le client, dirigé par les co-fondateurs et directeurs <strong>Denesh Logeswaran</strong> et <strong>Lucia Medina</strong>.</>
+                    : <>DCW Financial Inc. is a family-built, client-first insurance and financial services brokerage led by co-founders and directors <strong>Denesh Logeswaran</strong> and <strong>Lucia Medina</strong>.</>}
                 </motion.p>
                 <motion.p variants={fadeUp(0.1)} className="ab-p">
-                  We operate as independent advisors and are contracted through <strong>Experior Financial Group Inc. (MGA)</strong>, which provides our access to a broad marketplace of leading Canadian insurers. This independence lets us compare options across carriers so you receive unbiased recommendations tailored to your needs and budget.
+                  {lang === "fr"
+                    ? <>Nous agissons en tant que conseillers indépendants sous contrat avec <strong>Experior Financial Group Inc. (MGA)</strong>, ce qui nous donne accès à un vaste marché d'assureurs canadiens de premier plan. Cette indépendance nous permet de comparer les options entre assureurs pour vous fournir des recommandations impartiales adaptées à vos besoins et votre budget.</>
+                    : <>We operate as independent advisors and are contracted through <strong>Experior Financial Group Inc. (MGA)</strong>, which provides our access to a broad marketplace of leading Canadian insurers. This independence lets us compare options across carriers so you receive unbiased recommendations tailored to your needs and budget.</>}
                 </motion.p>
 
                 {/* AMF License Block */}
@@ -336,10 +340,14 @@ export default function AboutPage() {
                 </motion.div>
                 <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3">{t.aboutOurTeam}</motion.h3>
                 <motion.p variants={fadeUp(0.08)} className="ab-info-p">
-                  {t.aboutOurTeamDesc}
+                  {lang === "fr"
+                    ? "DCW Financial Inc. est soutenu par un réseau de conseillers agréés qui partagent nos normes de conformité, d'éducation et de service client."
+                    : "DCW Financial Inc. is supported by a network of licensed agents who share our standards for compliance, education, and client care."}
                 </motion.p>
                 <motion.p variants={fadeUp(0.1)} className="ab-info-p">
-                  {t.aboutOurTeamP2}
+                  {lang === "fr"
+                    ? "Sous la direction d'Experior Financial Group Inc. (MGA), nos conseillers maintiennent leur licence provinciale, leur formation continue et leur couverture obligatoire d'erreurs et omissions (E&O)."
+                    : "Working under Experior Financial Group Inc. (MGA), our advisors maintain provincial licensing, continuing education, and mandatory Errors & Omissions (E&O) coverage."}
                 </motion.p>
               </motion.div>
 
@@ -357,10 +365,14 @@ export default function AboutPage() {
                 </motion.div>
                 <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3 ab-info-h3--white">{t.aboutCompensation}</motion.h3>
                 <motion.p variants={fadeUp(0.08)} className="ab-info-p ab-info-p--white">
-                  {t.aboutCompensationP1}
+                  {lang === "fr"
+                    ? "Chez Quotes-LifeInsurance, vous ne paierez jamais de frais pour utiliser nos services ou parler à l'un de nos courtiers agréés. Nous fonctionnons sur une base de commission et ne sommes rémunérés par l'assureur que si vous souscrivez une police."
+                    : "At Quotes-LifeInsurance, you'll never pay a fee to use our services or to speak with one of our licensed brokers. We operate on a commission basis, and we are only compensated by the insurance carrier if you choose to put a policy in place through us."}
                 </motion.p>
                 <motion.p variants={fadeUp(0.12)} className="ab-info-p ab-info-p--white">
-                  {t.aboutCompensationP2}
+                  {lang === "fr"
+                    ? "En d'autres termes, nos conseils sont entièrement gratuits pour vous. Notre rôle est d'écouter, d'éduquer et de vous guider vers une protection qui fait une réelle différence dans votre avenir financier."
+                    : "In other words, our advice is completely free to you. Our role is to listen, educate, and guide you toward protection that makes a meaningful difference in your financial future."}
                 </motion.p>
                 <motion.div variants={fadeUp(0.16)} className="ab-free-badge">
                   {t.aboutFreeAdvice}

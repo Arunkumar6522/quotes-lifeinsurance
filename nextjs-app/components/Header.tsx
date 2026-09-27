@@ -136,11 +136,11 @@ export default function Header() {
                 <div className="mega-dropdown">
                   <div className="flat-services-list">
                     {[
-                      { label: t.termLife,       href: "/services/term-life",        icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> },
-                      { label: t.wholeLife,      href: "/services/whole-life",       icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
-                      { label: t.universalLife,  href: "/services/universal-life",   icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> },
-                      { label: t.criticalIllness,href: "/services/critical-illness", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
-                      { label: t.disability,     href: "/services/disability",       icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="5" r="2"/><path d="M12 7v6m0 0l-3 5m3-5l3 5"/></svg> },
+                      { label: t.termLife,        href: "/services/term-life",        icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
+                      { label: t.wholeLife,       href: "/services/whole-life",       icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> },
+                      { label: t.universalLife,   href: "/services/universal-life",   icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> },
+                      { label: t.criticalIllness, href: "/services/critical-illness", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
+                      { label: t.disability,      href: "/services/disability",       icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> },
                     ].map((item) => (
                       <Link
                         key={item.href}
@@ -148,7 +148,7 @@ export default function Header() {
                         className="flat-service-item"
                         onClick={() => setServicesOpen(false)}
                       >
-                        {item.icon}
+                        <span className="flat-service-icon">{item.icon}</span>
                         {item.label}
                       </Link>
                     ))}
@@ -328,7 +328,7 @@ export default function Header() {
         .flat-service-item {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           padding: 10px 14px;
           border-radius: 10px;
           font-size: 14px;
@@ -337,8 +337,20 @@ export default function Header() {
           text-decoration: none;
           transition: background 0.15s, color 0.15s;
         }
-        .flat-service-item svg { color: var(--green); flex-shrink: 0; }
+        .flat-service-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          background: rgba(74,164,97,0.1);
+          color: var(--green);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: background 0.15s;
+        }
         .flat-service-item:hover { background: var(--bg-soft); color: var(--green); }
+        .flat-service-item:hover .flat-service-icon { background: rgba(74,164,97,0.18); }
           align-items: center;
           gap: 8px;
           padding-bottom: 10px;
