@@ -915,3 +915,31 @@ body {
   .contact-card:hover { transform: none; }
   .sp-highlight-card:hover { transform: none; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   CURSOR — prevent text I-beam on non-interactive content
+───────────────────────────────────────────────────────────── */
+
+/* Set default cursor on root — all children inherit it */
+html, body {
+  cursor: default !important;
+}
+
+/* Every element inherits the default cursor */
+* {
+  cursor: inherit;
+}
+
+/* Interactive elements get pointer */
+a, button, [role="button"], label, select, summary,
+input[type="submit"], input[type="button"], input[type="reset"],
+input[type="checkbox"], input[type="radio"] {
+  cursor: pointer !important;
+}
+
+/* Text fields get text cursor */
+input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),
+textarea,
+[contenteditable="true"] {
+  cursor: text !important;
+}
