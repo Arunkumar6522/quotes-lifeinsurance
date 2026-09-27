@@ -5,7 +5,7 @@ import { useLang } from "@/lib/i18n";
 
 export default function CtaSection() {
   const { openModal } = useModal();
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <section className="cta-section">
@@ -13,7 +13,7 @@ export default function CtaSection() {
         <Animate className="cta-content">
 
           {/* Label */}
-          <span className="cta-eyebrow">Free Consultation</span>
+          <span className="cta-eyebrow">{lang === "fr" ? "Consultation gratuite" : "Free Consultation"}</span>
 
           {/* Heading */}
           <h2 className="cta-heading">
@@ -126,7 +126,7 @@ export default function CtaSection() {
           align-items: center;
           gap: 8px;
           background: #fff;
-          color: var(--green);
+          color: var(--green) !important;
           font-weight: 800;
           font-size: 14px;
           padding: 15px 36px;

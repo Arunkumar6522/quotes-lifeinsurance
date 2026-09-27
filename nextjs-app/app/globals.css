@@ -675,14 +675,18 @@ html {
 }
 
 /* Promote sticky/animated elements to their own GPU layer */
-header,
-footer,
 .marquee-track,
 .reviews-track {
   transform: translateZ(0);
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+/* Header gets GPU layer WITHOUT transform (transform breaks position:sticky) */
+header {
+  will-change: auto;
+  backface-visibility: hidden;
 }
 
 /* Smooth image rendering */
