@@ -204,7 +204,7 @@ export default function AboutPage() {
                     </div>
                   ))}
                 </motion.div>
-                <motion.p variants={fadeUp(0.14)} className="ab-disclosure">
+                <motion.p variants={fadeUp(0.14)} className="ab-disclosure" suppressHydrationWarning>
                   {t.aboutDisclosureText}
                 </motion.p>
               </motion.div>
