@@ -104,10 +104,10 @@ export default function Header() {
       <nav className="main-nav">
         <div className="container main-nav-inner">
 
-          {/* Logo - switches color based on theme */}
+          {/* Logo - switches based on theme and language */}
           <Link href="/" className="logo-wrap">
             <Image 
-              src="/logo.png" 
+              src={lang === "fr" ? "/french logo.png" : "/logo.png"}
               alt="Quotes Life Insurance" 
               width={200} 
               height={60} 

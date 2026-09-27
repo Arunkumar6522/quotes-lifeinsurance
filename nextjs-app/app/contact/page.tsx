@@ -336,6 +336,21 @@ export default function ContactPage() {
           align-items: center;
           gap: 8px;
           background: var(--green);
+          color: #fff !important;
+          font-weight: 800;
+          font-size: 14px !important;
+          padding: 14px 32px;
+          border-radius: 50px;
+          border: none;
+          cursor: pointer;
+          font-family: inherit;
+          transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+          box-shadow: 0 4px 20px rgba(74,164,97,0.35);
+          text-decoration: none;
+          white-space: nowrap;
+        }
+          gap: 8px;
+          background: var(--green);
           color: #fff;
           font-weight: 800;
           font-size: 14px;
@@ -623,7 +638,7 @@ export default function ContactPage() {
         .contact-faq-cta p {
           font-size: 16px;
           font-weight: 600;
-          color: var(--muted);
+          color: var(--dark) !important;
         }
         @media (max-width: 640px) {
           .faq-q { padding: 16px 18px; font-size: 14px; }

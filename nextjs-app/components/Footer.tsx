@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="footer-brand">
           <Link href="/" className="footer-logo-link">
             <Image 
-              src="/white.png" 
+              src={lang === "fr" ? "/french footer.png" : "/white.png"} 
               alt="Quotes Life Insurance" 
               width={180} 
               height={50}
