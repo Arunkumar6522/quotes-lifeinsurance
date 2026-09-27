@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { useModal } from "@/lib/modal";
 import { useRouter } from "next/navigation";
+import { useLang } from "@/lib/i18n";
 
 export interface ServicePageProps {
   title: string;
@@ -99,26 +100,24 @@ const HighlightIcons = [
   </svg>,
 ];
 
+const frServiceNames: Record<string, string> = {
+  "Term Life Insurance": "Assurance vie temporaire",
+  "Whole Life Insurance": "Assurance vie entière",
+  "Universal Life Insurance": "Assurance vie universelle",
+  "Critical Illness Coverage": "Couverture maladies graves",
+  "Disability Insurance": "Assurance invalidité",
+};
+
 export default function ServicePageLayout({ data }: { data: ServicePageProps }) {
   const { openModal } = useModal();
   const router = useRouter();
+  const { t, lang } = useLang();
   const ServiceIcon = ServiceIcons[data.title] ?? ServiceIcons["Term Life Insurance"];
   const cover = ServiceCovers[data.title] ?? ServiceCovers["Term Life Insurance"];
+  const displayTitle = lang === "fr" && data.titleFr ? data.titleFr : data.title;
 
-  // Life insurance pages show the quote modal; others redirect to contact
-  const isLifeInsurance = [
-    "Term Life Insurance",
-    "Whole Life Insurance",
-    "Universal Life Insurance",
-  ].includes(data.title);
-
-  const handleQuoteClick = () => {
-    if (isLifeInsurance) {
-      openModal();
-    } else {
-      router.push("/contact");
-    }
-  };
+  const isLifeInsurance = ["Term Life Insurance","Whole Life Insurance","Universal Life Insurance"].includes(data.title);
+  const handleQuoteClick = () => { if (isLifeInsurance) { openModal(); } else { router.push("/contact"); } };
 
   return (
     <>
@@ -139,22 +138,22 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/>
                 </svg>
-                Back
+                {t.spBack}
               </button>
               <nav className="sp-breadcrumb">
-                <Link href="/" className="sp-breadcrumb-link">Home</Link>
+                <Link href="/" className="sp-breadcrumb-link">{t.home}</Link>
                 <span className="sp-breadcrumb-sep">/</span>
-                <span className="sp-breadcrumb-current">{data.title}</span>
+                <span className="sp-breadcrumb-current">{displayTitle}</span>
               </nav>
             </div>
 
             {/* Hero content */}
             <div className="sp-hero-body">
-              <h1 className="sp-hero-h1">{data.title}</h1>
+              <h1 className="sp-hero-h1">{displayTitle}</h1>
               <p className="sp-hero-tagline">{data.tagline}</p>
               <div className="sp-hero-actions">
                 <button onClick={handleQuoteClick} className="sp-hero-cta">
-                  Get My Free Quote →
+                  {t.spGetFreeQuote}
                 </button>
               </div>
             </div>
@@ -174,7 +173,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
                 {/* Highlights */}
                 <div className="sp-highlights">
-                  <h2 className="sp-section-h2">Key Benefits</h2>
+                  <h2 className="sp-section-h2">{t.spKeyBenefits}</h2>
                   <div className="sp-highlights-grid">
                     {data.highlights.map((h, i) => (
                       <div key={i} className="sp-highlight-card">
@@ -190,7 +189,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
                 {/* Best for */}
                 <div className="sp-bestfor">
-                  <h2 className="sp-section-h2">Who Is This Best For?</h2>
+                  <h2 className="sp-section-h2">{t.spBestFor}</h2>
                   <div className="sp-bestfor-list">
                     {data.bestFor.map((b) => (
                       <div key={b} className="sp-bestfor-item">
@@ -205,7 +204,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
                 {/* FAQs */}
                 <div className="sp-faqs">
-                  <h2 className="sp-section-h2">Frequently Asked Questions</h2>
+                  <h2 className="sp-section-h2">{t.spFaq}</h2>
                   {data.faqs.map((faq, i) => (
                     <div key={i} className="sp-faq">
                       <div className="sp-faq-q">
@@ -228,19 +227,17 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
                 {/* Quote CTA card */}
                 <div className="sp-cta-card">
-                  <span className="sp-cta-label">Free, No Obligation</span>
-                  <h3 className="sp-cta-h3">Get Your Free Quote</h3>
-                  <p className="sp-cta-sub">
-                    Compare {data.title} rates from 20+ top Canadian carriers in minutes.
-                  </p>
+                  <span className="sp-cta-label">{t.spFreeObligation}</span>
+                  <h3 className="sp-cta-h3">{t.spGetYourQuote}</h3>
+                  <p className="sp-cta-sub">{t.spCompareRates}</p>
                   <button onClick={handleQuoteClick} className="sp-cta-btn">
-                    Get My Free Quote →
+                    {t.spGetFreeQuote}
                   </button>
                 </div>
 
                 {/* Other services */}
                 <div className="sp-other">
-                  <p className="sp-other-heading">Other Services</p>
+                  <p className="sp-other-heading">{t.spOtherServices}</p>
                   <ul className="sp-other-list">
                     {otherServices.filter(s => s.label !== data.title).map((s) => (
                       <li key={s.href}>
@@ -248,7 +245,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "var(--green)" }}>
                             <polyline points="9 18 15 12 9 6"/>
                           </svg>
-                          {s.label}
+                          {lang === "fr" ? (frServiceNames[s.label] || s.label) : s.label}
                         </Link>
                       </li>
                     ))}

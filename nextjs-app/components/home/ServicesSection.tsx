@@ -1,151 +1,56 @@
-﻿import Link from "next/link";
+﻿"use client";
+import Link from "next/link";
 import Animate from "@/components/Animate";
+import { useLang } from "@/lib/i18n";
 
-/* ── Brand SVG icons — each one is a clean single-path icon
-   styled in the green theme, no emoji, no AI-generated art  */
-const IconTermLife = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <polyline points="9 12 11 14 15 10" />
-  </svg>
-);
+/* ── SVG icons ── */
+const IconTermLife = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>);
+const IconWholeLife = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>);
+const IconUniversalLife = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></svg>);
+const IconCriticalIllness = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>);
+const IconDisability = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="2" /><path d="M12 7v6m0 0l-3 5m3-5l3 5" /><path d="M9 13H7a2 2 0 00-1.9 2.6l1.4 4.2A2 2 0 008.4 21h7.2a2 2 0 001.9-1.4l.5-1.6" /></svg>);
 
-const IconWholeLife = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-    <polyline points="9 22 9 12 15 12 15 22" />
-  </svg>
-);
-
-const IconUniversalLife = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="12" y1="1" x2="12" y2="23" />
-    <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
-  </svg>
-);
-
-const IconCriticalIllness = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-  </svg>
-);
-
-const IconDisability = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="5" r="2" />
-    <path d="M12 7v6m0 0l-3 5m3-5l3 5" />
-    <path d="M9 13H7a2 2 0 00-1.9 2.6l1.4 4.2A2 2 0 008.4 21h7.2a2 2 0 001.9-1.4l.5-1.6" />
-  </svg>
-);
-
-const IconBusiness = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="7" width="20" height="14" rx="2" />
-    <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-    <line x1="12" y1="12" x2="12" y2="16" />
-    <line x1="10" y1="14" x2="14" y2="14" />
-  </svg>
-);
-
-const services = [
-  {
-    Icon: IconTermLife,
-    title: "Term Life Insurance",
-    tag: "Most Popular",
-    desc: "Affordable coverage for a set term. Lock in low rates while your family needs protection most.",
-    href: "/services/term-life",
-    accent: "green",
-  },
-  {
-    Icon: IconWholeLife,
-    title: "Whole Life Insurance",
-    tag: "Permanent",
-    desc: "Lifetime coverage that builds guaranteed cash value. Never expires, never changes in cost.",
-    href: "/services/whole-life",
-    accent: "green",
-  },
-  {
-    Icon: IconUniversalLife,
-    title: "Universal Life Insurance",
-    tag: "Flexible",
-    desc: "Adjustable premiums + a tax-sheltered investment account. Coverage and wealth in one policy.",
-    href: "/services/universal-life",
-    accent: "green",
-  },
-  {
-    Icon: IconCriticalIllness,
-    title: "Critical Illness Coverage",
-    tag: "Lump-Sum Payout",
-    desc: "Tax-free cash if you're diagnosed with cancer, heart attack, stroke or 25+ covered conditions.",
-    href: "/services/critical-illness",
-    accent: "green",
-  },
-  {
-    Icon: IconDisability,
-    title: "Disability Insurance",
-    tag: "Income Protection",
-    desc: "Replace up to 70% of your income if illness or injury stops you from working.",
-    href: "/services/disability",
-    accent: "green",
-  },
-];
+const serviceData = [
+  { Icon: IconTermLife,       titleKey: "termLife",         tagKey: "termLifeTag",         descKey: "termLifeDesc",         href: "/services/term-life" },
+  { Icon: IconWholeLife,      titleKey: "wholeLife",        tagKey: "wholeLifeTag",        descKey: "wholeLifeDesc",        href: "/services/whole-life" },
+  { Icon: IconUniversalLife,  titleKey: "universalLife",    tagKey: "universalLifeTag",    descKey: "universalLifeDesc",    href: "/services/universal-life" },
+  { Icon: IconCriticalIllness,titleKey: "criticalIllness",  tagKey: "criticalIllnessTag",  descKey: "criticalIllnessDesc",  href: "/services/critical-illness" },
+  { Icon: IconDisability,     titleKey: "disability",       tagKey: "disabilityTag",       descKey: "disabilityDesc",       href: "/services/disability" },
+] as const;
 
 export default function ServicesSection() {
+  const { t } = useLang();
   return (
     <section className="section-padding services-section">
       <div className="container">
-
         <Animate className="text-center" style={{ marginBottom: "56px" }}>
-          <span className="section-label light">Our Services</span>
-          <h2 style={{
-            fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-            fontWeight: 800, color: "#fff", marginTop: "8px", lineHeight: 1.2,
-          }}>
-            Explore Our{" "}
-            <span style={{ color: "var(--green)" }}>Insurance Products</span>
+          <span className="section-label light">{t.servicesLabel}</span>
+          <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, color: "#fff", marginTop: "8px", lineHeight: 1.2 }}>
+            {t.servicesExploreH1}{" "}<span style={{ color: "var(--green)" }}>{t.servicesExploreH2}</span>
           </h2>
-          <p style={{
-            color: "rgba(255,255,255,0.5)", marginTop: "12px",
-            fontSize: "15px", maxWidth: "480px", margin: "12px auto 0",
-          }}>
-            Tailored policies from 20+ top Canadian carriers — we find the right fit for your life and budget.
+          <p style={{ color: "rgba(255,255,255,0.5)", marginTop: "12px", fontSize: "15px", maxWidth: "480px", margin: "12px auto 0" }}>
+            {t.servicesSub2}
           </p>
         </Animate>
-
         <div className="services-grid">
-          {services.map((s, i) => (
-            <Animate key={s.title} delay={i * 0.07}>
+          {serviceData.map((s, i) => (
+            <Animate key={s.titleKey} delay={i * 0.07}>
               <Link href={s.href} className="service-card-link">
-                <div className={`service-card service-card--${s.accent}`}>
-
-                  {/* Tag pill */}
-                  <span className={`service-tag service-tag--${s.accent}`}>
-                    {s.tag}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="service-title">{s.title}</h3>
-
-                  {/* Description */}
-                  <p className="service-desc">{s.desc}</p>
-
-                  {/* CTA */}
+                <div className="service-card service-card--green">
+                  <span className="service-tag service-tag--green">{t[s.tagKey]}</span>
+                  <h3 className="service-title">{t[s.titleKey]}</h3>
+                  <p className="service-desc">{t[s.descKey]}</p>
                   <span className="service-cta">
-                    Learn more
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
+                    {t.servicesLearnMore}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                     </svg>
                   </span>
-
                 </div>
               </Link>
             </Animate>
           ))}
         </div>
-
-
       </div>
 
       <style>{`

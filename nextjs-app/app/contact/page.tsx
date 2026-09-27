@@ -13,39 +13,26 @@ const fadeUp = (delay = 0) => ({
   show: { opacity: 1, y: 0, transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 });
 
-const faqs = [
-  {
-    q: "How much does life insurance cost in Canada?",
-    a: "Costs vary by age, health, and coverage. A healthy 30-year-old can get $500,000 in term life coverage for as low as $25–$40/month. We compare 20+ carriers to find your best rate — get a free quote to see your exact price.",
-  },
-  {
-    q: "What is the difference between term and whole life insurance?",
-    a: "Term life covers you for a set period (10, 20, or 30 years) and is the most affordable option. Whole life is permanent coverage that builds cash value over time but costs more. We'll help you decide which is right for your situation.",
-  },
-  {
-    q: "Is your advice really 100% free?",
-    a: "Yes — completely free. We are compensated by the insurance carrier only if you choose to take out a policy. You never pay us a fee, consultation charge, or commission directly.",
-  },
-  {
-    q: "How long does it take to get life insurance in Canada?",
-    a: "Many term life policies can be approved in as little as 24–72 hours for healthy applicants. Some policies require a medical exam which can take 2–4 weeks. We'll guide you through the fastest path for your situation.",
-  },
-  {
-    q: "Can I get life insurance if I have a pre-existing condition?",
-    a: "Yes, in most cases. Some carriers specialize in high-risk or simplified issue policies. Canada Protection Plan, for example, offers guaranteed life insurance with no medical questions. We'll match you with the right carrier.",
-  },
-  {
-    q: "Do you serve clients outside of Montreal?",
-    a: "Absolutely. While we are based in Montreal, we serve clients across all of Canada including Quebec, Ontario, British Columbia, Alberta, and more — all virtually and by phone.",
-  },
-  {
-    q: "What insurance companies do you work with?",
-    a: "We work with 20+ top Canadian carriers including Manulife, Desjardins, Foresters, iA Financial, Empire Life, Humania, Canada Protection Plan, Ivari, Assumption Life, UV Insurance, and Edge Benefits.",
-  },
-  {
-    q: "How do I get started?",
-    a: "Click 'Get My Free Quote' anywhere on this site, or call us at 514-662-0403. We'll have a quick conversation to understand your needs and present you with the best options from across our carrier network.",
-  },
+const faqsEn = [
+  { q: "How much does life insurance cost in Canada?", a: "Costs vary by age, health, and coverage. A healthy 30-year-old can get $500,000 in term life coverage for as low as $25–$40/month. We compare 20+ carriers to find your best rate — get a free quote to see your exact price." },
+  { q: "What is the difference between term and whole life insurance?", a: "Term life covers you for a set period (10, 20, or 30 years) and is the most affordable option. Whole life is permanent coverage that builds cash value over time but costs more. We'll help you decide which is right for your situation." },
+  { q: "Is your advice really 100% free?", a: "Yes — completely free. We are compensated by the insurance carrier only if you choose to take out a policy. You never pay us a fee, consultation charge, or commission directly." },
+  { q: "How long does it take to get life insurance in Canada?", a: "Many term life policies can be approved in as little as 24–72 hours for healthy applicants. Some policies require a medical exam which can take 2–4 weeks. We'll guide you through the fastest path for your situation." },
+  { q: "Can I get life insurance if I have a pre-existing condition?", a: "Yes, in most cases. Some carriers specialize in high-risk or simplified issue policies. Canada Protection Plan, for example, offers guaranteed life insurance with no medical questions. We'll match you with the right carrier." },
+  { q: "Do you serve clients outside of Montreal?", a: "Absolutely. While we are based in Montreal, we serve clients across all of Canada including Quebec, Ontario, British Columbia, Alberta, and more — all virtually and by phone." },
+  { q: "What insurance companies do you work with?", a: "We work with 20+ top Canadian carriers including Manulife, Desjardins, Foresters, iA Financial, Empire Life, Humania, Canada Protection Plan, Ivari, Assumption Life, UV Insurance, and Edge Benefits." },
+  { q: "How do I get started?", a: "Click 'Get My Free Quote' anywhere on this site, or call us at 514-662-0403. We'll have a quick conversation to understand your needs and present you with the best options from across our carrier network." },
+];
+
+const faqsFr = [
+  { q: "Combien coûte l'assurance vie au Canada ?", a: "Les coûts varient selon l'âge, la santé et la couverture. Un adulte de 30 ans en bonne santé peut obtenir 500 000 $ d'assurance vie temporaire pour aussi peu que 25 à 40 $/mois. Nous comparons 20+ assureurs pour trouver votre meilleur tarif." },
+  { q: "Quelle est la différence entre l'assurance temporaire et l'assurance vie entière ?", a: "L'assurance temporaire vous couvre pour une période fixe (10, 20 ou 30 ans) et est l'option la plus abordable. L'assurance vie entière est une couverture permanente qui accumule une valeur de rachat au fil du temps. Nous vous aiderons à décider laquelle vous convient." },
+  { q: "Vos conseils sont-ils vraiment 100% gratuits ?", a: "Oui — entièrement gratuits. Nous sommes rémunérés par l'assureur uniquement si vous souscrivez une police. Vous ne nous payez jamais de frais, de frais de consultation ou de commission directement." },
+  { q: "Combien de temps faut-il pour obtenir une assurance vie au Canada ?", a: "De nombreuses polices d'assurance temporaire peuvent être approuvées en aussi peu que 24 à 72 heures pour les demandeurs en bonne santé. Certaines polices nécessitent un examen médical pouvant prendre 2 à 4 semaines." },
+  { q: "Puis-je obtenir une assurance vie si j'ai des conditions préexistantes ?", a: "Oui, dans la plupart des cas. Certains assureurs se spécialisent dans les polices pour demandeurs à risque élevé. Canada Protection Plan, par exemple, offre une assurance vie garantie sans questions médicales." },
+  { q: "Servez-vous des clients en dehors de Montréal ?", a: "Absolument. Bien que nous soyons basés à Montréal, nous servons des clients partout au Canada — Québec, Ontario, Colombie-Britannique, Alberta et plus encore — entièrement en ligne et par téléphone." },
+  { q: "Avec quelles compagnies d'assurance travaillez-vous ?", a: "Nous travaillons avec 20+ assureurs canadiens de premier plan, notamment Manuvie, Desjardins, Foresters, iA Financière, Empire Vie, Humania, Canada Protection Plan, Ivari, Assumption Life, UV Assurance et Edge Benefits." },
+  { q: "Comment commencer ?", a: "Cliquez sur 'Obtenir mon devis gratuit' n'importe où sur ce site, ou appelez-nous au 514-662-0403. Nous aurons une conversation rapide pour comprendre vos besoins et vous présenter les meilleures options." },
 ];
 
 function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
@@ -242,12 +229,10 @@ export default function ContactPage() {
             >
               <motion.span variants={fadeUp(0)} className="section-label">FAQ</motion.span>
               <motion.h2 variants={fadeUp(0.06)} className="contact-faq-h2">
-                {lang === "fr" ? "Questions fréquentes" : "Frequently Asked Questions"}
+                {t.contactFaqH2}
               </motion.h2>
               <motion.p variants={fadeUp(0.1)} className="contact-faq-sub">
-                {lang === "fr"
-                  ? "Tout ce que vous devez savoir sur l'assurance vie au Canada."
-                  : "Everything you need to know about life insurance in Canada."}
+                {t.contactFaqSub}
               </motion.p>
             </motion.div>
 
@@ -257,7 +242,7 @@ export default function ContactPage() {
               whileInView="show"
               viewport={{ once: true, margin: "-40px" }}
             >
-              {faqs.map((faq, i) => (
+              {(lang === "fr" ? faqsFr : faqsEn).map((faq, i) => (
                 <FaqItem key={i} q={faq.q} a={faq.a} index={i} />
               ))}
             </motion.div>
@@ -270,9 +255,9 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: 0.2, ease: [0.22,1,0.36,1] }}
             >
-              <p>{lang === "fr" ? "Vous n'avez pas trouvé votre réponse ?" : "Didn't find your answer?"}</p>
+              <p>{t.contactFaqNotFound}</p>
               <button onClick={openModal} className="contact-cta-btn">
-                {lang === "fr" ? "Parlez à un conseiller gratuit →" : "Talk to a Free Advisor →"}
+                {t.contactFaqCta}
               </button>
             </motion.div>
           </div>
@@ -283,7 +268,7 @@ export default function ContactPage() {
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": ${JSON.stringify(faqs.map(f => ({
+            "mainEntity": ${JSON.stringify(faqsEn.map(f => ({
               "@type": "Question",
               "name": f.q,
               "acceptedAnswer": { "@type": "Answer", "text": f.a }

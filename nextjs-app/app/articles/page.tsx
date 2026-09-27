@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Breadcrumb from "@/components/Breadcrumb";
+import ArticlesHero from "@/components/ArticlesHero";
 import { getAllPosts } from "@/lib/blogger";
 import type { Metadata } from "next";
 
@@ -21,37 +21,7 @@ export default async function ArticlesPage() {
       <main>
 
         {/* Hero with cover image */}
-        <section className="blog-hero">
-          <div className="blog-hero-overlay" />
-          <div className="container blog-hero-content">
-            {/* Breadcrumb */}
-            <div style={{ marginBottom: "20px" }}>
-              <Breadcrumb crumbs={[
-                { label: "Home", href: "/" },
-                { label: "Articles" },
-              ]} />
-            </div>
-            <span style={{
-              display: "inline-block", fontSize: "11px", fontWeight: 800,
-              letterSpacing: "2px", textTransform: "uppercase",
-              color: "var(--green)", marginBottom: "12px",
-            }}>
-              Insurance Tips &amp; News
-            </span>
-            <h1 style={{
-              fontSize: "clamp(1.8rem, 5vw, 3rem)", fontWeight: 900, color: "#fff",
-              fontFamily: "var(--font-sora), sans-serif", letterSpacing: "-0.02em",
-            }}>
-              Our Articles
-            </h1>
-            <p style={{
-              color: "rgba(255,255,255,0.65)", marginTop: "10px",
-              fontSize: "15px", maxWidth: "480px",
-            }}>
-              Tips, guides and news to help you make smarter life insurance decisions.
-            </p>
-          </div>
-        </section>
+        <ArticlesHero />
 
         {/* Posts */}
         <section style={{ padding: "48px 0 64px", background: "#fff" }}>
@@ -113,7 +83,7 @@ export default async function ArticlesPage() {
                         <p style={{ fontSize: "12px", color: "var(--muted)", lineHeight: 1.6 }}>
                           {post.excerpt.slice(0, 110)}…
                         </p>
-                        <p style={{ marginTop: "10px", fontSize: "13px", fontWeight: 700, color: "var(--green)" }}>
+        <p style={{ marginTop: "10px", fontSize: "13px", fontWeight: 700, color: "var(--green)" }}>
                           Read more →
                         </p>
                       </div>

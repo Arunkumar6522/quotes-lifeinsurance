@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { useModal } from "@/lib/modal";
+import { useLang } from "@/lib/i18n";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const fadeUp = (delay = 0): Variants => ({
@@ -65,6 +66,7 @@ const CheckIcon = () => (
 
 export default function AboutPage() {
   const { openModal } = useModal();
+  const { t, lang } = useLang();
 
   return (
     <>
@@ -76,8 +78,8 @@ export default function AboutPage() {
           <div className="about-hero-overlay" />
           <div className="container about-hero-content">
             <Breadcrumb crumbs={[
-              { label: "Home", href: "/" },
-              { label: "About Us" },
+              { label: t.home, href: "/" },
+              { label: t.about },
             ]} />
             <motion.span
               className="about-hero-label"
@@ -85,7 +87,7 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22,1,0.36,1] }}
             >
-              About DCW Financial Inc.
+              {t.aboutHeroLabel}
             </motion.span>
             <motion.h1
               className="about-hero-h1"
@@ -93,8 +95,8 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22,1,0.36,1] }}
             >
-              A Family-Built,<br/>
-              <span style={{ color: "var(--green)" }}>Client-First Brokerage</span>
+              {t.aboutHeroH1a}<br/>
+              <span style={{ color: "var(--green)" }}>{t.aboutHeroH1b}</span>
             </motion.h1>
             <motion.p
               className="about-hero-sub"
@@ -102,7 +104,7 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.14, ease: [0.22,1,0.36,1] }}
             >
-              Independent insurance and financial services advisors serving Canadian families with unbiased recommendations tailored to your needs and budget.
+              {t.aboutHeroSub}
             </motion.p>
           </div>
         </section>
@@ -119,8 +121,8 @@ export default function AboutPage() {
                 viewport={{ once: true, margin: "-60px" }}
               >
                 <motion.h2 variants={fadeUp(0)} className="ab-h2">
-                  Independent Advice.<br/>
-                  <span style={{ color: "var(--green)" }}>Your Best Interest.</span>
+                  {t.aboutIndependentH2a}<br/>
+                  <span style={{ color: "var(--green)" }}>{t.aboutIndependentH2b}</span>
                 </motion.h2>
                 <motion.p variants={fadeUp(0.06)} className="ab-p">
                   DCW Financial Inc. is a family-built, client-first insurance and financial services brokerage led by co-founders and directors <strong>Denesh Logeswaran</strong> and <strong>Lucia Medina</strong>.
@@ -138,21 +140,21 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <div className="ab-amf-content">
-                    <p className="ab-amf-title">AMF Licensed & Regulated</p>
+                    <p className="ab-amf-title">{t.aboutAmf}</p>
                     <p className="ab-amf-numbers">
                       <span>License #: <strong>179631</strong></span>
                       <span className="ab-amf-sep">•</span>
                       <span>Firm Registration #: <strong>608808</strong></span>
                     </p>
                     <a href="https://lautorite.qc.ca" target="_blank" rel="noopener noreferrer" className="ab-amf-link">
-                      Verify on AMF Website ↗
+                      {t.aboutVerifyAmf}
                     </a>
                   </div>
                 </motion.div>
 
                 <motion.div variants={fadeUp(0.18)} className="ab-cta-row">
-                  <button onClick={openModal} className="btn-primary">Get a Free Quote →</button>
-                  <Link href="/contact" className="ab-ghost-btn">Contact Us</Link>
+                  <button onClick={openModal} className="btn-primary">{t.aboutGetQuote}</button>
+                  <Link href="/contact" className="ab-ghost-btn">{t.aboutContactUs}</Link>
                 </motion.div>
               </motion.div>
 
@@ -169,10 +171,10 @@ export default function AboutPage() {
                       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                     </svg>
                   </div>
-                  <h3 className="ab-carriers-h3">Our Carrier Access</h3>
+                  <h3 className="ab-carriers-h3">{t.aboutCarrierAccess}</h3>
                 </motion.div>
                 <motion.p variants={fadeUp(0.05)} className="ab-carriers-desc">
-                  We work with a wide range of reputable insurers, including (but not limited to):
+                  {t.aboutCarrierDesc}
                 </motion.p>
                 <motion.div variants={fadeUp(0.1)} className="ab-carrier-logos">
                   {carrierLogos.map((carrier) => (
@@ -204,9 +206,9 @@ export default function AboutPage() {
               initial="hidden" whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
             >
-              <motion.span variants={fadeUp(0)} className="section-label">Leadership</motion.span>
+              <motion.span variants={fadeUp(0)} className="section-label">{t.aboutLeadershipLabel}</motion.span>
               <motion.h2 variants={fadeUp(0.06)} className="ab-h2">
-                Meet the <span style={{ color: "var(--green)" }}>Founders</span>
+                {t.aboutMeetFounders} <span style={{ color: "var(--green)" }}>{t.aboutFoundersH2}</span>
               </motion.h2>
             </motion.div>
 
@@ -245,10 +247,10 @@ export default function AboutPage() {
               initial="hidden" whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
             >
-              <motion.span variants={fadeUp(0)} className="section-label light">What We Do</motion.span>
+              <motion.span variants={fadeUp(0)} className="section-label light">{t.aboutWhatWeDo}</motion.span>
               <motion.h2 variants={fadeUp(0.06)} className="ab-h2 ab-h2-light">
-                Comprehensive Protection &<br/>
-                <span style={{ color: "var(--green)" }}>Financial Planning</span>
+                {t.aboutComprehensiveH2a}<br/>
+                <span style={{ color: "var(--green)" }}>{t.aboutComprehensiveH2b}</span>
               </motion.h2>
             </motion.div>
 
@@ -265,7 +267,7 @@ export default function AboutPage() {
                     <polyline points="9 12 11 14 15 10"/>
                   </svg>
                 </div>
-                <h3 className="ab-service-h3">Insurance Planning</h3>
+                <h3 className="ab-service-h3">{t.aboutInsurancePlanning}</h3>
                 <ul className="ab-service-list">
                   {insuranceItems.map((item) => (
                     <li key={item.text} className="ab-service-item">
@@ -284,7 +286,7 @@ export default function AboutPage() {
                     <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
                   </svg>
                 </div>
-                <h3 className="ab-service-h3">Investment & Savings Strategies</h3>
+                <h3 className="ab-service-h3">{t.aboutInvestmentTitle}</h3>
                 <ul className="ab-service-list">
                   {investmentItems.map((item) => (
                     <li key={item.text} className="ab-service-item">
@@ -317,7 +319,7 @@ export default function AboutPage() {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                   </svg>
                 </motion.div>
-                <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3">Our Team</motion.h3>
+                <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3">{t.aboutOurTeam}</motion.h3>
                 <motion.p variants={fadeUp(0.08)} className="ab-info-p">
                   DCW Financial Inc. is supported by a network of licensed agents who share our standards for compliance, education, and client care. Working under Experior Financial Group Inc. (MGA), our advisors maintain provincial licensing, continuing education, and mandatory Errors & Omissions (E&O) coverage.
                 </motion.p>
@@ -335,7 +337,7 @@ export default function AboutPage() {
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                   </svg>
                 </motion.div>
-                <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3 ab-info-h3--white">How We Are Compensated</motion.h3>
+                <motion.h3 variants={fadeUp(0.04)} className="ab-info-h3 ab-info-h3--white">{t.aboutCompensation}</motion.h3>
                 <motion.p variants={fadeUp(0.08)} className="ab-info-p ab-info-p--white">
                   At Quotes-LifeInsurance, you'll <strong>never pay a fee</strong> to use our services or to speak with one of our licensed brokers. We operate on a commission basis, and we are only compensated by the insurance carrier if you choose to put a policy in place through us.
                 </motion.p>
@@ -343,7 +345,7 @@ export default function AboutPage() {
                   In other words, <strong>our advice is completely free to you</strong>. Our role is to listen, educate, and guide you toward protection that makes a meaningful difference in your financial future. If we leave you with value and a solution that improves your financial position, we've done our job.
                 </motion.p>
                 <motion.div variants={fadeUp(0.16)} className="ab-free-badge">
-                  ✓ Our Advice Is Always Free
+                  {t.aboutFreeAdvice}
                 </motion.div>
               </motion.div>
 
@@ -361,7 +363,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22,1,0.36,1] }}
             >
-              Ready to Get Started?
+              {t.aboutReadyH2}
             </motion.h2>
             <motion.p
               className="ab-cta-sub"
@@ -370,7 +372,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22,1,0.36,1] }}
             >
-              Free consultation, no pressure, no fees. Talk to a licensed advisor today.
+              {t.aboutReadySub}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -379,8 +381,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.16, ease: [0.22,1,0.36,1] }}
               className="ab-cta-btns"
             >
-              <button onClick={openModal} className="ab-cta-btn-main">Get My Free Quote →</button>
-              <Link href="/contact" className="ab-cta-btn-ghost">Contact Us</Link>
+              <button onClick={openModal} className="ab-cta-btn-main">{t.aboutGetMyQuote}</button>
+              <Link href="/contact" className="ab-cta-btn-ghost">{t.aboutContactUs}</Link>
             </motion.div>
           </div>
         </section>
