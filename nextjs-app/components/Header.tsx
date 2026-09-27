@@ -136,11 +136,11 @@ export default function Header() {
                 <div className="mega-dropdown">
                   <div className="flat-services-list">
                     {[
-                      { label: t.termLife,       href: "/services/term-life" },
-                      { label: t.wholeLife,      href: "/services/whole-life" },
-                      { label: t.universalLife,  href: "/services/universal-life" },
-                      { label: t.criticalIllness,href: "/services/critical-illness" },
-                      { label: t.disability,     href: "/services/disability" },
+                      { label: t.termLife,       href: "/services/term-life",        icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> },
+                      { label: t.wholeLife,      href: "/services/whole-life",       icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
+                      { label: t.universalLife,  href: "/services/universal-life",   icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> },
+                      { label: t.criticalIllness,href: "/services/critical-illness", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
+                      { label: t.disability,     href: "/services/disability",       icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="5" r="2"/><path d="M12 7v6m0 0l-3 5m3-5l3 5"/></svg> },
                     ].map((item) => (
                       <Link
                         key={item.href}
@@ -148,9 +148,7 @@ export default function Header() {
                         className="flat-service-item"
                         onClick={() => setServicesOpen(false)}
                       >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
+                        {item.icon}
                         {item.label}
                       </Link>
                     ))}

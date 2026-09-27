@@ -27,18 +27,32 @@ const carrierLogos = [
   { name: "UV Insurance", logo: "/company/uv insurance.png" },
 ];
 
-const insuranceItems = [
-  { icon: "shield", text: "Life insurance (term & permanent)" },
-  { icon: "heart", text: "Critical illness & disability insurance" },
-  { icon: "health", text: "Health & dental plans" },
-  { icon: "plane", text: "Travel insurance" },
-  { icon: "briefcase", text: "Business/partner protection" },
+const insuranceItemsEn = [
+  { text: "Life insurance (term & permanent)" },
+  { text: "Critical illness & disability insurance" },
+  { text: "Health & dental plans" },
+  { text: "Travel insurance" },
+  { text: "Business/partner protection" },
 ];
 
-const investmentItems = [
-  { icon: "dollar", text: "RRSP, TFSA, and non-registered strategies" },
-  { icon: "graduation", text: "Education, estate, and legacy planning" },
-  { icon: "tax", text: "Tax-aware beneficiary structuring" },
+const insuranceItemsFr = [
+  { text: "Assurance vie (temporaire et permanente)" },
+  { text: "Assurance maladies graves et invalidité" },
+  { text: "Régimes de santé et dentaires" },
+  { text: "Assurance voyage" },
+  { text: "Protection d'entreprise et associés" },
+];
+
+const investmentItemsEn = [
+  { text: "RRSP, TFSA, and non-registered strategies" },
+  { text: "Education, estate, and legacy planning" },
+  { text: "Tax-aware beneficiary structuring" },
+];
+
+const investmentItemsFr = [
+  { text: "Stratégies REER, CELI et non-enregistrées" },
+  { text: "Planification successorale et éducation" },
+  { text: "Structuration fiscale des bénéficiaires" },
 ];
 
 const CheckIcon = () => (
@@ -50,6 +64,9 @@ const CheckIcon = () => (
 export default function AboutPage() {
   const { openModal } = useModal();
   const { t, lang } = useLang();
+
+  const insuranceItems = lang === "fr" ? insuranceItemsFr : insuranceItemsEn;
+  const investmentItems = lang === "fr" ? investmentItemsFr : investmentItemsEn;
 
   const founders = [
     {

@@ -89,7 +89,7 @@ export default async function BlogPostPage(
             >
 
               {/* ── Article body ─────────────────── */}
-              <article>
+              <article style={{ minWidth: 0, overflow: "hidden" }}>
 
                 {/* Content from Blogger — suppressHydrationWarning prevents mismatch from browser extensions */}
                 <div
@@ -230,14 +230,23 @@ export default async function BlogPostPage(
         }
         
         .post-layout { grid-template-columns: 1fr 340px; }
+        .post-layout > article { min-width: 0; overflow: hidden; }
         @media (max-width: 900px) { .post-layout { grid-template-columns: 1fr !important; } }
 
         /* Blogger content styles — proper readable typography */
         .blog-content {
+        /* Blogger content — prevent overflow into sidebar */
+        .blog-content {
           font-size: 16px;
           line-height: 1.9;
           color: #374151;
-          max-width: 720px;
+          max-width: 100%;
+          overflow-x: hidden;
+          word-break: break-word;
+        }
+        .blog-content img, .blog-content iframe, .blog-content table {
+          max-width: 100% !important;
+          height: auto;
         }
         .blog-content h1, .blog-content h2, .blog-content h3,
         .blog-content h4, .blog-content h5 {

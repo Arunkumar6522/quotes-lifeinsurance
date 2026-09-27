@@ -269,7 +269,7 @@ export const translations = {
     footerMGA: "Sous contrat avec Experior Financial Group Inc. (MGA)",
     footerLinks: "Liens rapides", footerServices: "Nos services", footerContact: "Contact",
     footerVerify: "Vérifier la licence ↗",
-    footerCopyright: "Quotes Life Insurance, DCW Financial Inc. Tous droits réservés.",
+    footerCopyright: "Citations Assurance Vie, DCW Financial Inc. Tous droits réservés.",
     footerPrivacy: "Politique de confidentialité", footerTerms: "Conditions d'utilisation",
     footerAmf: "Réglementé par l'AMF, Autorité des marchés financiers",
     footerAmfNumbers: "Licence n° 179631 | Cabinet n° 608808",
