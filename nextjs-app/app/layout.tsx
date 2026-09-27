@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Nunito, Sora } from "next/font/google";
 import Script from "next/script";
 import { LangProvider } from "@/lib/i18n";
 import { ModalProvider } from "@/lib/modal";
@@ -8,20 +7,6 @@ import PageLoader from "@/components/PageLoader";
 import PageTransition from "@/components/PageTransition";
 import RevealObserver from "@/components/RevealObserver";
 import "./globals.css";
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-nunito",
-  display: "swap",
-});
-
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-sora",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://quotes-lifeinsurance.com"),
@@ -84,19 +69,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${nunito.variable} ${sora.variable}`}>
+    <html lang="en">
       <head>
+        {/* Google Fonts — loaded via link (Turbopack-safe for Cloudflare) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
         {/* Preconnect to QuestionScout for faster form loading */}
         <link rel="preconnect" href="https://form.questionscout.com" />
         <link rel="preconnect" href="https://cdn.questionscout.com" />
         <link rel="dns-prefetch" href="https://form.questionscout.com" />
         <link rel="dns-prefetch" href="https://cdn.questionscout.com" />
-        {/* Preload the form iframe for instant display */}
-        <link 
-          rel="preload" 
-          href="https://form.questionscout.com/616e35ca63bd79140f61b3ef" 
-          as="document"
-        />
       </head>
       {/* JSON-LD Structured Data — for Google, LLMs & AI search */}
       <Script id="jsonld-org" type="application/ld+json" strategy="beforeInteractive">{`
@@ -237,7 +220,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         gtag('js', new Date());
         gtag('config', 'G-0RZQ0JT92X', { page_path: window.location.pathname });
       `}</Script>
-      <body style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
+      <body style={{ fontFamily: '"Nunito", system-ui, sans-serif', minHeight: "100vh" }}>
         <LangProvider>
           <ModalProvider>
             <PageLoader />
