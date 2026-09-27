@@ -196,6 +196,47 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* ── Meet the Founders ──────────────────────────────────────── */}
+        <section className="ab-section ab-white">
+          <div className="container">
+            <motion.div
+              className="ab-section-head"
+              initial="hidden" whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+            >
+              <motion.span variants={fadeUp(0)} className="section-label">Leadership</motion.span>
+              <motion.h2 variants={fadeUp(0.06)} className="ab-h2">
+                Meet the <span style={{ color: "var(--green)" }}>Founders</span>
+              </motion.h2>
+            </motion.div>
+
+            <motion.div
+              className="ab-founders-grid"
+              initial="hidden" whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+            >
+              {founders.map((f, i) => (
+                <motion.div key={f.name} variants={fadeUp(i * 0.1)} className="ab-founder-card">
+                  <div className="ab-founder-avatar">
+                    <Image 
+                      src={f.image} 
+                      alt={f.name} 
+                      width={100} 
+                      height={100}
+                      style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "50%", objectPosition: "top" }}
+                    />
+                  </div>
+                  <div className="ab-founder-body">
+                    <h3 className="ab-founder-name">{f.name}</h3>
+                    <p className="ab-founder-role">{f.role}</p>
+                    <p className="ab-founder-bio">{f.bio}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
         {/* ── What We Do ─────────────────────────────────────────────── */}
         <section className="ab-section ab-dark">
           <div className="container">
@@ -253,47 +294,6 @@ export default function AboutPage() {
                   ))}
                 </ul>
               </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── Meet the Founders ──────────────────────────────────────── */}
-        <section className="ab-section ab-white">
-          <div className="container">
-            <motion.div
-              className="ab-section-head"
-              initial="hidden" whileInView="show"
-              viewport={{ once: true, margin: "-60px" }}
-            >
-              <motion.span variants={fadeUp(0)} className="section-label">Leadership</motion.span>
-              <motion.h2 variants={fadeUp(0.06)} className="ab-h2">
-                Meet the <span style={{ color: "var(--green)" }}>Founders</span>
-              </motion.h2>
-            </motion.div>
-
-            <motion.div
-              className="ab-founders-grid"
-              initial="hidden" whileInView="show"
-              viewport={{ once: true, margin: "-60px" }}
-            >
-              {founders.map((f, i) => (
-                <motion.div key={f.name} variants={fadeUp(i * 0.1)} className="ab-founder-card">
-                  <div className="ab-founder-avatar">
-                    <Image 
-                      src={f.image} 
-                      alt={f.name} 
-                      width={100} 
-                      height={100}
-                      style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "50%", objectPosition: "top" }}
-                    />
-                  </div>
-                  <div className="ab-founder-body">
-                    <h3 className="ab-founder-name">{f.name}</h3>
-                    <p className="ab-founder-role">{f.role}</p>
-                    <p className="ab-founder-bio">{f.bio}</p>
-                  </div>
-                </motion.div>
-              ))}
             </motion.div>
           </div>
         </section>

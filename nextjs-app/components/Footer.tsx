@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="footer-brand">
           <Link href="/" className="footer-logo-link">
             <Image 
-              src="/whitelogo.png" 
+              src="/white.png" 
               alt="Quotes Life Insurance" 
               width={180} 
               height={50}
@@ -125,35 +125,35 @@ export default function Footer() {
         /* Brand col */
         .footer-logo-link { display: inline-block; margin-bottom: 16px; }
         .footer-desc {
-          font-size: 13px; color: rgba(255,255,255,0.48);
+          font-size: 13px; color: rgba(255,255,255,0.72);
           line-height: 1.7; margin-bottom: 18px; max-width: 280px;
         }
         .footer-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
         .footer-chip {
           display: inline-flex; align-items: center; gap: 5px;
           font-size: 12px; font-weight: 600;
-          color: rgba(255,255,255,0.6);
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.1);
+          color: rgba(255,255,255,0.82);
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.15);
           border-radius: 50px; padding: 5px 12px;
           text-decoration: none; transition: color 0.15s, background 0.15s;
         }
         .footer-chip:hover { color: var(--green); background: rgba(74,164,97,0.12); border-color: rgba(74,164,97,0.25); }
         .footer-amf {
-          font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.5;
+          font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.5;
         }
         .footer-amf svg { color: var(--green); }
 
         /* Link cols */
         .footer-col-h {
           font-size: 10px; font-weight: 800; letter-spacing: 2px;
-          text-transform: uppercase; color: rgba(255,255,255,0.3);
+          text-transform: uppercase; color: rgba(255,255,255,0.55);
           margin-bottom: 18px;
         }
         .footer-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
         .footer-link {
           display: flex; align-items: center; gap: 5px;
-          font-size: 13px; color: rgba(255,255,255,0.52);
+          font-size: 13px; color: rgba(255,255,255,0.75);
           text-decoration: none; transition: color 0.15s;
         }
         .footer-link:hover { color: var(--green); }
@@ -164,20 +164,20 @@ export default function Footer() {
         .footer-link:hover .footer-arrow { transform: translateX(2px); }
 
         /* Bottom bar */
-        .footer-bar { border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-bar { border-top: 1px solid rgba(255,255,255,0.1); }
         .footer-bar-inner {
           display: flex; align-items: center;
           justify-content: space-between; flex-wrap: wrap;
           gap: 10px; padding: 16px 0;
         }
-        .footer-copy { font-size: 11.5px; color: rgba(255,255,255,0.25); }
+        .footer-copy { font-size: 11.5px; color: rgba(255,255,255,0.5); }
         .footer-bar-links { display: flex; align-items: center; gap: 8px; }
         .footer-bar-link {
-          font-size: 11.5px; color: rgba(255,255,255,0.25);
+          font-size: 11.5px; color: rgba(255,255,255,0.5);
           text-decoration: none; transition: color 0.15s;
         }
-        .footer-bar-link:hover { color: rgba(255,255,255,0.6); }
-        .footer-bar-sep { color: rgba(255,255,255,0.12); font-size: 11px; }
+        .footer-bar-link:hover { color: rgba(255,255,255,0.85); }
+        .footer-bar-sep { color: rgba(255,255,255,0.2); font-size: 11px; }
       `}</style>
     </footer>
   );

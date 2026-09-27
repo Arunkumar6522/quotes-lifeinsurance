@@ -324,7 +324,7 @@ export default function TestimonialsSection() {
               <h3>All Reviews</h3>
               <span className="review-count">{testimonials.length} reviews</span>
             </div>
-            <div className="list-scroll">
+            <div className="list-scroll" data-lenis-prevent>
               {testimonials.map((t, idx) => (
                 <button
                   key={t.id}

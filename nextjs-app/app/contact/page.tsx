@@ -4,6 +4,71 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { useModal } from "@/lib/modal";
 import { useLang } from "@/lib/i18n";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Script from "next/script";
+
+const fadeUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+});
+
+const faqs = [
+  {
+    q: "How much does life insurance cost in Canada?",
+    a: "Costs vary by age, health, and coverage. A healthy 30-year-old can get $500,000 in term life coverage for as low as $25–$40/month. We compare 20+ carriers to find your best rate — get a free quote to see your exact price.",
+  },
+  {
+    q: "What is the difference between term and whole life insurance?",
+    a: "Term life covers you for a set period (10, 20, or 30 years) and is the most affordable option. Whole life is permanent coverage that builds cash value over time but costs more. We'll help you decide which is right for your situation.",
+  },
+  {
+    q: "Is your advice really 100% free?",
+    a: "Yes — completely free. We are compensated by the insurance carrier only if you choose to take out a policy. You never pay us a fee, consultation charge, or commission directly.",
+  },
+  {
+    q: "How long does it take to get life insurance in Canada?",
+    a: "Many term life policies can be approved in as little as 24–72 hours for healthy applicants. Some policies require a medical exam which can take 2–4 weeks. We'll guide you through the fastest path for your situation.",
+  },
+  {
+    q: "Can I get life insurance if I have a pre-existing condition?",
+    a: "Yes, in most cases. Some carriers specialize in high-risk or simplified issue policies. Canada Protection Plan, for example, offers guaranteed life insurance with no medical questions. We'll match you with the right carrier.",
+  },
+  {
+    q: "Do you serve clients outside of Montreal?",
+    a: "Absolutely. While we are based in Montreal, we serve clients across all of Canada including Quebec, Ontario, British Columbia, Alberta, and more — all virtually and by phone.",
+  },
+  {
+    q: "What insurance companies do you work with?",
+    a: "We work with 20+ top Canadian carriers including Manulife, Desjardins, Foresters, iA Financial, Empire Life, Humania, Canada Protection Plan, Ivari, Assumption Life, UV Insurance, and Edge Benefits.",
+  },
+  {
+    q: "How do I get started?",
+    a: "Click 'Get My Free Quote' anywhere on this site, or call us at 514-662-0403. We'll have a quick conversation to understand your needs and present you with the best options from across our carrier network.",
+  },
+];
+
+function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      variants={fadeUp(index * 0.05)}
+      className={`faq-item ${open ? "faq-item--open" : ""}`}
+    >
+      <button className="faq-q" onClick={() => setOpen(!open)} aria-expanded={open}>
+        <span>{q}</span>
+        <span className="faq-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            {open
+              ? <line x1="5" y1="12" x2="19" y2="12" />
+              : <><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></>}
+          </svg>
+        </span>
+      </button>
+      {open && <div className="faq-a">{a}</div>}
+    </motion.div>
+  );
+}
 
 export default function ContactPage() {
   const { openModal } = useModal();
@@ -70,24 +135,44 @@ export default function ContactPage() {
               { label: t.home, href: "/" },
               { label: t.contact },
             ]} />
-
-            <h1 className="contact-h1">{t.contactHeroTitle}</h1>
-            <p className="contact-sub">
+            <motion.h1
+              className="contact-h1"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22,1,0.36,1] }}
+            >
+              {t.contactHeroTitle}
+            </motion.h1>
+            <motion.p
+              className="contact-sub"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08, ease: [0.22,1,0.36,1] }}
+            >
               {t.contactHeroSub}
-            </p>
-
-            {/* CTA — opens the same modal as homepage */}
-            <button onClick={openModal} className="contact-cta-btn">
-              {t.heroCta1}
-            </button>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.16, ease: [0.22,1,0.36,1] }}
+            >
+              <button onClick={openModal} className="contact-cta-btn">
+                {t.heroCta1}
+              </button>
+            </motion.div>
           </div>
         </section>
 
         {/* ── 4 Info Cards ─────────────────────────────── */}
         <section className="contact-cards-section">
-          <div className="container contact-cards-grid">
-            {infoCards.map((c) => (
-              <div key={c.title} className="contact-card">
+          <motion.div
+            className="container contact-cards-grid"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            {infoCards.map((c, i) => (
+              <motion.div key={c.title} variants={fadeUp(i * 0.08)} className="contact-card">
                 <div className="contact-card-icon">{c.icon}</div>
                 <h3 className="contact-card-title">{c.title}</h3>
                 <div className="contact-card-lines">
@@ -107,21 +192,33 @@ export default function ContactPage() {
                     <span>{c.boldNote}</span>
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* ── Map ──────────────────────────────────────── */}
         <section className="contact-map-section">
           <div className="container">
-            <div className="contact-map-header">
+            <motion.div
+              className="contact-map-header"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, ease: [0.22,1,0.36,1] }}
+            >
               <div>
                 <h2 className="contact-map-h2">{t.contactMapTitle}</h2>
                 <p className="contact-map-sub">DCW Financial Inc., 4900 Jean-Talon Ouest, Unit 200, Montréal, QC</p>
               </div>
-            </div>
-            <div className="contact-map-wrap">
+            </motion.div>
+            <motion.div
+              className="contact-map-wrap"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1, ease: [0.22,1,0.36,1] }}
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.6061254419405!2d-73.64843809999999!3d45.497875799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91928ed15a155%3A0x471b789683cbda83!2sDCW%20FINANCIAL%20INC.!5e0!3m2!1sen!2sin!4v1790217242050!5m2!1sen!2sin"
                 width="100%" height="400"
@@ -130,9 +227,69 @@ export default function ContactPage() {
                 referrerPolicy="strict-origin-when-cross-origin"
                 title="DCW Financial Inc. Office Location"
               />
-            </div>
+            </motion.div>
           </div>
         </section>
+
+        {/* ── FAQ ──────────────────────────────────────── */}
+        <section className="contact-faq-section">
+          <div className="container">
+            <motion.div
+              className="contact-faq-header"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+            >
+              <motion.span variants={fadeUp(0)} className="section-label">FAQ</motion.span>
+              <motion.h2 variants={fadeUp(0.06)} className="contact-faq-h2">
+                {lang === "fr" ? "Questions fréquentes" : "Frequently Asked Questions"}
+              </motion.h2>
+              <motion.p variants={fadeUp(0.1)} className="contact-faq-sub">
+                {lang === "fr"
+                  ? "Tout ce que vous devez savoir sur l'assurance vie au Canada."
+                  : "Everything you need to know about life insurance in Canada."}
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="faq-grid"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-40px" }}
+            >
+              {faqs.map((faq, i) => (
+                <FaqItem key={i} q={faq.q} a={faq.a} index={i} />
+              ))}
+            </motion.div>
+
+            {/* CTA below FAQs */}
+            <motion.div
+              className="contact-faq-cta"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.2, ease: [0.22,1,0.36,1] }}
+            >
+              <p>{lang === "fr" ? "Vous n'avez pas trouvé votre réponse ?" : "Didn't find your answer?"}</p>
+              <button onClick={openModal} className="contact-cta-btn">
+                {lang === "fr" ? "Parlez à un conseiller gratuit →" : "Talk to a Free Advisor →"}
+              </button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* JSON-LD FAQ Schema */}
+        <Script id="jsonld-faq" type="application/ld+json" strategy="beforeInteractive">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": ${JSON.stringify(faqs.map(f => ({
+              "@type": "Question",
+              "name": f.q,
+              "acceptedAnswer": { "@type": "Answer", "text": f.a }
+            })))}
+          }
+        `}</Script>
 
       </main>
       <Footer />
@@ -363,6 +520,120 @@ export default function ContactPage() {
           border-radius: 16px;
           overflow: hidden;
           box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        /* ── FAQ Section ── */
+        .contact-faq-section {
+          background: #fff;
+          padding: 80px 0;
+        }
+        .contact-faq-header {
+          text-align: center;
+          margin-bottom: 48px;
+        }
+        .contact-faq-h2 {
+          font-size: clamp(1.6rem, 3vw, 2.2rem);
+          font-weight: 800;
+          color: var(--dark);
+          margin: 10px 0 12px;
+          font-family: var(--font-sora), sans-serif;
+        }
+        .contact-faq-sub {
+          font-size: 16px;
+          color: var(--muted);
+          max-width: 500px;
+          margin: 0 auto;
+          line-height: 1.7;
+        }
+        .faq-grid {
+          max-width: 820px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .faq-item {
+          border: 1.5px solid var(--border);
+          border-radius: 14px;
+          overflow: hidden;
+          background: #fff;
+          transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .faq-item--open {
+          border-color: var(--green);
+          box-shadow: 0 4px 20px rgba(74,164,97,0.1);
+        }
+        .faq-q {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 20px 24px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 15px;
+          font-weight: 700;
+          color: var(--dark);
+          text-align: left;
+          font-family: inherit;
+          transition: background 0.15s;
+        }
+        .faq-q:hover {
+          background: var(--bg-soft);
+        }
+        .faq-item--open .faq-q {
+          color: var(--green);
+        }
+        .faq-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: rgba(74,164,97,0.1);
+          color: var(--green);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: background 0.2s;
+        }
+        .faq-item--open .faq-icon {
+          background: var(--green);
+          color: #fff;
+        }
+        .faq-a {
+          padding: 0 24px 20px;
+          font-size: 14px;
+          color: var(--muted);
+          line-height: 1.8;
+          border-top: 1px solid var(--border);
+          padding-top: 16px;
+          animation: faqOpen 0.25s ease-out;
+        }
+        @keyframes faqOpen {
+          from { opacity: 0; transform: translateY(-6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .contact-faq-cta {
+          text-align: center;
+          margin-top: 48px;
+          padding-top: 40px;
+          border-top: 1px solid var(--border);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+        .contact-faq-cta p {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--muted);
+        }
+        @media (max-width: 640px) {
+          .faq-q { padding: 16px 18px; font-size: 14px; }
+          .faq-a { padding: 0 18px 16px; padding-top: 14px; }
+          .contact-faq-section { padding: 56px 0; }
         }
       `}</style>
     </>

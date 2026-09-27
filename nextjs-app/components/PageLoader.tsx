@@ -12,13 +12,13 @@ export default function PageLoader() {
     if (pathname !== prevPath) {
       // New route — show fast loader
       setLoading(true);
-      setProgress(30);
-      const t1 = setTimeout(() => setProgress(70), 80);
-      const t2 = setTimeout(() => setProgress(95), 200);
+      setProgress(40);
+      const t1 = setTimeout(() => setProgress(80), 50);
+      const t2 = setTimeout(() => setProgress(95), 150);
       const t3 = setTimeout(() => {
         setProgress(100);
-        setTimeout(() => { setLoading(false); setProgress(0); }, 150);
-      }, 350);
+        setTimeout(() => { setLoading(false); setProgress(0); }, 100);
+      }, 250);
       setPrevPath(pathname);
       return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
     }
