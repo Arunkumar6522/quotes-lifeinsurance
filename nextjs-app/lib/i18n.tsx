@@ -275,44 +275,62 @@ export function LangProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      // Check browser language preference
+      // Check browser language preference first
       const browserLang = navigator.language.toLowerCase();
       if (browserLang.startsWith("fr")) {
-        // Browser is set to French
         setLangState("fr");
         setInitialized(true);
         return;
       }
 
-      // Try to detect location via IP geolocation
+      // Check timezone — reliable even through VPN
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const isQuebecTimezone =
+        timezone.includes("Toronto") ||
+        timezone.includes("Montreal") ||
+        timezone.includes("Eastern") ||
+        timezone.includes("America/New_York"); // eastern timezone covers QC
+
+      const isGermanyTimezone = timezone.includes("Berlin") || timezone.includes("Europe/Berlin");
+
+      if (isGermanyTimezone) {
+        setLangState("fr");
+        setInitialized(true);
+        return;
+      }
+
+      // Try IP geolocation as a second check
       try {
         const response = await fetch("https://ipapi.co/json/", {
-          signal: AbortSignal.timeout(3000) // 3 second timeout
+          signal: AbortSignal.timeout(4000)
         });
-        
+
         if (response.ok) {
           const data = await response.json();
 
           // Quebec, Canada → French
-          const isQuebec = 
-            data.region_code === "QC" || 
+          const isQuebecIP =
+            data.region_code === "QC" ||
             data.region?.toLowerCase().includes("quebec") ||
             data.region?.toLowerCase().includes("québec");
 
-          // Germany (Frankfurt etc.) → French
-          const isGermany = data.country_code === "DE";
+          // Germany → French
+          const isGermanyIP = data.country_code === "DE";
 
-          if (isQuebec || isGermany) {
+          if (isQuebecIP || isGermanyIP || isQuebecTimezone) {
             setLangState("fr");
           } else {
             setLangState("en");
           }
+        } else {
+          // API failed — fall back to timezone
+          setLangState(isQuebecTimezone ? "fr" : "en");
         }
       } catch {
-        // Geolocation failed, default to English
-        setLangState("en");
+        // Geolocation failed — fall back to timezone
+        setLangState(isQuebecTimezone ? "fr" : "en");
       }
-      
+
       setInitialized(true);
     };
 
