@@ -90,17 +90,6 @@ export default async function BlogPostPage(
 
               {/* ── Article body ─────────────────── */}
               <article>
-                {/* Featured image */}
-                {post.thumb && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={post.thumb} alt={post.title}
-                    style={{
-                      width: "100%", maxHeight: "420px",
-                      objectFit: "cover", borderRadius: "16px",
-                      marginBottom: "36px",
-                    }}
-                  />
-                )}
 
                 {/* Content from Blogger — suppressHydrationWarning prevents mismatch from browser extensions */}
                 <div
