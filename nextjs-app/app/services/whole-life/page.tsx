@@ -12,7 +12,7 @@ const data = {
   tagline: "Lifetime protection that never expires, with guaranteed growing cash value.",
   taglineFr: "Protection permanente qui n'expire jamais, avec une valeur de rachat garantie en croissance.",
   icon: "🏦",
-  color: "#4aa461",
+  color: "#00a759",
   description: "Whole life insurance provides permanent coverage that lasts your entire life, with premiums that never increase. A portion of each premium builds guaranteed cash value that grows tax-deferred. This cash value can be accessed during your lifetime through policy loans or withdrawals, making whole life both protection and a financial asset.",
   descriptionFr: "L'assurance vie entière offre une couverture permanente qui dure toute votre vie, avec des primes qui n'augmentent jamais. Une partie de chaque prime constitue une valeur de rachat garantie qui croît à l'abri de l'impôt. Cette valeur peut être accessible via des avances sur police pour toute raison.",
   highlights: [

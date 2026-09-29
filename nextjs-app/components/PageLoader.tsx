@@ -39,7 +39,7 @@ export default function PageLoader() {
         background: "linear-gradient(90deg, var(--green) 0%, #5bc970 100%)",
         transition: "width 0.15s cubic-bezier(0.22, 1, 0.36, 1)",
         borderRadius: "0 2px 2px 0",
-        boxShadow: "0 0 12px rgba(74,164,97,0.7)",
+        boxShadow: "0 0 12px rgba(0,167,89,0.7)",
       }} />
     </div>
   );

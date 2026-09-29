@@ -12,7 +12,7 @@ const data = {
   tagline: "A tax-free lump sum payment when you're diagnosed with a serious illness.",
   taglineFr: "Un versement forfaitaire non imposable lors du diagnostic d'une maladie grave.",
   icon: "🏥",
-  color: "#4aa461",
+  color: "#00a759",
   description: "Critical illness insurance pays you a tax-free lump sum if you're diagnosed with a covered serious illness such as cancer, heart attack, or stroke. CI gives you a single large payment to use however you need: medical costs, travel for treatment, paying off your mortgage, or maintaining your lifestyle while you recover.",
   descriptionFr: "L'assurance maladies graves vous verse un montant forfaitaire non imposable si vous êtes diagnostiqué avec une maladie grave couverte comme le cancer, une crise cardiaque ou un AVC. CI vous donne un paiement unique à utiliser comme vous le souhaitez : frais médicaux, déplacement pour traitement ou remboursement de votre hypothèque.",
   highlights: [

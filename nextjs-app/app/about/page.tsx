@@ -490,13 +490,13 @@ export default function AboutPage() {
         .ab-amf-block {
           display: flex; align-items: flex-start; gap: 14px;
           padding: 20px 22px; border-radius: 14px;
-          background: rgba(74,164,97,0.06);
-          border: 1px solid rgba(74,164,97,0.2);
+          background: rgba(0,167,89,0.06);
+          border: 1px solid rgba(0,167,89,0.2);
           margin: 24px 0;
         }
         .ab-amf-icon {
           width: 44px; height: 44px; border-radius: 12px;
-          background: rgba(74,164,97,0.15); color: var(--green);
+          background: rgba(0,167,89,0.15); color: var(--green);
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .ab-amf-content { flex: 1; }
@@ -535,7 +535,7 @@ export default function AboutPage() {
         }
         .ab-carriers-icon {
           width: 48px; height: 48px; border-radius: 12px;
-          background: rgba(74,164,97,0.12); color: var(--green);
+          background: rgba(0,167,89,0.12); color: var(--green);
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .ab-carriers-h3 { font-size: 18px; font-weight: 800; color: var(--dark); }
@@ -607,12 +607,12 @@ export default function AboutPage() {
         }
         .ab-service-card:hover {
           background: rgba(255,255,255,0.07);
-          border-color: rgba(74,164,97,0.35);
+          border-color: rgba(0,167,89,0.35);
           transform: translateY(-3px);
         }
         .ab-service-icon {
           width: 52px; height: 52px; border-radius: 14px;
-          background: rgba(74,164,97,0.15); color: var(--green);
+          background: rgba(0,167,89,0.15); color: var(--green);
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 18px;
         }
@@ -676,7 +676,7 @@ export default function AboutPage() {
         }
         .ab-info-icon {
           width: 52px; height: 52px; border-radius: 14px;
-          background: rgba(74,164,97,0.12); color: var(--green);
+          background: rgba(0,167,89,0.12); color: var(--green);
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 18px;
         }

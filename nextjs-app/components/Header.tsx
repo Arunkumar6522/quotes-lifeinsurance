@@ -296,7 +296,7 @@ export default function Header() {
           color: #374151; text-decoration: none; white-space: nowrap;
           transition: color 0.15s, background 0.15s; position: relative;
         }
-        .nav-link:hover { color: var(--green); background: rgba(74,164,97,0.07); }
+        .nav-link:hover { color: var(--green); background: rgba(0,167,89,0.07); }
         .nav-link--btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
 
         .dropdown-wrap { position: relative; }
@@ -341,7 +341,7 @@ export default function Header() {
           width: 32px;
           height: 32px;
           border-radius: 8px;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -350,7 +350,7 @@ export default function Header() {
           transition: background 0.15s;
         }
         .flat-service-item:hover { background: var(--bg-soft); color: var(--green); }
-        .flat-service-item:hover .flat-service-icon { background: rgba(74,164,97,0.18); }
+        .flat-service-item:hover .flat-service-icon { background: rgba(0,167,89,0.18); }
           align-items: center;
           gap: 8px;
           padding-bottom: 10px;
@@ -362,7 +362,7 @@ export default function Header() {
           width: 32px;
           height: 32px;
           border-radius: 8px;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -395,7 +395,7 @@ export default function Header() {
           transition: background 0.15s, color 0.15s;
         }
         .mega-item:hover {
-          background: rgba(74,164,97,0.08);
+          background: rgba(0,167,89,0.08);
           color: var(--green);
         }
         

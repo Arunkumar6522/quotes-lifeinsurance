@@ -12,7 +12,7 @@ const data = {
   tagline: "Permanent protection with flexible premiums and tax-sheltered growth.",
   taglineFr: "Protection permanente avec primes flexibles et croissance à l'abri de l'impôt.",
   icon: "📈",
-  color: "#4aa461",
+  color: "#00a759",
   description: "Universal life insurance combines permanent death benefit protection with a tax-advantaged investment account. It offers more flexibility than whole life: you can adjust your premiums and death benefit as your circumstances change.",
   descriptionFr: "L'assurance vie universelle combine une protection permanente avec un compte d'investissement avantageux sur le plan fiscal. Elle offre plus de flexibilité que la vie entière : vous pouvez ajuster vos primes et votre prestation de décès selon vos besoins.",
   highlights: [

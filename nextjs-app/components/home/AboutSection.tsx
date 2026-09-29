@@ -151,7 +151,7 @@ export default function AboutSection() {
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .about-pillar:hover {
-          border-color: rgba(74,164,97,0.35);
+          border-color: rgba(0,167,89,0.35);
           box-shadow: 0 4px 16px rgba(0,0,0,0.05);
           transform: translateX(4px);
         }
@@ -159,7 +159,7 @@ export default function AboutSection() {
           width: 40px;
           height: 40px;
           border-radius: 10px;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -168,7 +168,7 @@ export default function AboutSection() {
           transition: background 0.2s;
         }
         .about-pillar:hover .about-pillar-icon {
-          background: rgba(74,164,97,0.18);
+          background: rgba(0,167,89,0.18);
         }
         .about-pillar-text {
           font-size: 14px;
@@ -183,15 +183,15 @@ export default function AboutSection() {
           gap: 12px;
           padding: 16px 20px;
           border-radius: 12px;
-          background: rgba(74,164,97,0.05);
-          border: 1px solid rgba(74,164,97,0.2);
+          background: rgba(0,167,89,0.05);
+          border: 1px solid rgba(0,167,89,0.2);
           margin-top: 4px;
         }
         .about-amf-icon {
           width: 40px;
           height: 40px;
           border-radius: 10px;
-          background: rgba(74,164,97,0.12);
+          background: rgba(0,167,89,0.12);
           color: var(--green);
           display: flex;
           align-items: center;

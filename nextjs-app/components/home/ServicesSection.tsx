@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
 
-/* ── SVG icons ── */
+/* -- SVG icons -- */
 const IconTermLife = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>);
 const IconWholeLife = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>);
 const IconUniversalLife = () => (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></svg>);
@@ -54,12 +54,12 @@ export default function ServicesSection() {
       </div>
 
       <style>{`
-        /* ── Section background ── */
+        /* -- Section background -- */
         .services-section {
           background: var(--dark);
         }
 
-        /* ── Grid ── */
+        /* -- Grid -- */
         .services-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -83,14 +83,14 @@ export default function ServicesSection() {
           .services-grid { grid-template-columns: 1fr; }
         }
 
-        /* ── Card link reset ── */
+        /* -- Card link reset -- */
         .service-card-link {
           text-decoration: none;
           display: block;
           height: 100%;
         }
 
-        /* ── Card base ── */
+        /* -- Card base -- */
         .service-card {
           border-radius: 16px;
           padding: 28px 24px;
@@ -111,11 +111,11 @@ export default function ServicesSection() {
 
         /* Green accent card hover */
         .service-card--green:hover {
-          border-color: rgba(74,164,97,0.45);
+          border-color: rgba(0,167,89,0.45);
         }
-        /* Legacy plum class — now uses green */
+        /* Legacy plum class � now uses green */
         .service-card--plum:hover {
-          border-color: rgba(74,164,97,0.45);
+          border-color: rgba(0,167,89,0.45);
         }
 
         /* Subtle top-left glow dot on hover */
@@ -128,11 +128,11 @@ export default function ServicesSection() {
           opacity: 0;
           transition: opacity 0.3s;
         }
-        .service-card--green::before { background: rgba(74,164,97,0.12); }
-        .service-card--plum::before  { background: rgba(74,164,97,0.12); }
+        .service-card--green::before { background: rgba(0,167,89,0.12); }
+        .service-card--plum::before  { background: rgba(0,167,89,0.12); }
         .service-card:hover::before  { opacity: 1; }
 
-        /* ── Icon badge ── */
+        /* -- Icon badge -- */
         .service-icon {
           width: 52px;
           height: 52px;
@@ -144,15 +144,15 @@ export default function ServicesSection() {
           margin-bottom: 4px;
         }
         .service-icon--green {
-          background: rgba(74,164,97,0.15);
+          background: rgba(0,167,89,0.15);
           color: var(--green);
         }
         .service-icon--plum {
-          background: rgba(74,164,97,0.15);
+          background: rgba(0,167,89,0.15);
           color: var(--green);
         }
 
-        /* ── Tag pill ── */
+        /* -- Tag pill -- */
         .service-tag {
           display: inline-block;
           font-size: 10px;
@@ -164,15 +164,15 @@ export default function ServicesSection() {
           align-self: flex-start;
         }
         .service-tag--green {
-          background: rgba(74,164,97,0.15);
+          background: rgba(0,167,89,0.15);
           color: var(--green);
         }
         .service-tag--plum {
-          background: rgba(74,164,97,0.15);
+          background: rgba(0,167,89,0.15);
           color: var(--green);
         }
 
-        /* ── Title ── */
+        /* -- Title -- */
         .service-title {
           font-size: 15px;
           font-weight: 700;
@@ -184,7 +184,7 @@ export default function ServicesSection() {
         .service-card:hover .service-title { color: var(--green); }
         .service-card--plum:hover .service-title { color: var(--green); }
 
-        /* ── Description ── */
+        /* -- Description -- */
         .service-desc {
           font-size: 13px;
           color: rgba(255,255,255,0.48);
@@ -193,7 +193,7 @@ export default function ServicesSection() {
           margin: 0;
         }
 
-        /* ── CTA link ── */
+        /* -- CTA link -- */
         .service-cta {
           display: inline-flex;
           align-items: center;

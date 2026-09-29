@@ -57,7 +57,7 @@ export default async function BlogPostPage(
             </div>
             <div style={{ display: "flex", gap: "10px", marginBottom: "16px", flexWrap: "wrap" }}>
               <span style={{
-                fontSize: "11px", fontWeight: 700, background: "rgba(74,164,97,0.2)",
+                fontSize: "11px", fontWeight: 700, background: "rgba(0,167,89,0.2)",
                 color: "var(--green)", padding: "4px 12px", borderRadius: "20px",
               }}>
                 {post.category}

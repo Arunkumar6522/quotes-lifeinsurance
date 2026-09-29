@@ -350,11 +350,11 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         .sp-hero-icon {
           width: 68px; height: 68px;
           border-radius: 18px;
-          background: rgba(74,164,97,0.2);
+          background: rgba(0,167,89,0.2);
           color: var(--green);
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 24px;
-          border: 1px solid rgba(74,164,97,0.35);
+          border: 1px solid rgba(0,167,89,0.35);
           backdrop-filter: blur(8px);
         }
 
@@ -379,7 +379,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           padding: 15px 32px; border-radius: 50px;
           border: none; cursor: pointer; font-family: inherit;
           transition: background 0.2s, transform 0.2s;
-          box-shadow: 0 4px 24px rgba(74,164,97,0.4);
+          box-shadow: 0 4px 24px rgba(0,167,89,0.4);
         }
         .sp-hero-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
 
@@ -424,13 +424,13 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .sp-highlight-card:hover {
-          border-color: rgba(74,164,97,0.35);
+          border-color: rgba(0,167,89,0.35);
           box-shadow: 0 4px 16px rgba(0,0,0,0.06);
           transform: translateY(-2px);
         }
         .sp-highlight-icon {
           width: 38px; height: 38px; border-radius: 10px;
-          background: rgba(74,164,97,0.1); color: var(--green);
+          background: rgba(0,167,89,0.1); color: var(--green);
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 14px;
         }

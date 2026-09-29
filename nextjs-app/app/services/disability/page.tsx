@@ -12,7 +12,7 @@ const data = {
   tagline: "Your income is your most valuable asset. Protect it.",
   taglineFr: "Votre revenu est votre atout le plus précieux. Protégez-le.",
   icon: "🛡️",
-  color: "#4aa461",
+  color: "#00a759",
   description: "Disability insurance replaces a portion of your income, typically 60–70%, if illness or injury prevents you from working. Statistics show 1 in 3 Canadians will experience a disability lasting 90 days or more before age 65.",
   descriptionFr: "L'assurance invalidité remplace une partie de votre revenu, généralement 60 à 70%, si une maladie ou une blessure vous empêche de travailler. Les statistiques montrent qu'1 Canadien sur 3 connaîtra une invalidité de 90 jours ou plus avant l'âge de 65 ans.",
   highlights: [

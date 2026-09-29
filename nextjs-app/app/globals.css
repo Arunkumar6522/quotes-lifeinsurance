@@ -4,18 +4,18 @@
    DESIGN TOKENS
 ───────────────────────────────────────────────────────────── */
 :root {
-  --green:      #4aa461;
-  --green-dark: #3a8a4e;
-  --green-light:#e6f4ea;
+  --green:      #00a759;
+  --green-dark: #008e4c;
+  --green-light:#e0f7ee;
   /* Legacy plum aliases — now point to green */
-  --plum:       #4aa461;
-  --plum-dark:  #3a8a4e;
-  --plum-light: #e6f4ea;
+  --plum:       #00a759;
+  --plum-dark:  #008e4c;
+  --plum-light: #e0f7ee;
   --dark:       #0f1623;
   --dark-mid:   #1a2335;
   --body:       #4b5563;
   --muted:      #6b7280;
-  --bg-soft:    #f4f8f4;
+  --bg-soft:    #f0faf5;
   --border:     #e2e8f0;
   --white:      #ffffff;
 }
@@ -117,7 +117,7 @@ button { cursor: pointer; }
   background: var(--green-dark);
   border-color: var(--green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(74,164,97,0.35);
+  box-shadow: 0 8px 24px rgba(0,167,89,0.35);
 }
 
 .btn-plum {
@@ -139,7 +139,7 @@ button { cursor: pointer; }
   background: var(--green-dark);
   border-color: var(--green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(74,164,97,0.35);
+  box-shadow: 0 8px 24px rgba(0,167,89,0.35);
 }
 
 .btn-ghost {
@@ -391,8 +391,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
    PULSE GLOW  (used on CTA button / trust badges)
 ───────────────────────────────────────────────────────────── */
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(74,164,97,0.4); }
-  50%       { box-shadow: 0 0 0 12px rgba(74,164,97,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,167,89,0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(0,167,89,0); }
 }
 .pulse-green { animation: pulseGlow 2.4s ease-in-out infinite; }
 
@@ -716,7 +716,7 @@ a, button {
 ───────────────────────────────────────────────────────────── */
 .testimonials-section { padding: 80px 0; background: linear-gradient(180deg, #fff 0%, #f8faf9 100%); }
 .testimonials-section .header { text-align: center; margin-bottom: 48px; }
-.testimonials-section .badge { display: inline-block; padding: 6px 16px; background: rgba(74,164,97,0.1); color: var(--green); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 20px; margin-bottom: 16px; }
+.testimonials-section .badge { display: inline-block; padding: 6px 16px; background: rgba(0,167,89,0.1); color: var(--green); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 20px; margin-bottom: 16px; }
 .testimonials-section .header h2 { font-size: clamp(28px, 5vw, 38px); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
 .testimonials-section .header p { font-size: 16px; color: var(--muted); }
 .content-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: start; }
@@ -730,9 +730,9 @@ a, button {
 @keyframes ts-fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 14px; overflow: hidden; background: #0f1623; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-.video-quote-text { margin-top: 16px; padding: 16px 20px; background: linear-gradient(135deg, rgba(74,164,97,0.05) 0%, rgba(74,164,97,0.1) 100%); border-radius: 12px; border-left: 3px solid var(--green); }
+.video-quote-text { margin-top: 16px; padding: 16px 20px; background: linear-gradient(135deg, rgba(0,167,89,0.05) 0%, rgba(0,167,89,0.1) 100%); border-radius: 12px; border-left: 3px solid var(--green); }
 .video-quote-text p { font-size: 15px; line-height: 1.7; color: var(--body); font-style: italic; margin: 0; }
-.featured-quote { position: relative; padding: 40px 32px; min-height: 200px; display: flex; align-items: center; background: linear-gradient(135deg, rgba(74,164,97,0.03) 0%, rgba(74,164,97,0.08) 100%); border-radius: 14px; }
+.featured-quote { position: relative; padding: 40px 32px; min-height: 200px; display: flex; align-items: center; background: linear-gradient(135deg, rgba(0,167,89,0.03) 0%, rgba(0,167,89,0.08) 100%); border-radius: 14px; }
 .quote-icon { position: absolute; top: 20px; left: 20px; width: 56px; height: 56px; }
 .quote-text { font-size: 18px; line-height: 1.7; color: var(--dark); font-style: italic; position: relative; z-index: 1; }
 .author-row { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
@@ -742,7 +742,7 @@ a, button {
 .author-info h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
 .author-info p { font-size: 13px; color: var(--muted); }
 .author-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-.service-tag { padding: 4px 12px; background: rgba(74,164,97,0.1); color: var(--green); font-size: 11px; font-weight: 700; border-radius: 12px; }
+.service-tag { padding: 4px 12px; background: rgba(0,167,89,0.1); color: var(--green); font-size: 11px; font-weight: 700; border-radius: 12px; }
 .stars { display: flex; gap: 2px; }
 .pagination-bar { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
 .pagination-text { font-size: 13px; font-weight: 600; color: var(--muted); }
@@ -754,15 +754,15 @@ a, button {
 .testimonials-list { background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid var(--border); display: flex; flex-direction: column; }
 .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
 .list-header h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin: 0; }
-.review-count { font-size: 12px; font-weight: 600; color: var(--green); background: rgba(74,164,97,0.1); padding: 4px 10px; border-radius: 12px; }
+.review-count { font-size: 12px; font-weight: 600; color: var(--green); background: rgba(0,167,89,0.1); padding: 4px 10px; border-radius: 12px; }
 .list-scroll { max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
 .list-scroll::-webkit-scrollbar { width: 6px; }
 .list-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
 .list-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
 .list-scroll::-webkit-scrollbar-thumb:hover { background: #aaa; }
 .list-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: #f8f9fb; border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: all 0.2s; text-align: left; width: 100%; }
-.list-card:hover { background: #f0f4f2; border-color: rgba(74,164,97,0.3); }
-.list-card--active { background: rgba(74,164,97,0.08); border-color: var(--green); }
+.list-card:hover { background: #f0f4f2; border-color: rgba(0,167,89,0.3); }
+.list-card--active { background: rgba(0,167,89,0.08); border-color: var(--green); }
 .list-card-content { flex: 1; min-width: 0; }
 .list-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
 .list-card-header h5 { font-size: 14px; font-weight: 700; color: var(--dark); margin: 0; }

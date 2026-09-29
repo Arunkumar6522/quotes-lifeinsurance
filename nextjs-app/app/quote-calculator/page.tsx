@@ -553,7 +553,7 @@ export default function QuoteCalculatorPage() {
           border-radius: 50%;
           background: var(--green);
           border: 3px solid #fff;
-          box-shadow: 0 2px 8px rgba(74,164,97,0.4);
+          box-shadow: 0 2px 8px rgba(0,167,89,0.4);
           cursor: pointer;
           transition: transform 0.15s;
         }
@@ -566,7 +566,7 @@ export default function QuoteCalculatorPage() {
           border-radius: 50%;
           background: var(--green);
           border: 3px solid #fff;
-          box-shadow: 0 2px 8px rgba(74,164,97,0.4);
+          box-shadow: 0 2px 8px rgba(0,167,89,0.4);
           cursor: pointer;
         }
         .calc-slider-labels {
@@ -595,7 +595,7 @@ export default function QuoteCalculatorPage() {
         .calc-input:focus {
           outline: none;
           border-color: var(--green);
-          box-shadow: 0 0 0 3px rgba(74,164,97,0.15);
+          box-shadow: 0 0 0 3px rgba(0,167,89,0.15);
         }
 
         /* Compact Radio Buttons for Gender/Tobacco */
@@ -622,7 +622,7 @@ export default function QuoteCalculatorPage() {
           display: none;
         }
         .calc-radio-compact.active {
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           border-color: var(--green);
           color: var(--green);
         }
@@ -655,7 +655,7 @@ export default function QuoteCalculatorPage() {
           display: none;
         }
         .calc-radio-btn.active {
-          background: rgba(74,164,97,0.08);
+          background: rgba(0,167,89,0.08);
           border-color: var(--green);
           color: var(--green);
         }
@@ -690,7 +690,7 @@ export default function QuoteCalculatorPage() {
         }
         .calc-submit:hover:not(.disabled) {
           transform: translateY(-2px);
-          box-shadow: 0 6px 24px rgba(74,164,97,0.35);
+          box-shadow: 0 6px 24px rgba(0,167,89,0.35);
         }
         .calc-submit.disabled {
           opacity: 0.5;
@@ -721,7 +721,7 @@ export default function QuoteCalculatorPage() {
           width: 64px;
           height: 64px;
           border-radius: 50%;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -848,7 +848,7 @@ export default function QuoteCalculatorPage() {
         }
         .calc-cta-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 24px rgba(74,164,97,0.35);
+          box-shadow: 0 6px 24px rgba(0,167,89,0.35);
         }
         .calc-cta-secondary {
           width: 100%;
@@ -900,7 +900,7 @@ export default function QuoteCalculatorPage() {
           width: 52px;
           height: 52px;
           border-radius: 14px;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;

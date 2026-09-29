@@ -139,7 +139,7 @@ export default function Footer() {
           border-radius: 50px; padding: 5px 12px;
           text-decoration: none; transition: color 0.15s, background 0.15s;
         }
-        .footer-chip:hover { color: var(--green); background: rgba(74,164,97,0.12); border-color: rgba(74,164,97,0.25); }
+        .footer-chip:hover { color: var(--green); background: rgba(0,167,89,0.12); border-color: rgba(0,167,89,0.25); }
         .footer-amf {
           font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.5;
         }

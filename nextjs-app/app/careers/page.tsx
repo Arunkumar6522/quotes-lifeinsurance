@@ -399,7 +399,7 @@ export default function CareersPage() {
           background: var(--green); color: #fff !important; font-weight: 800; font-size: 14px;
           padding: 14px 28px; border-radius: 50px; text-decoration: none;
           transition: background 0.2s, transform 0.2s;
-          box-shadow: 0 4px 20px rgba(74,164,97,0.3);
+          box-shadow: 0 4px 20px rgba(0,167,89,0.3);
         }
         .careers-btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
         .careers-btn-ghost {
@@ -438,7 +438,7 @@ export default function CareersPage() {
         }
         .careers-hero-bg {
           position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(135deg, rgba(15,22,35,0.88) 0%, rgba(74,164,97,0.75) 100%);
+          background: linear-gradient(135deg, rgba(15,22,35,0.88) 0%, rgba(0,167,89,0.75) 100%);
           z-index: 0;
         }
         .careers-hero-content { position: relative; z-index: 1; }
@@ -479,7 +479,7 @@ export default function CareersPage() {
           width: 64px;
           height: 64px;
           border-radius: 16px;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -525,9 +525,9 @@ export default function CareersPage() {
           flex-direction: column;
         }
         .job-card:hover {
-          box-shadow: 0 12px 40px rgba(74,164,97,0.15);
+          box-shadow: 0 12px 40px rgba(0,167,89,0.15);
           transform: translateY(-6px);
-          border-color: rgba(74,164,97,0.3);
+          border-color: rgba(0,167,89,0.3);
         }
         .job-card--closed {
           opacity: 0.75;
@@ -553,7 +553,7 @@ export default function CareersPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 12px rgba(74,164,97,0.3);
+          box-shadow: 0 4px 12px rgba(0,167,89,0.3);
         }
         .job-badges {
           display: flex;
@@ -568,9 +568,9 @@ export default function CareersPage() {
           letter-spacing: 0.5px;
         }
         .job-status--open {
-          background: linear-gradient(135deg, rgba(74,164,97,0.15) 0%, rgba(74,164,97,0.08) 100%);
+          background: linear-gradient(135deg, rgba(0,167,89,0.15) 0%, rgba(0,167,89,0.08) 100%);
           color: var(--green);
-          border: 1px solid rgba(74,164,97,0.2);
+          border: 1px solid rgba(0,167,89,0.2);
         }
         .job-status--closed {
           background: rgba(239, 68, 68, 0.1);
@@ -634,7 +634,7 @@ export default function CareersPage() {
           border-radius: 12px;
           padding: 16px 18px;
           margin: 0 24px 20px;
-          border: 1px solid rgba(74,164,97,0.1);
+          border: 1px solid rgba(0,167,89,0.1);
         }
         .job-qual-header {
           display: flex;
@@ -680,12 +680,12 @@ export default function CareersPage() {
           border-radius: 12px;
           cursor: pointer;
           transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-          box-shadow: 0 4px 14px rgba(74,164,97,0.25);
+          box-shadow: 0 4px 14px rgba(0,167,89,0.25);
         }
         .apply-btn:hover {
           background: linear-gradient(135deg, var(--green-dark) 0%, #2d8049 100%);
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(74,164,97,0.35);
+          box-shadow: 0 6px 20px rgba(0,167,89,0.35);
         }
         .apply-btn svg {
           transition: transform 0.2s;

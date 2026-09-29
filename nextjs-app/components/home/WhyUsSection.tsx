@@ -1,8 +1,8 @@
-﻿"use client";
+"use client";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
 
-/* ── SVG Icons — green stroke, brand style ── */
+/* -- SVG Icons � green stroke, brand style -- */
 const IconFree = () => (
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <line x1="12" y1="1" x2="12" y2="23" />
@@ -67,7 +67,7 @@ export default function WhyUsSection() {
     <section className="section-padding why-section">
       <div className="container">
 
-        {/* Heading — left aligned */}
+        {/* Heading � left aligned */}
         <Animate style={{ maxWidth: "580px", marginBottom: "52px" }}>
           <span className="section-label">{t.whyLabel}</span>
           <h2 className="why-heading">
@@ -120,7 +120,7 @@ export default function WhyUsSection() {
           .why-grid { grid-template-columns: 1fr; }
         }
 
-        /* Card — uniform white, no purple alternating bg */
+        /* Card � uniform white, no purple alternating bg */
         .why-card {
           background: #fff;
           border: 1px solid #e8eaed;
@@ -135,15 +135,15 @@ export default function WhyUsSection() {
         .why-card:hover {
           box-shadow: 0 8px 28px rgba(0,0,0,0.07);
           transform: translateY(-4px);
-          border-color: rgba(74,164,97,0.35);
+          border-color: rgba(0,167,89,0.35);
         }
 
-        /* Icon badge — green */
+        /* Icon badge � green */
         .why-icon {
           width: 52px;
           height: 52px;
           border-radius: 14px;
-          background: rgba(74,164,97,0.1);
+          background: rgba(0,167,89,0.1);
           color: var(--green);
           display: flex;
           align-items: center;
@@ -152,7 +152,7 @@ export default function WhyUsSection() {
           transition: background 0.25s;
         }
         .why-card:hover .why-icon {
-          background: rgba(74,164,97,0.18);
+          background: rgba(0,167,89,0.18);
         }
 
         /* Title */

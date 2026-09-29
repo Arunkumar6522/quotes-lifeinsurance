@@ -12,7 +12,7 @@ const data = {
   tagline: "Maximum coverage at the lowest cost. Simple, straightforward protection.",
   taglineFr: "Couverture maximale au coût le plus bas. Protection simple et directe.",
   icon: "📋",
-  color: "#4aa461",
+  color: "#00a759",
   description: "Term life insurance provides pure death benefit coverage for a fixed period, typically 10, 20, or 30 years. If you pass away during the term, your beneficiaries receive the tax-free death benefit. It's the simplest, most cost-effective form of life insurance and is ideal for families who need large coverage amounts at low premiums.",
   descriptionFr: "L'assurance vie temporaire offre une couverture pure pour une période fixe, généralement 10, 20 ou 30 ans. Si vous décédez pendant le terme, vos bénéficiaires reçoivent la prestation de décès en franchise d'impôt. C'est la forme d'assurance vie la plus simple et la plus rentable.",
   highlights: [
