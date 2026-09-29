@@ -17,7 +17,8 @@ const logos = [
   { file: "uv insurance.png",      name: "UV Insurance" },
 ];
 
-const allLogos = [...logos, ...logos, ...logos, ...logos, ...logos];
+// 2 copies — with width:max-content, -50% = exactly 1 set of 11 logos → perfect seamless loop
+const allLogos = [...logos, ...logos];
 
 export default function PartnersSection() {
   const { t } = useLang();
@@ -36,7 +37,7 @@ export default function PartnersSection() {
         WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
         maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
       }}>
-        <div className="marquee-track" style={{ gap: "16px" }}>
+        <div className="marquee-track">
           {allLogos.map((logo, i) => (
             <div key={`${logo.name}-${i}`} style={{
               flexShrink: 0, width: "156px", height: "80px", padding: "14px 18px",

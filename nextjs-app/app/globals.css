@@ -203,8 +203,9 @@ button { cursor: pointer; }
 }
 .marquee-track {
   display: flex;
+  width: max-content; /* Critical: -50% calculates from track's own width, not parent */
   gap: 16px;
-  animation: marqueeLeft 10s linear infinite;
+  animation: marqueeLeft 15s linear infinite;
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -212,7 +213,7 @@ button { cursor: pointer; }
 /* Faster on mobile */
 @media (max-width: 768px) {
   .marquee-track {
-    animation: marqueeLeft 6s linear infinite;
+    animation: marqueeLeft 10s linear infinite;
   }
 }
 /* No hover pause — continuous loop */
@@ -657,9 +658,9 @@ img[loading="lazy"] {
   .btn-primary, .btn-outline, .btn-plum, .btn-ghost {
     transition: none !important;
   }
-  * {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+  /* Pause marquees instead of making them super fast */
+  .marquee-track, .reviews-track {
+    animation-play-state: paused !important;
   }
 }
 

@@ -192,7 +192,7 @@ export default function TestimonialsSection() {
     }
 
     // Always refresh in background
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbwzoJbeZvpRY3_pVNgjgDuLqBSsJ9GVuu5MdVTvtne2vIpVyX8YBPWFg23aQ0mhKPFqkg/exec";
+    const sheetUrl = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL!;
     fetch(sheetUrl)
       .then(res => res.json())
       .then(data => {

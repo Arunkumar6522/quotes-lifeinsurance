@@ -88,11 +88,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* iPhone Dynamic Island + Samsung Fold viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        {/* Preconnect to QuestionScout for faster form loading */}
+        {/* Preconnect to external services */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://form.questionscout.com" />
         <link rel="preconnect" href="https://cdn.questionscout.com" />
         <link rel="dns-prefetch" href="https://form.questionscout.com" />
-        <link rel="dns-prefetch" href="https://cdn.questionscout.com" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        {/* Preload hero background image for LCP */}
+        <link rel="preload" as="image" href="/hero-img.png" />
         {/* JSON-LD Structured Data — for Google, LLMs & AI search */}
         <Script id="jsonld-org" type="application/ld+json" strategy="afterInteractive">{`
         {
@@ -221,16 +226,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ]
         }
       `}</Script>
-      {/* Google Analytics 4 — G-0RZQ0JT92X */}
+      {/* Google Analytics 4 — loaded after page is fully interactive */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-0RZQ0JT92X"
-        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        strategy="lazyOnload"
       />
-      <Script id="ga4-init" strategy="afterInteractive">{`
+      <Script id="ga4-init" strategy="lazyOnload">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-0RZQ0JT92X', { page_path: window.location.pathname });
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { page_path: window.location.pathname });
       `}</Script>
       </head>
       <body style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>

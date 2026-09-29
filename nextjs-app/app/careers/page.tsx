@@ -93,7 +93,9 @@ export default function CareersPage() {
     }
 
     // 2. Always fetch fresh data in background
-    fetch("https://script.google.com/macros/s/AKfycbwzoJbeZvpRY3_pVNgjgDuLqBSsJ9GVuu5MdVTvtne2vIpVyX8YBPWFg23aQ0mhKPFqkg/exec?action=getJobs")
+    const appsScriptUrl = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
+    if (!appsScriptUrl) { if (!cached) setJobs(fallbackJobs); setLoading(false); return; }
+    fetch(`${appsScriptUrl}?action=getJobs`)
       .then((res) => res.json())
       .then((data) => {
         const fresh = data.success && data.data.length > 0 ? data.data : fallbackJobs;
