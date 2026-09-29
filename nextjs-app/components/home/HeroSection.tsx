@@ -29,8 +29,8 @@ export default function HeroSection() {
             {/* Heading */}
             <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
               {t.heroH1a}<br />
-              <span style={{ color: "var(--green)" }}>{t.heroH1b}</span><br />
-              <span className="hero-h1-sub">{t.heroH1c}</span>
+              <span style={{ color: "var(--green)" }}>{t.heroH1b}</span>
+              {t.heroH1c && <><br /><span className="hero-h1-sub">{t.heroH1c}</span></>}
             </motion.h1>
 
             {/* Sub */}
