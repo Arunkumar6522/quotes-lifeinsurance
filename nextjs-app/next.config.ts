@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // ── Images — optimization re-enabled (Netlify supports Next.js image optimization)
   images: {
+    unoptimized: true, // Required for Cloudflare Workers (no image processing server)
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000, // 1 year cache
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
