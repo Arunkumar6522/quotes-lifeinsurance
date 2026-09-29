@@ -198,8 +198,8 @@ button { cursor: pointer; }
    CONTINUOUS MARQUEES
 ───────────────────────────────────────────────────────────── */
 @keyframes marqueeLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 .marquee-track {
   display: flex;
@@ -209,11 +209,19 @@ button { cursor: pointer; }
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  transform: translateZ(0); /* Force GPU layer */
 }
 /* Faster on mobile */
 @media (max-width: 768px) {
   .marquee-track {
     animation: marqueeLeft 10s linear infinite;
+  }
+}
+/* Reduced motion — keep running but slower, never stop */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-duration: 40s !important;
+    animation-play-state: running !important;
   }
 }
 /* No hover pause — continuous loop */
@@ -657,10 +665,6 @@ img[loading="lazy"] {
   }
   .btn-primary, .btn-outline, .btn-plum, .btn-ghost {
     transition: none !important;
-  }
-  /* Pause marquees instead of making them super fast */
-  .marquee-track, .reviews-track {
-    animation-play-state: paused !important;
   }
 }
 
