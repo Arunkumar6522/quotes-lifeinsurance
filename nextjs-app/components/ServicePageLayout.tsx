@@ -22,6 +22,9 @@ export interface ServicePageProps {
   bestForFr?: string[];
   faqs: { q: string; a: string }[];
   faqsFr?: { q: string; a: string }[];
+  videoId?: string; // optional YouTube video in main content (after description)
+  sidebarVideoId?: string; // optional YouTube video in sidebar (Whole Life)
+  heroVideoId?: string; // optional YouTube video in hero section right side (Universal Life)
 }
 
 /* ── Per-service SVG icons ─────────────────────────────── */
@@ -156,15 +159,30 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
               </nav>
             </div>
 
-            {/* Hero content */}
-            <div className="sp-hero-body">
-              <h1 className="sp-hero-h1">{displayTitle}</h1>
-              <p className="sp-hero-tagline">{displayTagline}</p>
-              <div className="sp-hero-actions">
-                <button onClick={handleQuoteClick} className="sp-hero-cta">
-                  {t.spGetFreeQuote}
-                </button>
+            {/* Hero content — two column if heroVideoId */}
+            <div className={data.heroVideoId ? "sp-hero-two-col" : ""}>
+              <div className="sp-hero-body">
+                <h1 className="sp-hero-h1">{displayTitle}</h1>
+                <p className="sp-hero-tagline">{displayTagline}</p>
+                <div className="sp-hero-actions">
+                  <button onClick={handleQuoteClick} className="sp-hero-cta">
+                    {t.spGetFreeQuote}
+                  </button>
+                </div>
               </div>
+
+              {/* Hero video — right side */}
+              {data.heroVideoId && (
+                <div className="sp-hero-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${data.heroVideoId}?rel=0&modestbranding=1`}
+                    title={`${displayTitle} video`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -179,6 +197,19 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
                 {/* Overview */}
                 <p className="sp-overview">{displayDescription}</p>
+
+                {/* Video below description — Term Life */}
+                {data.videoId && (
+                  <div className="sp-video-wrap">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${data.videoId}?rel=0&modestbranding=1`}
+                      title={`${displayTitle} video`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                  </div>
+                )}
 
                 {/* Highlights */}
                 <div className="sp-highlights">
@@ -233,6 +264,19 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
               {/* ── Right sidebar ────────────────────── */}
               <aside className="sp-sidebar" style={{ position: "sticky", top: "90px", alignSelf: "start" }}>
+
+                {/* Video at top of sidebar — Whole Life only */}
+                {data.sidebarVideoId && (
+                  <div className="sp-video-wrap" style={{ marginBottom: "16px" }}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${data.sidebarVideoId}?rel=0&modestbranding=1`}
+                      title={`${displayTitle} video`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                  </div>
+                )}
 
                 {/* Quote CTA card */}
                 <div className="sp-cta-card">
@@ -346,6 +390,33 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
 
         .sp-hero-body { max-width: 640px; }
 
+        /* Two-column hero (for heroVideoId pages) */
+        .sp-hero-two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          align-items: center;
+        }
+        .sp-hero-two-col .sp-hero-body { max-width: 100%; }
+        .sp-hero-video {
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          border-radius: 16px;
+          overflow: hidden;
+          background: #0f1623;
+          box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+        .sp-hero-video iframe {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          border: none;
+        }
+        @media (max-width: 768px) {
+          .sp-hero-two-col { grid-template-columns: 1fr; }
+        }
+
         /* Clean square icon badge — no emoji */
         .sp-hero-icon {
           width: 68px; height: 68px;
@@ -399,9 +470,27 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         /* ── Left content ── */
         .sp-overview {
           font-size: 16px; color: var(--body);
-          line-height: 1.85; margin-bottom: 52px;
-          padding-bottom: 52px;
+          line-height: 1.85; margin-bottom: 32px;
+          padding-bottom: 32px;
           border-bottom: 1px solid var(--border);
+        }
+
+        /* ── Video embed ── */
+        .sp-video-wrap {
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          border-radius: 16px;
+          overflow: hidden;
+          background: #0f1623;
+          margin-bottom: 48px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+        .sp-video-wrap iframe {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          border: none;
         }
         .sp-section-h2 {
           font-size: 1.25rem; font-weight: 800;

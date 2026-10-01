@@ -11,6 +11,7 @@ const data = {
   titleFr: "Assurance vie temporaire",
   tagline: "Maximum coverage at the lowest cost. Simple, straightforward protection.",
   taglineFr: "Couverture maximale au coût le plus bas. Protection simple et directe.",
+  videoId: "1zdZoK6fj_4",
   icon: "📋",
   color: "#00a759",
   description: "Term life insurance provides pure death benefit coverage for a fixed period, typically 10, 20, or 30 years. If you pass away during the term, your beneficiaries receive the tax-free death benefit. It's the simplest, most cost-effective form of life insurance and is ideal for families who need large coverage amounts at low premiums.",
@@ -24,8 +25,8 @@ const data = {
   highlightsFr: [
     { heading: "Couverture abordable", text: "L'assurance temporaire est le moyen le plus rentable d'obtenir une couverture importante. Un adulte en bonne santé de 35 ans peut obtenir 500 000 $ pour moins de 30 $/mois." },
     { heading: "Choisissez votre durée", text: "Choisissez une durée adaptée à vos besoins : 10, 15, 20, 25 ou 30 ans. La plupart des familles alignent la durée avec leur hypothèque." },
-    { heading: "Convertible en police permanente", text: "La plupart des polices temporaires peuvent être converties en vie entière ou universelle sans nouvel examen médical." },
-    { heading: "Primes nivelées", text: "Votre prime reste la même pendant toute la durée. Aucune surprise, aucune augmentation. Bloquez votre taux quand vous êtes jeune et en bonne santé." },
+    { heading: "Convertible en assurance vie permanente", text: "La plupart des polices d'assurance vie temporaire peuvent être converties en assurance vie permanente, comme une assurance vie entière ou universelle, sans nouvel examen médical." },
+    { heading: "Primes nivelées", text: "Votre prime reste la même pendant toute la durée de la police. Aucune surprise, aucune augmentation. Verrouillez votre taux lorsque vous êtes jeune et en bonne santé." },
   ],
   bestFor: [
     "Young families with mortgages and children",
@@ -38,7 +39,7 @@ const data = {
     "Jeunes familles avec hypothèques et enfants",
     "Toute personne remplaçant un revenu pour des dépendants",
     "Propriétaires d'entreprise nécessitant une couverture personne clé",
-    "Ceux qui veulent une couverture maximale au coût minimal",
+    "Personnes souhaitant une couverture maximale à moindre coût",
     "Personnes avec des obligations financières temporaires",
   ],
   faqs: [
@@ -52,7 +53,7 @@ const data = {
     { q: "Que se passe-t-il à l'expiration de mon terme ?", a: "Vous pouvez renouveler annuellement à un taux plus élevé, convertir en assurance permanente, ou laisser la police expirer." },
     { q: "De combien d'assurance temporaire ai-je besoin ?", a: "Une règle courante est 10 à 15 fois votre revenu annuel, plus les dettes en cours. Nous vous aiderons à calculer le bon montant." },
     { q: "Puis-je obtenir une assurance temporaire sans examen médical ?", a: "Oui. Certains assureurs comme Canada Protection Plan offrent des polices sans examen médical." },
-    { q: "L'assurance temporaire est-elle meilleure que la vie entière ?", a: "Cela dépend de vos objectifs. Le temporaire est mieux pour les besoins temporaires et la couverture maximale." },
+    { q: "L'assurance vie temporaire est-elle meilleure que l'assurance vie entière ?", a: "Cela dépend de vos objectifs et de votre situation. L'assurance vie temporaire peut être particulièrement adaptée aux besoins de protection pour une période déterminée et aux personnes qui recherchent une couverture importante à moindre coût." },
     { q: "Avec quelles compagnies d'assurance travaillez-vous ?", a: "Nous comparons Manuvie, Desjardins, iA Financière, Foresters, Canada Protection Plan, Empire Vie, Humania et plus." },
   ],
 };

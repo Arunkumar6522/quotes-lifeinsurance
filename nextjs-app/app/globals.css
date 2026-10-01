@@ -948,3 +948,35 @@ textarea,
 [contenteditable="true"] {
   cursor: text !important;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   PERFORMANCE — content-visibility for below-fold sections
+───────────────────────────────────────────────────────────── */
+.about-section,
+.services-section,
+.testimonials-section,
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* ── Skip navigation link (keyboard accessibility) ── */
+.skip-nav {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  z-index: 99999;
+  background: var(--green);
+  color: #fff !important;
+  padding: 8px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s ease;
+}
+.skip-nav:focus {
+  top: 0;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}

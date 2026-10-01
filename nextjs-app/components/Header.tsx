@@ -79,23 +79,20 @@ export default function Header() {
               </svg>
               info@quotes-lifeinsurance.com
             </a>
-            <span className="topbar-link topbar-hide-md">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              4900 Jean-Talon Ouest, Unit 200, Montréal, QC
-            </span>
           </div>
           <div className="topbar-right">
             {/* Language toggle switch */}
-            <div className="lang-toggle" onClick={() => setLang(lang === "en" ? "fr" : "en")}>
+            <button
+              className="lang-toggle"
+              onClick={() => setLang(lang === "en" ? "fr" : "en")}
+              aria-label={`Switch language to ${lang === "en" ? "French" : "English"}`}
+            >
               <span className={`lang-toggle-label${lang === "en" ? " lang-toggle-label--active" : ""}`}>EN</span>
               <div className="lang-toggle-track">
                 <div className={`lang-toggle-thumb${lang === "fr" ? " lang-toggle-thumb--right" : ""}`} />
               </div>
               <span className={`lang-toggle-label${lang === "fr" ? " lang-toggle-label--active" : ""}`}>FR</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -125,6 +122,9 @@ export default function Header() {
               <button 
                 className="nav-link nav-link--btn"
                 onClick={() => setServicesOpen(!servicesOpen)}
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+                aria-label={`${t.services} menu`}
               >
                 {t.services}
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
@@ -169,7 +169,7 @@ export default function Header() {
           </div>
 
           {/* Hamburger */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-btn" aria-label="Toggle menu">
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-btn" aria-label="Toggle menu" aria-expanded={mobileOpen}>
             {[0, 1, 2].map((i) => (
               <span key={i} style={{
                 display: "block", width: "22px", height: "2px",

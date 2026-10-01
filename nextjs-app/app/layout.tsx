@@ -67,6 +67,7 @@ export const metadata: Metadata = {
     title: "Quotes Life Insurance | Free Life Insurance Quotes in Canada",
     description:
       "Compare 20+ top Canadian life insurance carriers. Free quotes, no fees, expert advice from AMF licensed brokers.",
+    images: ["https://quotes-lifeinsurance.com/og-image.png"],
   },
   alternates: {
     canonical: "https://quotes-lifeinsurance.com",
@@ -88,16 +89,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* iPhone Dynamic Island + Samsung Fold viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#00a759" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        {/* Google Search Console verification — add GSC_VERIFICATION to env */}
+        {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
+          <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSC_VERIFICATION} />
+        )}
         {/* Preconnect to external services */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://form.questionscout.com" />
         <link rel="preconnect" href="https://cdn.questionscout.com" />
         <link rel="dns-prefetch" href="https://form.questionscout.com" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
-        {/* Preload hero background image for LCP */}
-        <link rel="preload" as="image" href="/hero-img.png" />
         {/* JSON-LD Structured Data — for Google, LLMs & AI search */}
         <Script id="jsonld-org" type="application/ld+json" strategy="afterInteractive">{`
         {
@@ -238,7 +243,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { page_path: window.location.pathname });
       `}</Script>
       </head>
-      <body style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
+      <body suppressHydrationWarning style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
         <LangProvider>
           <ModalProvider>
             <PageLoader />
