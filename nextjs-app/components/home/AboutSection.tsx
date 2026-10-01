@@ -126,10 +126,12 @@ export default function AboutSection() {
           margin: 8px 0 18px;
         }
         .about-p {
-          font-size: 15px;
+          font-size: 16px;
           color: var(--body);
-          line-height: 1.8;
-          margin-bottom: 14px;
+          line-height: 1.85;
+          margin-bottom: 18px;
+          max-width: 540px;
+          letter-spacing: 0.01em;
         }
 
         /* ── Right col ── */
