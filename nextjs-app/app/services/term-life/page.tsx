@@ -2,8 +2,8 @@ import ServicePageLayout from "@/components/ServicePageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Term Life Insurance in Canada | Quotes Life Insurance",
-  description: "Compare term life insurance from 20+ Canadian carriers. Get the best rates for 10, 20, or 30-year term coverage. AMF licensed brokers.",
+  title: "Term Life Insurance Canada | Free Quotes | Quotes Life Insurance",
+  description: "Compare term life insurance quotes from 20+ top Canadian carriers. Best rates for 10, 20, or 30-year coverage. No fees, AMF licensed brokers in Montreal, Quebec.",
 };
 
 const data = {

@@ -2,8 +2,8 @@ import ServicePageLayout from "@/components/ServicePageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Whole Life Insurance in Canada | Quotes Life Insurance",
-  description: "Lifetime coverage with guaranteed cash value growth. Compare whole life quotes from 20+ carriers. AMF licensed brokers.",
+  title: "Whole Life Insurance Canada | Permanent Coverage | Quotes Life Insurance",
+  description: "Whole life insurance with guaranteed cash value growth. Compare quotes from 20+ Canadian carriers. Permanent coverage for families in Montreal and Quebec.",
 };
 
 const data = {

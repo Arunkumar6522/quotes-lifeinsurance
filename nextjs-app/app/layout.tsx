@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Get free life insurance quotes from 20+ top Canadian carriers. DCW Financial Inc. compares Manulife, Desjardins, Foresters & more to find you the best coverage at the lowest rate. AMF Licensed #179631. Serving Montreal, Quebec & all of Canada.",
   keywords:
-    "life insurance Canada, free life insurance quotes Canada, best life insurance Canada, term life insurance Canada, whole life insurance Canada, universal life insurance, critical illness insurance Canada, disability insurance Canada, life insurance broker Montreal, life insurance Quebec, affordable life insurance Canada, compare life insurance Canada, life insurance for families, life insurance for seniors Canada, life insurance for young adults Canada, Manulife life insurance, Desjardins life insurance, Foresters life insurance, iA Financial life insurance, AMF licensed broker, independent insurance broker Canada, life insurance Montreal, courtier assurance vie Montréal, assurance vie Québec, devis assurance vie gratuit",
+    "life insurance Canada, free life insurance quotes Canada, best life insurance Canada, term life insurance Canada, whole life insurance Canada, universal life insurance Canada, critical illness insurance Canada, disability insurance Canada, life insurance broker Montreal, life insurance Quebec, life insurance Montreal, life insurance quote Montreal, life insurance agent Montreal, affordable life insurance Canada, compare life insurance Canada, no medical exam life insurance Canada, life insurance for newcomers Canada, life insurance for seniors Canada, mortgage life insurance Canada, life insurance for self-employed Canada, AMF licensed broker Quebec, independent insurance broker Canada, courtier assurance vie Montréal, assurance vie Québec, assurance vie temporaire Québec, meilleure assurance vie Québec, soumission assurance vie Québec, comparer assurance vie Québec, assurance vie Montréal, assurance vie pas cher Québec, assurance maladies graves Québec, assurance invalidité Québec, assurance vie familiale Québec, assurance vie prêt hypothécaire Québec, prix assurance vie Québec, DCW Financial Inc, Experior Financial Group Quebec",
   authors: [{ name: "DCW Financial Inc." }],
   creator: "DCW Financial Inc.",
   publisher: "DCW Financial Inc.",
@@ -159,6 +159,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 { "@type": "Person", "name": "Lucia Medina", "jobTitle": "Co-Founder & Director" }
               ],
               "license": "AMF Licence #179631",
+              "telephone": "+1-514-662-0403",
+              "priceRange": "Free",
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "5.0",

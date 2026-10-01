@@ -2,8 +2,8 @@ import ServicePageLayout from "@/components/ServicePageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Critical Illness Insurance in Canada | Quotes Life Insurance",
-  description: "Tax-free lump sum if you're diagnosed with cancer, heart attack, stroke or 25+ conditions. Compare critical illness quotes. AMF licensed brokers.",
+  title: "Critical Illness Insurance Canada | Tax-Free Lump Sum | Quotes Life Insurance",
+  description: "Get a tax-free lump sum if diagnosed with cancer, heart attack, or stroke. Compare critical illness insurance quotes from 20+ Canadian carriers. AMF licensed.",
 };
 
 const data = {

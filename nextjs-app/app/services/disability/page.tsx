@@ -2,8 +2,8 @@ import ServicePageLayout from "@/components/ServicePageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Disability Insurance in Canada | Quotes Life Insurance",
-  description: "Protect your income if illness or injury prevents you from working. Compare disability insurance quotes from 20+ carriers. AMF licensed brokers.",
+  title: "Disability Insurance Canada | Protect Your Income | Quotes Life Insurance",
+  description: "Disability insurance replaces 60-70% of your income if you can't work. Compare quotes from 20+ Canadian carriers. Free advice from AMF licensed brokers in Quebec.",
 };
 
 const data = {
