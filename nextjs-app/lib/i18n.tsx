@@ -323,7 +323,7 @@ export const translations = {
     // Testimonials section
     clientStoriesLabel: "Témoignages clients",
     clientStoriesH2: "Ce que disent nos clients",
-    clientStoriesSub: "Des expériences réelles de familles que nous avons aidées à protéger",
+    clientStoriesSub: "Des expériences réelles de familles que nous avons accompagnées et aidées à protéger.",
     // Blog section
     blogLabel: "Actualités & Articles",
     blogH2a: "Derniers conseils &",

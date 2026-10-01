@@ -27,7 +27,7 @@ const pillars = [
       </svg>
     ),
     textEn: "100% Free Advice, Always",
-    textFr: "Conseils 100% gratuits, toujours",
+    textFr: "Conseils 100 % gratuits, en tout temps",
   },
   {
     icon: (
@@ -37,7 +37,7 @@ const pillars = [
       </svg>
     ),
     textEn: "Truly Independent Broker",
-    textFr: "Courtier vraiment indépendant",
+    textFr: "Courtier véritablement indépendant",
   },
 ];
 
