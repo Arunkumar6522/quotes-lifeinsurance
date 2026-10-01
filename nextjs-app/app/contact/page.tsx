@@ -25,13 +25,13 @@ const faqsEn = [
 ];
 
 const faqsFr = [
-  { q: "Combien coûte l'assurance vie au Canada ?", a: "Les coûts varient selon l'âge, la santé et la couverture. Un adulte de 30 ans en bonne santé peut obtenir 500 000 $ d'assurance vie temporaire pour aussi peu que 25 à 40 $/mois. Nous comparons 20+ assureurs pour trouver votre meilleur tarif." },
+  { q: "Combien coûte l'assurance vie au Canada ?", a: "Les coûts varient selon l'âge, la santé et la couverture. Un adulte de 30 ans en bonne santé peut obtenir 500 000 $ d'assurance vie temporaire pour aussi peu que 25 à 40 $/mois. Nous comparons plus de 20 assureurs pour trouver votre meilleur tarif." },
   { q: "Quelle est la différence entre l'assurance temporaire et l'assurance vie entière ?", a: "L'assurance temporaire vous couvre pour une période fixe (10, 20 ou 30 ans) et est l'option la plus abordable. L'assurance vie entière est une couverture permanente qui accumule une valeur de rachat au fil du temps. Nous vous aiderons à décider laquelle vous convient." },
   { q: "Vos conseils sont-ils vraiment 100% gratuits ?", a: "Oui — entièrement gratuits. Nous sommes rémunérés par l'assureur uniquement si vous souscrivez à une police. Vous ne nous payez jamais de frais, de frais de consultation ou de commission directement." },
   { q: "Combien de temps faut-il pour obtenir une assurance vie au Canada ?", a: "De nombreuses polices d'assurance temporaire peuvent être approuvées en aussi peu que 24 à 72 heures pour les demandeurs en bonne santé. Certaines polices nécessitent un examen médical pouvant prendre jusqu'à 2 à 4 semaines." },
   { q: "Puis-je obtenir une assurance vie si j'ai des conditions préexistantes ?", a: "Oui, dans la plupart des cas. Certains assureurs se spécialisent dans les polices pour demandeurs à risque élevé. Canada Protection Plan, par exemple, offre une assurance vie garantie sans questions médicales." },
   { q: "Servez-vous des clients en dehors de Montréal ?", a: "Absolument. Bien que nous soyons basés à Montréal, nous servons des clients partout au Canada — Québec, Ontario, Colombie-Britannique, Alberta et plus encore — entièrement en ligne et par téléphone." },
-  { q: "Avec quelles compagnies d'assurance travaillez-vous ?", a: "Nous travaillons avec 20+ assureurs canadiens de premier plan, notamment Manuvie, Desjardins, Foresters, iA Financière, Empire Vie, Humania, Canada Protection Plan, Ivari, Assumption Life, UV Assurance et Edge Benefits." },
+  { q: "Avec quelles compagnies d'assurance travaillez-vous ?", a: "Nous travaillons avec plus de 20 assureurs canadiens de premier plan, notamment Manuvie, Desjardins, Foresters, iA Financière, Empire Vie, Humania, Canada Protection Plan, Ivari, Assumption Life, UV Assurance et Edge Benefits." },
   { q: "Comment commencer ?", a: "Cliquez sur 'Obtenir mon devis gratuit' n'importe où sur ce site, ou appelez-nous au 514-662-0403. Nous aurons une conversation rapide pour comprendre vos besoins et vous présenter les meilleures options." },
 ];
 
