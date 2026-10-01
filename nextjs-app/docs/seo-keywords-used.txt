@@ -1,0 +1,141 @@
+========================================================
+  QUOTES LIFE INSURANCE — SEO KEYWORDS IN USE
+  DCW Financial Inc. | quotes-lifeinsurance.com
+  Last updated: September 2026
+========================================================
+
+──────────────────────────────────────────────────
+  ENGLISH KEYWORDS (Homepage meta)
+──────────────────────────────────────────────────
+life insurance Canada
+free life insurance quotes Canada
+best life insurance Canada
+term life insurance Canada
+whole life insurance Canada
+universal life insurance Canada
+critical illness insurance Canada
+disability insurance Canada
+life insurance broker Montreal
+life insurance Quebec
+life insurance Montreal
+life insurance quote Montreal
+life insurance agent Montreal
+affordable life insurance Canada
+compare life insurance Canada
+no medical exam life insurance Canada
+life insurance for newcomers Canada
+life insurance for seniors Canada
+mortgage life insurance Canada
+life insurance for self-employed Canada
+AMF licensed broker Quebec
+independent insurance broker Canada
+DCW Financial Inc
+Experior Financial Group Quebec
+
+──────────────────────────────────────────────────
+  FRENCH KEYWORDS (Homepage meta - bilingual SEO)
+──────────────────────────────────────────────────
+courtier assurance vie Montréal
+assurance vie Québec
+assurance vie temporaire Québec
+meilleure assurance vie Québec
+soumission assurance vie Québec       ← highest French conversion keyword
+comparer assurance vie Québec
+assurance vie Montréal
+assurance vie pas cher Québec
+assurance maladies graves Québec
+assurance invalidité Québec
+assurance vie familiale Québec
+assurance vie prêt hypothécaire Québec
+prix assurance vie Québec
+assurance vie nouveaux immigrants Québec  ← low competition niche
+
+──────────────────────────────────────────────────
+  SERVICE PAGE TITLES (optimised per page)
+──────────────────────────────────────────────────
+Term Life:
+  "Term Life Insurance Canada | Free Quotes | Quotes Life Insurance"
+  Keywords: term life insurance Canada, free quotes, Montreal, Quebec
+
+Whole Life:
+  "Whole Life Insurance Canada | Permanent Coverage | Quotes Life Insurance"
+  Keywords: whole life insurance Canada, permanent coverage, Montreal, Quebec
+
+Universal Life:
+  "Universal Life Insurance in Canada | Quotes Life Insurance"
+  Keywords: universal life insurance Canada
+
+Critical Illness:
+  "Critical Illness Insurance Canada | Tax-Free Lump Sum | Quotes Life Insurance"
+  Keywords: critical illness insurance Canada, tax-free lump sum
+
+Disability:
+  "Disability Insurance Canada | Protect Your Income | Quotes Life Insurance"
+  Keywords: disability insurance Canada, protect income
+
+──────────────────────────────────────────────────
+  LOCAL SEO — NAP (Name, Address, Phone)
+  Consistent across structured data (JSON-LD)
+──────────────────────────────────────────────────
+Name:    DCW Financial Inc. / Quotes Life Insurance
+Address: 4900 Rue Jean-Talon O, Unit 200, Montréal, QC H4P 1W9
+Phone:   +1-514-662-0403
+Email:   info@quotes-lifeinsurance.com
+Website: https://quotes-lifeinsurance.com
+Licence: AMF #179631 | Firm #608808
+
+──────────────────────────────────────────────────
+  STRUCTURED DATA SCHEMAS (JSON-LD)
+──────────────────────────────────────────────────
+1. InsuranceAgency     → full business schema
+2. WebSite             → search action schema
+3. FAQPage             → homepage + contact page (rich results)
+4. aggregateRating     → 5.0 from Google Business
+
+──────────────────────────────────────────────────
+  KEYWORD PRIORITIES FOR SEO PERSON
+──────────────────────────────────────────────────
+TIER 1 — Target immediately (high volume, high intent):
+  - life insurance Canada
+  - soumission assurance vie Québec
+  - term life insurance Canada
+  - assurance vie temporaire Québec
+  - life insurance Montreal
+
+TIER 2 — Target next (local + long-tail):
+  - life insurance broker Montreal
+  - courtier assurance vie Montréal
+  - no medical exam life insurance Canada
+  - mortgage life insurance Canada
+  - assurance vie prêt hypothécaire Québec
+
+TIER 3 — Niche opportunities (low competition):
+  - life insurance for newcomers Canada
+  - assurance vie nouveaux immigrants Québec
+  - life insurance for self-employed Canada
+  - no medical life insurance Quebec
+
+──────────────────────────────────────────────────
+  PAGES AND TARGET KEYWORDS MAP
+──────────────────────────────────────────────────
+Homepage /              → life insurance Canada, free quotes, Montreal
+/services/term-life     → term life insurance Canada, Montreal, Quebec
+/services/whole-life    → whole life insurance Canada, permanent coverage
+/services/universal-life→ universal life insurance Canada
+/services/critical-illness → critical illness insurance Canada
+/services/disability    → disability insurance Canada
+/about                  → DCW Financial Inc, AMF licensed, Montreal broker
+/contact                → life insurance quote Montreal, free consultation
+/articles               → informational keywords, blog content
+/careers                → insurance advisor Montreal, Experior Financial
+
+========================================================
+  FILES WHERE KEYWORDS ARE IMPLEMENTED
+========================================================
+- nextjs-app/app/layout.tsx              (main metadata keywords)
+- nextjs-app/app/services/*/page.tsx     (service page titles/descriptions)
+- nextjs-app/app/layout.tsx              (JSON-LD structured data)
+- nextjs-app/app/sitemap.ts              (sitemap with all URLs)
+- nextjs-app/app/robots.ts               (robots.txt)
+- nextjs-app/lib/i18n.tsx                (bilingual content)
+========================================================
