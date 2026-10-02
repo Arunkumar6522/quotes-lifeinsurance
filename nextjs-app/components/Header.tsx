@@ -47,10 +47,13 @@ const serviceCategories = [
 
 export default function Header() {
   const { t, lang, setLang } = useLang();
-  const [mobileOpen, setMobileOpen]  = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileOpen, setMobileOpen]       = useState(false);
+  const [servicesOpen, setServicesOpen]   = useState(false);
+  const [carriersOpen, setCarriersOpen]   = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [mobileCarriersOpen, setMobileCarriersOpen] = useState(false);
+  const dropdownRef  = useRef<HTMLDivElement>(null);
+  const carriersRef  = useRef<HTMLDivElement>(null);
 
   /* Close dropdown when clicking outside */
   useEffect(() => {
@@ -64,6 +67,18 @@ export default function Header() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [servicesOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (carriersRef.current && !carriersRef.current.contains(e.target as Node)) {
+        setCarriersOpen(false);
+      }
+    };
+    if (carriersOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [carriersOpen]);
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100 }}>
@@ -157,6 +172,51 @@ export default function Header() {
               )}
             </div>
 
+            {/* Our Carriers dropdown */}
+            <div className="dropdown-wrap" ref={carriersRef}>
+              <button
+                className="nav-link nav-link--btn"
+                onClick={() => setCarriersOpen(!carriersOpen)}
+                aria-expanded={carriersOpen}
+                aria-haspopup="true"
+                aria-label={lang === "fr" ? "Nos assureurs menu" : "Our Carriers menu"}
+              >
+                {lang === "fr" ? "Nos assureurs" : "Our Carriers"}
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                  style={{ transition: "transform 0.2s", transform: carriersOpen ? "rotate(180deg)" : "none" }}>
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              {carriersOpen && (
+                <div className="mega-dropdown carriers-dropdown">
+                  <div className="flat-services-list">
+                    {[
+                      { name: "Manulife", logo: "/manulife.png", href: "/manulife" },
+                      { name: "Foresters", logo: "/foresters.png", href: "/foresters" },
+                    ].map((carrier) => (
+                      <Link
+                        key={carrier.href}
+                        href={carrier.href}
+                        className="flat-service-item carrier-item"
+                        onClick={() => setCarriersOpen(false)}
+                      >
+                        <span className="carrier-logo-wrap">
+                          <Image
+                            src={carrier.logo}
+                            alt={carrier.name}
+                            width={80}
+                            height={32}
+                            style={{ width: "auto", height: "28px", objectFit: "contain" }}
+                          />
+                        </span>
+                        <span style={{ fontSize: 14, fontWeight: 600, color: "var(--dark)" }}>{carrier.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link href="/about"   className="nav-link">{t.about}</Link>
             <Link href="/articles"    className="nav-link" prefetch={true}>{t.articles}</Link>
             <Link href="/careers" className="nav-link">{t.joinTeam}</Link>
@@ -218,6 +278,42 @@ export default function Header() {
                       </Link>
                     ))}
                   </div>
+                ))}
+              </div>
+            )}
+
+            {/* Mobile Carriers */}
+            <button
+              className="mobile-link mobile-link--btn"
+              onClick={() => setMobileCarriersOpen(!mobileCarriersOpen)}
+            >
+              {lang === "fr" ? "Nos assureurs" : "Our Carriers"}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                style={{ transition: "transform 0.2s", transform: mobileCarriersOpen ? "rotate(180deg)" : "none", marginLeft: "auto" }}>
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            {mobileCarriersOpen && (
+              <div className="mobile-services-section">
+                {[
+                  { name: "Manulife", logo: "/manulife.png", href: "/manulife" },
+                  { name: "Foresters", logo: "/foresters.png", href: "/foresters" },
+                ].map((carrier) => (
+                  <Link
+                    key={carrier.href}
+                    href={carrier.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="mobile-carrier-link"
+                  >
+                    <Image
+                      src={carrier.logo}
+                      alt={carrier.name}
+                      width={80}
+                      height={28}
+                      style={{ width: "auto", height: "24px", objectFit: "contain" }}
+                    />
+                    <span>{carrier.name}</span>
+                  </Link>
                 ))}
               </div>
             )}
@@ -475,6 +571,28 @@ export default function Header() {
           border-color: var(--green);
         }
         
+        /* Carriers dropdown */
+        .carriers-dropdown { width: 240px; }
+        .carrier-logo-wrap {
+          width: 80px; height: 40px; border-radius: 8px;
+          background: #f8fafc; border: 1px solid var(--border);
+          display: flex; align-items: center; justify-content: center;
+          flex-shrink: 0; padding: 4px 8px;
+          transition: border-color 0.15s;
+        }
+        .carrier-item:hover .carrier-logo-wrap { border-color: var(--green); background: var(--green-light); }
+
+        .mobile-carrier-link {
+          display: flex; align-items: center; gap: 12px;
+          padding: 10px 0 10px 12px;
+          border-left: 2px solid var(--border);
+          margin-left: 4px; margin-bottom: 6px;
+          text-decoration: none; color: #4b5563;
+          font-size: 14px; font-weight: 600;
+          transition: color 0.15s, border-color 0.15s;
+        }
+        .mobile-carrier-link:hover { color: var(--green); border-color: var(--green); }
+
         .mobile-lang { display: flex; gap: 8px; margin-top: 14px; }
         .mobile-lang-btn { border: 1.5px solid var(--border); background: none; border-radius: 8px; padding: 6px 16px; font-size: 13px; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.15s; }
         .mobile-lang-btn--active { background: var(--green); border-color: var(--green); color: #fff; }
