@@ -72,13 +72,13 @@ export default function AboutPage() {
     {
       name: "Denesh Logeswaran",
       role: lang === "fr" ? t.founderDeneshRole : "Co-Founder & Director",
-      bio: lang === "fr" ? t.founderDeneshBio : "A builder and mentor to a growing team of licensed agents across Canada, Denesh focuses on practical, tax-aware protection strategies for families and entrepreneurs.",
+      bio: lang === "fr" ? t.founderDeneshBio : "Denesh Logeswaran began his financial services career in 2008 at just 21, inspired by a desire to help his family and retire his parents. Learning how to manage debt, minimize taxes, prepare for retirement, and protect against life's uncertainties sparked a passion for financial education that continues to drive him today.\n\nTogether with his wife, Denesh leads a team of over 200 licensed advisors across Canada and the United States, helping them develop the knowledge and confidence to serve more families. A dedicated trainer and mentor, he also helps individuals and business owners explore insurance and investment strategies through access to multiple carriers.\n\nHis purpose is simple: educate families, inspire leaders, and help people build a lasting legacy.",
       image: "/testimonials/denesh.jpg",
     },
     {
       name: "Lucia Medina",
       role: lang === "fr" ? t.founderLuciaRole : "Co-Founder & Director",
-      bio: lang === "fr" ? t.founderLuciaBio : "Known for her client advocacy and meticulous service standards, Lucia leads our service operations to ensure prompt follow-through and proactive policy maintenance.",
+      bio: lang === "fr" ? t.founderLuciaBio : "Lucia Medina's journey is one of courage, sacrifice, and a mother's determination to create a better future for her family.\n\nShe arrived in Canada in 2011 on a work permit as a caregiver, caring for other families' children while separated from her own son in the Philippines. Those six years apart strengthened her purpose: to reunite with her son, support her family back home, and build a career that would give them greater opportunity.\n\nIn 2017, Lucia was introduced to the financial services industry and earned her license. What began as an opportunity soon became a passion. Through financial education, she found a meaningful way to help families manage debt, protect their income, and save for retirement.\n\nToday, Lucia and her husband, Denesh Logeswaran, lead a team of over 200 licensed advisors across North America. Together, they are committed to developing leaders, empowering families, and building a lasting legacy.\n\nFrom caring for children to helping families protect their futures, Lucia's heart for service remains at the centre of everything she does.",
       image: "/testimonials/lucia.jpg",
     },
   ];

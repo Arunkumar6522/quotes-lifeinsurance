@@ -97,6 +97,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
           <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSC_VERIFICATION} />
         )}
+        {/* llms.txt — for AI/LLM discoverability (ChatGPT, Claude, Perplexity, Gemini) */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — AI readable site summary" />
         {/* Preconnect to external services */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://form.questionscout.com" />

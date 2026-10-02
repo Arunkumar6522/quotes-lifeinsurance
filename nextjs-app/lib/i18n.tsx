@@ -38,7 +38,7 @@ export const translations = {
     // About
     aboutLabel: "About Us",
     aboutH2a: "Every Family Deserves", aboutH2b: "Financial Security",
-    aboutP1: "Quotes Life Insurance, operated by DCW Financial Inc., is a family-built, client-first brokerage led by Denesh Logeswaran and Lucia Medina. Founded in 1998.",
+    aboutP1: "Quotes Life Insurance, operated by DCW Financial Inc., is a family-built, client-first brokerage led by Denesh Logeswaran and Lucia Medina. Founded in 2024.",
     aboutP2: "We operate as independent advisors contracted through Experior Financial Group Inc. (MGA), giving us access to 20+ top Canadian carriers, so we always recommend what's right for you.",
     aboutAmf: "AMF Licensed & Regulated",
     aboutAmfSub: "Licence #179631 · Firm Registration #608808",
@@ -237,7 +237,7 @@ export const translations = {
     trust1: "Réglementé AMF", trust2: "Conseils gratuits", trust3: "plus de 20 assureurs", trust4: "Note 4.9",
     aboutLabel: "À propos de nous",
     aboutH2a: "Chaque famille mérite", aboutH2b: "la sécurité financière",
-    aboutP1: "Quotes Life Insurance, exploité par DCW Financial Inc., est un courtage familial axé sur le client, dirigé par Denesh Logeswaran et Lucia Medina. Fondé en 1998.",
+    aboutP1: "Quotes Life Insurance, exploité par DCW Financial Inc., est un courtage familial axé sur le client, dirigé par Denesh Logeswaran et Lucia Medina. Fondé en 2024.",
     aboutP2: "Nous agissons à titre de conseillers indépendants sous contrat avec Experior Financial Group Inc. (MGA), ce qui nous donne accès à plus de 20 assureurs canadiens de premier plan.",
     aboutAmf: "Agréé et réglementé par l'AMF",
     aboutAmfSub: "Licence n° 179631 · Cabinet n° 608808",
@@ -399,7 +399,7 @@ export const translations = {
     founderDeneshRole: "Co-fondateur & Directeur",
     founderDeneshBio: "Denesh Logeswaran a débuté sa carrière dans les services financiers en 2008, à seulement 21 ans, animé par le désir de soutenir sa famille et d'aider ses parents à préparer leur retraite. Il a appris à gérer les dettes, à minimiser les impôts, à planifier la retraite et surtout, à se préparer aux imprévus de la vie. Cette expérience a éveillé en lui une véritable passion pour l'éducation financière, une passion qui continue de le motiver et de l'épanouir encore aujourd'hui.\n\nAvec sa femme, Denesh dirige une équipe de plus de 200 conseillers en services financiers autorisés à exercer à travers le Canada et les États-Unis, en les accompagnant dans le développement de leurs connaissances et de leur confiance afin de mieux servir davantage de familles.\n\nEn tant que formateur et mentor dévoué, il accompagne également les particuliers et les propriétaires d'entreprise dans l'exploration de stratégies d'assurance et d'investissement, en leur donnant accès à plusieurs compagnies et solutions financières.\n\nSon objectif est simple : éduquer les familles, inspirer des leaders et aider les gens à bâtir un patrimoine durable.",
     founderLuciaRole: "Co-fondatrice & Directrice",
-    founderLuciaBio: "Reconnue pour son engagement envers ses clients et son souci du détail, Lucia dirige nos opérations de service afin d'assurer un suivi rapide et une gestion proactive des polices.",
+    founderLuciaBio: "Le parcours de Lucia Medina est celui du courage, du sacrifice et de la détermination d'une mère à bâtir un avenir meilleur pour sa famille.\n\nElle est arrivée au Canada en 2011 avec un permis de travail comme aidante naturelle, prenant soin des enfants d'autres familles tout en étant séparée de son propre fils aux Philippines. Ces six années d'éloignement ont renforcé sa détermination : se réunir avec son fils, soutenir sa famille restée au pays et bâtir une carrière qui leur offrirait de meilleures opportunités.\n\nEn 2017, Lucia a été introduite dans le secteur des services financiers et a obtenu son permis. Ce qui avait commencé comme une opportunité est rapidement devenu une passion. Grâce à l'éducation financière, elle a trouvé une façon significative d'aider les familles à gérer leurs dettes, à protéger leurs revenus et à épargner pour la retraite.\n\nAujourd'hui, Lucia et son mari, Denesh Logeswaran, dirigent une équipe de plus de 200 conseillers agréés à travers l'Amérique du Nord. Ensemble, ils s'engagent à former des leaders, à autonomiser les familles et à bâtir un héritage durable.\n\nDu soin des enfants à la protection de l'avenir des familles, le cœur de service de Lucia reste au centre de tout ce qu'elle fait.",
   },
 } as const;
 
