@@ -191,8 +191,8 @@ export default function Header() {
                 <div className="mega-dropdown carriers-dropdown">
                   <div className="flat-services-list">
                     {[
-                      { name: "Manulife", logo: "/manulife.png", href: "/manulife" },
-                      { name: "Foresters", logo: "/foresters.png", href: "/foresters" },
+                      { name: "Manulife", logo: "/company/manulife.png", href: "/manulife" },
+                      { name: "Foresters", logo: "/company/foresters.png", href: "/foresters" },
                     ].map((carrier) => (
                       <Link
                         key={carrier.href}
@@ -296,8 +296,8 @@ export default function Header() {
             {mobileCarriersOpen && (
               <div className="mobile-services-section">
                 {[
-                  { name: "Manulife", logo: "/manulife.png", href: "/manulife" },
-                  { name: "Foresters", logo: "/foresters.png", href: "/foresters" },
+                  { name: "Manulife", logo: "/company/manulife.png", href: "/manulife" },
+                  { name: "Foresters", logo: "/company/foresters.png", href: "/foresters" },
                 ].map((carrier) => (
                   <Link
                     key={carrier.href}

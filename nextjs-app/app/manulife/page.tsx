@@ -7,7 +7,6 @@ import AboutSection from "@/components/home/AboutSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
-import CarrierLogoOverride from "@/components/CarrierLogoOverride";
 
 export const metadata: Metadata = {
   title: "Manulife Life Insurance Canada | Compare & Get a Free Quote | DCW Financial",
@@ -48,7 +47,6 @@ export const metadata: Metadata = {
 export default function ManulifePage() {
   return (
     <>
-      <CarrierLogoOverride logoSrc="/company/manulife.png" carrierName="Manulife" logoSize="xlarge" />
       <Header />
       <main>
         <HeroSection />
