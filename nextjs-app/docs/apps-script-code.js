@@ -25,6 +25,62 @@
  */
 
 // ============================================
+// POST REQUEST HANDLER (Testimonial Submission)
+// ============================================
+function doPost(e) {
+  try {
+    const body = JSON.parse(e.postData.contents);
+    const action = body.action || 'submitTestimonial';
+
+    if (action === 'submitTestimonial') {
+      return submitTestimonial(body);
+    }
+
+    return jsonResponse({ success: false, error: 'Unknown action' });
+  } catch (error) {
+    return jsonResponse({ success: false, error: error.toString() });
+  }
+}
+
+// ============================================
+// SUBMIT TESTIMONIAL (called from doPost)
+// ============================================
+function submitTestimonial(data) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('testimonial');
+
+  if (!sheet) {
+    return jsonResponse({ success: false, error: 'Sheet "testimonial" not found' });
+  }
+
+  // Validate required fields
+  if (!data.name || !data.testimonial) {
+    return jsonResponse({ success: false, error: 'Name and testimonial are required' });
+  }
+
+  // Sheet columns: name | location | serviceType | contentType | testimonial | videoUrl | rating | date | avatarUrl | status
+  const row = [
+    data.name.toString().trim(),
+    (data.location || '').toString().trim(),
+    (data.serviceType || '').toString().trim(),
+    'text',                        // contentType — always text for form submissions
+    data.testimonial.toString().trim(),
+    '',                            // videoUrl — empty for form submissions
+    parseInt(data.rating) || 5,
+    new Date(),                    // date — auto timestamp
+    '',                            // avatarUrl — empty
+    'pending'                      // status — must be manually set to "active" in the sheet to appear on site
+  ];
+
+  sheet.appendRow(row);
+
+  return jsonResponse({
+    success: true,
+    message: 'Thank you! Your testimonial has been submitted for review.'
+  });
+}
+
+// ============================================
 // GET REQUEST HANDLER
 // ============================================
 function doGet(e) {
@@ -212,5 +268,19 @@ function testGetJobs() {
   const result = getJobListings();
   const json = JSON.parse(result.getContent());
   Logger.log('Found ' + json.count + ' jobs');
+  Logger.log(JSON.stringify(json, null, 2));
+}
+
+function testSubmitTestimonial() {
+  const fakeData = {
+    action: 'submitTestimonial',
+    name: 'Test User',
+    location: 'Montreal, QC',
+    serviceType: 'Term Life Insurance',
+    testimonial: 'This is a test testimonial submission.',
+    rating: 5
+  };
+  const result = submitTestimonial(fakeData);
+  const json = JSON.parse(result.getContent());
   Logger.log(JSON.stringify(json, null, 2));
 }
