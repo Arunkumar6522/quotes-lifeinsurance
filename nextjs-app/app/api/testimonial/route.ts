@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Sanitize and forward to Apps Script — runs server-side so no CORS issue
-    const payload = {
+    const payload: Record<string, unknown> = {
       action: "submitTestimonial",
       name: body.name.toString().trim().slice(0, 100),
       location: (body.location || "").toString().trim().slice(0, 100),
@@ -30,6 +30,19 @@ export async function POST(request: NextRequest) {
       testimonial: body.testimonial.toString().trim().slice(0, 2000),
       rating: Math.min(5, Math.max(1, parseInt(body.rating) || 5)),
     };
+
+    // Attach photo if provided — Apps Script will upload it to Google Drive
+    if (body.photoBase64 && typeof body.photoBase64 === "string") {
+      // Basic validation: must look like a data URL or raw base64
+      if (body.photoBase64.length > 10_000_000) {
+        return NextResponse.json(
+          { success: false, error: "Photo is too large. Please use an image under 2 MB." },
+          { status: 413 }
+        );
+      }
+      payload.photoBase64 = body.photoBase64;
+      payload.photoName = (body.photoName || "photo.jpg").toString().slice(0, 80);
+    }
 
     const appsScriptRes = await fetch(APPS_SCRIPT_URL, {
       method: "POST",

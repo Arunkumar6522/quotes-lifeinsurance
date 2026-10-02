@@ -58,6 +58,17 @@ function submitTestimonial(data) {
     return jsonResponse({ success: false, error: 'Name and testimonial are required' });
   }
 
+  // If a photo was submitted, upload to Drive and get the URL
+  let avatarUrl = '';
+  if (data.photoBase64) {
+    try {
+      avatarUrl = saveImageToDrive(data.photoBase64, data.photoName || 'photo.jpg');
+    } catch (imgErr) {
+      // Photo upload failed — continue without it, don't block the submission
+      Logger.log('Photo upload failed: ' + imgErr.toString());
+    }
+  }
+
   // Sheet columns: name | location | serviceType | contentType | testimonial | videoUrl | rating | date | avatarUrl | status
   const row = [
     data.name.toString().trim(),
@@ -68,7 +79,7 @@ function submitTestimonial(data) {
     '',                            // videoUrl — empty for form submissions
     parseInt(data.rating) || 5,
     new Date(),                    // date — auto timestamp
-    '',                            // avatarUrl — empty
+    avatarUrl,                     // avatarUrl — Drive URL if photo uploaded, else empty
     'pending'                      // status — must be manually set to "active" in the sheet to appear on site
   ];
 
@@ -78,6 +89,44 @@ function submitTestimonial(data) {
     success: true,
     message: 'Thank you! Your testimonial has been submitted for review.'
   });
+}
+
+// ============================================
+// SAVE IMAGE TO GOOGLE DRIVE
+// Returns a public view URL for the uploaded file
+// ============================================
+function saveImageToDrive(base64Data, fileName) {
+  // Get or create the "Testimonial Photos" folder in Drive
+  const folderName = 'Testimonial Photos';
+  let folder;
+  const folderIter = DriveApp.getFoldersByName(folderName);
+  if (folderIter.hasNext()) {
+    folder = folderIter.next();
+  } else {
+    folder = DriveApp.createFolder(folderName);
+  }
+
+  // Strip the data URL prefix if present (e.g. "data:image/jpeg;base64,")
+  const base64Clean = base64Data.replace(/^data:image\/[a-z]+;base64,/, '');
+
+  // Detect MIME type from the original prefix or fall back to jpeg
+  const mimeMatch = base64Data.match(/^data:(image\/[a-z]+);base64,/);
+  const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+
+  // Decode and create the file
+  const imageBlob = Utilities.newBlob(
+    Utilities.base64Decode(base64Clean),
+    mimeType,
+    'testimonial-' + Date.now() + '-' + fileName
+  );
+
+  const file = folder.createFile(imageBlob);
+
+  // Make the file viewable by anyone with the link
+  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+  // Return a direct-view URL (works as an <img src="...">)
+  return 'https://drive.google.com/uc?export=view&id=' + file.getId();
 }
 
 // ============================================
@@ -279,6 +328,7 @@ function testSubmitTestimonial() {
     serviceType: 'Term Life Insurance',
     testimonial: 'This is a test testimonial submission.',
     rating: 5
+    // photoBase64: omitted — tests without photo
   };
   const result = submitTestimonial(fakeData);
   const json = JSON.parse(result.getContent());
