@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -25,13 +25,6 @@ const copy = {
     labelService: "Service You Used",
     placeholderService: "Select a service",
     labelRating: "Your Rating",
-    labelPhoto: "Your Photo (optional)",
-    photoHint: "JPG, PNG or WebP · Max 2 MB",
-    photoUpload: "Click to upload a photo",
-    photoChange: "Change photo",
-    photoRemove: "Remove",
-    photoErrType: "Please upload a JPG, PNG, or WebP image.",
-    photoErrSize: "Photo must be under 2 MB. Please choose a smaller image.",
     labelMessage: "Your Testimonial",
     placeholderMessage:
       "Tell us about your experience working with our team, the coverage you found, and how the process went…",
@@ -73,13 +66,6 @@ const copy = {
     labelService: "Service utilisé",
     placeholderService: "Sélectionnez un service",
     labelRating: "Votre évaluation",
-    labelPhoto: "Votre photo (optionnel)",
-    photoHint: "JPG, PNG ou WebP · Max 2 Mo",
-    photoUpload: "Cliquez pour télécharger une photo",
-    photoChange: "Changer la photo",
-    photoRemove: "Supprimer",
-    photoErrType: "Veuillez télécharger une image JPG, PNG ou WebP.",
-    photoErrSize: "La photo doit faire moins de 2 Mo. Veuillez choisir une image plus petite.",
     labelMessage: "Votre témoignage",
     placeholderMessage:
       "Parlez-nous de votre expérience avec notre équipe, de la couverture que vous avez trouvée et du déroulement du processus…",
@@ -136,52 +122,11 @@ export default function TestimonialPage() {
   const { lang } = useLang();
   const t = copy[lang as "en" | "fr"] ?? copy.en;
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [form, setForm]     = useState({ name: "", location: "", serviceType: "", testimonial: "", rating: 5 });
+  const [errors, setErrors] = useState<{ name?: string; testimonial?: string }>({});
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const [form, setForm] = useState({ name: "", location: "", serviceType: "", testimonial: "", rating: 5 });
-  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
-  const [photoBase64, setPhotoBase64]   = useState<string | null>(null);
-  const [photoName, setPhotoName]       = useState<string>("");
-  const [photoError, setPhotoError]     = useState<string>("");
-  const [errors, setErrors]             = useState<{ name?: string; testimonial?: string }>({});
-  const [status, setStatus]             = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg]         = useState("");
-
-  // ── Photo selection ──
-  function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setPhotoError("");
-
-    const allowed = ["image/jpeg", "image/png", "image/webp"];
-    if (!allowed.includes(file.type)) {
-      setPhotoError(t.photoErrType);
-      e.target.value = "";
-      return;
-    }
-    if (file.size > 2 * 1024 * 1024) {
-      setPhotoError(t.photoErrSize);
-      e.target.value = "";
-      return;
-    }
-
-    setPhotoName(file.name);
-    setPhotoPreview(URL.createObjectURL(file));
-
-    const reader = new FileReader();
-    reader.onload = (ev) => setPhotoBase64(ev.target?.result as string);
-    reader.readAsDataURL(file);
-  }
-
-  function removePhoto() {
-    setPhotoPreview(null);
-    setPhotoBase64(null);
-    setPhotoName("");
-    setPhotoError("");
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  }
-
-  // ── Validation & submit ──
   function validate() {
     const e: { name?: string; testimonial?: string } = {};
     if (!form.name.trim()) e.name = t.requiredName;
@@ -197,16 +142,10 @@ export default function TestimonialPage() {
     setErrorMsg("");
 
     try {
-      const body: Record<string, unknown> = { ...form };
-      if (photoBase64) {
-        body.photoBase64 = photoBase64;
-        body.photoName   = photoName;
-      }
-
       const res  = await fetch("/api/testimonial", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify(form),
       });
       const data = await res.json();
       if (data.success) {
@@ -221,7 +160,6 @@ export default function TestimonialPage() {
     }
   }
 
-  // ── Shared styles ──
   const inputStyle: React.CSSProperties = {
     width: "100%", padding: "12px 16px", border: "1.5px solid var(--border)",
     borderRadius: 10, fontSize: 15, fontFamily: "var(--font-nunito), system-ui, sans-serif",
@@ -264,7 +202,6 @@ export default function TestimonialPage() {
       <section style={{ background: "var(--bg-soft)", padding: "80px 0 96px" }}>
         <div className="container">
           <AnimatePresence mode="wait">
-
             {status === "success" ? (
               /* ── Success ── */
               <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}
@@ -284,7 +221,6 @@ export default function TestimonialPage() {
                 className="tm-card"
                 style={{ maxWidth: 680, margin: "0 auto", background: "#fff", borderRadius: 20, padding: "48px 48px 52px", boxShadow: "0 8px 48px rgba(0,0,0,0.07)" }}>
 
-                {/* Header */}
                 <div style={{ marginBottom: 36, borderBottom: "1.5px solid var(--border)", paddingBottom: 28 }}>
                   <h2 style={{ fontSize: 22, marginBottom: 8 }}>{t.formTitle}</h2>
                   <p style={{ color: "var(--muted)", fontSize: 14 }}>{t.formSubtitle}</p>
@@ -338,58 +274,6 @@ export default function TestimonialPage() {
                     <StarRating value={form.rating} onChange={(v) => setForm({ ...form, rating: v })} />
                   </div>
 
-                  {/* Photo upload */}
-                  <div style={{ marginBottom: 20 }}>
-                    <label style={labelStyle}>{t.labelPhoto}</label>
-
-                    {/* Hidden real input */}
-                    <input ref={fileInputRef} id="tm-photo" type="file" accept="image/jpeg,image/png,image/webp"
-                      onChange={handlePhotoChange} style={{ display: "none" }} aria-label={t.labelPhoto} />
-
-                    {photoPreview ? (
-                      /* Preview */
-                      <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 16px", border: "1.5px solid var(--green)", borderRadius: 10, background: "var(--green-light)" }}>
-                        <img src={photoPreview} alt="Preview"
-                          style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", flexShrink: 0, border: "2px solid var(--green)" }} />
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <p style={{ fontSize: 13, fontWeight: 700, color: "var(--dark)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{photoName}</p>
-                          <p style={{ fontSize: 12, color: "var(--green)", marginTop: 2 }}>✓ Ready to upload</p>
-                        </div>
-                        <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
-                          <button type="button" onClick={() => fileInputRef.current?.click()}
-                            style={{ fontSize: 12, fontWeight: 700, color: "var(--green)", background: "none", border: "1px solid var(--green)", borderRadius: 6, padding: "4px 10px", cursor: "pointer" }}>
-                            {t.photoChange}
-                          </button>
-                          <button type="button" onClick={removePhoto}
-                            style={{ fontSize: 12, fontWeight: 700, color: "#ef4444", background: "none", border: "1px solid #fecaca", borderRadius: 6, padding: "4px 10px", cursor: "pointer" }}>
-                            {t.photoRemove}
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      /* Upload zone */
-                      <button type="button" onClick={() => fileInputRef.current?.click()}
-                        style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-                          gap: 8, padding: "24px 16px", border: "1.5px dashed var(--border)", borderRadius: 10,
-                          background: "#fafafa", cursor: "pointer", transition: "border-color 0.2s, background 0.2s" }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--green)"; e.currentTarget.style.background = "var(--green-light)"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)";  e.currentTarget.style.background = "#fafafa"; }}
-                      >
-                        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "var(--green-light)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="17 8 12 3 7 8" />
-                            <line x1="12" y1="3" x2="12" y2="15" />
-                          </svg>
-                        </div>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: "var(--dark)" }}>{t.photoUpload}</span>
-                        <span style={{ fontSize: 12, color: "var(--muted)" }}>{t.photoHint}</span>
-                      </button>
-                    )}
-
-                    {photoError && <p style={errStyle} role="alert">{photoError}</p>}
-                  </div>
-
                   {/* Testimonial textarea */}
                   <div style={{ marginBottom: 28 }}>
                     <label htmlFor="tm-message" style={labelStyle}>{t.labelMessage} <span style={{ color: "#ef4444" }}>*</span></label>
@@ -404,14 +288,14 @@ export default function TestimonialPage() {
                     <p style={{ fontSize: 12, color: "var(--muted)", marginTop: 4 }}>{form.testimonial.length} / 2000</p>
                   </div>
 
-                  {/* Server error banner */}
+                  {/* Server error */}
                   {status === "error" && (
                     <div role="alert" style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 8, padding: "12px 16px", color: "#dc2626", fontSize: 14, marginBottom: 20 }}>
                       {errorMsg}
                     </div>
                   )}
 
-                  {/* Submit button */}
+                  {/* Submit */}
                   <button type="submit" disabled={status === "loading"} className="btn-primary"
                     style={{ width: "100%", justifyContent: "center", fontSize: 16, padding: "14px 24px" }}>
                     {status === "loading" ? (
