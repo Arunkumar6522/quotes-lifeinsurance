@@ -36,6 +36,10 @@ function doPost(e) {
       return submitTestimonial(body);
     }
 
+    if (action === 'submitForestersLead') {
+      return submitForestersLead(body);
+    }
+
     return jsonResponse({ success: false, error: 'Unknown action' });
   } catch (error) {
     return jsonResponse({ success: false, error: error.toString() });
@@ -130,8 +134,63 @@ function saveImageToDrive(base64Data, fileName) {
 }
 
 // ============================================
-// GET REQUEST HANDLER
+// SUBMIT FORESTERS LEAD
 // ============================================
+function submitForestersLead(data) {
+  const ss    = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet   = ss.getSheetByName('foresters_leads');
+
+  // Create sheet if it doesn't exist
+  if (!sheet) {
+    sheet = ss.insertSheet('foresters_leads');
+    const headers = ['firstName','lastName','email','insuranceType','smokerStatus','coverageAmount','date','status'];
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+  }
+
+  if (!data.firstName || !data.email) {
+    return jsonResponse({ success: false, error: 'First name and email are required.' });
+  }
+
+  const row = [
+    data.firstName.toString().trim(),
+    (data.lastName      || '').toString().trim(),
+    data.email.toString().trim(),
+    (data.insuranceType  || '').toString().trim(),
+    (data.smokerStatus   || '').toString().trim(),
+    (data.coverageAmount || '').toString().trim(),
+    new Date(),
+    'new'
+  ];
+
+  sheet.appendRow(row);
+
+  // Email notification to DCW Financial
+  try {
+    MailApp.sendEmail({
+      to:      Session.getActiveUser().getEmail(),
+      subject: '🌿 New Foresters Lead — ' + data.firstName + ' ' + (data.lastName || ''),
+      body:    [
+        'New lead from the Foresters page:',
+        '',
+        'Name:             ' + data.firstName + ' ' + (data.lastName || ''),
+        'Email:            ' + data.email,
+        'Insurance type:   ' + (data.insuranceType  || '—'),
+        'Smoker status:    ' + (data.smokerStatus   || '—'),
+        'Coverage amount:  ' + (data.coverageAmount || '—'),
+        '',
+        'Submitted: ' + new Date().toLocaleString(),
+      ].join('\n')
+    });
+  } catch(emailErr) {
+    Logger.log('Email notification failed: ' + emailErr.toString());
+  }
+
+  return jsonResponse({ success: true, message: 'Lead received.' });
+}
+
+
 function doGet(e) {
   try {
     const action = e.parameter.action || 'getTestimonials';
