@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/home/HeroSection";
+import ForestersHeroSection from "@/components/home/ForestersHeroSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import AboutSection from "@/components/home/AboutSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -49,7 +49,7 @@ export default function ForestersPage() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        <ForestersHeroSection />
         <PartnersSection />
         <AboutSection />
         <TestimonialsSection />
