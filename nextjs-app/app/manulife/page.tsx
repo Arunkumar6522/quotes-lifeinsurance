@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/home/HeroSection";
+import ManulifeHeroSection from "@/components/home/ManulifeHeroSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import AboutSection from "@/components/home/AboutSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -50,46 +49,15 @@ export default function ManulifePage() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        {/* LeadBot form in hero — replaces QuestionScout on this page only */}
+        <ManulifeHeroSection />
         <PartnersSection />
-
-        {/* ── LeadBot Form — Manulife only ── */}
-        <section style={{ background: "#fff", padding: "80px 0 96px" }}>
-          <div className="container">
-            <div style={{ textAlign: "center", marginBottom: 40 }}>
-              <span className="section-label">
-                <span className="section-label-dot" />
-                Manulife Life Insurance
-              </span>
-              <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", marginTop: 16, marginBottom: 12 }}>
-                Get Your Free Manulife Quote
-              </h2>
-              <p style={{ color: "var(--muted)", maxWidth: 520, margin: "0 auto", fontSize: 16, lineHeight: 1.7 }}>
-                As an authorized Manulife broker, we compare Manulife alongside 20+ top Canadian carriers to find you the best rate. No fees, ever.
-              </p>
-            </div>
-            <div style={{ maxWidth: 720, margin: "0 auto" }}>
-              <div id="leadforms-embd-form" />
-            </div>
-          </div>
-        </section>
-
         <AboutSection />
         <TestimonialsSection />
         <BlogSection />
         <CtaSection />
       </main>
       <Footer />
-
-      {/* LeadBot scripts — loaded only on this page */}
-      <Script
-        id="leadbot-token"
-        strategy="afterInteractive"
-      >{`window.form_token = "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";`}</Script>
-      <Script
-        src="https://api.useleadbot.com/lead-bots/get-pixel-script.js"
-        strategy="afterInteractive"
-      />
     </>
   );
 }
