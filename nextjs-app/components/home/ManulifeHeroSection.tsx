@@ -41,11 +41,9 @@ export default function ManulifeHeroSection() {
               </Link>
             </motion.div>
           </motion.div>
-
-          {/* LeadBot renders here — script loaded once globally in layout.tsx */}
           <motion.div initial="hidden" animate="show" variants={fadeLeft(0.18)} className="hero-form-col">
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
-              <div id="leadforms-embd-form" style={{ width: "100%", minHeight: "640px", borderRadius: "16px", background: "#fff", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }} />
+              <iframe src="/leadbot-form.html" className="qs-iframe" title="Get a Free Life Insurance Quote" frameBorder="0" allow="clipboard-write" loading="eager" />
             </div>
           </motion.div>
         </div>
@@ -60,8 +58,9 @@ export default function ManulifeHeroSection() {
         .hero-learn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 50px; border: 2px solid var(--border); color: var(--dark); font-size: 14px; font-weight: 700; background: #fff; text-decoration: none; transition: all 0.2s ease; }
         .hero-learn-btn:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
         .hero-form-col { width: 100%; }
-        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; } .hero-form-col { order: -1; } .hero-copy { order: 1; } }
-        @media (max-width: 600px) { .hero-container { padding-top: 20px !important; padding-bottom: 32px !important; } .hero-h1 { font-size: clamp(1.8rem, 8vw, 2.4rem) !important; } .hero-ctas { flex-direction: column; gap: 10px; } .hero-ctas button, .hero-ctas .hero-learn-btn { width: 100%; justify-content: center; text-align: center; } .hero-form-col { margin-left: -20px; margin-right: -20px; width: calc(100% + 40px); } }
+        .qs-iframe { width: 100%; height: 640px; border: none; border-radius: 16px; display: block; background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; } .hero-form-col { order: -1; } .hero-copy { order: 1; } .qs-iframe { height: 600px; } }
+        @media (max-width: 600px) { .hero-container { padding-top: 20px !important; padding-bottom: 32px !important; } .hero-h1 { font-size: clamp(1.8rem, 8vw, 2.4rem) !important; } .hero-ctas { flex-direction: column; gap: 10px; } .hero-ctas button, .hero-ctas .hero-learn-btn { width: 100%; justify-content: center; text-align: center; } .hero-form-col { margin-left: -20px; margin-right: -20px; width: calc(100% + 40px); } .qs-iframe { height: 580px; border-radius: 0; } }
       `}</style>
     </section>
   );
