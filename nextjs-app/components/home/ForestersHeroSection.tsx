@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
@@ -17,21 +16,6 @@ const fadeLeft = (delay = 0): Variants => ({
 export default function ForestersHeroSection() {
   const { t }         = useLang();
   const { openModal } = useModal();
-
-  // Load Tally embed script for dynamic height support
-  useEffect(() => {
-    if (document.getElementById("tally-js")) return;
-    const script    = document.createElement("script");
-    script.id       = "tally-js";
-    script.src      = "https://tally.so/widgets/embed.js";
-    script.async    = true;
-    document.body.appendChild(script);
-
-    return () => {
-      const el = document.getElementById("tally-js");
-      if (el) el.remove();
-    };
-  }, []);
 
   return (
     <section className="hero-section">
@@ -62,7 +46,7 @@ export default function ForestersHeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: Tally form ── */}
+          {/* ── RIGHT: leadcapture.io funnel (same as modal) ── */}
           <motion.div
             initial="hidden"
             animate="show"
@@ -71,12 +55,13 @@ export default function ForestersHeroSection() {
           >
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
               <iframe
-                data-tally-src="https://tally.so/embed/Me9EeA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                src={process.env.NEXT_PUBLIC_LEADCAPTURE_FUNNEL_URL ?? "https://my.leadcapture.io/p/-el_mx7i"}
                 loading="eager"
                 width="100%"
                 height="640"
                 title="Get a Free Foresters Life Insurance Quote"
                 frameBorder="0"
+                allow="clipboard-write"
                 style={{
                   width: "100%",
                   height: "640px",

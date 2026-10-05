@@ -23,7 +23,7 @@ export default function ManulifeHeroSection() {
   useEffect(() => {
     // Set the token before the script loads
     (window as Window & typeof globalThis & { form_token?: string }).form_token =
-      "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
+      process.env.NEXT_PUBLIC_MANULIFE_FORM_TOKEN ?? "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
 
     // Avoid double-loading if component re-mounts
     if (document.getElementById("leadbot-script")) return;
@@ -133,6 +133,9 @@ export default function ManulifeHeroSection() {
           overflow: hidden;
           padding: 8px;
         }
+
+        /* Hide LeadBot's auto-created popup wrapper — keep only the embedded form */
+        #lead-bot-wrapper-3604s { display: none !important; }
 
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }

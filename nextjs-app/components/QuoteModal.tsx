@@ -8,7 +8,7 @@ interface Props {
 }
 
 // Hosted funnel page from my.leadcapture.io
-const FUNNEL_URL = "https://my.leadcapture.io/p/-el_mx7i";
+const FUNNEL_URL = process.env.NEXT_PUBLIC_LEADCAPTURE_FUNNEL_URL ?? "https://my.leadcapture.io/p/-el_mx7i";
 
 export default function QuoteModal({ open, onClose }: Props) {
   const { lang } = useLang();

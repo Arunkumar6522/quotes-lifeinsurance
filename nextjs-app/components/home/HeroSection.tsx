@@ -51,21 +51,19 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: QS form only ─────────────────── */}
+          {/* ── RIGHT: leadcapture.io funnel iframe ─────────── */}
           <motion.div
             initial="hidden"
             animate="show"
             variants={fadeLeft(0.18)}
             className="hero-form-col"
           >
-            {/* overflow:hidden wrapper kills any scrollbar the iframe tries to show */}
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
               <iframe
-                src={`https://form.questionscout.com/${process.env.NEXT_PUBLIC_QUESTIONSCOUT_FORM_ID ?? "616e35ca63bd79140f61b3ef"}`}
+                src={process.env.NEXT_PUBLIC_LEADCAPTURE_FUNNEL_URL ?? "https://my.leadcapture.io/p/-el_mx7i"}
                 className="qs-iframe"
                 title="Get a Free Life Insurance Quote"
                 frameBorder="0"
-                scrolling="no"
                 allow="clipboard-write"
                 loading="eager"
               />
