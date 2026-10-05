@@ -63,10 +63,10 @@ export default function QuoteModal({ open, onClose }: Props) {
           >✕</button>
         </div>
 
-        {/* Form iframe */}
+        {/* Form iframe — loads leadbot-form.html which has its own script instance */}
         <div style={{ flex: 1, overflow: "hidden", background: "#fff", display: "flex", flexDirection: "column" }}>
           <iframe
-            src={FORM_URL}
+            src="/leadbot-form.html"
             style={{ flex: 1, width: "100%", border: "none", display: "block" }}
             title="Get a Free Life Insurance Quote"
             allow="clipboard-write"
