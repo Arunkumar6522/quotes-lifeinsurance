@@ -26,20 +26,12 @@ export const metadata: Metadata = {
     title: "Foresters Life Insurance Canada | Compare & Get a Free Quote",
     description:
       "Authorized Foresters broker in Montreal. We compare Foresters with 20+ Canadian carriers to find your best rate. Free quotes, no fees. AMF Licensed.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Foresters Life Insurance — DCW Financial Inc.",
-      },
-    ],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Foresters Life Insurance — DCW Financial Inc." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Foresters Life Insurance Canada | Free Quote — DCW Financial",
-    description:
-      "Compare Foresters life insurance with 20+ Canadian carriers. Free quotes from an authorized Foresters broker. AMF Licensed.",
+    description: "Compare Foresters life insurance with 20+ Canadian carriers. Free quotes from an authorized Foresters broker. AMF Licensed.",
     images: ["https://quotes-lifeinsurance.com/og-image.png"],
   },
 };
