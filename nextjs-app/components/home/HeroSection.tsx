@@ -13,6 +13,10 @@ const fadeLeft = (delay = 0): Variants => ({
   show: { opacity: 1, x: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } },
 });
 
+// Direct hosted form — no scripts, no URL conditions, never duplicates
+const FORM_URL = process.env.NEXT_PUBLIC_LEADCAPTURE_FUNNEL_URL ??
+  "https://app.leadcapture.io/lead-form-guest/22165?token=dfzpha-cf2e82c0436a35a217478b9cad982ec9&uidb64=MjIxNjU";
+
 export default function HeroSection() {
   const { t }         = useLang();
   const { openModal } = useModal();
@@ -43,11 +47,10 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Isolated LeadBot iframe — no script conflicts, no stacking */}
           <motion.div initial="hidden" animate="show" variants={fadeLeft(0.18)} className="hero-form-col">
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
               <iframe
-                src="/leadbot-form.html"
+                src={FORM_URL}
                 className="qs-iframe"
                 title="Get a Free Life Insurance Quote"
                 frameBorder="0"
