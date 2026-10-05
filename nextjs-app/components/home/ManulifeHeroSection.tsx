@@ -13,8 +13,7 @@ const fadeLeft = (delay = 0): Variants => ({
   show:   { opacity: 1, x: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } },
 });
 
-const FORM_URL = process.env.NEXT_PUBLIC_LEADCAPTURE_FUNNEL_URL ??
-  "https://app.leadcapture.io/lead-form-guest/22165?token=dfzpha-cf2e82c0436a35a217478b9cad982ec9&uidb64=MjIxNjU";
+const FORM_SRC = "/leadbot-form.html";
 
 export default function ManulifeHeroSection() {
   const { t }         = useLang();
@@ -42,7 +41,7 @@ export default function ManulifeHeroSection() {
           </motion.div>
           <motion.div initial="hidden" animate="show" variants={fadeLeft(0.18)} className="hero-form-col">
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
-              <iframe src={FORM_URL} className="qs-iframe" title="Get a Free Life Insurance Quote" frameBorder="0" allow="clipboard-write" loading="eager" />
+              <iframe src={FORM_SRC} className="qs-iframe" title="Get a Free Life Insurance Quote" frameBorder="0" allow="clipboard-write" loading="eager" />
             </div>
           </motion.div>
         </div>
