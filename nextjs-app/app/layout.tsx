@@ -268,6 +268,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           observer.observe(document.body, { childList: true, subtree: false });
         })();
       `}</Script>
+      {/* LeadBot — load ONCE globally so no component can duplicate it */}
+      <Script id="leadbot-token" strategy="beforeInteractive">{`
+        window.form_token = "${process.env.NEXT_PUBLIC_MANULIFE_FORM_TOKEN ?? 'GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O'}";
+      `}</Script>
+      <Script
+        id="leadbot-script"
+        src="https://api.useleadbot.com/lead-bots/get-pixel-script.js"
+        strategy="afterInteractive"
+      />
       </head>
       <body suppressHydrationWarning style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
         <LangProvider>
