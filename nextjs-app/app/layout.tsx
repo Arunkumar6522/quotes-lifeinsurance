@@ -101,9 +101,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — AI readable site summary" />
         {/* Preconnect to external services */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://form.questionscout.com" />
-        <link rel="preconnect" href="https://cdn.questionscout.com" />
-        <link rel="dns-prefetch" href="https://form.questionscout.com" />
+        <link rel="preconnect" href="https://app.leadcapture.io" />
+        <link rel="dns-prefetch" href="https://app.leadcapture.io" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
         {/* JSON-LD Structured Data — for Google, LLMs & AI search */}
         <Script id="jsonld-org" type="application/ld+json" strategy="afterInteractive">{`
