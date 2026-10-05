@@ -246,6 +246,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         gtag('js', new Date());
         gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { page_path: window.location.pathname });
       `}</Script>
+      {/* Remove LeadBot popup wrapper the instant it's created — prevents double form */}
+      <Script id="leadbot-popup-killer" strategy="afterInteractive">{`
+        (function() {
+          function removePopup() {
+            var el = document.getElementById('lead-bot-wrapper-3604s');
+            if (el) el.remove();
+          }
+          // Remove if already exists
+          removePopup();
+          // Watch for it being added dynamically
+          var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(m) {
+              m.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1 && node.id === 'lead-bot-wrapper-3604s') {
+                  node.remove();
+                }
+              });
+            });
+          });
+          observer.observe(document.body, { childList: true, subtree: false });
+        })();
+      `}</Script>
       </head>
       <body suppressHydrationWarning style={{ fontFamily: "var(--font-nunito), system-ui, sans-serif", minHeight: "100vh" }}>
         <LangProvider>
