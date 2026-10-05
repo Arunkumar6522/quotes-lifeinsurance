@@ -1,5 +1,4 @@
 ﻿"use client";
-import { useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
@@ -9,37 +8,24 @@ const fadeUp = (delay = 0): Variants => ({
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0, transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] } },
 });
-
 const fadeLeft = (delay = 0): Variants => ({
   hidden: { opacity: 0, x: 48 },
   show: { opacity: 1, x: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } },
 });
 
-const FORM_TOKEN = process.env.NEXT_PUBLIC_MANULIFE_FORM_TOKEN ?? "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
+const FORM_URL = process.env.NEXT_PUBLIC_LEADCAPTURE_FUNNEL_URL ??
+  "https://app.leadcapture.io/lead-form-guest/22165?token=dfzpha-cf2e82c0436a35a217478b9cad982ec9&uidb64=MjIxNjU";
 
 export default function HeroSection() {
   const { t }         = useLang();
   const { openModal } = useModal();
-
-  useEffect(() => {
-    (window as Window & typeof globalThis & { form_token?: string }).form_token = FORM_TOKEN;
-    if (document.getElementById("leadbot-hero-script")) return;
-    const s = document.createElement("script");
-    s.id    = "leadbot-hero-script";
-    s.src   = "https://api.useleadbot.com/lead-bots/get-pixel-script.js";
-    s.async = true;
-    document.body.appendChild(s);
-    return () => {
-      document.getElementById("leadbot-hero-script")?.remove();
-    };
-  }, []);
 
   return (
     <section className="hero-section">
       <div className="container hero-container">
         <div className="hero-grid">
 
-          {/* ── LEFT: copy ─────────────────────────── */}
+          {/* ── LEFT: copy ── */}
           <motion.div initial="hidden" animate="show" className="hero-copy">
             <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
               {t.heroH1a}<br />
@@ -61,16 +47,16 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: LeadBot embedded form ─────────────────── */}
+          {/* ── RIGHT: leadcapture.io form ── */}
           <motion.div initial="hidden" animate="show" variants={fadeLeft(0.18)} className="hero-form-col">
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
-              <div
-                id="leadforms-embd-form"
-                style={{
-                  width: "100%", minHeight: "640px",
-                  borderRadius: "16px", background: "#fff",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-                }}
+              <iframe
+                src={FORM_URL}
+                className="qs-iframe"
+                title="Get a Free Life Insurance Quote"
+                frameBorder="0"
+                allow="clipboard-write"
+                loading="eager"
               />
             </div>
           </motion.div>
@@ -79,9 +65,6 @@ export default function HeroSection() {
       </div>
 
       <style>{`
-        /* Hide LeadBot's auto-created popup — keep only the embedded hero form */
-        #lead-bot-wrapper-3604s { display: none !important; }
-
         .hero-section { background: #f4f6f8; position: relative; }
         .hero-container { padding-top: 60px; padding-bottom: 60px; }
         .hero-grid { display: grid; grid-template-columns: 55fr 45fr; gap: 48px; align-items: flex-start; }
@@ -96,7 +79,6 @@ export default function HeroSection() {
         .hero-learn-btn:hover svg { transform: translateX(3px); }
         .hero-form-col { width: 100%; }
         .qs-iframe { width: 100%; height: 640px; border: none; border-radius: 16px; display: block; background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
-
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
           .hero-form-col { order: -1; }
