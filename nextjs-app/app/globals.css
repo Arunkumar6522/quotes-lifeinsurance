@@ -980,3 +980,9 @@ footer {
   outline: 3px solid #fff;
   outline-offset: 2px;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   LEADBOT — hide the auto-created popup wrapper so the form
+   only appears once in the embedded #leadforms-embd-form div
+───────────────────────────────────────────────────────────── */
+#lead-bot-wrapper-3604s { display: none !important; }
