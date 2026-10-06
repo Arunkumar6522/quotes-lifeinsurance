@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // ── Static Export for Cloudflare Pages ────────────────────
+  output: 'export',
+  trailingSlash: true, // Required for Cloudflare Pages static hosting
   // ── Images — optimization re-enabled (Netlify supports Next.js image optimization)
   images: {
     unoptimized: true, // Required for Cloudflare Workers (no image processing server)

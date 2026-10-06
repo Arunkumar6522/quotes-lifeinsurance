@@ -60,13 +60,9 @@ export default function ArticlesContent({ enPosts, frPosts }: Props) {
                 </article>
               );
 
-              return isFr ? (
-                <Link key={post.slug} href={`/articles/${post.slug}?lang=fr`}
-                  style={{ textDecoration: "none", display: "block" }}>
-                  {card}
-                </Link>
-              ) : (
-                <Link key={post.slug} href={`/articles/${post.slug}`}
+              return (
+                <Link key={post.slug}
+                  href={isFr ? `/fr/articles/${post.slug}` : `/articles/${post.slug}`}
                   style={{ textDecoration: "none", display: "block" }}>
                   {card}
                 </Link>

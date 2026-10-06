@@ -218,7 +218,7 @@ export default function Header() {
             </div>
 
             <Link href="/about"   className="nav-link">{t.about}</Link>
-            <Link href={lang === "fr" ? "/articles?lang=fr" : "/articles"} className="nav-link" prefetch={true}>{t.articles}</Link>
+            <Link href="/articles" className="nav-link" prefetch={true}>{t.articles}</Link>
             <Link href="/careers" className="nav-link">{t.joinTeam}</Link>
             <Link href="/contact" className="nav-link">{t.contact}</Link>
           </div>
@@ -321,7 +321,7 @@ export default function Header() {
             <Link href="/about" onClick={() => setMobileOpen(false)} className="mobile-link">
               {t.about}
             </Link>
-            <Link href={lang === "fr" ? "/articles?lang=fr" : "/articles"} onClick={() => setMobileOpen(false)} className="mobile-link">
+            <Link href="/articles" onClick={() => setMobileOpen(false)} className="mobile-link">
               {t.articles}
             </Link>
             <Link href="/careers" onClick={() => setMobileOpen(false)} className="mobile-link">

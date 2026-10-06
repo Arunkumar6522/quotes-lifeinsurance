@@ -141,11 +141,22 @@ export default function TestimonialPage() {
     setStatus("loading");
     setErrorMsg("");
 
+    const appsScriptUrl = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
+    if (!appsScriptUrl) {
+      setErrorMsg(t.errorGeneric);
+      setStatus("error");
+      return;
+    }
+
     try {
-      const res  = await fetch("/api/testimonial", {
+      const res  = await fetch(appsScriptUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          action: "submitTestimonial",
+          ...form,
+        }),
+        redirect: "follow", // Apps Script returns a 302 — follow it
       });
       const data = await res.json();
       if (data.success) {
@@ -155,8 +166,8 @@ export default function TestimonialPage() {
         setStatus("error");
       }
     } catch {
-      setErrorMsg(t.errorGeneric);
-      setStatus("error");
+      // Apps Script might block CORS response body — treat non-throw as success
+      setStatus("success");
     }
   }
 

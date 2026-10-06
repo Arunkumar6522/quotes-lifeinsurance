@@ -46,13 +46,9 @@ export default function BlogSectionPosts({ enPosts, frPosts }: Props) {
             </article>
           );
 
-          return isFr ? (
-            <Link key={post.slug} href={`/articles/${post.slug}?lang=fr`}
-              style={{ textDecoration: "none", display: "block" }}>
-              {card}
-            </Link>
-          ) : (
-            <Link key={post.slug} href={`/articles/${post.slug}`}
+          return (
+            <Link key={post.slug}
+              href={isFr ? `/fr/articles/${post.slug}` : `/articles/${post.slug}`}
               style={{ textDecoration: "none", display: "block" }}>
               {card}
             </Link>
@@ -62,7 +58,7 @@ export default function BlogSectionPosts({ enPosts, frPosts }: Props) {
 
       <div style={{ textAlign: "center", marginTop: "48px" }}>
         {isFr ? (
-          <Link href="/articles?lang=fr"
+          <Link href="/articles"
             className="btn-outline" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
             Voir tous les articles →
           </Link>
