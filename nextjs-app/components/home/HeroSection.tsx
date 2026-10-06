@@ -15,9 +15,10 @@ const fadeLeft = (delay = 0): Variants => ({
 
 // Isolated LeadBot iframe — exact embed code in its own document, never duplicates
 const FORM_SRC = "/leadbot-form.html";
+const FORM_SRC_FR = "/leadbot-form-fr.html";
 
 export default function HeroSection() {
-  const { t }         = useLang();
+  const { t, lang } = useLang();
   const { openModal } = useModal();
 
   return (
@@ -49,7 +50,7 @@ export default function HeroSection() {
           <motion.div initial="hidden" animate="show" variants={fadeLeft(0.18)} className="hero-form-col">
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
               <iframe
-                src={FORM_SRC}
+                src={lang === "fr" ? FORM_SRC_FR : FORM_SRC}
                 className="qs-iframe"
                 title="Get a Free Life Insurance Quote"
                 frameBorder="0"
