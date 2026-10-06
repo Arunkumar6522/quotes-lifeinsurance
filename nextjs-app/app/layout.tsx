@@ -236,16 +236,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ]
         }
       `}</Script>
-      {/* Google Analytics 4 — loaded after page is fully interactive */}
+      {/* Google Analytics 4 */}
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-        strategy="lazyOnload"
+        src="https://www.googletagmanager.com/gtag/js?id=G-YBFPTJ2GCT"
+        strategy="afterInteractive"
       />
-      <Script id="ga4-init" strategy="lazyOnload">{`
+      <Script id="ga4-init" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID ?? 'G-YBFPTJ2GCT'}', { page_path: window.location.pathname });
+        gtag('config', 'G-YBFPTJ2GCT', { page_path: window.location.pathname });
       `}</Script>
       {/* Remove LeadBot popup wrapper the instant it's created — prevents double form */}
       <Script id="leadbot-popup-killer" strategy="afterInteractive">{`
