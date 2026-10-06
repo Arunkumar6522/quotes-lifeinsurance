@@ -8,11 +8,14 @@ import { useLang } from "@/lib/i18n";
 interface JobListing {
   id: number;
   jobTitle: string;
+  jobTitleFr: string;
   qualifications: string;
   yearsExperience: string;
   location: string;
   jobType: string;
+  jobTypeFr: string;
   description: string;
+  descriptionFr: string;
   formLink: string;
   status: string;
 }
@@ -22,11 +25,14 @@ const fallbackJobs: JobListing[] = [
   {
     id: 1,
     jobTitle: "Insurance Sales Representative",
+    jobTitleFr: "Représentant en assurance vie",
     qualifications: "LLQP License preferred, excellent communication skills",
     yearsExperience: "1-3 years",
     location: "Montreal, QC",
     jobType: "Full-time",
+    jobTypeFr: "Temps plein",
     description: "Join our team to help families protect their future with life insurance solutions.",
+    descriptionFr: "Rejoignez notre équipe pour aider les familles à protéger leur avenir grâce à des solutions d'assurance vie.",
     formLink: "",
     status: "active",
   },
@@ -218,8 +224,8 @@ export default function CareersPage() {
                       </div>
 
                       {/* Job Title & Type */}
-                      <h3 className="job-title">{job.jobTitle}</h3>
-                      <span className="job-type-tag">{job.jobType || "Full-time"}</span>
+                      <h3 className="job-title">{lang === "fr" && job.jobTitleFr ? job.jobTitleFr : job.jobTitle}</h3>
+                      <span className="job-type-tag">{lang === "fr" && job.jobTypeFr ? job.jobTypeFr : (job.jobType || "Full-time")}</span>
                       
                       {/* Meta Info */}
                       <div className="job-meta">
@@ -243,8 +249,8 @@ export default function CareersPage() {
                       </div>
 
                       {/* Description */}
-                      {job.description && (
-                        <p className="job-description">{job.description}</p>
+                      {(lang === "fr" ? job.descriptionFr : job.description) && (
+                        <p className="job-description">{lang === "fr" && job.descriptionFr ? job.descriptionFr : job.description}</p>
                       )}
 
                       {/* Qualifications */}
@@ -276,7 +282,7 @@ export default function CareersPage() {
                               if (job.formLink) {
                                 setSelectedJob(job);
                               } else {
-                                window.location.href = "mailto:careers@quotes-lifeinsurance.com?subject=Application: " + job.jobTitle;
+                                window.location.href = "mailto:careers@quotes-lifeinsurance.com?subject=Application: " + (lang === "fr" && job.jobTitleFr ? job.jobTitleFr : job.jobTitle);
                               }
                             }}
                           >
@@ -354,7 +360,7 @@ export default function CareersPage() {
                 </svg>
               </button>
               <div className="modal-header">
-                <h2>{t.careersApplyNow} - {selectedJob.jobTitle}</h2>
+                <h2>{t.careersApplyNow} - {lang === "fr" && selectedJob.jobTitleFr ? selectedJob.jobTitleFr : selectedJob.jobTitle}</h2>
                 <p>{t.contactFormMessage}</p>
               </div>
               <div className="modal-body">

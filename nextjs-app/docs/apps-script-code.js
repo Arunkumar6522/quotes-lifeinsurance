@@ -17,7 +17,7 @@
  * Headers: name | location | serviceType | contentType | testimonial | videoUrl | rating | date | avatarUrl | status
  * 
  * Sheet: "jobs" (for job listings)
- * Headers: jobTitle | qualifications | yearsExperience | location | jobType | description | formLink | status
+ * Headers: jobTitleFr | jobTitle | qualifications | yearsExperience | location | jobTypeFr | jobType | description | descriptionFr | formLink | status
  * 
  * Status options for jobs: active | inactive | closed
  * 
@@ -327,14 +327,17 @@ function getJobListings() {
     .filter(item => item.jobTitle && item.jobTitle.toString().trim() !== '') // Filter empty rows
     .map(item => ({
       id: item.id,
-      jobTitle: item.jobTitle || '',
-      qualifications: item.qualifications || '',
+      jobTitle:        item.jobTitle        || '',
+      jobTitleFr:      item.jobTitleFr      || item.jobTitle || '',
+      qualifications:  item.qualifications  || '',
       yearsExperience: item.yearsExperience || '',
-      location: item.location || '',
-      jobType: item.jobType || 'Full-time',
-      description: item.description || '',
-      formLink: item.formLink || '',
-      status: (item.status || 'inactive').toString().toLowerCase()
+      location:        item.location        || '',
+      jobType:         item.jobType         || 'Full-time',
+      jobTypeFr:       item.jobTypeFr       || item.jobType  || '',
+      description:     item.description     || '',
+      descriptionFr:   item.descriptionFr   || item.description || '',
+      formLink:        item.formLink        || '',
+      status:          (item.status || 'inactive').toString().toLowerCase()
     }));
   
   return jsonResponse({

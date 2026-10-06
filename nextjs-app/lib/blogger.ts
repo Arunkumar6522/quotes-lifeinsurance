@@ -19,17 +19,33 @@ export interface BlogPost {
 }
 
 function getThumb(e: any): string {
-  // Use media$thumbnail scaled up — most reliable source across both blogs
+  // Use the FIRST image from the post content — this is the actual uploaded image (full quality)
+  const html: string = e.content?.$t ?? "";
+  
+  // Try to find the first img src in the content
+  const imgMatch = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  if (imgMatch?.[1]) {
+    const url = imgMatch[1];
+    // If it's a Google/Blogger hosted image, request max resolution
+    if (url.includes("googleusercontent.com") || url.includes("blogspot.com") || url.includes("bp.blogspot")) {
+      return url
+        .replace(/\/s\d+-c\//, "/s1600/")
+        .replace(/\/s\d+\//, "/s1600/")
+        .replace(/=s\d+-c$/, "=s1600")
+        .replace(/=s\d+$/, "=s1600");
+    }
+    return url; // External image (Canva etc.) — use as-is
+  }
+
+  // Fallback: media$thumbnail scaled up
   if (e.media$thumbnail?.url) {
     return e.media$thumbnail.url
-      .replace(/\/s72-c\//, "/s1200/")
-      .replace(/\/s\d+-c\//, "/s1200/")
-      .replace(/\/s\d+\//, "/s1200/");
+      .replace(/\/s72-c\//, "/s1600/")
+      .replace(/\/s\d+-c\//, "/s1600/")
+      .replace(/\/s\d+\//, "/s1600/");
   }
-  // Fallback: first image in content
-  const html: string = e.content?.$t ?? "";
-  const m = html.match(/src="(https?:\/\/[^"]+)"/);
-  return m?.[1] ?? "";
+
+  return "";
 }
 
 function getLink(e: any): string {
