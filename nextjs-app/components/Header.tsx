@@ -99,7 +99,13 @@ export default function Header() {
             {/* Language toggle switch */}
             <button
               className="lang-toggle"
-              onClick={() => setLang(lang === "en" ? "fr" : "en")}
+              onClick={() => {
+                if (lang === "en") {
+                  window.location.href = "https://quoteslifeinsurancefr.blogspot.com";
+                } else {
+                  setLang("en");
+                }
+              }}
               aria-label={`Switch language to ${lang === "en" ? "French" : "English"}`}
             >
               <span className={`lang-toggle-label${lang === "en" ? " lang-toggle-label--active" : ""}`}>EN</span>
@@ -333,7 +339,14 @@ export default function Header() {
             
             <div className="mobile-lang">
               {(["en", "fr"] as Lang[]).map((l) => (
-                <button key={l} onClick={() => { setLang(l); setMobileOpen(false); }}
+                <button key={l} onClick={() => {
+                    if (l === "fr") {
+                      window.location.href = "https://quoteslifeinsurancefr.blogspot.com";
+                    } else {
+                      setLang(l);
+                      setMobileOpen(false);
+                    }
+                  }}
                   className={`mobile-lang-btn${lang === l ? " mobile-lang-btn--active" : ""}`}>
                   {l.toUpperCase()}
                 </button>
