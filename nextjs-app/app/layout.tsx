@@ -99,6 +99,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
         {/* llms.txt — for AI/LLM discoverability (ChatGPT, Claude, Perplexity, Gemini) */}
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — AI readable site summary" />
+        {/* Preload hero background — reduces LCP */}
+        <link rel="preload" as="image" href="/hero-bg.jpg" fetchPriority="high" />
         {/* Preconnect to external services */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://app.leadcapture.io" />

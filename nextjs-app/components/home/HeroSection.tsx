@@ -65,7 +65,7 @@ export default function HeroSection() {
             </motion.p>
             <motion.div variants={fadeUp(0.22)} className="hero-ctas">
               <button onClick={openModal} className="btn-primary">{t.heroCta1}</button>
-              <Link href="/about" className="hero-learn-btn">
+              <Link href="/about" className="hero-learn-btn" aria-label="Learn more about Quotes Life Insurance and our team">
                 {t.heroCta2}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
