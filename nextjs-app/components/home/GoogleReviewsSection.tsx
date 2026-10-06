@@ -101,78 +101,33 @@ export default function GoogleReviewsSection() {
   const googleMapsUrl = "https://www.google.com/maps/place/DCW+FINANCIAL+INC./@45.4978758,-73.6484381,17z/";
 
   useEffect(() => {
-    const apiKey  = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
-    const placeId = "ChIJVaEV7SgZyUwRg9rLg5Z4G0c";
-
-    // Uses the new Places API (google.maps.places.Place) — available to all customers.
-    // Old PlacesService is deprecated and unavailable to new Google Cloud customers.
-    async function loadReviews() {
-      try {
-        const gmaps = (window as any).google;
-        // Guard: importLibrary is absent when the API key is blocked (e.g. localhost).
-        // The section silently hides itself — no console error.
-        if (typeof gmaps?.maps?.importLibrary !== "function") {
-          setLoading(false);
-          return;
+    // Fetch via Cloudflare Pages Function — no referrer restrictions, no Maps JS API needed
+    fetch("/api/google-reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "OK" && data.result) {
+          const r = data.result;
+          setPlaceData({
+            name:         r.name,
+            rating:       r.rating,
+            totalReviews: r.user_ratings_total,
+            reviews: (r.reviews ?? []).map((rev: any) => ({
+              author_name:               rev.author_name,
+              author_url:                rev.author_url              ?? "",
+              profile_photo_url:         rev.profile_photo_url       ?? "",
+              rating:                    rev.rating,
+              relative_time_description: rev.relative_time_description,
+              text:                      rev.text,
+              time:                      rev.time,
+            })),
+            url: r.url,
+          });
+        } else {
+          setError("Failed to load reviews");
         }
-        // importLibrary is the new async way to load Maps libraries
-        const { Place } = await gmaps.maps.importLibrary("places") as { Place: any };
-
-        const place = new Place({ id: placeId });
-        await place.fetchFields({
-          fields: ["displayName", "rating", "userRatingCount", "reviews", "googleMapsURI"],
-        });
-
-        setPlaceData({
-          name:         place.displayName         ?? "DCW Financial Inc.",
-          rating:       place.rating              ?? 5,
-          totalReviews: place.userRatingCount     ?? 0,
-          reviews: (place.reviews ?? []).map((r: any) => ({
-            author_name:               r.authorAttribution?.displayName ?? "Anonymous",
-            author_url:                r.authorAttribution?.uri         ?? "",
-            profile_photo_url:         r.authorAttribution?.photoURI    ?? "",
-            rating:                    r.rating                         ?? 5,
-            relative_time_description: r.relativePublishTimeDescription ?? "",
-            text:                      r.text?.text                     ?? "",
-            time: r.publishTime ? new Date(r.publishTime).getTime() / 1000 : 0,
-          })),
-          url: place.googleMapsURI,
-        });
-        setError(null);
-      } catch (err) {
-        console.error("[GoogleReviews] fetch error:", err);
-        setError("Failed to load reviews");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    // If Maps JS API is already bootstrapped, load reviews immediately
-    if ((window as any)?.google?.maps?.importLibrary) {
-      loadReviews();
-      return;
-    }
-
-    // Script already injected but not ready yet — poll for readiness
-    if (document.getElementById("gm-script")) {
-      const t = setInterval(() => {
-        if ((window as any)?.google?.maps?.importLibrary) {
-          clearInterval(t);
-          loadReviews();
-        }
-      }, 100);
-      return () => clearInterval(t);
-    }
-
-    // First load — inject the Maps JS API with loading=async (avoids the sync warning)
-    const script  = document.createElement("script");
-    script.id     = "gm-script";
-    // loading=async tells Maps to bootstrap asynchronously; importLibrary handles the rest
-    script.src    = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async`;
-    script.async  = true;
-    script.onload = () => loadReviews();
-    script.onerror = () => { setError("Failed to load Google Maps"); setLoading(false); };
-    document.head.appendChild(script);
+      })
+      .catch(() => setError("Failed to load reviews"))
+      .finally(() => setLoading(false));
   }, []);
 
   // Don't render if no data and not loading
