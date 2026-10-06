@@ -32,10 +32,22 @@ export async function generateMetadata(
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default async function BlogPostPage(
-  { params }: { params: Promise<{ slug: string }> }
+  { params, searchParams }: {
+    params: Promise<{ slug: string }>;
+    searchParams: Promise<{ lang?: string }> | { lang?: string };
+  }
 ) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  // Detect FR from searchParams (handle both Promise and plain object)
+  let isFr = false;
+  try {
+    const sp = typeof (searchParams as any)?.then === "function"
+      ? await (searchParams as Promise<{ lang?: string }>)
+      : (searchParams as { lang?: string });
+    isFr = sp?.lang === "fr";
+  } catch { isFr = false; }
+
+  const post = await getPostBySlug(slug, isFr);
   if (!post) notFound();
 
   return (
@@ -105,11 +117,11 @@ export default async function BlogPostPage(
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   flexWrap: "wrap", gap: "12px",
                 }}>
-                  <Link href="/articles" style={{
+                  <Link href={isFr ? "/articles?lang=fr" : "/articles"} style={{
                     fontSize: "14px", fontWeight: 600, color: "var(--green)",
                     textDecoration: "none",
                   }}>
-                    ← Back to all articles
+                    {isFr ? "← Retour aux articles" : "← Back to all articles"}
                   </Link>
                 </div>
               </article>
@@ -135,22 +147,24 @@ export default async function BlogPostPage(
                     textTransform: "uppercase", color: "rgba(255,255,255,0.6)",
                     marginBottom: "8px",
                   }}>
-                    Free, No Obligation
+                    {isFr ? "Gratuit, sans obligation" : "Free, No Obligation"}
                   </p>
                   <h3 style={{
                     fontSize: "18px", fontWeight: 800, color: "#fff",
                     marginBottom: "10px", lineHeight: 1.3,
                   }}>
-                    Get Your Free Life Insurance Quote
+                    {isFr ? "Obtenez votre devis gratuit" : "Get Your Free Life Insurance Quote"}
                   </h3>
                   <p style={{
                     fontSize: "13px", color: "rgba(255,255,255,0.65)",
                     marginBottom: "20px", lineHeight: 1.6,
                   }}>
-                    Compare 20+ top Canadian carriers in minutes. Always free.
+                    {isFr
+                      ? "Comparez plus de 20 assureurs canadiens en quelques minutes. Toujours gratuit."
+                      : "Compare 20+ top Canadian carriers in minutes. Always free."}
                   </p>
                   <QuoteButton
-                    label="Get My Free Quote →"
+                    label={isFr ? "Obtenir mon devis →" : "Get My Free Quote →"}
                     style={{
                       width: "100%", justifyContent: "center",
                       background: "#fff", color: "var(--green)", border: "none",
@@ -167,15 +181,21 @@ export default async function BlogPostPage(
                     fontSize: "11px", fontWeight: 800, color: "var(--muted)",
                     textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: "14px",
                   }}>
-                    Our Services
+                    {isFr ? "Nos services" : "Our Services"}
                   </p>
-                  {[
+                  {(isFr ? [
+                    { label: "Assurance vie temporaire",       href: "/services/term-life" },
+                    { label: "Assurance vie entière",          href: "/services/whole-life" },
+                    { label: "Assurance vie universelle",      href: "/services/universal-life" },
+                    { label: "Assurance maladies graves",      href: "/services/critical-illness" },
+                    { label: "Assurance invalidité",           href: "/services/disability" },
+                  ] : [
                     { label: "Term Life Insurance",       href: "/services/term-life" },
                     { label: "Whole Life Insurance",      href: "/services/whole-life" },
                     { label: "Universal Life Insurance",  href: "/services/universal-life" },
                     { label: "Critical Illness Coverage", href: "/services/critical-illness" },
                     { label: "Disability Insurance",      href: "/services/disability" },
-                  ].map((s) => (
+                  ]).map((s) => (
                     <Link key={s.href} href={s.href} style={{
                       display: "block", padding: "9px 0",
                       fontSize: "13px", fontWeight: 600,
@@ -227,9 +247,7 @@ export default async function BlogPostPage(
         .post-layout > article { min-width: 0; overflow: hidden; }
         @media (max-width: 900px) { .post-layout { grid-template-columns: 1fr !important; } }
 
-        /* Blogger content styles — proper readable typography */
-        .blog-content {
-        /* Blogger content — prevent overflow into sidebar */
+        /* Blogger content styles */
         .blog-content {
           font-size: 16px;
           line-height: 1.9;

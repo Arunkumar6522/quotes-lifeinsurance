@@ -1,5 +1,9 @@
-const BLOG_ID   = ""; // Will be extracted from feed
-const FEED_BASE = "https://quotes-lifeinsurance007.blogspot.com/feeds/posts/default";
+const FEED_BASE_EN = "https://quotes-lifeinsurance007.blogspot.com/feeds/posts/default";
+const FEED_BASE_FR = "https://quoteslifeinsurancefr.blogspot.com/feeds/posts/default";
+
+function getFeedBase(french = false) {
+  return french ? FEED_BASE_FR : FEED_BASE_EN;
+}
 
 export interface BlogPost {
   slug:     string;
@@ -17,9 +21,9 @@ export interface BlogPost {
 function getThumb(e: any): string {
   if (e.media$thumbnail?.url) {
     return e.media$thumbnail.url
-      .replace(/\/s72-c\//, "/s800/")
-      .replace(/\/s\d+-c\//, "/s800/")
-      .replace(/\/s\d+\//, "/s800/");
+      .replace(/\/s72-c\//, "/s640/")
+      .replace(/\/s\d+-c\//, "/s640/")
+      .replace(/\/s\d+\//, "/s640/");
   }
   const html: string = e.content?.$t ?? "";
   const m = html.match(/src="(https?:\/\/[^"]+)"/);
@@ -65,28 +69,29 @@ function entryToPost(e: any): BlogPost {
 }
 
 // ── Fetch all posts (for listing page) ───────────────────────────────────────
-export async function getAllPosts(max = 20): Promise<BlogPost[]> {
+export async function getAllPosts(max = 20, french = false): Promise<BlogPost[]> {
+  const feedBase = getFeedBase(french);
   try {
     const res = await fetch(
-      `${FEED_BASE}?alt=json&max-results=${max}`,
+      `${feedBase}?alt=json&max-results=${max}`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return [];
     const data = await res.json();
     return (data.feed?.entry ?? [])
       .map(entryToPost)
-      .filter((p: BlogPost) => p.slug); // skip any without valid slugs
+      .filter((p: BlogPost) => p.slug);
   } catch {
     return [];
   }
 }
 
-// ── Fetch single post by ID — searches in full feed ─────────────────
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+// ── Fetch single post by ID ─────────────────────────────────────────────────
+export async function getPostBySlug(slug: string, french = false): Promise<BlogPost | null> {
+  const feedBase = getFeedBase(french);
   try {
-    // Fetch all posts and find the one with matching slug
     const res = await fetch(
-      `${FEED_BASE}?alt=json&max-results=100`,
+      `${feedBase}?alt=json&max-results=100`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return null;
