@@ -9,7 +9,6 @@
     html, body {
       height: 100%; width: 100%;
       overflow-y: auto; background: #fff;
-      /* Hide scrollbar on desktop — mobile keeps native scroll */
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
@@ -18,11 +17,14 @@
   </style>
 </head>
 <body>
-  <!-- EXACTLY the LeadBot embed code — isolated in its own document so it never duplicates -->
   <div id="leadforms-embd-form"></div>
   <script type="text/javascript">
-    // Spoof the URL so LeadBot's page-URL condition passes for any domain
-    // e.g. "https://site.com/leadbot-form.html" becomes "https://site.com/"
+    // Always show top of form on load
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
     try { history.replaceState(null, '', '/'); } catch(e) {}
     window.form_token = "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
   </script>

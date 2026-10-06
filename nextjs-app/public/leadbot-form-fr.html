@@ -8,7 +8,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%; width: 100%;
-      overflow-y: auto; background: #fff;
+      overflow: hidden; background: #fff;
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
@@ -19,6 +19,12 @@
 <body>
   <div id="leadforms-embd-form"></div>
   <script type="text/javascript">
+    // Always scroll to top so the heading is visible first
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
     try { history.replaceState(null, '', '/'); } catch(e) {}
     window.form_token = "GLFT-3XAH9YY98KG1NPVKWXCSSJU5S38";
   </script>
