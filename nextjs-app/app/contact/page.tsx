@@ -481,6 +481,20 @@ export default function ContactPage() {
           line-height: 1.45;
           text-align: left;
           box-shadow: 0 4px 16px rgba(185, 28, 28, 0.35);
+          position: relative;
+        }
+        /* Arrow pointing up toward the phone number */
+        .contact-card-alert::before {
+          content: "";
+          position: absolute;
+          top: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid #dc2626;
         }
         .contact-alert-icon {
           flex-shrink: 0;
