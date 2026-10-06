@@ -6,7 +6,14 @@
   <title>Get a Free Quote</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; width: 100%; overflow-y: auto; background: #fff; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow-y: auto; background: #fff;
+      /* Hide scrollbar on desktop — mobile keeps native scroll */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body::-webkit-scrollbar { display: none; }
     #leadforms-embd-form { width: 100%; min-height: 100%; }
   </style>
 </head>
