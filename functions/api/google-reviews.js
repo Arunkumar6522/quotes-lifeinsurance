@@ -10,7 +10,7 @@
  *   NEXT_PUBLIC_GOOGLE_PLACES_API_KEY
  */
 export async function onRequestGet(context) {
-  const apiKey  = context.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
+  const apiKey  = context.env.GOOGLE_PLACES_SERVER_KEY;
   const placeId = "ChIJVaEV7SgZyUwRg9rLg5Z4G0c";
 
   if (!apiKey) {
