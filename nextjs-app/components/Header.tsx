@@ -99,13 +99,7 @@ export default function Header() {
             {/* Language toggle switch */}
             <button
               className="lang-toggle"
-              onClick={() => {
-                if (lang === "en") {
-                  window.location.href = "https://quoteslifeinsurancefr.blogspot.com";
-                } else {
-                  setLang("en");
-                }
-              }}
+              onClick={() => setLang(lang === "en" ? "fr" : "en")}
               aria-label={`Switch language to ${lang === "en" ? "French" : "English"}`}
             >
               <span className={`lang-toggle-label${lang === "en" ? " lang-toggle-label--active" : ""}`}>EN</span>
@@ -224,7 +218,7 @@ export default function Header() {
             </div>
 
             <Link href="/about"   className="nav-link">{t.about}</Link>
-            <Link href="/articles"    className="nav-link" prefetch={true}>{t.articles}</Link>
+            <Link href={lang === "fr" ? "/articles?lang=fr" : "/articles"} className="nav-link" prefetch={true}>{t.articles}</Link>
             <Link href="/careers" className="nav-link">{t.joinTeam}</Link>
             <Link href="/contact" className="nav-link">{t.contact}</Link>
           </div>
@@ -327,7 +321,7 @@ export default function Header() {
             <Link href="/about" onClick={() => setMobileOpen(false)} className="mobile-link">
               {t.about}
             </Link>
-            <Link href="/articles" onClick={() => setMobileOpen(false)} className="mobile-link">
+            <Link href={lang === "fr" ? "/articles?lang=fr" : "/articles"} onClick={() => setMobileOpen(false)} className="mobile-link">
               {t.articles}
             </Link>
             <Link href="/careers" onClick={() => setMobileOpen(false)} className="mobile-link">
@@ -339,14 +333,7 @@ export default function Header() {
             
             <div className="mobile-lang">
               {(["en", "fr"] as Lang[]).map((l) => (
-                <button key={l} onClick={() => {
-                    if (l === "fr") {
-                      window.location.href = "https://quoteslifeinsurancefr.blogspot.com";
-                    } else {
-                      setLang(l);
-                      setMobileOpen(false);
-                    }
-                  }}
+                <button key={l} onClick={() => { setLang(l); setMobileOpen(false); }}
                   className={`mobile-lang-btn${lang === l ? " mobile-lang-btn--active" : ""}`}>
                   {l.toUpperCase()}
                 </button>
