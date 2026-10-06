@@ -22,11 +22,11 @@ export default function BlogSectionPosts({ enPosts, frPosts }: Props) {
         {posts.map((post) => {
           const card = (
             <article style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid var(--border)", background: "#fff", transition: "box-shadow 0.25s, transform 0.25s", height: "100%" }} className="blog-card">
-              <div style={{ height: "200px", overflow: "hidden", background: "#f8f8f8", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ height: "200px", overflow: "hidden", background: "#f0f0f0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {post.thumb ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={post.thumb} alt={post.title} loading="lazy"
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} className="blog-thumb" />
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} className="blog-thumb" />
                 ) : (
                   <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "48px" }}>📰</div>
                 )}
