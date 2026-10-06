@@ -20,7 +20,34 @@
     [class*="lf-header"],
     [class*="form-header"] { display: none !important; }
     #leadforms-embd-form { width: 100%; min-height: 100%; }
+    /* Fallback font override — prevents CORS request for AvenirLTStdBlack */
+    @font-face {
+      font-family: 'AvenirLTStdBlack';
+      src: local('Trebuchet MS'), local('Arial Black'), local('Arial');
+      font-weight: 900;
+      font-style: normal;
+    }
   </style>
+  <script>
+    (function() {
+      const patchStyles = () => {
+        document.querySelectorAll('style').forEach(function(el) {
+          if (el.dataset.patched) return;
+          if (el.textContent.includes('useleadbot.com/fonts')) {
+            el.textContent = el.textContent.replace(
+              /url\s*\(\s*['"]?https?:\/\/media\.useleadbot\.com\/fonts\/[^)'"]+['"]?\s*\)/gi,
+              "local('Arial Black')"
+            );
+            el.dataset.patched = '1';
+          }
+        });
+      };
+      const observer = new MutationObserver(patchStyles);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+      if (document.readyState !== 'loading') patchStyles();
+      else document.addEventListener('DOMContentLoaded', patchStyles);
+    })();
+  </script>
 </head>
 <body>
   <div id="leadforms-embd-form"></div>
