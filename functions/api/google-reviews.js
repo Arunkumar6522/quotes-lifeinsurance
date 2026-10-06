@@ -27,7 +27,12 @@ export async function onRequestGet(context) {
     `&key=${apiKey}`;
 
   try {
-    const res  = await fetch(url);
+    const res  = await fetch(url, {
+      headers: {
+        // Satisfy Google's HTTP referrer restriction on the API key
+        "Referer": "https://quotes-lifeinsurance.com",
+      },
+    });
     const data = await res.json();
 
     return new Response(JSON.stringify(data), {
