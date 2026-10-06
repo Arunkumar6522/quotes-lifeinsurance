@@ -243,7 +243,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { page_path: window.location.pathname });
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID ?? 'G-YBFPTJ2GCT'}', { page_path: window.location.pathname });
       `}</Script>
       {/* Remove LeadBot popup wrapper the instant it's created — prevents double form */}
       <Script id="leadbot-popup-killer" strategy="afterInteractive">{`
