@@ -13,6 +13,12 @@
       -ms-overflow-style: none;
     }
     body::-webkit-scrollbar { display: none; }
+    /* Hide LeadBot's own form header inside the iframe */
+    .leadforms-header,
+    .leadforms-form-header,
+    [class*="leadforms-header"],
+    [class*="lf-header"],
+    [class*="form-header"] { display: none !important; }
     #leadforms-embd-form { width: 100%; min-height: 100%; }
   </style>
 </head>
