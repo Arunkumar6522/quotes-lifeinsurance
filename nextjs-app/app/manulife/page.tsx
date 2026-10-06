@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ManulifeHeroSection from "@/components/home/ManulifeHeroSection";
+import HeroSection from "@/components/home/HeroSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import AboutSection from "@/components/home/AboutSection";
+import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
@@ -49,10 +50,10 @@ export default function ManulifePage() {
     <>
       <Header />
       <main>
-        {/* LeadBot form in hero — replaces QuestionScout on this page only */}
-        <ManulifeHeroSection />
+        <HeroSection />
         <PartnersSection />
         <AboutSection />
+        <GoogleReviewsSection />
         <TestimonialsSection />
         <BlogSection />
         <CtaSection />
