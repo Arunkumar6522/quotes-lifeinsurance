@@ -19,27 +19,17 @@ export interface BlogPost {
 }
 
 function getThumb(e: any): string {
-  // Try full-size image from content first (better quality)
-  const html: string = e.content?.$t ?? "";
-  const imgMatch = html.match(/src="(https?:\/\/(?:blogger|bp|lh)[^"]+(?:\.jpg|\.jpeg|\.png|\.webp)[^"]*)"/i);
-  if (imgMatch?.[1]) {
-    // Remove any size constraints from the URL
-    return imgMatch[1]
-      .replace(/\/s\d+-c\//, "/s1200/")
-      .replace(/\/s\d+\//, "/s1200/");
-  }
-  
-  // Fall back to media thumbnail scaled up
+  // Use media$thumbnail scaled up — most reliable source across both blogs
   if (e.media$thumbnail?.url) {
     return e.media$thumbnail.url
       .replace(/\/s72-c\//, "/s1200/")
       .replace(/\/s\d+-c\//, "/s1200/")
       .replace(/\/s\d+\//, "/s1200/");
   }
-  
-  // Last resort: any image in content
-  const anyImg = html.match(/src="(https?:\/\/[^"]+)"/);
-  return anyImg?.[1] ?? "";
+  // Fallback: first image in content
+  const html: string = e.content?.$t ?? "";
+  const m = html.match(/src="(https?:\/\/[^"]+)"/);
+  return m?.[1] ?? "";
 }
 
 function getLink(e: any): string {
