@@ -14,7 +14,7 @@ const data = {
   icon: "🛡️",
   color: "#00a759",
   description: "Disability insurance replaces a portion of your income, typically 60–70%, if illness or injury prevents you from working. Statistics show 1 in 3 Canadians will experience a disability lasting 90 days or more before age 65.",
-  descriptionFr: "L'assurance invalidité remplace une partie de votre revenu, généralement 60 à 70%, si une maladie ou une blessure vous empêche de travailler. Les statistiques montrent qu'1 Canadien sur 3 connaîtra une invalidité de 90 jours ou plus avant l'âge de 65 ans.",
+  descriptionFr: "L'assurance invalidité peut remplacer une partie de votre revenu, généralement de 60 à 70 %, si une maladie ou une blessure vous empêche de travailler. Les statistiques montrent qu'environ 1 Canadien sur 3 connaîtra une invalidité de 90 jours ou plus avant l'âge de 65 ans.",
   highlights: [
     { heading: "Own-occupation vs any-occupation", text: "The strongest policies use an 'own-occupation' definition. You're considered disabled if you can't perform your specific job, even if you could do another." },
     { heading: "Covers illness and injury", text: "Disability insurance covers both accidents and illnesses like cancer, heart disease, mental health conditions, and musculoskeletal disorders." },
@@ -22,9 +22,9 @@ const data = {
     { heading: "Tax-free benefits", text: "If you pay your own premiums with after-tax dollars, your disability benefits are received completely tax-free." },
   ],
   highlightsFr: [
-    { heading: "Propre profession vs toute profession", text: "Les meilleures polices utilisent la définition 'propre profession'. Vous êtes considéré invalide si vous ne pouvez pas exercer votre emploi spécifique." },
-    { heading: "Couvre maladie et blessure", text: "L'assurance invalidité couvre les accidents et les maladies comme le cancer, les maladies cardiaques, les troubles de santé mentale et musculosquelettiques." },
-    { heading: "Essentielle pour les travailleurs autonomes", text: "Les professionnels indépendants n'ont pas de filet de sécurité. L'assurance invalidité privée est essentielle." },
+    { heading: "Propre profession vs toute profession", text: "Les meilleures polices peuvent offrir une définition de « propre profession ». Vous êtes considéré comme invalide si vous ne pouvez pas exercer votre profession spécifique, selon les modalités de la police." },
+    { heading: "Couvre les maladies et les blessures", text: "L'assurance invalidité peut couvrir les accidents ainsi que les maladies, notamment le cancer, les maladies cardiaques, les troubles de santé mentale et musculosquelettiques." },
+    { heading: "Essentielle pour les travailleurs autonomes", text: "Les travailleurs autonomes peuvent avoir moins de protections offertes par un employeur. Une assurance invalidité privée peut contribuer à protéger leur revenu." },
     { heading: "Prestations non imposables", text: "Si vous payez vos primes avec des dollars après impôt, vos prestations d'invalidité sont reçues entièrement en franchise d'impôt." },
   ],
   bestFor: [
@@ -37,9 +37,9 @@ const data = {
   bestForFr: [
     "Professionnels autonomes et propriétaires d'entreprise",
     "Toute personne dont la famille dépend de son revenu",
-    "Employés avec une couverture collective insuffisante",
-    "Personnes à revenus élevés avec des obligations financières importantes",
-    "Toute personne qui ne peut se permettre de passer des mois sans revenu",
+    "Employés ayant une couverture collective insuffisante",
+    "Personnes à revenus élevés ayant des obligations financières importantes",
+    "Toute personne qui ne pourrait pas se permettre de passer plusieurs mois sans revenu",
   ],
   faqs: [
     { q: "What is the elimination period?", a: "The elimination period is how long you must be disabled before benefits start, typically 30, 60, 90, or 120 days." },
@@ -52,7 +52,7 @@ const data = {
     { q: "Qu'est-ce que le délai de carence ?", a: "Le délai de carence est la durée pendant laquelle vous devez être invalide avant que les prestations commencent, généralement 30, 60, 90 ou 120 jours." },
     { q: "Combien de temps durent les prestations ?", a: "Les périodes de prestations durent généralement 2 ans, 5 ans, ou jusqu'à 65 ans." },
     { q: "Puis-je obtenir une assurance invalidité si j'ai des problèmes de santé ?", a: "Oui, de nombreux assureurs offrent une couverture avec des exclusions ou des primes majorées pour les conditions préexistantes." },
-    { q: "Ma couverture collective est-elle suffisante ?", a: "Souvent non. Les régimes collectifs couvrent généralement seulement 60% du salaire de base et les prestations peuvent être imposables." },
+    { q: "Ma couverture collective est-elle suffisante ?", a: "Pas nécessairement. Les régimes collectifs peuvent généralement couvrir une partie du salaire, souvent autour de 60 %, et les prestations peuvent être imposables selon la façon dont les primes sont payées." },
     { q: "Quelle couverture invalidité puis-je obtenir ?", a: "Les assureurs limitent généralement la couverture à 60-70% de votre revenu brut de toutes sources." },
   ],
 };
