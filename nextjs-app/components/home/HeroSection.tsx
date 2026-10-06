@@ -13,13 +13,40 @@ const fadeLeft = (delay = 0): Variants => ({
   show: { opacity: 1, x: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } },
 });
 
-// Isolated LeadBot iframe — exact embed code in its own document, never duplicates
-const FORM_SRC = "/leadbot-form.html";
-const FORM_SRC_FR = "/leadbot-form-fr.html";
+// Build iframe HTML inline using srcDoc — no file request, no 404 possible
+function buildFormDoc(token: string) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;width:100%;overflow-y:auto;background:#fff;scrollbar-width:none;-ms-overflow-style:none}
+    body::-webkit-scrollbar{display:none}
+    [class*="leadforms-header"],[class*="lf-header"],[class*="form-header"]{display:none!important}
+    #leadforms-embd-form{width:100%;min-height:100%}
+  </style>
+</head>
+<body>
+  <div id="leadforms-embd-form"></div>
+  <script>
+    window.addEventListener('load',function(){window.scrollTo(0,0);document.body.scrollTop=0;});
+    try{history.replaceState(null,'','/');}catch(e){}
+    window.form_token="${token}";
+  </script>
+  <script async src="https://api.useleadbot.com/lead-bots/get-pixel-script.js"></script>
+</body>
+</html>`;
+}
+
+const TOKEN_EN = "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
+const TOKEN_FR = "GLFT-3XAH9YY98KG1NPVKWXCSSJU5S38";
 
 export default function HeroSection() {
   const { t, lang } = useLang();
   const { openModal } = useModal();
+  const formDoc = buildFormDoc(lang === "fr" ? TOKEN_FR : TOKEN_EN);
 
   return (
     <section className="hero-section">
@@ -47,10 +74,11 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
+          {/* srcDoc embeds HTML directly — no HTTP request, no 404, no wrong page loading */}
           <motion.div initial="hidden" animate="show" variants={fadeLeft(0.18)} className="hero-form-col">
             <div style={{ overflow: "hidden", borderRadius: "16px", lineHeight: 0 }}>
               <iframe
-                src={lang === "fr" ? FORM_SRC_FR : FORM_SRC}
+                srcDoc={formDoc}
                 className="qs-iframe"
                 title="Get a Free Life Insurance Quote"
                 frameBorder="0"
