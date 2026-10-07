@@ -192,7 +192,7 @@ export default function Header() {
                   <div className="flat-services-list">
                     {[
                       { name: "Manulife", logo: "/company/manulife.png", href: "/manulife-insurance-quote" },
-                      { name: "Foresters", logo: "/company/foresters.png", href: "/foresters" },
+                      { name: "Foresters", logo: "/company/foresters.png", href: "/foresters-life-insurance-quote" },
                     ].map((carrier) => (
                       <Link
                         key={carrier.href}
@@ -297,7 +297,7 @@ export default function Header() {
               <div className="mobile-services-section">
                 {[
                   { name: "Manulife", logo: "/company/manulife.png", href: "/manulife-insurance-quote" },
-                  { name: "Foresters", logo: "/company/foresters.png", href: "/foresters" },
+                  { name: "Foresters", logo: "/company/foresters.png", href: "/foresters-life-insurance-quote" },
                 ].map((carrier) => (
                   <Link
                     key={carrier.href}
