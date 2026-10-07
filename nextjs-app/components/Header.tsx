@@ -296,7 +296,7 @@ export default function Header() {
             {mobileCarriersOpen && (
               <div className="mobile-services-section">
                 {[
-                  { name: "Manulife", logo: "/company/manulife.png", href: "/manulife" },
+                  { name: "Manulife", logo: "/company/manulife.png", href: "/manulife-insurance-quote" },
                   { name: "Foresters", logo: "/company/foresters.png", href: "/foresters" },
                 ].map((carrier) => (
                   <Link
