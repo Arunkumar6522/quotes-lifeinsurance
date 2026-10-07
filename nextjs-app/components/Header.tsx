@@ -191,7 +191,7 @@ export default function Header() {
                 <div className="mega-dropdown carriers-dropdown">
                   <div className="flat-services-list">
                     {[
-                      { name: "Manulife", logo: "/company/manulife.png", href: "/manulife" },
+                      { name: "Manulife", logo: "/company/manulife.png", href: "/manulife-insurance-quote" },
                       { name: "Foresters", logo: "/company/foresters.png", href: "/foresters" },
                     ].map((carrier) => (
                       <Link
