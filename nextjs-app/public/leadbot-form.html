@@ -63,6 +63,17 @@
     });
     try { history.replaceState(null, '', '/'); } catch(e) {}
     window.form_token = "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
+
+    // Set flag before LeadBot redirects to /thank-you
+    // Tries direct sessionStorage access (same-origin srcDoc iframe)
+    // Falls back to postMessage so parent can set it
+    window.addEventListener('pagehide', function() {
+      try {
+        window.parent.sessionStorage.setItem('form_submitted', '1');
+      } catch(e) {
+        try { window.parent.postMessage({ type: 'FORM_SUBMITTED' }, '*'); } catch(e2) {}
+      }
+    });
   </script>
   <script async type="text/javascript" src="https://api.useleadbot.com/lead-bots/get-pixel-script.js"></script>
 </body>

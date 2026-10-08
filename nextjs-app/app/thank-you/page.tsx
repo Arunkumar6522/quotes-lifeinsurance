@@ -28,19 +28,13 @@ export default function ThankYouPage() {
   const homeLabel = lang === "fr" ? "Retour à l'accueil" : "Back to Home";
 
   useEffect(() => {
-    // Guard: only show this page if visitor came via a real form submission.
-    // Prevents direct URL access from inflating Google Ads conversion data.
-    const fromOurSite =
-      document.referrer.includes("quotes-lifeinsurance.com") ||
-      document.referrer.includes("localhost") ||
-      sessionStorage.getItem("form_submitted") === "1";
-
-    if (!fromOurSite) {
+    // Guard: only show if sessionStorage flag was set by the form iframe before redirect.
+    // Blocks direct URL access and fake conversions.
+    const submitted = sessionStorage.getItem("form_submitted");
+    if (!submitted) {
       router.replace("/");
       return;
     }
-
-    // Clear the flag so refreshing the thank-you page also redirects
     sessionStorage.removeItem("form_submitted");
   }, [router]);
 
