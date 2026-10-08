@@ -28,17 +28,6 @@ export default function ThankYouPage() {
   const homeLabel = lang === "fr" ? "Retour à l'accueil" : "Back to Home";
 
   useEffect(() => {
-    // Guard: only show if sessionStorage flag was set by the form iframe before redirect.
-    // Blocks direct URL access and fake conversions.
-    const submitted = sessionStorage.getItem("form_submitted");
-    if (!submitted) {
-      router.replace("/");
-      return;
-    }
-    sessionStorage.removeItem("form_submitted");
-  }, [router]);
-
-  useEffect(() => {
     if (count <= 0) {
       router.push("/");
       return;
