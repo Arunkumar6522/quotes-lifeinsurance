@@ -28,6 +28,23 @@ export default function ThankYouPage() {
   const homeLabel = lang === "fr" ? "Retour à l'accueil" : "Back to Home";
 
   useEffect(() => {
+    // Guard: only show this page if visitor came via a real form submission.
+    // Prevents direct URL access from inflating Google Ads conversion data.
+    const fromOurSite =
+      document.referrer.includes("quotes-lifeinsurance.com") ||
+      document.referrer.includes("localhost") ||
+      sessionStorage.getItem("form_submitted") === "1";
+
+    if (!fromOurSite) {
+      router.replace("/");
+      return;
+    }
+
+    // Clear the flag so refreshing the thank-you page also redirects
+    sessionStorage.removeItem("form_submitted");
+  }, [router]);
+
+  useEffect(() => {
     if (count <= 0) {
       router.push("/");
       return;
@@ -166,3 +183,4 @@ export default function ThankYouPage() {
     </>
   );
 }
+
