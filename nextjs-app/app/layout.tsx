@@ -238,14 +238,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       `}</Script>
       {/* Google Analytics 4 */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-YBFPTJ2GCT"
+        src="https://www.googletagmanager.com/gtag/js?id=G-9MV5RVSERD"
         strategy="afterInteractive"
       />
       <Script id="ga4-init" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-YBFPTJ2GCT', { page_path: window.location.pathname });
+        gtag('config', 'G-9MV5RVSERD', { page_path: window.location.pathname });
       `}</Script>
       {/* Remove LeadBot popup wrapper the instant it's created — prevents double form */}
       <Script id="leadbot-popup-killer" strategy="afterInteractive">{`
