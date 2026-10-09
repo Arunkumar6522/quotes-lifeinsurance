@@ -288,64 +288,144 @@ export default function ContactPage() {
       {/* ── Before You Call Modal ──────────────────────── */}
       {showCallModal && (
         <div
+          role="presentation"
           onClick={() => setShowCallModal(false)}
-          style={{
-            position: "fixed", inset: 0, zIndex: 9999,
-            background: "rgba(0,0,0,0.75)", backdropFilter: "blur(4px)",
-            display: "flex", alignItems: "flex-end", justifyContent: "center",
-            padding: "0 0 32px",
-          }}
+          className="call-modal-overlay"
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="call-modal-title"
             onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#111", borderRadius: "20px",
-              padding: "32px 28px 28px", maxWidth: 420, width: "calc(100% - 32px)",
-              boxShadow: "0 24px 60px rgba(0,0,0,0.6)",
-            }}
+            className="call-modal-card"
           >
-            {/* Heading */}
-            <h2 style={{ color: "#fff", fontSize: "22px", fontWeight: 800, marginBottom: "14px", fontFamily: "var(--font-sora), sans-serif" }}>
-              {lang === "fr" ? "Avant d'appeler" : "Before you call"}
-            </h2>
+            {/* Close button */}
+            <button
+              onClick={() => setShowCallModal(false)}
+              aria-label="Close"
+              className="call-modal-close"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+
+            {/* Phone icon + heading */}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+              <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(0,167,89,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.84a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <h2 id="call-modal-title" style={{ color: "#fff", fontSize: "22px", fontWeight: 900, lineHeight: 1.2, fontFamily: "var(--font-sora), sans-serif", margin: 0 }}>
+                {lang === "fr" ? "Avant d'appeler" : "Before you call"}
+              </h2>
+            </div>
+
             {/* Body */}
-            <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "15px", lineHeight: 1.65, marginBottom: "28px" }}>
+            <p style={{ color: "rgba(255,255,255,0.92)", fontSize: "16px", fontWeight: 600, lineHeight: 1.7, marginBottom: "28px" }}>
               {lang === "fr"
                 ? "Ce numéro est exclusivement réservé aux nouvelles demandes de soumission d'assurance vie. Appelez-vous pour obtenir un nouveau devis ?"
                 : "This line is exclusively for new life insurance quote inquiries. Are you calling to request a new quote?"}
             </p>
+
             {/* Buttons */}
             <div style={{ display: "flex", gap: "12px" }}>
-              {/* Primary — opens dialpad */}
+              {/* Primary — Yes, call → opens dialpad */}
               <a
                 href="tel:+15146620403"
                 onClick={() => setShowCallModal(false)}
+                aria-label={lang === "fr" ? "Oui, appeler le 514-662-0403" : "Yes, call 514-662-0403"}
+                autoFocus
                 style={{
-                  flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
-                  background: "var(--green)", color: "#fff", borderRadius: "12px",
-                  padding: "14px 16px", fontWeight: 700, fontSize: "15px",
-                  textDecoration: "none", textAlign: "center",
+                  flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
+                  background: "var(--green)", color: "#fff", borderRadius: "14px",
+                  padding: "16px 16px", fontWeight: 800, fontSize: "16px",
+                  textDecoration: "none", textAlign: "center", letterSpacing: "-0.01em",
                 }}
               >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.84a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
                 {lang === "fr" ? "Oui, appeler" : "Yes, call"}
               </a>
-              {/* Secondary — opens quote modal */}
+
+              {/* Secondary — Get quote */}
               <button
                 onClick={() => { setShowCallModal(false); openModal(); }}
+                aria-label={lang === "fr" ? "Obtenir un devis en ligne" : "Get a free quote online instead"}
                 style={{
-                  flex: 1, background: "#2a2a2a", color: "#fff", border: "none",
-                  borderRadius: "12px", padding: "14px 16px", fontWeight: 700,
-                  fontSize: "15px", cursor: "pointer",
+                  flex: 1, background: "#2c2c2e", color: "#fff", border: "2px solid rgba(255,255,255,0.15)",
+                  borderRadius: "14px", padding: "16px 16px", fontWeight: 800,
+                  fontSize: "16px", cursor: "pointer", letterSpacing: "-0.01em",
                 }}
               >
                 {lang === "fr" ? "Obtenir un devis" : "Get quote"}
               </button>
             </div>
+
+            {/* Dismiss hint */}
+            <p style={{ textAlign: "center", marginTop: "16px", fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>
+              {lang === "fr" ? "Appuyez en dehors pour fermer" : "Tap outside to dismiss"}
+            </p>
           </div>
         </div>
       )}
 
       <style>{`
+        /* ── Before You Call Modal ── */
+        .call-modal-overlay {
+          position: fixed; inset: 0; z-index: 9999;
+          background: rgba(0,0,0,0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+        .call-modal-card {
+          background: #1a1a1a;
+          border-radius: 24px;
+          padding: 36px 32px 32px;
+          max-width: 480px;
+          width: 100%;
+          box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+          position: relative;
+          border: 1px solid rgba(255,255,255,0.08);
+        }
+        .call-modal-close {
+          position: absolute; top: 16px; right: 16px;
+          background: rgba(255,255,255,0.1); border: none;
+          width: 36px; height: 36px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; color: #fff;
+          transition: background 0.15s;
+        }
+        .call-modal-close:hover { background: rgba(255,255,255,0.2); }
+        .call-modal-close:focus-visible {
+          outline: 3px solid var(--green);
+          outline-offset: 2px;
+        }
+        /* Button focus states for keyboard/accessibility */
+        .call-modal-card a:focus-visible,
+        .call-modal-card button:focus-visible {
+          outline: 3px solid #fff;
+          outline-offset: 3px;
+        }
+        /* Mobile — bottom sheet */
+        @media (max-width: 600px) {
+          .call-modal-overlay {
+            align-items: flex-end;
+            padding: 0;
+          }
+          .call-modal-card {
+            border-radius: 24px 24px 0 0;
+            padding: 32px 24px 36px;
+            max-width: 100%;
+          }
+        }
+
         /* ── Hero ── */
         .contact-hero {
           position: relative;
