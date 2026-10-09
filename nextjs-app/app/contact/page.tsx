@@ -60,6 +60,7 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 export default function ContactPage() {
   const { openModal } = useModal();
   const { t, lang } = useLang();
+  const [showCallModal, setShowCallModal] = useState(false);
 
   const infoCards = [
     {
@@ -74,6 +75,7 @@ export default function ContactPage() {
         ? "Ce numéro de téléphone est réservé aux demandes de nouvelles soumissions d'assurance vie"
         : "This phone number is for new life insurance quotes inquiry only",
       href: "tel:+15146620403",
+      interceptCall: true,
     },
     {
       icon: (
@@ -164,7 +166,9 @@ export default function ContactPage() {
                 <h3 className="contact-card-title">{c.title}</h3>
                 <div className="contact-card-lines">
                   {c.lines.map((l) =>
-                    c.href ? (
+                    (c as any).interceptCall ? (
+                      <button key={l} onClick={() => setShowCallModal(true)} className="contact-card-link" style={{ background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>{l}</button>
+                    ) : c.href ? (
                       <a key={l} href={c.href} className="contact-card-link">{l}</a>
                     ) : (
                       <p key={l} className="contact-card-text">{l}</p>
@@ -280,6 +284,66 @@ export default function ContactPage() {
 
       </main>
       <Footer />
+
+      {/* ── Before You Call Modal ──────────────────────── */}
+      {showCallModal && (
+        <div
+          onClick={() => setShowCallModal(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 9999,
+            background: "rgba(0,0,0,0.75)", backdropFilter: "blur(4px)",
+            display: "flex", alignItems: "flex-end", justifyContent: "center",
+            padding: "0 0 32px",
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#111", borderRadius: "20px",
+              padding: "32px 28px 28px", maxWidth: 420, width: "calc(100% - 32px)",
+              boxShadow: "0 24px 60px rgba(0,0,0,0.6)",
+            }}
+          >
+            {/* Heading */}
+            <h2 style={{ color: "#fff", fontSize: "22px", fontWeight: 800, marginBottom: "14px", fontFamily: "var(--font-sora), sans-serif" }}>
+              {lang === "fr" ? "Avant d'appeler" : "Before you call"}
+            </h2>
+            {/* Body */}
+            <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "15px", lineHeight: 1.65, marginBottom: "28px" }}>
+              {lang === "fr"
+                ? "Ce numéro est exclusivement réservé aux nouvelles demandes de soumission d'assurance vie. Appelez-vous pour obtenir un nouveau devis ?"
+                : "This line is exclusively for new life insurance quote inquiries. Are you calling to request a new quote?"}
+            </p>
+            {/* Buttons */}
+            <div style={{ display: "flex", gap: "12px" }}>
+              {/* Primary — opens dialpad */}
+              <a
+                href="tel:+15146620403"
+                onClick={() => setShowCallModal(false)}
+                style={{
+                  flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "var(--green)", color: "#fff", borderRadius: "12px",
+                  padding: "14px 16px", fontWeight: 700, fontSize: "15px",
+                  textDecoration: "none", textAlign: "center",
+                }}
+              >
+                {lang === "fr" ? "Oui, appeler" : "Yes, call"}
+              </a>
+              {/* Secondary — opens quote modal */}
+              <button
+                onClick={() => { setShowCallModal(false); openModal(); }}
+                style={{
+                  flex: 1, background: "#2a2a2a", color: "#fff", border: "none",
+                  borderRadius: "12px", padding: "14px 16px", fontWeight: 700,
+                  fontSize: "15px", cursor: "pointer",
+                }}
+              >
+                {lang === "fr" ? "Obtenir un devis" : "Get quote"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style>{`
         /* ── Hero ── */
