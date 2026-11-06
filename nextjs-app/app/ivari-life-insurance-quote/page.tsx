@@ -8,7 +8,7 @@ import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
-import { IvariIntroSection, IvariAdvisorsSection, IvariInfoSection } from "./ClientSections";
+import { IvariAdvisorsSection, IvariInfoSection } from "./ClientSections";
 import IvariIntro from "./IvariIntroSection";
 
 export const metadata: Metadata = {

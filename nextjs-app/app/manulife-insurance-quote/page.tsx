@@ -8,7 +8,7 @@ import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
-import { ManulifeIntroSection, ExpertAdvisorsSection, ManulifeInfoSection } from "./ClientSections";
+import { ExpertAdvisorsSection, ManulifeInfoSection } from "./ClientSections";
 import ManulifeIntro from "./ManulifeIntroSection";
 
 export const metadata: Metadata = {

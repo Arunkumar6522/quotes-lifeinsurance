@@ -8,7 +8,7 @@ import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
-import { ForestersIntroSection, ForestersAdvisorsSection, ForestersInfoSection } from "./ClientSections";
+import { ForestersAdvisorsSection, ForestersInfoSection } from "./ClientSections";
 import ForestersIntro from "./ForestersIntroSection";
 
 export const metadata: Metadata = {
