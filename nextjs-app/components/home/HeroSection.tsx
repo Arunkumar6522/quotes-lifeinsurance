@@ -64,16 +64,6 @@ export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, car
         <div className="hero-grid">
 
           <motion.div initial="hidden" animate="show" className="hero-copy">
-            {/* Carrier logo badge */}
-            {carrierLogo && (
-              <motion.div variants={fadeUp(0)} style={{ display: "inline-flex", alignItems: "center", gap: "10px", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: "12px", padding: "8px 16px 8px 10px", marginBottom: "20px" }}>
-                <span style={{ background: "#fff", borderRadius: "8px", padding: "4px 8px", display: "flex", alignItems: "center" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={carrierLogo} alt={carrierName ?? ""} style={{ height: "22px", width: "auto", display: "block" }} />
-                </span>
-                <span style={{ fontSize: "12px", fontWeight: 700, color: "rgba(255,255,255,0.75)", letterSpacing: "0.5px" }}>Independent advisor guide</span>
-              </motion.div>
-            )}
             <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
               {h1a}<br />
               <span style={{ color: "var(--green)" }}>{h1b}</span>
