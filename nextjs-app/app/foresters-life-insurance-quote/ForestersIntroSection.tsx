@@ -16,9 +16,13 @@ export default function ForestersIntroSection() {
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }}>
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "10px" }}>
-              {isFr ? "QUI EST FORESTERS FINANCIAL ?" : "WHO IS FORESTERS FINANCIAL?"}
-            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/company/foresters.png" alt="Foresters Financial" style={{ height: "32px", width: "auto" }} />
+              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", margin: 0 }}>
+                {isFr ? "QUI EST FORESTERS FINANCIAL ?" : "WHO IS FORESTERS FINANCIAL?"}
+              </p>
+            </div>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
               {isFr
                 ? "Foresters Financial est une société fraternelle de bienfaisance qui protège les familles depuis 1874. Contrairement aux assureurs traditionnels, chaque police Foresters s'accompagne d'avantages uniques pour les membres — bourses d'orphelins, subventions communautaires, remises dentaires — sans frais supplémentaires. Foresters sert plus de 3 millions de membres au Canada, aux États-Unis et au Royaume-Uni."

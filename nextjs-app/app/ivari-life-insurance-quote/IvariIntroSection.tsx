@@ -16,9 +16,13 @@ export default function IvariIntroSection() {
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }}>
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "10px" }}>
-              {isFr ? "QUI EST IVARI ?" : "WHO IS IVARI?"}
-            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/company/ivari.png" alt="ivari" style={{ height: "32px", width: "auto" }} />
+              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", margin: 0 }}>
+                {isFr ? "QUI EST IVARI ?" : "WHO IS IVARI?"}
+              </p>
+            </div>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
               {isFr
                 ? "ivari est une compagnie d'assurance vie canadienne présente sur le marché depuis 1928 — administrant des polices d'assureurs antérieurs dont Transamerica Life Canada. Avec une cote AM Best A (Excellent) en 2026 et plus de 700 000 assurés, ivari propose une gamme ciblée d'assurance temporaire, universelle, maladies graves et sans examen médical."

@@ -16,9 +16,13 @@ export default function ManulifeIntroSection() {
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }}>
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "10px" }}>
-              {isFr ? "QUI EST MANUVIE ?" : "WHO IS MANULIFE?"}
-            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/company/manulife.png" alt="Manulife" style={{ height: "32px", width: "auto" }} />
+              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", margin: 0 }}>
+                {isFr ? "QUI EST MANUVIE ?" : "WHO IS MANULIFE?"}
+              </p>
+            </div>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
               {isFr
                 ? "Manuvie est l'un des plus grands assureurs vie au Canada, offrant l'assurance temporaire, la vie entière participante, la vie universelle, la couverture sans examen médical, et le programme Vitalité Manuvie. Fondée en 1887, Manuvie sert des millions de familles canadiennes à travers un réseau de conseillers indépendants comme nous."
