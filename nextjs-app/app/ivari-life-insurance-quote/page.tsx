@@ -40,7 +40,7 @@ export default function IvariPage() {
         <HeroSection
           overrideH1a="ivari Life Insurance"
           overrideH1b="Compare & Get Your Free Quote"
-          overrideSub="We compare ivari alongside 20+ top Canadian carriers — Manulife, Desjardins, Foresters & more — to find you the best coverage at the lowest rate. Our advice is always"
+          overrideSub="ivari has been in the Canadian market since 1928 — offering term, universal life, critical illness, and no-medical coverage, including the uniquely flexible Term 30 with built-in SelectOptions. We compare ivari with 20+ carriers to find your best fit. Our advice is always"
         />
         <IvariAdvisorsSection />
         <PartnersSection />

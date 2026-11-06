@@ -40,7 +40,7 @@ export default function ManulifePage() {
         <HeroSection
           overrideH1a="Manulife Life Insurance"
           overrideH1b="Compare & Get Your Free Quote"
-          overrideSub="We compare Manulife alongside 20+ top Canadian carriers — Desjardins, Foresters, iA Financial & more — to find you the best coverage at the lowest rate. Our advice is always"
+          overrideSub="Manulife is one of Canada's largest life insurers — offering term, whole life, universal life, and the Manulife Vitality wellness program. As independent advisors we compare Manulife with 20+ Canadian carriers to find what's genuinely right for you. Our advice is always"
         />
         <ExpertAdvisorsSection carrier="manulife" />
         <PartnersSection />
