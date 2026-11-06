@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
 import { ManulifeIntroSection, ExpertAdvisorsSection, ManulifeInfoSection } from "./ClientSections";
+import ManulifeIntro from "./ManulifeIntroSection";
 
 export const metadata: Metadata = {
   title: "Manulife Life Insurance Canada | Compare & Get a Free Quote | DCW Financial",
@@ -41,7 +42,7 @@ export default function ManulifePage() {
           carrierName="Manulife"
         />
         {/* 2. Small intro about Manulife */}
-        <ManulifeIntroSection />
+        <ManulifeIntro />
         {/* 3. Meet the expert advisors */}
         <ExpertAdvisorsSection carrier="manulife" />
         {/* 4. Full Manulife deep-dive */}

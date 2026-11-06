@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
 import { ForestersIntroSection, ForestersAdvisorsSection, ForestersInfoSection } from "./ClientSections";
+import ForestersIntro from "./ForestersIntroSection";
 
 export const metadata: Metadata = {
   title: "Foresters Life Insurance Canada | Compare & Get a Free Quote | DCW Financial",
@@ -41,7 +42,7 @@ export default function ForestersPage() {
           carrierName="Foresters Financial"
         />
         {/* 2. Small intro about Foresters */}
-        <ForestersIntroSection />
+        <ForestersIntro />
         {/* 3. Meet the expert advisors */}
         <ForestersAdvisorsSection />
         {/* 4. Full Foresters deep-dive */}

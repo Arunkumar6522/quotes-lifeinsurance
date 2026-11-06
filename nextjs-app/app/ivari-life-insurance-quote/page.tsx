@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
 import { IvariIntroSection, IvariAdvisorsSection, IvariInfoSection } from "./ClientSections";
+import IvariIntro from "./IvariIntroSection";
 
 export const metadata: Metadata = {
   title: "ivari Life Insurance Canada | Compare & Get a Free Quote | DCW Financial",
@@ -41,7 +42,7 @@ export default function IvariPage() {
           carrierName="ivari"
         />
         {/* 2. Small intro about ivari */}
-        <IvariIntroSection />
+        <IvariIntro />
         {/* 3. Meet the expert advisors */}
         <IvariAdvisorsSection />
         {/* 4. Full ivari deep-dive */}
