@@ -37,7 +37,11 @@ export default function IvariPage() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        <HeroSection
+          overrideH1a="ivari Life Insurance"
+          overrideH1b="Compare & Get Your Free Quote"
+          overrideSub="We compare ivari alongside 20+ top Canadian carriers — Manulife, Desjardins, Foresters & more — to find you the best coverage at the lowest rate. Our advice is always"
+        />
         <IvariAdvisorsSection />
         <PartnersSection />
         <AboutSection />

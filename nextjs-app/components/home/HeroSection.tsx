@@ -43,10 +43,18 @@ function buildFormDoc(token: string) {
 const TOKEN_EN = "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
 const TOKEN_FR = "GLFT-3XAH9YY98KG1NPVKWXCSSJU5S38";
 
-export default function HeroSection() {
+export default function HeroSection({ overrideH1a, overrideH1b, overrideSub }: {
+  overrideH1a?: string;
+  overrideH1b?: string;
+  overrideSub?: string;
+} = {}) {
   const { t, lang } = useLang();
   const { openModal } = useModal();
   const formDoc = buildFormDoc(lang === "fr" ? TOKEN_FR : TOKEN_EN);
+
+  const h1a = overrideH1a ?? t.heroH1a;
+  const h1b = overrideH1b ?? t.heroH1b;
+  const sub = overrideSub ?? t.heroSub;
 
   return (
     <section className="hero-section">
@@ -55,12 +63,12 @@ export default function HeroSection() {
 
           <motion.div initial="hidden" animate="show" className="hero-copy">
             <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
-              {t.heroH1a}<br />
-              <span style={{ color: "var(--green)" }}>{t.heroH1b}</span>
-              {t.heroH1c && <><br /><span className="hero-h1-sub">{t.heroH1c}</span></>}
+              {h1a}<br />
+              <span style={{ color: "var(--green)" }}>{h1b}</span>
+              {!overrideH1a && t.heroH1c && <><br /><span className="hero-h1-sub">{t.heroH1c}</span></>}
             </motion.h1>
             <motion.p variants={fadeUp(0.15)} className="hero-sub">
-              {t.heroSub}{" "}
+              {sub}{" "}
               <strong style={{ color: "var(--green)", fontWeight: 800 }}>{t.heroFree}</strong>.
             </motion.p>
             <motion.div variants={fadeUp(0.22)} className="hero-ctas">

@@ -37,7 +37,11 @@ export default function ManulifePage() {
     <>
       <Header />
       <main>
-        <HeroSection />
+        <HeroSection
+          overrideH1a="Manulife Life Insurance"
+          overrideH1b="Compare & Get Your Free Quote"
+          overrideSub="We compare Manulife alongside 20+ top Canadian carriers — Desjardins, Foresters, iA Financial & more — to find you the best coverage at the lowest rate. Our advice is always"
+        />
         <ExpertAdvisorsSection carrier="manulife" />
         <PartnersSection />
         <AboutSection />
