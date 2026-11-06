@@ -42,10 +42,10 @@ export default function IvariPage() {
           overrideH1b="Compare & Get Your Free Quote"
           overrideSub="ivari has been in the Canadian market since 1928 — offering term, universal life, critical illness, and no-medical coverage, including the uniquely flexible Term 30 with built-in SelectOptions. We compare ivari with 20+ carriers to find your best fit. Our advice is always"
         />
+        <IvariInfoSection />
+        <IvariInfoSection />
         <IvariAdvisorsSection />
         <PartnersSection />
-        <AboutSection />
-        <IvariInfoSection />
         <GoogleReviewsSection />
         <TestimonialsSection />
         <BlogSection />

@@ -42,10 +42,10 @@ export default function ManulifePage() {
           overrideH1b="Compare & Get Your Free Quote"
           overrideSub="Manulife is one of Canada's largest life insurers — offering term, whole life, universal life, and the Manulife Vitality wellness program. As independent advisors we compare Manulife with 20+ Canadian carriers to find what's genuinely right for you. Our advice is always"
         />
+        <ManulifeInfoSection />
+        <ManulifeInfoSection />
         <ExpertAdvisorsSection carrier="manulife" />
         <PartnersSection />
-        <AboutSection />
-        <ManulifeInfoSection />
         <GoogleReviewsSection />
         <TestimonialsSection />
         <BlogSection />
