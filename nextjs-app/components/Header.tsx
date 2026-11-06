@@ -193,6 +193,7 @@ export default function Header() {
                     {[
                       { name: "Manulife", logo: "/company/manulife.png", href: "/manulife-insurance-quote" },
                       { name: "Foresters", logo: "/company/foresters.png", href: "/foresters-life-insurance-quote" },
+                      { name: "ivari", logo: "/company/ivari.png", href: "/ivari-life-insurance-quote" },
                     ].map((carrier) => (
                       <Link
                         key={carrier.href}
@@ -298,6 +299,7 @@ export default function Header() {
                 {[
                   { name: "Manulife", logo: "/company/manulife.png", href: "/manulife-insurance-quote" },
                   { name: "Foresters", logo: "/company/foresters.png", href: "/foresters-life-insurance-quote" },
+                  { name: "ivari", logo: "/company/ivari.png", href: "/ivari-life-insurance-quote" },
                 ].map((carrier) => (
                   <Link
                     key={carrier.href}

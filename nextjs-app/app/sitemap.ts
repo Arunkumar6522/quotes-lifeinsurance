@@ -22,5 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/terms`,                         lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
     { url: `${baseUrl}/manulife-insurance-quote`,         lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/foresters-life-insurance-quote`,  lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/ivari-life-insurance-quote`,       lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }
