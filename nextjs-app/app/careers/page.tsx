@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -391,7 +391,7 @@ export default function CareersPage() {
         .careers-hero-left { display: flex; flex-direction: column; }
         .careers-hero-label {
           font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
-          color: var(--green); margin-bottom: 12px; margin-top: 12px; display: block;
+          color: #D4A017; margin-bottom: 12px; margin-top: 12px; display: block;
         }
         .careers-hero-h1 {
           font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--dark);
@@ -402,19 +402,19 @@ export default function CareersPage() {
         .careers-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
         .careers-btn-primary {
           display: inline-flex; align-items: center; gap: 8px;
-          background: var(--green); color: #fff !important; font-weight: 800; font-size: 14px;
+          background: #D4A017; color: #fff !important; font-weight: 800; font-size: 14px;
           padding: 14px 28px; border-radius: 50px; text-decoration: none;
           transition: background 0.2s, transform 0.2s;
-          box-shadow: 0 4px 20px rgba(0,167,89,0.3);
+          box-shadow: 0 4px 20px rgba(212,160,23,0.3);
         }
-        .careers-btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+        .careers-btn-primary:hover { background: #B8880F; transform: translateY(-2px); }
         .careers-btn-ghost {
           display: inline-flex; align-items: center; gap: 8px;
           background: transparent; color: var(--dark); font-weight: 700; font-size: 14px;
           padding: 13px 24px; border-radius: 50px; border: 1.5px solid var(--border);
           text-decoration: none; transition: border-color 0.2s, color 0.2s;
         }
-        .careers-btn-ghost:hover { border-color: var(--green); color: var(--green); }
+        .careers-btn-ghost:hover { border-color: #D4A017; color: #D4A017; }
         .careers-video-wrap {
           position: relative; border-radius: 20px; overflow: hidden;
           aspect-ratio: 16/9; background: #0f1623;
@@ -429,7 +429,7 @@ export default function CareersPage() {
           backdrop-filter: blur(8px); pointer-events: none;
           animation: pulse 1s ease-in-out infinite;
         }
-        .careers-video-badge svg { color: var(--green); }
+        .careers-video-badge svg { color: #D4A017; }
         @media (max-width: 900px) {
           .careers-hero-grid { grid-template-columns: 1fr; gap: 36px; }
           .careers-hero-new { padding: 40px 0 48px; }
@@ -444,7 +444,7 @@ export default function CareersPage() {
         }
         .careers-hero-bg {
           position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(135deg, rgba(15,22,35,0.88) 0%, rgba(0,167,89,0.75) 100%);
+          background: linear-gradient(135deg, rgba(15,22,35,0.88) 0%, rgba(212,160,23,0.75) 100%);
           z-index: 0;
         }
         .careers-hero-content { position: relative; z-index: 1; }
@@ -485,8 +485,8 @@ export default function CareersPage() {
           width: 64px;
           height: 64px;
           border-radius: 16px;
-          background: rgba(0,167,89,0.1);
-          color: var(--green);
+          background: rgba(212,160,23,0.1);
+          color: #D4A017;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -531,9 +531,9 @@ export default function CareersPage() {
           flex-direction: column;
         }
         .job-card:hover {
-          box-shadow: 0 12px 40px rgba(0,167,89,0.15);
+          box-shadow: 0 12px 40px rgba(212,160,23,0.15);
           transform: translateY(-6px);
-          border-color: rgba(0,167,89,0.3);
+          border-color: rgba(212,160,23,0.3);
         }
         .job-card--closed {
           opacity: 0.75;
@@ -554,12 +554,12 @@ export default function CareersPage() {
           width: 52px;
           height: 52px;
           border-radius: 14px;
-          background: linear-gradient(135deg, var(--green) 0%, #3a9d5c 100%);
+          background: linear-gradient(135deg, #D4A017 0%, #C8900E 100%);
           color: #fff;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 12px rgba(0,167,89,0.3);
+          box-shadow: 0 4px 12px rgba(212,160,23,0.3);
         }
         .job-badges {
           display: flex;
@@ -574,9 +574,9 @@ export default function CareersPage() {
           letter-spacing: 0.5px;
         }
         .job-status--open {
-          background: linear-gradient(135deg, rgba(0,167,89,0.15) 0%, rgba(0,167,89,0.08) 100%);
-          color: var(--green);
-          border: 1px solid rgba(0,167,89,0.2);
+          background: linear-gradient(135deg, rgba(212,160,23,0.15) 0%, rgba(212,160,23,0.08) 100%);
+          color: #D4A017;
+          border: 1px solid rgba(212,160,23,0.2);
         }
         .job-status--closed {
           background: rgba(239, 68, 68, 0.1);
@@ -621,7 +621,7 @@ export default function CareersPage() {
           color: var(--muted);
         }
         .job-meta-item svg {
-          color: var(--green);
+          color: #D4A017;
           opacity: 0.8;
         }
 
@@ -640,7 +640,7 @@ export default function CareersPage() {
           border-radius: 12px;
           padding: 16px 18px;
           margin: 0 24px 20px;
-          border: 1px solid rgba(0,167,89,0.1);
+          border: 1px solid rgba(212,160,23,0.1);
         }
         .job-qual-header {
           display: flex;
@@ -649,7 +649,7 @@ export default function CareersPage() {
           margin-bottom: 8px;
         }
         .job-qual-header svg {
-          color: var(--green);
+          color: #D4A017;
         }
         .job-qual-header strong {
           font-size: 12px;
@@ -678,7 +678,7 @@ export default function CareersPage() {
           justify-content: center;
           gap: 10px;
           padding: 15px 24px;
-          background: linear-gradient(135deg, var(--green) 0%, #3a9d5c 100%);
+          background: linear-gradient(135deg, #D4A017 0%, #C8900E 100%);
           color: #fff;
           font-size: 15px;
           font-weight: 700;
@@ -686,12 +686,12 @@ export default function CareersPage() {
           border-radius: 12px;
           cursor: pointer;
           transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-          box-shadow: 0 4px 14px rgba(0,167,89,0.25);
+          box-shadow: 0 4px 14px rgba(212,160,23,0.25);
         }
         .apply-btn:hover {
-          background: linear-gradient(135deg, var(--green-dark) 0%, #2d8049 100%);
+          background: linear-gradient(135deg, #B8880F 0%, #2d8049 100%);
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(0,167,89,0.35);
+          box-shadow: 0 6px 20px rgba(212,160,23,0.35);
         }
         .apply-btn svg {
           transition: transform 0.2s;
@@ -740,7 +740,7 @@ export default function CareersPage() {
           line-height: 1.6;
         }
         .no-jobs a {
-          color: var(--green);
+          color: #D4A017;
           font-weight: 600;
         }
 
@@ -754,7 +754,7 @@ export default function CareersPage() {
           width: 40px;
           height: 40px;
           border: 3px solid var(--border);
-          border-top-color: var(--green);
+          border-top-color: #D4A017;
           border-radius: 50%;
           animation: spin 0.8s linear infinite;
         }
@@ -923,7 +923,7 @@ export default function CareersPage() {
           align-items: center;
         }
         .video-section-text .section-label {
-          color: var(--green);
+          color: #D4A017;
         }
         .video-section-text h2 {
           font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -973,7 +973,7 @@ export default function CareersPage() {
           0%, 100% { opacity: 0.8; }
           50% { opacity: 1; }
         }
-        .video-countdown svg { color: var(--green); }
+        .video-countdown svg { color: #D4A017; }
 
         @media (max-width: 900px) {
           .benefits-grid {

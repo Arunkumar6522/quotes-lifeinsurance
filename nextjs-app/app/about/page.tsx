@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -111,7 +111,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22,1,0.36,1] }}
             >
               {t.aboutHeroH1a}<br/>
-              <span style={{ color: "var(--green)" }}>{t.aboutHeroH1b}</span>
+              <span style={{ color: "#D4A017" }}>{t.aboutHeroH1b}</span>
             </motion.h1>
             <motion.p
               className="about-hero-sub"
@@ -137,7 +137,7 @@ export default function AboutPage() {
               >
                 <motion.h2 variants={fadeUp(0)} className="ab-h2">
                   {t.aboutIndependentH2a}<br/>
-                  <span style={{ color: "var(--green)" }}>{t.aboutIndependentH2b}</span>
+                  <span style={{ color: "#D4A017" }}>{t.aboutIndependentH2b}</span>
                 </motion.h2>
                 <motion.p variants={fadeUp(0.06)} className="ab-p">
                   {lang === "fr"
@@ -227,7 +227,7 @@ export default function AboutPage() {
             >
               <motion.span variants={fadeUp(0)} className="section-label">{t.aboutLeadershipLabel}</motion.span>
               <motion.h2 variants={fadeUp(0.06)} className="ab-h2">
-                {t.aboutMeetFounders} <span style={{ color: "var(--green)" }}>{t.aboutFoundersH2}</span>
+                {t.aboutMeetFounders} <span style={{ color: "#D4A017" }}>{t.aboutFoundersH2}</span>
               </motion.h2>
             </motion.div>
 
@@ -271,7 +271,7 @@ export default function AboutPage() {
               <motion.span variants={fadeUp(0)} className="section-label light">{t.aboutWhatWeDo}</motion.span>
               <motion.h2 variants={fadeUp(0.06)} className="ab-h2 ab-h2-light">
                 {t.aboutComprehensiveH2a}<br/>
-                <span style={{ color: "var(--green)" }}>{t.aboutComprehensiveH2b}</span>
+                <span style={{ color: "#D4A017" }}>{t.aboutComprehensiveH2b}</span>
               </motion.h2>
             </motion.div>
 
@@ -426,7 +426,7 @@ export default function AboutPage() {
         /* ── Hero with Cover Image ── */
         .about-hero {
           position: relative;
-          background: linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%);
+          background: linear-gradient(135deg, #1a1a0e 0%, #0f1623 100%);
           background-image: url('/cover-term-life.jpg');
           background-size: cover;
           background-position: center;
@@ -448,7 +448,7 @@ export default function AboutPage() {
           display: inline-block;
           font-size: 11px; font-weight: 800;
           letter-spacing: 2px; text-transform: uppercase;
-          color: var(--green);
+          color: #D4A017;
           margin-bottom: 14px;
         }
         .about-hero-h1 {
@@ -467,7 +467,7 @@ export default function AboutPage() {
         .ab-section { padding: 80px 0; }
         .ab-white { background: #fff; }
         .ab-dark { background: var(--dark); }
-        .ab-soft { background: var(--bg-soft); }
+        .ab-soft { background: #FBF5E6; }
         .ab-section-head { text-align: center; margin-bottom: 48px; }
         .ab-h2 {
           font-size: clamp(1.7rem, 3vw, 2.4rem);
@@ -492,13 +492,13 @@ export default function AboutPage() {
         .ab-amf-block {
           display: flex; align-items: flex-start; gap: 14px;
           padding: 20px 22px; border-radius: 14px;
-          background: rgba(0,167,89,0.06);
-          border: 1px solid rgba(0,167,89,0.2);
+          background: rgba(212,160,23,0.06);
+          border: 1px solid rgba(212,160,23,0.2);
           margin: 24px 0;
         }
         .ab-amf-icon {
           width: 44px; height: 44px; border-radius: 12px;
-          background: rgba(0,167,89,0.15); color: var(--green);
+          background: rgba(212,160,23,0.15); color: #D4A017;
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .ab-amf-content { flex: 1; }
@@ -509,7 +509,7 @@ export default function AboutPage() {
         }
         .ab-amf-sep { color: var(--border); }
         .ab-amf-link { 
-          font-size: 12px; font-weight: 700; color: var(--green); 
+          font-size: 12px; font-weight: 700; color: #D4A017; 
           text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
         }
         .ab-amf-link:hover { text-decoration: underline; }
@@ -522,11 +522,11 @@ export default function AboutPage() {
           font-size: 14px; font-weight: 600; background: #fff;
           text-decoration: none; transition: border-color 0.2s, color 0.2s;
         }
-        .ab-ghost-btn:hover { border-color: var(--green); color: var(--green); }
+        .ab-ghost-btn:hover { border-color: #D4A017; color: #D4A017; }
 
         /* Carriers Card */
         .ab-carriers-card {
-          background: var(--bg-soft);
+          background: #FBF5E6;
           border: 1px solid var(--border);
           border-radius: 20px;
           padding: 32px 28px;
@@ -537,7 +537,7 @@ export default function AboutPage() {
         }
         .ab-carriers-icon {
           width: 48px; height: 48px; border-radius: 12px;
-          background: rgba(0,167,89,0.12); color: var(--green);
+          background: rgba(212,160,23,0.12); color: #D4A017;
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .ab-carriers-h3 { font-size: 18px; font-weight: 800; color: var(--dark); }
@@ -580,7 +580,7 @@ export default function AboutPage() {
         .ab-carrier-more {
           font-size: 13px;
           font-weight: 700;
-          color: var(--green);
+          color: #D4A017;
           text-align: center;
           margin-bottom: 20px;
         }
@@ -609,12 +609,12 @@ export default function AboutPage() {
         }
         .ab-service-card:hover {
           background: rgba(255,255,255,0.07);
-          border-color: rgba(0,167,89,0.35);
+          border-color: rgba(212,160,23,0.35);
           transform: translateY(-3px);
         }
         .ab-service-icon {
           width: 52px; height: 52px; border-radius: 14px;
-          background: rgba(0,167,89,0.15); color: var(--green);
+          background: rgba(212,160,23,0.15); color: #D4A017;
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 18px;
         }
@@ -624,7 +624,7 @@ export default function AboutPage() {
           display: flex; align-items: flex-start; gap: 10px;
           font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5;
         }
-        .ab-check { color: var(--green); }
+        .ab-check { color: #D4A017; }
 
         /* ── Founders Grid ── */
         .ab-founders-grid {
@@ -638,7 +638,7 @@ export default function AboutPage() {
           display: flex; align-items: flex-start; gap: 20px;
           padding: 32px 28px; border-radius: 18px;
           border: 1px solid var(--border);
-          background: var(--bg-soft);
+          background: #FBF5E6;
           transition: box-shadow 0.25s, transform 0.25s;
         }
         .ab-founder-card:hover {
@@ -647,7 +647,7 @@ export default function AboutPage() {
         }
         .ab-founder-avatar {
           width: 100px; height: 100px; border-radius: 50%;
-          background: var(--green);
+          background: #D4A017;
           display: flex; align-items: center; justify-content: center;
           color: #fff; font-size: 18px; font-weight: 800;
           flex-shrink: 0;
@@ -657,7 +657,7 @@ export default function AboutPage() {
           object-position: top !important;
         }
         .ab-founder-name { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
-        .ab-founder-role { font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 12px; }
+        .ab-founder-role { font-size: 13px; font-weight: 600; color: #D4A017; margin-bottom: 12px; }
         .ab-founder-bio { font-size: 14px; color: var(--muted); line-height: 1.75; }
 
         /* ── Info Grid (Team & Compensation) ── */
@@ -673,12 +673,12 @@ export default function AboutPage() {
           padding: 32px 28px;
         }
         .ab-info-card--highlight {
-          background: var(--green);
-          border-color: var(--green);
+          background: #D4A017;
+          border-color: #D4A017;
         }
         .ab-info-icon {
           width: 52px; height: 52px; border-radius: 14px;
-          background: rgba(0,167,89,0.12); color: var(--green);
+          background: rgba(212,160,23,0.12); color: #D4A017;
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 18px;
         }
@@ -701,7 +701,7 @@ export default function AboutPage() {
 
         /* ── CTA Section ── */
         .ab-cta-section {
-          background: var(--green);
+          background: #D4A017;
           padding: 80px 0;
           position: relative;
           overflow: hidden;
@@ -738,7 +738,7 @@ export default function AboutPage() {
         }
         .ab-cta-btn-main {
           display: inline-flex; align-items: center; gap: 8px;
-          background: #fff; color: var(--green);
+          background: #fff; color: #D4A017;
           font-weight: 800; font-size: 15px;
           padding: 15px 34px; border-radius: 50px;
           border: none; cursor: pointer; font-family: inherit;

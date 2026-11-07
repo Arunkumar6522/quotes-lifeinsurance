@@ -1,4 +1,4 @@
-"use client";
+ï»¿"use client";
 import Link from "next/link";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
@@ -26,7 +26,7 @@ export default function ServicesSection() {
         <Animate className="text-center" style={{ marginBottom: "56px" }}>
           <span className="section-label light">{t.servicesLabel}</span>
           <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, color: "#fff", marginTop: "8px", lineHeight: 1.2 }}>
-            {t.servicesExploreH1}{" "}<span style={{ color: "var(--green)" }}>{t.servicesExploreH2}</span>
+            {t.servicesExploreH1}{" "}<span style={{ color: "#D4A017" }}>{t.servicesExploreH2}</span>
           </h2>
           <p style={{ color: "rgba(255,255,255,0.5)", marginTop: "12px", fontSize: "15px", maxWidth: "480px", margin: "12px auto 0" }}>
             {t.servicesSub2}
@@ -111,11 +111,11 @@ export default function ServicesSection() {
 
         /* Green accent card hover */
         .service-card--green:hover {
-          border-color: rgba(0,167,89,0.45);
+          border-color: rgba(212,160,23,0.45);
         }
-        /* Legacy plum class — now uses green */
+        /* Legacy plum class ï¿½ now uses green */
         .service-card--plum:hover {
-          border-color: rgba(0,167,89,0.45);
+          border-color: rgba(212,160,23,0.45);
         }
 
         /* Subtle top-left glow dot on hover */
@@ -128,8 +128,8 @@ export default function ServicesSection() {
           opacity: 0;
           transition: opacity 0.3s;
         }
-        .service-card--green::before { background: rgba(0,167,89,0.12); }
-        .service-card--plum::before  { background: rgba(0,167,89,0.12); }
+        .service-card--green::before { background: rgba(212,160,23,0.12); }
+        .service-card--plum::before  { background: rgba(212,160,23,0.12); }
         .service-card:hover::before  { opacity: 1; }
 
         /* -- Icon badge -- */
@@ -144,12 +144,12 @@ export default function ServicesSection() {
           margin-bottom: 4px;
         }
         .service-icon--green {
-          background: rgba(0,167,89,0.15);
-          color: var(--green);
+          background: rgba(212,160,23,0.15);
+          color: #D4A017;
         }
         .service-icon--plum {
-          background: rgba(0,167,89,0.15);
-          color: var(--green);
+          background: rgba(212,160,23,0.15);
+          color: #D4A017;
         }
 
         /* -- Tag pill -- */
@@ -164,12 +164,12 @@ export default function ServicesSection() {
           align-self: flex-start;
         }
         .service-tag--green {
-          background: rgba(0,167,89,0.15);
-          color: var(--green);
+          background: rgba(212,160,23,0.15);
+          color: #D4A017;
         }
         .service-tag--plum {
-          background: rgba(0,167,89,0.15);
-          color: var(--green);
+          background: rgba(212,160,23,0.15);
+          color: #D4A017;
         }
 
         /* -- Title -- */
@@ -181,8 +181,8 @@ export default function ServicesSection() {
           transition: color 0.2s;
           margin: 0;
         }
-        .service-card:hover .service-title { color: var(--green); }
-        .service-card--plum:hover .service-title { color: var(--green); }
+        .service-card:hover .service-title { color: #D4A017; }
+        .service-card--plum:hover .service-title { color: #D4A017; }
 
         /* -- Description -- */
         .service-desc {
@@ -200,11 +200,11 @@ export default function ServicesSection() {
           gap: 5px;
           font-size: 13px;
           font-weight: 700;
-          color: var(--green);
+          color: #D4A017;
           margin-top: 4px;
           transition: gap 0.2s;
         }
-        .service-card--plum .service-cta { color: var(--green); }
+        .service-card--plum .service-cta { color: #D4A017; }
         .service-card:hover .service-cta { gap: 8px; }
       `}</style>
     </section>

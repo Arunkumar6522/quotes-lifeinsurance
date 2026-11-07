@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
@@ -146,11 +146,11 @@ export default function Footer() {
           border-radius: 50px; padding: 5px 12px;
           text-decoration: none; transition: color 0.15s, background 0.15s;
         }
-        .footer-chip:hover { color: var(--green); background: rgba(0,167,89,0.12); border-color: rgba(0,167,89,0.25); }
+        .footer-chip:hover { color: #D4A017; background: rgba(212,160,23,0.12); border-color: rgba(212,160,23,0.25); }
         .footer-amf {
           font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.5;
         }
-        .footer-amf svg { color: var(--green); }
+        .footer-amf svg { color: #D4A017; }
 
         /* Link cols */
         .footer-col-h {
@@ -164,9 +164,9 @@ export default function Footer() {
           font-size: 13px; color: rgba(255,255,255,0.75);
           text-decoration: none; transition: color 0.15s;
         }
-        .footer-link:hover { color: var(--green); }
+        .footer-link:hover { color: #D4A017; }
         .footer-arrow {
-          color: var(--green); font-size: 15px; line-height: 1;
+          color: #D4A017; font-size: 15px; line-height: 1;
           transition: transform 0.15s;
         }
         .footer-link:hover .footer-arrow { transform: translateX(2px); }

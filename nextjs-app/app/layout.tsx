@@ -77,9 +77,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/Golden favicon.png",
+    shortcut: "/Golden favicon.png",
+    apple: "/Golden favicon.png",
   },
 };
 
@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* iPhone Dynamic Island + Samsung Fold viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#00a759" />
+        <meta name="theme-color" content="#D4A017" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -101,6 +101,53 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — AI readable site summary" />
         {/* Preload hero background — reduces LCP */}
         <link rel="preload" as="image" href="/hero-bg.jpg" fetchPriority="high" />
+        {/* Gold colour override — ensures all green→gold across entire site */}
+        <style>{`
+          /* Buttons */
+          .btn-primary, .btn-plum {
+            background: linear-gradient(to right, #E8B422 0%, #C8900E 100%) !important;
+            border: none !important;
+            color: #1a0e00 !important;
+          }
+          .btn-primary:hover, .btn-plum:hover {
+            opacity: 0.9 !important;
+            box-shadow: 0 8px 24px rgba(212,160,23,0.4) !important;
+          }
+          .btn-outline { color: #C8900E !important; border-color: #C8900E !important; background: transparent !important; }
+          .btn-outline:hover { background: linear-gradient(to right, #E8B422 0%, #C8900E 100%) !important; color: #1a0e00 !important; border-color: transparent !important; }
+
+          /* Header */
+          .topbar { background: #D4A017 !important; }
+          .mobile-lang-btn--active { background: #D4A017 !important; border-color: #D4A017 !important; }
+
+          /* Section labels */
+          .section-label { color: #D4A017 !important; }
+          .section-label::before { background: #D4A017 !important; }
+
+          /* Testimonials */
+          .avatar-fallback { background: linear-gradient(135deg, #E8B422, #C8900E) !important; }
+          .testimonials-section .badge { background: rgba(212,160,23,0.1) !important; color: #D4A017 !important; }
+          .list-card--active { background: rgba(212,160,23,0.08) !important; border-color: #D4A017 !important; }
+          .list-card:hover { border-color: rgba(212,160,23,0.3) !important; }
+          .service-tag { background: rgba(212,160,23,0.1) !important; color: #D4A017 !important; }
+          .review-count { background: rgba(212,160,23,0.1) !important; color: #D4A017 !important; }
+          .progress-dot--active { background: #D4A017 !important; }
+          .dot--active { background: #D4A017 !important; }
+          .nav-arrow:hover { background: #D4A017 !important; border-color: #D4A017 !important; }
+          .video-badge { background: #D4A017 !important; }
+          .video-quote-text { border-left-color: #D4A017 !important; }
+
+          /* Focus & links */
+          a:focus-visible, button:focus-visible, input:focus-visible { outline-color: #D4A017 !important; }
+          .animated-link::after { background: #D4A017 !important; }
+          .skip-nav { background: #D4A017 !important; }
+
+          /* Google Reviews */
+          .gr-write-review-btn { color: #D4A017 !important; }
+          .gr-write-review-btn:hover { border-color: #D4A017 !important; }
+          .gr-see-all-btn { color: #D4A017 !important; }
+          .gr-review-card:hover { border-color: #D4A017 !important; }
+        `}</style>
         {/* Preconnect to external services */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://app.leadcapture.io" />
@@ -117,7 +164,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "name": "DCW Financial Inc.",
               "alternateName": "Quotes Life Insurance",
               "url": "https://quotes-lifeinsurance.com",
-              "logo": "https://quotes-lifeinsurance.com/logo.png",
+              "logo": "https://quotes-lifeinsurance.com/english.png",
               "description": "DCW Financial Inc. is an AMF-licensed independent life insurance brokerage in Montreal, Quebec. We compare 20+ top Canadian carriers including Manulife, Desjardins, Foresters, iA Financial, Empire Life, Humania, and more to find the best coverage at the lowest rate. Our advice is always 100% free.",
               "address": {
                 "@type": "PostalAddress",

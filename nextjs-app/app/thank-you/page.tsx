@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
@@ -51,8 +51,8 @@ export default function ThankYouPage() {
           overflow: "hidden",
         }}>
           {/* Decorative circles */}
-          <span aria-hidden style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, borderRadius: "50%", background: "rgba(0,167,89,0.07)", pointerEvents: "none" }} />
-          <span aria-hidden style={{ position: "absolute", bottom: -60, left: -60, width: 280, height: 280, borderRadius: "50%", background: "rgba(0,167,89,0.05)", pointerEvents: "none" }} />
+          <span aria-hidden style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, borderRadius: "50%", background: "rgba(212,160,23,0.07)", pointerEvents: "none" }} />
+          <span aria-hidden style={{ position: "absolute", bottom: -60, left: -60, width: 280, height: 280, borderRadius: "50%", background: "rgba(212,160,23,0.05)", pointerEvents: "none" }} />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -74,12 +74,12 @@ export default function ThankYouPage() {
                 width: 88,
                 height: 88,
                 borderRadius: "50%",
-                background: "var(--green)",
+                background: "#D4A017",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 32px",
-                boxShadow: "0 0 0 16px rgba(0,167,89,0.15)",
+                boxShadow: "0 0 0 16px rgba(212,160,23,0.15)",
               }}
             >
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -138,7 +138,7 @@ export default function ThankYouPage() {
                   initial={{ width: "100%" }}
                   animate={{ width: "0%" }}
                   transition={{ duration: REDIRECT_SECONDS, ease: "linear" }}
-                  style={{ height: "100%", background: "var(--green)", borderRadius: 99 }}
+                  style={{ height: "100%", background: "#D4A017", borderRadius: 99 }}
                 />
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>{redirectLabel}</p>

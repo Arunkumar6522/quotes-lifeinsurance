@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -141,7 +141,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         <section className="sp-cover" style={{
           background: cover.image
             ? `linear-gradient(180deg, rgba(15,22,35,0.3) 0%, rgba(15,22,35,0.88) 70%, rgba(15,22,35,0.98) 100%), url('${cover.image}') ${cover.position} / cover no-repeat`
-            : (cover.gradient ?? "linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%)"),
+            : (cover.gradient ?? "linear-gradient(135deg, #1a1a0e 0%, #0f1623 100%)"),
         }}>
           <div className="container sp-cover-content">
             {/* Back button & Breadcrumb */}
@@ -233,7 +233,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                   <div className="sp-bestfor-list">
                     {displayBestFor.map((b) => (
                       <div key={b} className="sp-bestfor-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "var(--green)" }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "#D4A017" }}>
                           <polyline points="20 6 9 17 4 12"/>
                         </svg>
                         {b}
@@ -248,7 +248,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                   {displayFaqs.map((faq, i) => (
                     <div key={i} className="sp-faq">
                       <div className="sp-faq-q">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "var(--green)" }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "#D4A017" }}>
                           <circle cx="12" cy="12" r="10"/>
                           <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
                           <line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -295,7 +295,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
                     {otherServices.filter(s => s.label !== data.title).map((s) => (
                       <li key={s.href}>
                         <Link href={s.href} className="sp-other-link">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "var(--green)" }}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: "#D4A017" }}>
                             <polyline points="9 18 15 12 9 6"/>
                           </svg>
                           {lang === "fr" ? (frServiceNames[s.label] || s.label) : s.label}
@@ -384,7 +384,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           font-size: 14px;
         }
         .sp-breadcrumb-current {
-          color: var(--green);
+          color: #D4A017;
           font-weight: 700;
         }
 
@@ -421,11 +421,11 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         .sp-hero-icon {
           width: 68px; height: 68px;
           border-radius: 18px;
-          background: rgba(0,167,89,0.2);
-          color: var(--green);
+          background: rgba(212,160,23,0.2);
+          color: #D4A017;
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 24px;
-          border: 1px solid rgba(0,167,89,0.35);
+          border: 1px solid rgba(212,160,23,0.35);
           backdrop-filter: blur(8px);
         }
 
@@ -445,14 +445,14 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         }
         .sp-hero-cta {
           display: inline-flex; align-items: center; gap: 8px;
-          background: var(--green); color: #fff;
+          background: #D4A017; color: #fff;
           font-weight: 800; font-size: 15px;
           padding: 15px 32px; border-radius: 50px;
           border: none; cursor: pointer; font-family: inherit;
           transition: background 0.2s, transform 0.2s;
-          box-shadow: 0 4px 24px rgba(0,167,89,0.4);
+          box-shadow: 0 4px 24px rgba(212,160,23,0.4);
         }
-        .sp-hero-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
+        .sp-hero-cta:hover { background: #B8880F; transform: translateY(-2px); }
 
         /* ── Main layout ── */
         .sp-main { background: #fff; padding: 72px 0 80px; }
@@ -509,17 +509,17 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           padding: 24px 20px;
           border: 1px solid var(--border);
           border-radius: 14px;
-          background: var(--bg-soft);
+          background: #FBF5E6;
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .sp-highlight-card:hover {
-          border-color: rgba(0,167,89,0.35);
+          border-color: rgba(212,160,23,0.35);
           box-shadow: 0 4px 16px rgba(0,0,0,0.06);
           transform: translateY(-2px);
         }
         .sp-highlight-icon {
           width: 38px; height: 38px; border-radius: 10px;
-          background: rgba(0,167,89,0.1); color: var(--green);
+          background: rgba(212,160,23,0.1); color: #D4A017;
           display: flex; align-items: center; justify-content: center;
           margin-bottom: 14px;
         }
@@ -543,7 +543,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           border-radius: 50px; padding: 8px 16px;
           transition: border-color 0.2s, color 0.2s;
         }
-        .sp-bestfor-item:hover { border-color: var(--green); color: var(--green); }
+        .sp-bestfor-item:hover { border-color: #D4A017; color: #D4A017; }
 
         /* FAQs */
         .sp-faqs {}
@@ -580,7 +580,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         .sp-cta-label {
           font-size: 10px; font-weight: 800;
           letter-spacing: 1.5px; text-transform: uppercase;
-          color: var(--green); margin-bottom: 10px;
+          color: #D4A017; margin-bottom: 10px;
         }
         .sp-cta-h3 {
           font-size: 18px; font-weight: 800; color: #fff;
@@ -593,14 +593,14 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
         .sp-cta-btn {
           width: 100%; display: flex; justify-content: center;
           align-items: center; gap: 8px;
-          background: var(--green); color: #fff;
+          background: #D4A017; color: #fff;
           font-weight: 800; font-size: 14px;
           padding: 13px 20px; border-radius: 50px;
           border: none; cursor: pointer; font-family: inherit;
           transition: background 0.2s, transform 0.2s;
           margin-bottom: 10px;
         }
-        .sp-cta-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+        .sp-cta-btn:hover { background: #B8880F; transform: translateY(-1px); }
         .sp-cta-note {
           font-size: 11px; color: rgba(255,255,255,0.3);
           width: 100%; text-align: center;
@@ -623,7 +623,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageProps }) 
           color: var(--body); text-decoration: none;
           border-radius: 8px; transition: background 0.15s, color 0.15s;
         }
-        .sp-other-link:hover { background: var(--bg-soft); color: var(--green); }
+        .sp-other-link:hover { background: #FBF5E6; color: #D4A017; }
 
         /* ── MOBILE FIRST ── */
         @media (max-width: 900px) {

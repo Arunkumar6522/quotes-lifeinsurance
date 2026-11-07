@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+﻿import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -55,7 +55,7 @@ export default async function FrBlogPostPage(
               ]} />
             </div>
             <div style={{ display: "flex", gap: "10px", marginBottom: "16px", flexWrap: "wrap" }}>
-              <span style={{ fontSize: "11px", fontWeight: 700, background: "rgba(0,167,89,0.2)", color: "var(--green)", padding: "4px 12px", borderRadius: "20px" }}>
+              <span style={{ fontSize: "11px", fontWeight: 700, background: "rgba(212,160,23,0.2)", color: "#D4A017", padding: "4px 12px", borderRadius: "20px" }}>
                 {post.category}
               </span>
               <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>{post.date}</span>
@@ -76,7 +76,7 @@ export default async function FrBlogPostPage(
                 <div className="blog-content" suppressHydrationWarning
                   dangerouslySetInnerHTML={{ __html: post.content }} />
                 <div style={{ marginTop: "48px", paddingTop: "24px", borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
-                  <Link href="/articles" style={{ fontSize: "14px", fontWeight: 600, color: "var(--green)", textDecoration: "none" }}>
+                  <Link href="/articles" style={{ fontSize: "14px", fontWeight: 600, color: "#D4A017", textDecoration: "none" }}>
                     ← Retour aux articles
                   </Link>
                 </div>
@@ -84,7 +84,7 @@ export default async function FrBlogPostPage(
 
               {/* Sidebar — French */}
               <aside style={{ display: "flex", flexDirection: "column", gap: "20px", position: "sticky", top: "100px", alignSelf: "start" }} data-lenis-prevent>
-                <div style={{ background: "var(--green)", borderRadius: "20px", padding: "28px 24px", textAlign: "center" }}>
+                <div style={{ background: "#D4A017", borderRadius: "20px", padding: "28px 24px", textAlign: "center" }}>
                   <p style={{ fontSize: "10px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "8px" }}>
                     Gratuit, sans obligation
                   </p>
@@ -94,10 +94,10 @@ export default async function FrBlogPostPage(
                   <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", marginBottom: "20px", lineHeight: 1.6 }}>
                     Comparez plus de 20 assureurs canadiens en quelques minutes. Toujours gratuit.
                   </p>
-                  <QuoteButton label="Obtenir mon devis →" style={{ width: "100%", justifyContent: "center", background: "#fff", color: "var(--green)", border: "none" }} />
+                  <QuoteButton label="Obtenir mon devis →" style={{ width: "100%", justifyContent: "center", background: "#fff", color: "#D4A017", border: "none" }} />
                 </div>
 
-                <div style={{ background: "var(--bg-soft)", borderRadius: "16px", padding: "20px", border: "1px solid var(--border)" }}>
+                <div style={{ background: "#FBF5E6", borderRadius: "16px", padding: "20px", border: "1px solid var(--border)" }}>
                   <p style={{ fontSize: "11px", fontWeight: 800, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: "14px" }}>
                     Nos services
                   </p>
@@ -121,7 +121,7 @@ export default async function FrBlogPostPage(
       <Footer />
 
       <style>{`
-        .blogpost-hero { position: relative; background: linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%); background-image: url('/cover-blog.jpg'); background-size: cover; background-position: center; min-height: 340px; display: flex; align-items: flex-end; padding: 0 0 48px; }
+        .blogpost-hero { position: relative; background: linear-gradient(135deg, #1a1a0e 0%, #0f1623 100%); background-image: url('/cover-blog.jpg'); background-size: cover; background-position: center; min-height: 340px; display: flex; align-items: flex-end; padding: 0 0 48px; }
         .blogpost-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,22,35,0.4) 0%, rgba(15,22,35,0.88) 70%, rgba(15,22,35,0.98) 100%); }
         .blogpost-hero-content { position: relative; z-index: 1; }
         @media (max-width: 600px) { .blogpost-hero { min-height: 280px; padding-bottom: 36px; } }
@@ -135,7 +135,7 @@ export default async function FrBlogPostPage(
         .blog-content p { margin-bottom: 22px; color: #374151; }
         .blog-content b, .blog-content strong { font-weight: 700; color: var(--dark); }
         .blog-content img { max-width: 100%; height: auto; border-radius: 12px; margin: 28px auto; display: block; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .blog-content a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+        .blog-content a { color: #D4A017; text-decoration: underline; text-underline-offset: 3px; }
         .blog-content ul, .blog-content ol { padding-left: 28px; margin: 0 0 22px; }
         .blog-content li { margin-bottom: 10px; line-height: 1.75; }
         .blog-content .separator { text-align: center; margin: 24px 0; }

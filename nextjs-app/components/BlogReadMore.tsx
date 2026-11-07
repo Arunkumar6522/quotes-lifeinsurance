@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 
 export function BlogReadMore() {
   const { t } = useLang();
   return (
-    <p style={{ fontSize: "13px", fontWeight: 600, color: "var(--green)", marginTop: "12px" }}>
+    <p style={{ fontSize: "13px", fontWeight: 600, color: "#D4A017", marginTop: "12px" }}>
       {t.blogReadArticle}
     </p>
   );

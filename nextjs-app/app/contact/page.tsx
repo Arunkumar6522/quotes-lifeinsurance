@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -312,8 +312,8 @@ export default function ContactPage() {
 
             {/* Phone icon + heading */}
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-              <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(0,167,89,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(212,160,23,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A017" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.84a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
               </div>
@@ -339,7 +339,7 @@ export default function ContactPage() {
                 autoFocus
                 style={{
                   flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                  background: "var(--green)", color: "#fff", borderRadius: "14px",
+                  background: "#D4A017", color: "#fff", borderRadius: "14px",
                   padding: "16px 16px", fontWeight: 800, fontSize: "16px",
                   textDecoration: "none", textAlign: "center", letterSpacing: "-0.01em",
                 }}
@@ -404,7 +404,7 @@ export default function ContactPage() {
         }
         .call-modal-close:hover { background: rgba(255,255,255,0.2); }
         .call-modal-close:focus-visible {
-          outline: 3px solid var(--green);
+          outline: 3px solid #D4A017;
           outline-offset: 2px;
         }
         /* Button focus states for keyboard/accessibility */
@@ -440,7 +440,7 @@ export default function ContactPage() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #0f1623 0%, #1a3a2a 40%, #2d6a4a 70%, #00a759 100%);
+          background: linear-gradient(135deg, #0f1623 0%, #1a1500 40%, #2d2400 70%, #D4A017 100%);
           z-index: 0;
         }
         /* Decorative circles */
@@ -450,7 +450,7 @@ export default function ContactPage() {
           top: -80px; right: -80px;
           width: 400px; height: 400px;
           border-radius: 50%;
-          background: rgba(0,167,89,0.12);
+          background: rgba(212,160,23,0.12);
           pointer-events: none;
           z-index: 0;
         }
@@ -481,7 +481,7 @@ export default function ContactPage() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: var(--green);
+          background: #D4A017;
           color: #fff !important;
           font-weight: 800;
           font-size: 14px !important;
@@ -491,12 +491,12 @@ export default function ContactPage() {
           cursor: pointer;
           font-family: inherit;
           transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-          box-shadow: 0 4px 20px rgba(0,167,89,0.35);
+          box-shadow: 0 4px 20px rgba(212,160,23,0.35);
           text-decoration: none;
           white-space: nowrap;
         }
           gap: 8px;
-          background: var(--green);
+          background: #D4A017;
           color: #fff;
           font-weight: 800;
           font-size: 14px;
@@ -506,12 +506,12 @@ export default function ContactPage() {
           cursor: pointer;
           font-family: inherit;
           transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-          box-shadow: 0 4px 20px rgba(0,167,89,0.35);
+          box-shadow: 0 4px 20px rgba(212,160,23,0.35);
         }
         .contact-cta-btn:hover {
-          background: var(--green-dark);
+          background: #B8880F;
           transform: translateY(-2px);
-          box-shadow: 0 8px 28px rgba(0,167,89,0.4);
+          box-shadow: 0 8px 28px rgba(212,160,23,0.4);
         }
 
         /* ── Cards ── */
@@ -546,7 +546,7 @@ export default function ContactPage() {
         .contact-card:hover {
           box-shadow: 0 8px 28px rgba(0,0,0,0.07);
           transform: translateY(-4px);
-          border-color: rgba(0,167,89,0.35);
+          border-color: rgba(212,160,23,0.35);
         }
 
         /* Icon circle — green */
@@ -554,8 +554,8 @@ export default function ContactPage() {
           width: 64px;
           height: 64px;
           border-radius: 50%;
-          background: rgba(0,167,89,0.1);
-          color: var(--green);
+          background: rgba(212,160,23,0.1);
+          color: #D4A017;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -564,7 +564,7 @@ export default function ContactPage() {
           transition: background 0.25s;
         }
         .contact-card:hover .contact-card-icon {
-          background: rgba(0,167,89,0.18);
+          background: rgba(212,160,23,0.18);
         }
 
         .contact-card-title {
@@ -577,7 +577,7 @@ export default function ContactPage() {
         .contact-card-link {
           font-size: 13px;
           font-weight: 700;
-          color: var(--green);
+          color: #D4A017;
           text-decoration: none;
           transition: opacity 0.15s;
         }
@@ -679,9 +679,9 @@ export default function ContactPage() {
           gap: 6px;
           font-size: 11px;
           font-weight: 700;
-          color: var(--green);
-          background: rgba(0,167,89,0.1);
-          border: 1px solid rgba(0,167,89,0.25);
+          color: #D4A017;
+          background: rgba(212,160,23,0.1);
+          border: 1px solid rgba(212,160,23,0.25);
           border-radius: 50px;
           padding: 6px 14px;
           white-space: nowrap;
@@ -730,8 +730,8 @@ export default function ContactPage() {
           transition: border-color 0.2s, box-shadow 0.2s;
         }
         .faq-item--open {
-          border-color: var(--green);
-          box-shadow: 0 4px 20px rgba(0,167,89,0.1);
+          border-color: #D4A017;
+          box-shadow: 0 4px 20px rgba(212,160,23,0.1);
         }
         .faq-q {
           width: 100%;
@@ -751,17 +751,17 @@ export default function ContactPage() {
           transition: background 0.15s;
         }
         .faq-q:hover {
-          background: var(--bg-soft);
+          background: #FBF5E6;
         }
         .faq-item--open .faq-q {
-          color: var(--green);
+          color: #D4A017;
         }
         .faq-icon {
           width: 32px;
           height: 32px;
           border-radius: 50%;
-          background: rgba(0,167,89,0.1);
-          color: var(--green);
+          background: rgba(212,160,23,0.1);
+          color: #D4A017;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -769,7 +769,7 @@ export default function ContactPage() {
           transition: background 0.2s;
         }
         .faq-item--open .faq-icon {
-          background: var(--green);
+          background: #D4A017;
           color: #fff;
         }
         .faq-a {

@@ -66,12 +66,12 @@ export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, car
           <motion.div initial="hidden" animate="show" className="hero-copy">
             <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
               {h1a}<br />
-              <span style={{ color: "var(--green)" }}>{h1b}</span>
+              <span style={{ color: "#D4A017" }}>{h1b}</span>
               {!overrideH1a && t.heroH1c && <><br /><span className="hero-h1-sub">{t.heroH1c}</span></>}
             </motion.h1>
             <motion.p variants={fadeUp(0.15)} className="hero-sub">
               {sub}{" "}
-              <strong style={{ color: "var(--green)", fontWeight: 800 }}>{t.heroFree}</strong>.
+              <strong style={{ color: "#D4A017", fontWeight: 800 }}>{t.heroFree}</strong>.
             </motion.p>
             <motion.div variants={fadeUp(0.22)} className="hero-ctas">
               <button onClick={openModal} className="btn-primary">{t.heroCta1}</button>
@@ -111,7 +111,7 @@ export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, car
         .hero-sub { font-size: 16px; color: #4b5563; line-height: 1.8; margin-bottom: 32px; max-width: 460px; }
         .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
         .hero-learn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 50px; border: 2px solid var(--border); color: var(--dark); font-size: 14px; font-weight: 700; background: #fff; text-decoration: none; transition: all 0.2s ease; }
-        .hero-learn-btn:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+        .hero-learn-btn:hover { border-color: #D4A017; color: #D4A017; transform: translateY(-2px); }
         .hero-learn-btn svg { transition: transform 0.2s; }
         .hero-learn-btn:hover svg { transform: translateX(3px); }
         .hero-form-col { width: 100%; }

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLang } from "@/lib/i18n";
@@ -8,7 +8,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <div className="mb-10">
       <h2 className="text-xl font-bold mb-3 pb-2 relative"
         style={{ color: "var(--dark)", borderBottom: "2px solid #f0f0f0" }}>
-        <span className="absolute bottom-[-2px] left-0 w-10 h-0.5" style={{ background: "var(--green)" }} />
+        <span className="absolute bottom-[-2px] left-0 w-10 h-0.5" style={{ background: "#D4A017" }} />
         {title}
       </h2>
       <div className="text-gray-500 text-sm leading-relaxed space-y-3">{children}</div>
@@ -65,7 +65,7 @@ export default function TermsPage() {
       <Header />
       <main>
         <div style={{ background: "var(--dark)" }} className="py-16 text-center">
-          <p className="text-sm font-semibold mb-2" style={{ color: "var(--green)" }}>{t.breadcrumb}</p>
+          <p className="text-sm font-semibold mb-2" style={{ color: "#D4A017" }}>{t.breadcrumb}</p>
           <h1 className="text-4xl font-extrabold text-white">{t.title}</h1>
           <p className="text-white/60 mt-2 text-sm">{t.lastUpdated}</p>
         </div>
@@ -74,9 +74,9 @@ export default function TermsPage() {
           <div className="container max-w-3xl">
 
             <div className="rounded-xl p-6 mb-10 text-sm leading-relaxed"
-              style={{ background: "var(--bg-soft)", borderLeft: "4px solid var(--green)", color: "var(--dark)" }}>
+              style={{ background: "#FBF5E6", borderLeft: "4px solid #D4A017", color: "var(--dark)" }}>
               {t.intro}{" "}
-              <a href="https://quotes-lifeinsurance.com" className="underline" style={{ color: "var(--green)" }}>
+              <a href="https://quotes-lifeinsurance.com" className="underline" style={{ color: "#D4A017" }}>
                 https://quotes-lifeinsurance.com/
               </a>{" "}
               {t.introEnd}
@@ -130,9 +130,9 @@ export default function TermsPage() {
             </Section>
 
             <Section title={t.sections.contactUs}>
-              <div className="rounded-xl p-5" style={{ background: "var(--bg-soft)", border: "1px solid #d1e8d4" }}>
+              <div className="rounded-xl p-5" style={{ background: "#FBF5E6", border: "1px solid #d1e8d4" }}>
                 <p><strong>DCW Financial Inc., Quotes Life Insurance</strong></p>
-                <p>✉️ <a href="mailto:info@quotes-lifeinsurance.com" className="underline" style={{ color: "var(--green)" }}>info@quotes-lifeinsurance.com</a></p>
+                <p>✉️ <a href="mailto:info@quotes-lifeinsurance.com" className="underline" style={{ color: "#D4A017" }}>info@quotes-lifeinsurance.com</a></p>
               </div>
             </Section>
 

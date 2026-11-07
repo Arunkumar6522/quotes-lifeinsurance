@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+﻿import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -57,8 +57,8 @@ export default async function BlogPostPage(
             </div>
             <div style={{ display: "flex", gap: "10px", marginBottom: "16px", flexWrap: "wrap" }}>
               <span style={{
-                fontSize: "11px", fontWeight: 700, background: "rgba(0,167,89,0.2)",
-                color: "var(--green)", padding: "4px 12px", borderRadius: "20px",
+                fontSize: "11px", fontWeight: 700, background: "rgba(212,160,23,0.2)",
+                color: "#D4A017", padding: "4px 12px", borderRadius: "20px",
               }}>
                 {post.category}
               </span>
@@ -106,7 +106,7 @@ export default async function BlogPostPage(
                   flexWrap: "wrap", gap: "12px",
                 }}>
                   <Link href="/articles" style={{
-                    fontSize: "14px", fontWeight: 600, color: "var(--green)",
+                    fontSize: "14px", fontWeight: 600, color: "#D4A017",
                     textDecoration: "none",
                   }}>
                     ← Back to all articles
@@ -127,7 +127,7 @@ export default async function BlogPostPage(
 
                 {/* Get quote CTA */}
                 <div style={{
-                  background: "var(--green)", borderRadius: "20px",
+                  background: "#D4A017", borderRadius: "20px",
                   padding: "28px 24px", textAlign: "center",
                 }}>
                   <p style={{
@@ -153,14 +153,14 @@ export default async function BlogPostPage(
                     label="Get My Free Quote →"
                     style={{
                       width: "100%", justifyContent: "center",
-                      background: "#fff", color: "var(--green)", border: "none",
+                      background: "#fff", color: "#D4A017", border: "none",
                     }}
                   />
                 </div>
 
                 {/* Services links */}
                 <div style={{
-                  background: "var(--bg-soft)", borderRadius: "16px",
+                  background: "#FBF5E6", borderRadius: "16px",
                   padding: "20px", border: "1px solid var(--border)",
                 }}>
                   <p style={{
@@ -201,7 +201,7 @@ export default async function BlogPostPage(
         /* Blog Post Hero with cover image */
         .blogpost-hero {
           position: relative;
-          background: linear-gradient(135deg, #1a3a1d 0%, #0f1623 100%);
+          background: linear-gradient(135deg, #1a1a0e 0%, #0f1623 100%);
           background-image: url('/cover-blog.jpg');
           background-size: cover;
           background-position: center;
@@ -278,7 +278,7 @@ export default async function BlogPostPage(
           box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         .blog-content a {
-          color: var(--green);
+          color: #D4A017;
           text-decoration: underline;
           text-underline-offset: 3px;
         }
@@ -291,10 +291,10 @@ export default async function BlogPostPage(
           line-height: 1.75;
         }
         .blog-content blockquote {
-          border-left: 4px solid var(--green);
+          border-left: 4px solid #D4A017;
           padding: 16px 24px;
           margin: 28px 0;
-          background: var(--bg-soft);
+          background: #FBF5E6;
           border-radius: 0 12px 12px 0;
           font-style: italic;
           color: #4b5563;

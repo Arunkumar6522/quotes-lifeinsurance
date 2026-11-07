@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useLang } from "@/lib/i18n";
 
 export default function ForestersIntroSection() {
@@ -19,7 +19,7 @@ export default function ForestersIntroSection() {
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/company/foresters.png" alt="Foresters Financial" style={{ height: "32px", width: "auto" }} />
-              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", margin: 0 }}>
+              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#D4A017", margin: 0 }}>
                 {isFr ? "QUI EST FORESTERS FINANCIAL ?" : "WHO IS FORESTERS FINANCIAL?"}
               </p>
             </div>
@@ -31,8 +31,8 @@ export default function ForestersIntroSection() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", minWidth: "160px" }}>
             {stats.map((s) => (
-              <div key={s.value} style={{ background: "var(--bg-soft)", borderRadius: "12px", padding: "14px 18px", textAlign: "center", border: "1px solid var(--border)" }}>
-                <p style={{ fontSize: "22px", fontWeight: 900, color: "var(--green)", fontFamily: "var(--font-sora), sans-serif", marginBottom: "2px" }}>{s.value}</p>
+              <div key={s.value} style={{ background: "#FBF5E6", borderRadius: "12px", padding: "14px 18px", textAlign: "center", border: "1px solid var(--border)" }}>
+                <p style={{ fontSize: "22px", fontWeight: 900, color: "#D4A017", fontFamily: "var(--font-sora), sans-serif", marginBottom: "2px" }}>{s.value}</p>
                 <p style={{ fontSize: "11px", color: "var(--muted)", lineHeight: 1.4 }}>{s.label}</p>
               </div>
             ))}

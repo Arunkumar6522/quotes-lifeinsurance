@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
@@ -53,7 +53,7 @@ export default function InsuranceSolutionsStrip() {
         <Animate className="strip-heading-wrap">
           <h2 className="strip-heading">
             {t.stripH2a}{" "}
-            <span style={{ color: "var(--green)" }}>{t.stripH2b}</span>
+            <span style={{ color: "#D4A017" }}>{t.stripH2b}</span>
           </h2>
           <p className="strip-sub">{t.stripSub}</p>
         </Animate>
@@ -142,7 +142,7 @@ export default function InsuranceSolutionsStrip() {
         .strip-card:hover {
           box-shadow: 0 8px 32px rgba(0,0,0,0.08);
           transform: translateY(-4px);
-          border-color: rgba(0,167,89,0.4);
+          border-color: rgba(212,160,23,0.4);
         }
 
         /* Circular icon — large, light green bg, dark green icon */
@@ -150,8 +150,8 @@ export default function InsuranceSolutionsStrip() {
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          background: rgba(0,167,89,0.12);
-          color: var(--green);
+          background: rgba(212,160,23,0.12);
+          color: #D4A017;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -160,7 +160,7 @@ export default function InsuranceSolutionsStrip() {
           transition: background 0.25s;
         }
         .strip-card:hover .strip-icon {
-          background: rgba(0,167,89,0.2);
+          background: rgba(212,160,23,0.2);
         }
 
         /* Title */
@@ -172,7 +172,7 @@ export default function InsuranceSolutionsStrip() {
           line-height: 1.3;
           transition: color 0.2s;
         }
-        .strip-card:hover .strip-card-title { color: var(--green); }
+        .strip-card:hover .strip-card-title { color: #D4A017; }
 
         /* Desc */
         .strip-card-desc {
@@ -187,7 +187,7 @@ export default function InsuranceSolutionsStrip() {
         .strip-card-cta {
           font-size: 13px;
           font-weight: 700;
-          color: var(--green);
+          color: #D4A017;
           text-decoration: none;
           margin-top: 4px;
           transition: gap 0.2s;
