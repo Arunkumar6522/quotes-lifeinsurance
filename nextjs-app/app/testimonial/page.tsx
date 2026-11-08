@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -192,15 +192,15 @@ export default function TestimonialPage() {
 
       {/* ── Hero ── */}
       <section style={{ background: "linear-gradient(135deg, #0f1623 0%, #1a2335 100%)", padding: "80px 0 64px", position: "relative", overflow: "hidden" }}>
-        <span aria-hidden style={{ position: "absolute", top: -80, right: -80, width: 360, height: 360, borderRadius: "50%", background: "rgba(212,160,23,0.08)", pointerEvents: "none" }} />
-        <span aria-hidden style={{ position: "absolute", bottom: -60, left: -60, width: 240, height: 240, borderRadius: "50%", background: "rgba(212,160,23,0.05)", pointerEvents: "none" }} />
+        <span aria-hidden style={{ position: "absolute", top: -80, right: -80, width: 360, height: 360, borderRadius: "50%", background: "rgba(0,167,89,0.08)", pointerEvents: "none" }} />
+        <span aria-hidden style={{ position: "absolute", bottom: -60, left: -60, width: 240, height: 240, borderRadius: "50%", background: "rgba(0,167,89,0.05)", pointerEvents: "none" }} />
         <div className="container" style={{ textAlign: "center", position: "relative" }}>
           <motion.span initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="section-label">
             <span className="section-label-dot" />{t.heroLabel}
           </motion.span>
           <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.08 }}
             style={{ color: "#fff", fontSize: "clamp(2rem, 5vw, 3rem)", marginTop: 16 }}>
-            {t.heroH1a} <span style={{ color: "#D4A017" }}>{t.heroH1b}</span>
+            {t.heroH1a} <span style={{ color: "var(--green)" }}>{t.heroH1b}</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.16 }}
             style={{ color: "rgba(255,255,255,0.7)", maxWidth: 560, margin: "20px auto 0", fontSize: 17, lineHeight: 1.7 }}>
@@ -210,15 +210,15 @@ export default function TestimonialPage() {
       </section>
 
       {/* ── Form section ── */}
-      <section style={{ background: "#FBF5E6", padding: "80px 0 96px" }}>
+      <section style={{ background: "var(--bg-soft)", padding: "80px 0 96px" }}>
         <div className="container">
           <AnimatePresence mode="wait">
             {status === "success" ? (
               /* ── Success ── */
               <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}
                 style={{ maxWidth: 540, margin: "0 auto", background: "#fff", borderRadius: 20, padding: "56px 48px", textAlign: "center", boxShadow: "0 8px 48px rgba(0,0,0,0.08)" }}>
-                <div style={{ width: 72, height: 72, borderRadius: "50%", background: "#FDF3D7", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A017" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <div style={{ width: 72, height: 72, borderRadius: "50%", background: "var(--bg-soft)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
@@ -246,7 +246,7 @@ export default function TestimonialPage() {
                       <input id="tm-name" type="text" autoComplete="name" placeholder={t.placeholderName} value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         style={{ ...inputStyle, borderColor: errors.name ? "#ef4444" : "var(--border)" }}
-                        onFocus={(e) => (e.currentTarget.style.borderColor = "#D4A017")}
+                        onFocus={(e) => (e.currentTarget.style.borderColor = "var(--green)")}
                         onBlur={(e) => (e.currentTarget.style.borderColor = errors.name ? "#ef4444" : "var(--border)")}
                         aria-describedby={errors.name ? "tm-name-err" : undefined} aria-invalid={!!errors.name}
                       />
@@ -257,7 +257,7 @@ export default function TestimonialPage() {
                       <input id="tm-location" type="text" autoComplete="address-level2" placeholder={t.placeholderLocation} value={form.location}
                         onChange={(e) => setForm({ ...form, location: e.target.value })}
                         style={inputStyle}
-                        onFocus={(e) => (e.currentTarget.style.borderColor = "#D4A017")}
+                        onFocus={(e) => (e.currentTarget.style.borderColor = "var(--green)")}
                         onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
                       />
                     </div>
@@ -271,7 +271,7 @@ export default function TestimonialPage() {
                         backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
                         backgroundRepeat: "no-repeat", backgroundPosition: "right 14px center", paddingRight: 40,
                       }}
-                      onFocus={(e) => (e.currentTarget.style.borderColor = "#D4A017")}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--green)")}
                       onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
                     >
                       <option value="">{t.placeholderService}</option>
@@ -291,7 +291,7 @@ export default function TestimonialPage() {
                     <textarea id="tm-message" rows={5} placeholder={t.placeholderMessage} value={form.testimonial}
                       onChange={(e) => setForm({ ...form, testimonial: e.target.value })}
                       style={{ ...inputStyle, resize: "vertical", minHeight: 120, borderColor: errors.testimonial ? "#ef4444" : "var(--border)" }}
-                      onFocus={(e) => (e.currentTarget.style.borderColor = "#D4A017")}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--green)")}
                       onBlur={(e) => (e.currentTarget.style.borderColor = errors.testimonial ? "#ef4444" : "var(--border)")}
                       aria-describedby={errors.testimonial ? "tm-msg-err" : undefined} aria-invalid={!!errors.testimonial}
                     />

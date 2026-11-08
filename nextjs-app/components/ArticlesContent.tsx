@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import type { BlogPost } from "@/lib/blogger";
@@ -42,7 +42,7 @@ export default function ArticlesContent({ enPosts, frPosts }: Props) {
                   </div>
                   <div style={{ padding: "16px 16px 20px" }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px", flexWrap: "wrap", gap: "4px" }}>
-                      <span style={{ fontSize: "11px", fontWeight: 700, background: "#FBF5E6", color: "#D4A017", padding: "3px 10px", borderRadius: "20px" }}>
+                      <span style={{ fontSize: "11px", fontWeight: 700, background: "var(--bg-soft)", color: "var(--green)", padding: "3px 10px", borderRadius: "20px" }}>
                         {post.category}
                       </span>
                       <span style={{ fontSize: "11px", color: "var(--muted)" }}>{post.date}</span>
@@ -53,7 +53,7 @@ export default function ArticlesContent({ enPosts, frPosts }: Props) {
                     <p style={{ fontSize: "12px", color: "var(--muted)", lineHeight: 1.6 }}>
                       {post.excerpt.slice(0, 110)}…
                     </p>
-                    <p style={{ marginTop: "10px", fontSize: "13px", fontWeight: 700, color: "#D4A017" }}>
+                    <p style={{ marginTop: "10px", fontSize: "13px", fontWeight: 700, color: "var(--green)" }}>
                       {isFr ? "Lire la suite →" : "Read more →"}
                     </p>
                   </div>

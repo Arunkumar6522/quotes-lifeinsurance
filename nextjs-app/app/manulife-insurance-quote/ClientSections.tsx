@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useLang } from "@/lib/i18n";
 
 // ── Small Intro (after hero) ─────────────────────────────────────────────────
@@ -17,7 +17,7 @@ export function ManulifeIntroSection() {
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }} className="carrier-intro-grid">
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#D4A017", marginBottom: "10px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "10px" }}>
               {isFr ? "QUI EST MANUVIE ?" : "WHO IS MANULIFE?"}
             </p>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
@@ -28,8 +28,8 @@ export function ManulifeIntroSection() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", minWidth: "160px" }}>
             {stats.map((s) => (
-              <div key={s.value} style={{ background: "#FBF5E6", borderRadius: "12px", padding: "14px 18px", textAlign: "center", border: "1px solid var(--border)" }}>
-                <p style={{ fontSize: "22px", fontWeight: 900, color: "#D4A017", fontFamily: "var(--font-sora), sans-serif", marginBottom: "2px" }}>{s.value}</p>
+              <div key={s.value} style={{ background: "var(--bg-soft)", borderRadius: "12px", padding: "14px 18px", textAlign: "center", border: "1px solid var(--border)" }}>
+                <p style={{ fontSize: "22px", fontWeight: 900, color: "var(--green)", fontFamily: "var(--font-sora), sans-serif", marginBottom: "2px" }}>{s.value}</p>
                 <p style={{ fontSize: "11px", color: "var(--muted)", lineHeight: 1.4 }}>{s.label}</p>
               </div>
             ))}
@@ -73,7 +73,7 @@ export function ExpertAdvisorsSection({ carrier }: { carrier: "manulife" | "ivar
     <section style={{ padding: "64px 0", background: "#fff" }}>
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#D4A017", marginBottom: "8px" }}>
+          <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "8px" }}>
             {isFr ? "CONSEILLERS INDÉPENDANTS" : "INDEPENDENT ADVISORS"}
           </p>
           <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 900, color: "var(--dark)", fontFamily: "var(--font-sora), sans-serif", marginBottom: "12px" }}>
@@ -87,11 +87,11 @@ export function ExpertAdvisorsSection({ carrier }: { carrier: "manulife" | "ivar
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", maxWidth: "680px", margin: "0 auto" }}>
           {advisors.map((a) => (
-            <div key={a.name} style={{ background: "#FBF5E6", borderRadius: "20px", padding: "32px 24px", textAlign: "center", border: "1px solid var(--border)" }}>
+            <div key={a.name} style={{ background: "var(--bg-soft)", borderRadius: "20px", padding: "32px 24px", textAlign: "center", border: "1px solid var(--border)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={a.image} alt={a.name} style={{ width: "96px", height: "96px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 16px", display: "block", border: "3px solid #D4A017" }} />
+              <img src={a.image} alt={a.name} style={{ width: "96px", height: "96px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 16px", display: "block", border: "3px solid var(--green)" }} />
               <h3 style={{ fontSize: "17px", fontWeight: 800, color: "var(--dark)", marginBottom: "4px" }}>{a.name}</h3>
-              <p style={{ fontSize: "11px", fontWeight: 700, color: "#D4A017", textTransform: "uppercase", letterSpacing: "1.2px", marginBottom: "12px" }}>{a.role}</p>
+              <p style={{ fontSize: "11px", fontWeight: 700, color: "var(--green)", textTransform: "uppercase", letterSpacing: "1.2px", marginBottom: "12px" }}>{a.role}</p>
               <p style={{ fontSize: "13px", color: "var(--muted)", lineHeight: 1.65 }}>{a.bio}</p>
             </div>
           ))}
@@ -142,8 +142,8 @@ export function ManulifeInfoSection() {
       name: "Guaranteed Issue Life",
       type: isFr ? "Sans examen médical" : "No Medical",
       desc: isFr
-        ? "Protection vie entière sans examen médical, primes garanties. Couverture de 10 000 $ à 100 000 $ pour les 18–70 ans."
-        : "Lifelong protection, no medical exam, guaranteed premiums. Coverage $10,000–$100,000 for ages 18–70.",
+        ? "Protection vie entière sans examen médical, primes garanties, approbation rapide. Couverture de 10 000 $ à 100 000 $ pour les 18–70 ans, et jusqu'à 50 000 $ pour les 71–75 ans."
+        : "Lifelong protection, no medical exam, guaranteed premiums, fast approval. Coverage $10,000–$100,000 for ages 18–70, and up to $50,000 for ages 71–75.",
     },
     {
       name: "Synergy",
@@ -155,12 +155,12 @@ export function ManulifeInfoSection() {
   ];
 
   return (
-    <section style={{ padding: "72px 0", background: "#FBF5E6", borderTop: "1px solid var(--border)" }}>
+    <section style={{ padding: "72px 0", background: "var(--bg-soft)", borderTop: "1px solid var(--border)" }}>
       <div className="container">
 
         {/* Disclaimer */}
-        <div style={{ background: "#fff", border: "1.5px solid #D4A017", borderRadius: "14px", padding: "18px 20px", marginBottom: "52px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A017" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: "2px" }} aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div style={{ background: "#fff", border: "1.5px solid var(--green)", borderRadius: "14px", padding: "18px 20px", marginBottom: "52px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: "2px" }} aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <p style={{ fontSize: "13px", color: "var(--body)", lineHeight: 1.75, margin: 0 }}>
             <strong>{isFr ? "Avis de courtier indépendant : " : "Independent broker disclosure: "}</strong>
             {isFr
@@ -171,7 +171,7 @@ export function ManulifeInfoSection() {
 
         {/* About */}
         <div style={{ marginBottom: "56px" }}>
-          <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#D4A017", marginBottom: "8px" }}>{isFr ? "À PROPOS DE MANUVIE" : "ABOUT MANULIFE"}</p>
+          <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "8px" }}>{isFr ? "À PROPOS DE MANUVIE" : "ABOUT MANULIFE"}</p>
           <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 900, color: "var(--dark)", fontFamily: "var(--font-sora), sans-serif", marginBottom: "16px" }}>
             {isFr ? "Manuvie en bref" : "Manulife at a glance"}
           </h2>
@@ -186,7 +186,7 @@ export function ManulifeInfoSection() {
             {timeline.map((item, i) => (
               <div key={item.year} style={{ display: "flex", gap: "20px", alignItems: "flex-start", paddingBottom: i < timeline.length - 1 ? "20px" : "0" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-                  <div style={{ width: "56px", height: "28px", background: "#D4A017", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ width: "56px", height: "28px", background: "var(--green)", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <span style={{ fontSize: "11px", fontWeight: 800, color: "#fff" }}>{item.year}</span>
                   </div>
                   {i < timeline.length - 1 && <div style={{ width: "2px", flex: 1, background: "var(--border)", marginTop: "6px", minHeight: "24px" }} />}
@@ -202,14 +202,14 @@ export function ManulifeInfoSection() {
 
         {/* Products */}
         <div style={{ marginBottom: "52px" }}>
-          <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#D4A017", marginBottom: "8px" }}>{isFr ? "PRODUITS" : "PRODUCTS"}</p>
+          <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", marginBottom: "8px" }}>{isFr ? "PRODUITS" : "PRODUCTS"}</p>
           <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 900, color: "var(--dark)", fontFamily: "var(--font-sora), sans-serif", marginBottom: "24px" }}>
             {isFr ? "Produits d'assurance vie Manuvie" : "Manulife Life Insurance Products"}
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "16px" }}>
             {products.map((p) => (
               <div key={p.name} style={{ background: "#fff", borderRadius: "16px", padding: "22px 20px", border: "1px solid var(--border)" }}>
-                <span style={{ fontSize: "10px", fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: "#D4A017", background: "#FBF5E6", padding: "3px 10px", borderRadius: "20px", display: "inline-block", marginBottom: "10px" }}>{p.type}</span>
+                <span style={{ fontSize: "10px", fontWeight: 800, textTransform: "uppercase", letterSpacing: "1.5px", color: "var(--green)", background: "var(--bg-soft)", padding: "3px 10px", borderRadius: "20px", display: "inline-block", marginBottom: "10px" }}>{p.type}</span>
                 <h3 style={{ fontSize: "15px", fontWeight: 800, color: "var(--dark)", marginBottom: "8px" }}>{p.name}</h3>
                 <p style={{ fontSize: "13px", color: "var(--muted)", lineHeight: 1.65 }}>{p.desc}</p>
               </div>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -451,8 +451,8 @@ export default function QuoteCalculatorPage() {
           transition: all 0.2s;
         }
         .calc-back-btn:hover {
-          border-color: #D4A017;
-          color: #D4A017;
+          border-color: var(--green);
+          color: var(--green);
         }
         .calc-breadcrumb {
           display: flex;
@@ -467,7 +467,7 @@ export default function QuoteCalculatorPage() {
           transition: color 0.2s;
         }
         .calc-breadcrumb a:hover {
-          color: #D4A017;
+          color: var(--green);
         }
         .calc-breadcrumb-sep {
           color: var(--border);
@@ -482,7 +482,7 @@ export default function QuoteCalculatorPage() {
           margin-bottom: 8px;
         }
         .calc-page-title span {
-          color: #D4A017;
+          color: var(--green);
         }
         .calc-page-desc {
           font-size: 14px;
@@ -531,7 +531,7 @@ export default function QuoteCalculatorPage() {
         .calc-value {
           font-size: 15px;
           font-weight: 800;
-          color: #D4A017;
+          color: var(--green);
           text-transform: none;
           letter-spacing: 0;
         }
@@ -551,9 +551,9 @@ export default function QuoteCalculatorPage() {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background: #D4A017;
+          background: var(--green);
           border: 3px solid #fff;
-          box-shadow: 0 2px 8px rgba(212,160,23,0.4);
+          box-shadow: 0 2px 8px rgba(0,167,89,0.4);
           cursor: pointer;
           transition: transform 0.15s;
         }
@@ -564,9 +564,9 @@ export default function QuoteCalculatorPage() {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background: #D4A017;
+          background: var(--green);
           border: 3px solid #fff;
-          box-shadow: 0 2px 8px rgba(212,160,23,0.4);
+          box-shadow: 0 2px 8px rgba(0,167,89,0.4);
           cursor: pointer;
         }
         .calc-slider-labels {
@@ -585,7 +585,7 @@ export default function QuoteCalculatorPage() {
           font-size: 14px;
           font-weight: 500;
           color: var(--dark);
-          background: #FBF5E6;
+          background: var(--bg-soft);
           border: 1.5px solid var(--border);
           border-radius: 10px;
           font-family: inherit;
@@ -594,8 +594,8 @@ export default function QuoteCalculatorPage() {
         .calc-select:focus,
         .calc-input:focus {
           outline: none;
-          border-color: #D4A017;
-          box-shadow: 0 0 0 3px rgba(212,160,23,0.15);
+          border-color: var(--green);
+          box-shadow: 0 0 0 3px rgba(0,167,89,0.15);
         }
 
         /* Compact Radio Buttons for Gender/Tobacco */
@@ -610,7 +610,7 @@ export default function QuoteCalculatorPage() {
           justify-content: center;
           padding: 10px 12px;
           border-radius: 8px;
-          background: #FBF5E6;
+          background: var(--bg-soft);
           border: 1.5px solid var(--border);
           font-size: 13px;
           font-weight: 600;
@@ -622,9 +622,9 @@ export default function QuoteCalculatorPage() {
           display: none;
         }
         .calc-radio-compact.active {
-          background: rgba(212,160,23,0.1);
-          border-color: #D4A017;
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          border-color: var(--green);
+          color: var(--green);
         }
         .calc-radio-compact:hover:not(.active) {
           border-color: #aaa;
@@ -643,7 +643,7 @@ export default function QuoteCalculatorPage() {
           gap: 8px;
           padding: 14px 16px;
           border-radius: 12px;
-          background: #FBF5E6;
+          background: var(--bg-soft);
           border: 1.5px solid var(--border);
           font-size: 14px;
           font-weight: 600;
@@ -655,9 +655,9 @@ export default function QuoteCalculatorPage() {
           display: none;
         }
         .calc-radio-btn.active {
-          background: rgba(212,160,23,0.08);
-          border-color: #D4A017;
-          color: #D4A017;
+          background: rgba(0,167,89,0.08);
+          border-color: var(--green);
+          color: var(--green);
         }
         .calc-radio-btn:hover:not(.active) {
           border-color: #aaa;
@@ -677,7 +677,7 @@ export default function QuoteCalculatorPage() {
           justify-content: center;
           gap: 10px;
           padding: 14px 24px;
-          background: #D4A017;
+          background: var(--green);
           color: #fff;
           font-size: 15px;
           font-weight: 800;
@@ -690,7 +690,7 @@ export default function QuoteCalculatorPage() {
         }
         .calc-submit:hover:not(.disabled) {
           transform: translateY(-2px);
-          box-shadow: 0 6px 24px rgba(212,160,23,0.35);
+          box-shadow: 0 6px 24px rgba(0,167,89,0.35);
         }
         .calc-submit.disabled {
           opacity: 0.5;
@@ -721,8 +721,8 @@ export default function QuoteCalculatorPage() {
           width: 64px;
           height: 64px;
           border-radius: 50%;
-          background: rgba(212,160,23,0.1);
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -731,7 +731,7 @@ export default function QuoteCalculatorPage() {
         .calc-result-icon--success {
           width: 48px;
           height: 48px;
-          background: #D4A017;
+          background: var(--green);
           color: #fff;
           margin-bottom: 12px;
         }
@@ -769,7 +769,7 @@ export default function QuoteCalculatorPage() {
         /* Estimate Box */
         .calc-estimate-box {
           width: 100%;
-          background: linear-gradient(135deg, #D4A017 0%, #3d8a4f 100%);
+          background: linear-gradient(135deg, var(--green) 0%, #3d8a4f 100%);
           border-radius: 14px;
           padding: 20px 20px;
           margin-bottom: 18px;
@@ -806,7 +806,7 @@ export default function QuoteCalculatorPage() {
         /* Summary */
         .calc-summary {
           width: 100%;
-          background: #FBF5E6;
+          background: var(--bg-soft);
           border-radius: 10px;
           padding: 12px 16px;
           margin-bottom: 18px;
@@ -836,7 +836,7 @@ export default function QuoteCalculatorPage() {
         .calc-cta-primary {
           width: 100%;
           padding: 14px 20px;
-          background: #D4A017;
+          background: var(--green);
           color: #fff;
           font-size: 14px;
           font-weight: 800;
@@ -848,7 +848,7 @@ export default function QuoteCalculatorPage() {
         }
         .calc-cta-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 24px rgba(212,160,23,0.35);
+          box-shadow: 0 6px 24px rgba(0,167,89,0.35);
         }
         .calc-cta-secondary {
           width: 100%;
@@ -864,8 +864,8 @@ export default function QuoteCalculatorPage() {
           transition: border-color 0.2s, color 0.2s;
         }
         .calc-cta-secondary:hover {
-          border-color: #D4A017;
-          color: #D4A017;
+          border-color: var(--green);
+          color: var(--green);
         }
 
         /* Disclaimer */
@@ -900,8 +900,8 @@ export default function QuoteCalculatorPage() {
           width: 52px;
           height: 52px;
           border-radius: 14px;
-          background: rgba(212,160,23,0.1);
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;

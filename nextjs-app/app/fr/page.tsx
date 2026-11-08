@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLang } from "@/lib/i18n";
@@ -21,7 +21,7 @@ export default function FrenchEntryPage() {
       alignItems: "center",
       justifyContent: "center",
       height: "100vh",
-      background: "#D4A017",
+      background: "var(--green)",
       color: "#fff",
       fontSize: "18px",
       fontWeight: 600,

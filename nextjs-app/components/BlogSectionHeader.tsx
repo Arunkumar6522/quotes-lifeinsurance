@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useLang } from "@/lib/i18n";
 
 export default function BlogSectionHeader() {
@@ -10,7 +10,7 @@ export default function BlogSectionHeader() {
         fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)",
         fontWeight: 800, marginTop: "8px", color: "var(--dark)",
       }}>
-        {t.blogH2a}{" "}<span style={{ color: "#D4A017" }}>{t.blogH2b}</span>
+        {t.blogH2a}{" "}<span style={{ color: "var(--green)" }}>{t.blogH2b}</span>
       </h2>
     </div>
   );

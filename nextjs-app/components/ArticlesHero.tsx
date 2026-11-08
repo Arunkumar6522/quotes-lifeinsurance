@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import Breadcrumb from "@/components/Breadcrumb";
 import { useLang } from "@/lib/i18n";
 
@@ -17,7 +17,7 @@ export default function ArticlesHero() {
         <span style={{
           display: "inline-block", fontSize: "11px", fontWeight: 800,
           letterSpacing: "2px", textTransform: "uppercase",
-          color: "#D4A017", marginBottom: "12px",
+          color: "var(--green)", marginBottom: "12px",
         }}>
           {t.articlesLabel}
         </span>

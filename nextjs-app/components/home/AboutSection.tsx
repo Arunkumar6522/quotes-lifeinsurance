@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
@@ -62,7 +62,7 @@ export default function AboutSection() {
 
             <motion.h2 variants={fadeUp(0.07)} className="about-h2">
               {t.aboutH2a}{" "}
-              <span style={{ color: "#D4A017" }}>{t.aboutH2b}</span>
+              <span style={{ color: "var(--green)" }}>{t.aboutH2b}</span>
             </motion.h2>
 
             <motion.p variants={fadeUp(0.12)} className="about-p">{t.aboutP1}</motion.p>
@@ -149,11 +149,11 @@ export default function AboutSection() {
           padding: 16px 20px;
           border-radius: 12px;
           border: 1px solid var(--border);
-          background: #FBF5E6;
+          background: var(--bg-soft);
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .about-pillar:hover {
-          border-color: rgba(212,160,23,0.35);
+          border-color: rgba(0,167,89,0.35);
           box-shadow: 0 4px 16px rgba(0,0,0,0.05);
           transform: translateX(4px);
         }
@@ -161,8 +161,8 @@ export default function AboutSection() {
           width: 40px;
           height: 40px;
           border-radius: 10px;
-          background: rgba(212,160,23,0.1);
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -170,7 +170,7 @@ export default function AboutSection() {
           transition: background 0.2s;
         }
         .about-pillar:hover .about-pillar-icon {
-          background: rgba(212,160,23,0.18);
+          background: rgba(0,167,89,0.18);
         }
         .about-pillar-text {
           font-size: 14px;
@@ -185,16 +185,16 @@ export default function AboutSection() {
           gap: 12px;
           padding: 16px 20px;
           border-radius: 12px;
-          background: rgba(212,160,23,0.05);
-          border: 1px solid rgba(212,160,23,0.2);
+          background: rgba(0,167,89,0.05);
+          border: 1px solid rgba(0,167,89,0.2);
           margin-top: 4px;
         }
         .about-amf-icon {
           width: 40px;
           height: 40px;
           border-radius: 10px;
-          background: rgba(212,160,23,0.12);
-          color: #D4A017;
+          background: rgba(0,167,89,0.12);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -203,7 +203,7 @@ export default function AboutSection() {
         .about-amf-title {
           font-size: 13px;
           font-weight: 700;
-          color: #D4A017;
+          color: var(--green);
           margin-bottom: 3px;
         }
         .about-amf-sub {

@@ -1,13 +1,13 @@
-﻿"use client";
+"use client";
 import { useState, useEffect } from "react";
 
 const colors = [
-  { name: "Green", value: "#D4A017" },
+  { name: "Green", value: "var(--green)" },
   { name: "Purple", value: "#572a4e" },
 ];
 
 export default function ColorSwitcher() {
-  const [activeColor, setActiveColor] = useState("#D4A017");
+  const [activeColor, setActiveColor] = useState("var(--green)");
 
   useEffect(() => {
     // Load saved color from localStorage

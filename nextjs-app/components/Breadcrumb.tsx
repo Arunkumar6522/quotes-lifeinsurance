@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -96,7 +96,7 @@ export default function Breadcrumb({ crumbs }: { crumbs: Crumb[] }) {
           text-decoration: none;
           transition: color 0.15s;
         }
-        .bc-link:hover { color: #D4A017; }
+        .bc-link:hover { color: var(--green); }
         .bc-sep {
           font-size: 13px;
           color: rgba(255,255,255,0.2);

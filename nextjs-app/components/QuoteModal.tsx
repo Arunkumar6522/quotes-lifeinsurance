@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -43,7 +43,7 @@ export default function QuoteModal({ open, onClose }: Props) {
       <div onClick={(e) => e.stopPropagation()} className="quote-modal">
         {/* Green header */}
         <div style={{
-          background: "#D4A017", padding: "14px 20px",
+          background: "var(--green)", padding: "14px 20px",
           display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0,
         }}>
           <div>

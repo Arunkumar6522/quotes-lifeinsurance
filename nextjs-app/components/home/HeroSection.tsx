@@ -66,12 +66,12 @@ export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, car
           <motion.div initial="hidden" animate="show" className="hero-copy">
             <motion.h1 variants={fadeUp(0.08)} className="hero-h1">
               {h1a}<br />
-              <span style={{ color: "#D4A017" }}>{h1b}</span>
+              <span style={{ color: "var(--green)" }}>{h1b}</span>
               {!overrideH1a && t.heroH1c && <><br /><span className="hero-h1-sub">{t.heroH1c}</span></>}
             </motion.h1>
             <motion.p variants={fadeUp(0.15)} className="hero-sub">
               {sub}{" "}
-              <strong style={{ color: "#D4A017", fontWeight: 800 }}>{t.heroFree}</strong>.
+              <strong style={{ color: "var(--green)", fontWeight: 800 }}>{t.heroFree}</strong>.
             </motion.p>
             <motion.div variants={fadeUp(0.22)} className="hero-ctas">
               <button onClick={openModal} className="btn-primary">{t.heroCta1}</button>
@@ -111,12 +111,13 @@ export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, car
         .hero-sub { font-size: 16px; color: #4b5563; line-height: 1.8; margin-bottom: 32px; max-width: 460px; }
         .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
         .hero-learn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 50px; border: 2px solid var(--border); color: var(--dark); font-size: 14px; font-weight: 700; background: #fff; text-decoration: none; transition: all 0.2s ease; }
-        .hero-learn-btn:hover { border-color: #D4A017; color: #D4A017; transform: translateY(-2px); }
+        .hero-learn-btn:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
         .hero-learn-btn svg { transition: transform 0.2s; }
         .hero-learn-btn:hover svg { transform: translateX(3px); }
         .hero-form-col { width: 100%; }
+        .hero-form-label { display: none; }
         .qs-iframe { width: 100%; height: 720px; border: none; border-radius: 16px; display: block; background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
-        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; } .hero-form-col { order: -1; } .hero-copy { order: 1; } .qs-iframe { height: 720px; } }
+        @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr !important; gap: 0 !important; display: flex !important; flex-direction: column !important; } .hero-copy { display: contents; } .hero-h1 { order: 1; margin-bottom: 16px !important; padding-top: 20px; } .hero-form-col { order: 2; margin-top: 12px; } .hero-sub { order: 3; margin-top: 20px; } .hero-ctas { order: 4; } .qs-iframe { height: 720px; } .hero-form-label { display: flex; align-items: center; justify-content: center; padding: 10px 16px; margin-bottom: 10px; background: var(--green); border-radius: 12px; } .hero-form-label span { font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.01em; text-align: center; } }
         @media (max-width: 600px) { .hero-container { padding-top: 20px !important; padding-bottom: 32px !important; } .hero-h1 { font-size: clamp(1.8rem, 8vw, 2.4rem) !important; } .hero-ctas { flex-direction: column; gap: 10px; } .hero-ctas button, .hero-ctas .hero-learn-btn { width: 100%; justify-content: center; text-align: center; } .hero-form-col { margin-left: -20px; margin-right: -20px; width: calc(100% + 40px); } .qs-iframe { height: 780px; border-radius: 0; } }
       `}</style>
     </section>

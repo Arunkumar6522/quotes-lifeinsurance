@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import Animate from "@/components/Animate";
 import { useModal } from "@/lib/modal";
 import { useLang } from "@/lib/i18n";
@@ -40,7 +40,7 @@ export default function CtaSection() {
 
       <style>{`
         .cta-section {
-          background: #D4A017;
+          background: var(--green);
           position: relative;
           padding: 80px 0;
           overflow: hidden;
@@ -126,7 +126,7 @@ export default function CtaSection() {
           align-items: center;
           gap: 8px;
           background: #fff;
-          color: #D4A017 !important;
+          color: var(--green) !important;
           font-weight: 800;
           font-size: 14px;
           padding: 15px 36px;

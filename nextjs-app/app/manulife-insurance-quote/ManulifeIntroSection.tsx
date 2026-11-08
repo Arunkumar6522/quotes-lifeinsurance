@@ -7,8 +7,8 @@ export default function ManulifeIntroSection() {
 
   const stats = [
     { value: "1887", label: isFr ? "Fondée en" : "Founded" },
-    { value: "200+", label: isFr ? "Pays et territoires" : "Countries & territories" },
-    { value: "5★", label: isFr ? "Temporaire, vie entière, VU, sans examen" : "Term, whole life, UL, no-medical" },
+    { value: "37M+", label: isFr ? "Clients dans le monde (T1 2026)" : "Customers worldwide (Q1 2026)" },
+    { value: "7M+", label: isFr ? "Clients au Canada" : "Customers in Canada" },
   ];
 
   return (
@@ -17,9 +17,7 @@ export default function ManulifeIntroSection() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/company/manulife.png" alt="Manulife" style={{ height: "32px", width: "auto" }} />
-              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "#D4A017", margin: 0 }}>
+              <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase", color: "var(--green)", margin: 0 }}>
                 {isFr ? "QUI EST MANUVIE ?" : "WHO IS MANULIFE?"}
               </p>
             </div>
@@ -31,8 +29,8 @@ export default function ManulifeIntroSection() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", minWidth: "160px" }}>
             {stats.map((s) => (
-              <div key={s.value} style={{ background: "#FBF5E6", borderRadius: "12px", padding: "14px 18px", textAlign: "center", border: "1px solid var(--border)" }}>
-                <p style={{ fontSize: "22px", fontWeight: 900, color: "#D4A017", fontFamily: "var(--font-sora), sans-serif", marginBottom: "2px" }}>{s.value}</p>
+              <div key={s.value} style={{ background: "var(--bg-soft)", borderRadius: "12px", padding: "14px 18px", textAlign: "center", border: "1px solid var(--border)" }}>
+                <p style={{ fontSize: "22px", fontWeight: 900, color: "var(--green)", fontFamily: "var(--font-sora), sans-serif", marginBottom: "2px" }}>{s.value}</p>
                 <p style={{ fontSize: "11px", color: "var(--muted)", lineHeight: 1.4 }}>{s.label}</p>
               </div>
             ))}

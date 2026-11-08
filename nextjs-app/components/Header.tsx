@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import QuoteButton from "@/components/QuoteButton";
 import Link from "next/link";
 import Image from "next/image";
@@ -83,7 +83,7 @@ export default function Header() {
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 100 }}>
 
-      {/* ── Topbar ────────────────────────────────── */}
+      {/* -- Topbar ---------------------------------- */}
       <div className="topbar">
         <div className="container topbar-inner">
           <div className="topbar-left">
@@ -112,14 +112,14 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ── Main nav ──────────────────────────────── */}
+      {/* -- Main nav -------------------------------- */}
       <nav className="main-nav">
         <div className="container main-nav-inner">
 
           {/* Logo - switches based on theme and language */}
           <Link href="/" className="logo-wrap">
             <Image 
-              src={lang === "fr" ? "/french.png" : "/english.png"}
+              src={lang === "fr" ? "/french logo.png" : "/logo.png"}
               alt="Quotes Life Insurance" 
               width={200} 
               height={60} 
@@ -128,11 +128,11 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop nav — clean & minimal */}
+          {/* Desktop nav � clean & minimal */}
           <div className="desktop-nav">
             <Link href="/" className="nav-link" prefetch={true}>{t.home}</Link>
 
-            {/* Services mega dropdown — click to toggle */}
+            {/* Services mega dropdown � click to toggle */}
             <div className="dropdown-wrap" ref={dropdownRef}>
               <button 
                 className="nav-link nav-link--btn"
@@ -347,7 +347,7 @@ export default function Header() {
       </nav>
 
       <style>{`
-        .topbar { background: #D4A017; padding: 7px 0; font-size: 12px; color: #fff; }
+        .topbar { background: var(--green); padding: 7px 0; font-size: 12px; color: #fff; }
         .topbar-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
         .topbar-left  { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
         .topbar-right { display: flex; align-items: center; gap: 14px; }
@@ -394,7 +394,7 @@ export default function Header() {
           color: #374151; text-decoration: none; white-space: nowrap;
           transition: color 0.15s, background 0.15s; position: relative;
         }
-        .nav-link:hover { color: #D4A017; background: rgba(212,160,23,0.07); }
+        .nav-link:hover { color: var(--green); background: rgba(0,167,89,0.07); }
         .nav-link--btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
 
         .dropdown-wrap { position: relative; }
@@ -439,16 +439,16 @@ export default function Header() {
           width: 32px;
           height: 32px;
           border-radius: 8px;
-          background: rgba(212,160,23,0.1);
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
           transition: background 0.15s;
         }
-        .flat-service-item:hover { background: #FBF5E6; color: #D4A017; }
-        .flat-service-item:hover .flat-service-icon { background: rgba(212,160,23,0.18); }
+        .flat-service-item:hover { background: var(--bg-soft); color: var(--green); }
+        .flat-service-item:hover .flat-service-icon { background: rgba(0,167,89,0.18); }
           align-items: center;
           gap: 8px;
           padding-bottom: 10px;
@@ -460,8 +460,8 @@ export default function Header() {
           width: 32px;
           height: 32px;
           border-radius: 8px;
-          background: rgba(212,160,23,0.1);
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -493,8 +493,8 @@ export default function Header() {
           transition: background 0.15s, color 0.15s;
         }
         .mega-item:hover {
-          background: rgba(212,160,23,0.08);
-          color: #D4A017;
+          background: rgba(0,167,89,0.08);
+          color: var(--green);
         }
         
         .mega-footer {
@@ -512,7 +512,7 @@ export default function Header() {
         .mega-footer a {
           font-size: 13px;
           font-weight: 700;
-          color: #D4A017;
+          color: var(--green);
           text-decoration: none;
           transition: opacity 0.15s;
         }
@@ -523,7 +523,7 @@ export default function Header() {
         .mobile-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px; cursor: pointer; }
         .mobile-menu { background: #fff; border-top: 1px solid var(--border); padding: 12px 20px 20px; max-height: 70vh; overflow-y: auto; }
         .mobile-link { display: flex; align-items: center; padding: 11px 0; font-size: 14px; font-weight: 600; color: #374151; text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.15s; width: 100%; background: none; border-top: none; border-left: none; border-right: none; }
-        .mobile-link:hover { color: #D4A017; }
+        .mobile-link:hover { color: var(--green); }
         .mobile-link--btn { cursor: pointer; }
         
         /* Mobile Services Section */
@@ -551,7 +551,7 @@ export default function Header() {
         .mobile-cat-title {
           font-size: 12px;
           font-weight: 700;
-          color: #D4A017;
+          color: var(--green);
           margin-bottom: 6px;
           display: flex;
           align-items: center;
@@ -569,8 +569,8 @@ export default function Header() {
           transition: color 0.15s, border-color 0.15s;
         }
         .mobile-sub-link:hover {
-          color: #D4A017;
-          border-color: #D4A017;
+          color: var(--green);
+          border-color: var(--green);
         }
         
         /* Carriers dropdown */
@@ -582,7 +582,7 @@ export default function Header() {
           flex-shrink: 0; padding: 4px 8px;
           transition: border-color 0.15s;
         }
-        .carrier-item:hover .carrier-logo-wrap { border-color: #D4A017; background: #FDF3D7; }
+        .carrier-item:hover .carrier-logo-wrap { border-color: var(--green); background: var(--bg-soft); }
 
         .mobile-carrier-link {
           display: flex; align-items: center; gap: 12px;
@@ -593,11 +593,11 @@ export default function Header() {
           font-size: 14px; font-weight: 600;
           transition: color 0.15s, border-color 0.15s;
         }
-        .mobile-carrier-link:hover { color: #D4A017; border-color: #D4A017; }
+        .mobile-carrier-link:hover { color: var(--green); border-color: var(--green); }
 
         .mobile-lang { display: flex; gap: 8px; margin-top: 14px; }
         .mobile-lang-btn { border: 1.5px solid var(--border); background: none; border-radius: 8px; padding: 6px 16px; font-size: 13px; font-weight: 700; color: #374151; cursor: pointer; transition: all 0.15s; }
-        .mobile-lang-btn--active { background: #D4A017; border-color: #D4A017; color: #fff; }
+        .mobile-lang-btn--active { background: var(--green); border-color: var(--green); color: #fff; }
 
         @media (max-width: 900px) {
           .desktop-nav  { display: none !important; }
@@ -614,3 +614,4 @@ export default function Header() {
     </header>
   );
 }
+

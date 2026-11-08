@@ -1,4 +1,4 @@
-﻿import ServicePageLayout from "@/components/ServicePageLayout";
+import ServicePageLayout from "@/components/ServicePageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ const data = {
   taglineFr: "Protection permanente qui n'expire jamais, avec une valeur de rachat garantie en croissance.",
   videoId: "1zdZoK6fj_4",
   icon: "🏦",
-  color: "#D4A017",
+  color: "var(--green)",
   description: "Whole life insurance provides permanent coverage that lasts your entire life, with premiums that never increase. A portion of each premium builds guaranteed cash value that grows tax-deferred. This cash value can be accessed during your lifetime through policy loans or withdrawals, making whole life both protection and a financial asset.",
   descriptionFr: "L'assurance vie entière offre une couverture permanente qui dure toute votre vie, avec des primes qui n'augmentent jamais. Une partie de chaque prime constitue une valeur de rachat garantie qui croît à l'abri de l'impôt. Cette valeur peut être accessible via des avances sur police pour toute raison.",
   highlights: [

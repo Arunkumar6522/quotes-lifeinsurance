@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import Animate from "@/components/Animate";
 import { useLang } from "@/lib/i18n";
 
@@ -72,7 +72,7 @@ export default function WhyUsSection() {
           <span className="section-label">{t.whyLabel}</span>
           <h2 className="why-heading">
             {t.whyH2a}{" "}
-            <span style={{ color: "#D4A017" }}>{t.whyH2b}</span>
+            <span style={{ color: "var(--green)" }}>{t.whyH2b}</span>
           </h2>
         </Animate>
 
@@ -135,7 +135,7 @@ export default function WhyUsSection() {
         .why-card:hover {
           box-shadow: 0 8px 28px rgba(0,0,0,0.07);
           transform: translateY(-4px);
-          border-color: rgba(212,160,23,0.35);
+          border-color: rgba(0,167,89,0.35);
         }
 
         /* Icon badge � green */
@@ -143,8 +143,8 @@ export default function WhyUsSection() {
           width: 52px;
           height: 52px;
           border-radius: 14px;
-          background: rgba(212,160,23,0.1);
-          color: #D4A017;
+          background: rgba(0,167,89,0.1);
+          color: var(--green);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -152,7 +152,7 @@ export default function WhyUsSection() {
           transition: background 0.25s;
         }
         .why-card:hover .why-icon {
-          background: rgba(212,160,23,0.18);
+          background: rgba(0,167,89,0.18);
         }
 
         /* Title */
@@ -165,7 +165,7 @@ export default function WhyUsSection() {
           transition: color 0.2s;
         }
         .why-card:hover .why-title {
-          color: #D4A017;
+          color: var(--green);
         }
 
         /* Description */
