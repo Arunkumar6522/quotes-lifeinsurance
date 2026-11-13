@@ -38,7 +38,10 @@ export default function ManulifePage() {
         <HeroSection
           overrideH1a="Manulife Life Insurance"
           overrideH1b="Compare & Get Your Free Quote"
-          overrideSub="Manulife is one of Canada's largest life insurers — offering term, whole life, universal life, and the Manulife Vitality wellness program. As independent advisors we compare Manulife with 20+ Canadian carriers to find what's genuinely right for you. Our advice is always"
+          overrideSub="Manulife Life Insurance is one of Canada's largest life insurance providers — offering term, whole life, universal life, and the Manulife Vitality wellness program. As independent advisors we compare Manulife with 20+ Canadian carriers to find what's genuinely right for you. Our advice is always"
+          overrideH1aFr="Assurance vie Manuvie"
+          overrideH1bFr="Comparez et obtenez votre soumission gratuite"
+          overrideSubFr="L'assurance vie Manuvie est l'un des plus importants assureurs au Canada — offrant l'assurance temporaire, vie entière, vie universelle et le programme Vitalité Manuvie. En tant que conseillers indépendants, nous comparons Manuvie à plus de 20 assureurs canadiens. Nos conseils sont toujours"
           carrierLogo="/company/manulife.png"
           carrierName="Manulife"
         />

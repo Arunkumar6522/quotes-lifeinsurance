@@ -9,7 +9,7 @@ export function IvariIntroSection() {
   const stats = [
     { value: "1928", label: isFr ? "Dans le marché canadien depuis" : "In the Canadian market since" },
     { value: "A", label: isFr ? "Cote AM Best (Excellent) 2026" : "AM Best rating (Excellent) 2026" },
-    { value: "700K+", label: isFr ? "Assurés au Canada" : "Policyholders across Canada" },
+    { value: "~700K", label: isFr ? "Assurés au Canada (environ)" : "Policyholders in Canada (approx.)" },
   ];
 
   return (
@@ -22,8 +22,8 @@ export function IvariIntroSection() {
             </p>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
               {isFr
-                ? "ivari est une compagnie d'assurance vie canadienne présente sur le marché depuis 1928 — administrant des polices d'assureurs antérieurs dont Transamerica Life Canada. Avec une cote AM Best A (Excellent) en 2026 et plus de 700 000 assurés, ivari propose une gamme ciblée d'assurance temporaire, universelle, maladies graves et sans examen médical."
-                : "ivari is a Canadian life insurance company whose products have been in the market since 1928 — including policies from Transamerica Life Canada. Rated AM Best A (Excellent) in 2026 with over 700,000 policyholders, ivari offers a focused range of term, universal life, critical illness, and no-medical coverage."}
+                ? "ivari est une compagnie d'assurance vie canadienne présente sur le marché depuis 1928 — administrant des polices d'assureurs antérieurs dont Transamerica Life Canada. Avec une cote AM Best A (Excellent) en 2026 et environ 700 000 assurés, ivari propose une gamme ciblée d'assurance temporaire, universelle, maladies graves et sans examen médical."
+                : "ivari is a Canadian life insurance company whose products have been in the market since 1928 — including policies from Transamerica Life Canada. Rated AM Best A (Excellent) in 2026 with about 700,000 policyholders, ivari offers a focused range of term, universal life, critical illness, and no-medical coverage."}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", minWidth: "160px" }}>
@@ -103,7 +103,7 @@ export function IvariInfoSection() {
   const stats = [
     { value: "1928", label: isFr ? "Dans le marché canadien depuis" : "In the Canadian market since" },
     { value: "A", label: isFr ? "Cote AM Best (Excellent) — juillet 2026" : "AM Best rating (Excellent) — July 2026" },
-    { value: "700K+", label: isFr ? "Assurés au Canada" : "Policyholders across Canada" },
+    { value: "~700K", label: isFr ? "Assurés au Canada (environ)" : "Policyholders in Canada (approx.)" },
     { value: "$15B", label: isFr ? "Actif total" : "Total assets" },
   ];
 
@@ -114,7 +114,7 @@ export function IvariInfoSection() {
       desc: isFr
         ? "Disponible en 10, 20 et 30 ans avec des primes garanties. La Temporaire 30 inclut des options SelectOptions uniques exercisables entre la 15e et la 20e année."
         : "Available in 10, 20, and 30-year terms with guaranteed level premiums. Term 30 includes unique built-in SelectOptions exercisable between the 15th and 20th anniversary.",
-      highlight: isFr ? "Couverture conjointe jusqu'à 5 assurés" : "Joint coverage for up to 5 insured lives",
+      highlight: isFr ? "Options de couverture individuelle ou conjointe" : "Single and joint coverage options available",
     },
     {
       name: isFr ? "Assurance vie universelle" : "Universal Life Insurance",
@@ -128,9 +128,9 @@ export function IvariInfoSection() {
       name: isFr ? "Assurance maladies graves" : "Critical Illness Insurance",
       type: isFr ? "Maladies graves" : "Critical Illness",
       desc: isFr
-        ? "En 4 conditions (cancer, infarctus, AVC, pontage) ou 25 conditions. Peut s'ajouter en avenant sans frais de police supplémentaires. La combinaison peut économiser jusqu'à 15 %."
-        : "4-condition (cancer, heart attack, stroke, bypass) or 25-condition version. Can be added as a rider with no additional policy fee. Bundling can save up to 15%.",
-      highlight: isFr ? "Prestation de détection précoce incluse" : "Early Detection Benefit included",
+        ? "En 4 conditions (cancer, infarctus, AVC, pontage) ou 25 conditions. Peut s'ajouter en avenant sans frais de police supplémentaires. La combinaison peut économiser jusqu'à 15 %*."
+        : "4-condition (cancer, heart attack, stroke, bypass) or 25-condition version. Can be added as a rider with no additional policy fee. Bundling can save up to 15%*.",
+      highlight: isFr ? "Prestation de détection précoce incluse (plan 25 affections)" : "Early Detection Benefit included (25-condition plan)",
     },
     {
       name: isFr ? "Assurance sans examen médical" : "No-Medical Life Insurance",
@@ -225,6 +225,11 @@ export function IvariInfoSection() {
               </div>
             ))}
           </div>
+          <p style={{ fontSize: "11px", color: "var(--muted)", fontStyle: "italic", marginTop: "14px", lineHeight: 1.5 }}>
+            {isFr
+              ? "*Économie basée sur la souscription conjointe d'une police maladies graves de 25 conditions avec une prestation moyenne d'environ 80 000 $ selon les directives tarifaires publiées d'ivari."
+              : "*Savings based on bundling with a 25-condition critical illness policy and ~$80,000 average benefit basis according to published ivari rate guidelines."}
+          </p>
         </div>
 
         {/* Official link */}

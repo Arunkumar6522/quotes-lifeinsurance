@@ -351,11 +351,11 @@ export default function Header() {
         .topbar-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
         .topbar-left  { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
         .topbar-right { display: flex; align-items: center; gap: 14px; }
-        .topbar-link  { display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.82); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-        .topbar-link:hover { color: #fff; }
+        .topbar-link  { display: flex; align-items: center; gap: 5px; color: #ffffff; font-weight: 600; text-decoration: none; font-size: 12px; transition: opacity 0.15s; }
+        .topbar-link:hover { opacity: 0.85; }
         .topbar-link--bold { font-weight: 700; color: #fff; }
-        .topbar-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.3); }
-        .amf-badge { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: 0.3px; }
+        .topbar-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.4); }
+        .amf-badge { font-size: 11px; font-weight: 800; color: #ffffff; letter-spacing: 0.3px; }
         
         /* Language toggle switch */
         .lang-toggle {

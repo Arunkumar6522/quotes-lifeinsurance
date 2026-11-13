@@ -121,8 +121,8 @@ export function ManulifeInfoSection() {
       name: "Family Term",
       type: isFr ? "Assurance temporaire" : "Term Life",
       desc: isFr
-        ? "Couverture temporaire flexible (10, 20, 65 ans ou jusqu'à 100 ans) pour la protection hypothécaire. Renouvelable et convertible."
-        : "Flexible term coverage (10, 20, 65, or to age 100) for mortgage protection and income replacement. Renewable and convertible.",
+        ? "Couverture temporaire flexible (Term-10, Term-20, Term-65 ou jusqu'à 100 ans) pour la protection hypothécaire et le remplacement du revenu. Renouvelable et convertible."
+        : "Flexible term coverage (Term-10, Term-20, Term-65, or to age 100) for mortgage protection and income replacement. Renewable and convertible.",
     },
     {
       name: "Manulife Par",

@@ -38,6 +38,9 @@ export default function IvariPage() {
           overrideH1a="ivari Life Insurance"
           overrideH1b="Compare & Get Your Free Quote"
           overrideSub="ivari has been in the Canadian market since 1928 — offering term, universal life, critical illness, and no-medical coverage, including the uniquely flexible Term 30 with built-in SelectOptions. We compare ivari with 20+ carriers to find your best fit. Our advice is always"
+          overrideH1aFr="Assurance vie ivari"
+          overrideH1bFr="Comparez et obtenez votre soumission gratuite"
+          overrideSubFr="ivari est présent sur le marché canadien depuis 1928 — offrant l'assurance temporaire, vie universelle, maladies graves et sans examen médical, incluant la formule flexible Temporaire 30 avec SelectOptions. Nous comparons ivari à plus de 20 assureurs canadiens. Nos conseils sont toujours"
           carrierLogo="/company/ivari.png"
           carrierName="ivari"
         />

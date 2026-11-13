@@ -8,7 +8,7 @@ export default function IvariIntroSection() {
   const stats = [
     { value: "1928", label: isFr ? "Dans le marché canadien depuis" : "In the Canadian market since" },
     { value: "A", label: isFr ? "Cote AM Best (Excellent) 2026" : "AM Best rating (Excellent) 2026" },
-    { value: "700K+", label: isFr ? "Assurés au Canada" : "Policyholders across Canada" },
+    { value: "~700K", label: isFr ? "Assurés au Canada (environ)" : "Policyholders in Canada (approx.)" },
   ];
 
   return (
@@ -25,8 +25,8 @@ export default function IvariIntroSection() {
             </div>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
               {isFr
-                ? "ivari est une compagnie d'assurance vie canadienne présente sur le marché depuis 1928 — administrant des polices d'assureurs antérieurs dont Transamerica Life Canada. Avec une cote AM Best A (Excellent) en 2026 et plus de 700 000 assurés, ivari propose une gamme ciblée d'assurance temporaire, universelle, maladies graves et sans examen médical."
-                : "ivari is a Canadian life insurance company whose products have been in the market since 1928 — including policies from Transamerica Life Canada. Rated AM Best A (Excellent) in 2026 with over 700,000 policyholders, ivari offers a focused range of term, universal life, critical illness, and no-medical coverage."}
+                ? "ivari est une compagnie d'assurance vie canadienne présente sur le marché depuis 1928 — administrant des polices d'assureurs antérieurs dont Transamerica Life Canada. Avec une cote AM Best A (Excellent) en 2026 et environ 700 000 assurés, ivari propose une gamme ciblée d'assurance temporaire, universelle, maladies graves et sans examen médical."
+                : "ivari is a Canadian life insurance company whose products have been in the market since 1928 — including policies from Transamerica Life Canada. Rated AM Best A (Excellent) in 2026 with about 700,000 policyholders, ivari offers a focused range of term, universal life, critical illness, and no-medical coverage."}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", minWidth: "160px" }}>

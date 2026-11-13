@@ -27,6 +27,21 @@ export default function ThankYouPage() {
 
   const homeLabel = lang === "fr" ? "Retour à l'accueil" : "Back to Home";
 
+  // Google Analytics & Google Ads Conversion Event
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const w = window as any;
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "generate_lead", {
+          event_category: "Quote",
+          event_label: "Life Insurance Quote Submission",
+          value: 1.0,
+          currency: "CAD",
+        });
+      }
+    }
+  }, []);
+
   useEffect(() => {
     if (count <= 0) {
       router.push("/");

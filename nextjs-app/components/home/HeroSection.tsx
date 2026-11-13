@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
@@ -31,6 +31,26 @@ function buildFormDoc(token: string) {
 <body>
   <div id="leadforms-embd-form"></div>
   <script>
+    (function() {
+      function patchFormText() {
+        var walker = document.createTreeWalker(document.body || document.documentElement, NodeFilter.SHOW_TEXT, null);
+        var node;
+        while ((node = walker.nextNode())) {
+          if (node.nodeValue) {
+            if (node.nodeValue.indexOf('solutions that fits') !== -1) {
+              node.nodeValue = node.nodeValue.replace(/solutions that fits/g, 'solutions that fit');
+            }
+            if (node.nodeValue.indexOf('coverage for .') !== -1) {
+              node.nodeValue = node.nodeValue.replace(/coverage for \\./g, 'coverage.');
+            }
+          }
+        }
+      }
+      var observer = new MutationObserver(patchFormText);
+      observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+      if (document.readyState !== 'loading') patchFormText();
+      else document.addEventListener('DOMContentLoaded', patchFormText);
+    })();
     window.addEventListener('load',function(){window.scrollTo(0,0);document.body.scrollTop=0;});
     try{history.replaceState(null,'','/');}catch(e){}
     window.form_token="${token}";
@@ -43,10 +63,22 @@ function buildFormDoc(token: string) {
 const TOKEN_EN = "GLFT-SLXXIK16MWTFAIC7BTF8VQAQO5O";
 const TOKEN_FR = "GLFT-3XAH9YY98KG1NPVKWXCSSJU5S38";
 
-export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, carrierLogo, carrierName }: {
+export default function HeroSection({
+  overrideH1a,
+  overrideH1b,
+  overrideSub,
+  overrideH1aFr,
+  overrideH1bFr,
+  overrideSubFr,
+  carrierLogo,
+  carrierName,
+}: {
   overrideH1a?: string;
   overrideH1b?: string;
   overrideSub?: string;
+  overrideH1aFr?: string;
+  overrideH1bFr?: string;
+  overrideSubFr?: string;
   carrierLogo?: string;
   carrierName?: string;
 } = {}) {
@@ -54,9 +86,10 @@ export default function HeroSection({ overrideH1a, overrideH1b, overrideSub, car
   const { openModal } = useModal();
   const formDoc = buildFormDoc(lang === "fr" ? TOKEN_FR : TOKEN_EN);
 
-  const h1a = overrideH1a ?? t.heroH1a;
-  const h1b = overrideH1b ?? t.heroH1b;
-  const sub = overrideSub ?? t.heroSub;
+  const isFr = lang === "fr";
+  const h1a = (isFr && overrideH1aFr) ? overrideH1aFr : (overrideH1a ?? t.heroH1a);
+  const h1b = (isFr && overrideH1bFr) ? overrideH1bFr : (overrideH1b ?? t.heroH1b);
+  const sub = (isFr && overrideSubFr) ? overrideSubFr : (overrideSub ?? t.heroSub);
 
   return (
     <section className="hero-section">

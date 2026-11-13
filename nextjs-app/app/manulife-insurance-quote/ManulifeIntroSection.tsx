@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useLang } from "@/lib/i18n";
 
 export default function ManulifeIntroSection() {
@@ -23,8 +23,8 @@ export default function ManulifeIntroSection() {
             </div>
             <p style={{ fontSize: "17px", color: "var(--body)", lineHeight: 1.8, maxWidth: "680px" }}>
               {isFr
-                ? "Manuvie est l'un des plus grands assureurs vie au Canada, offrant l'assurance temporaire, la vie entière participante, la vie universelle, la couverture sans examen médical, et le programme Vitalité Manuvie. Fondée en 1887, Manuvie sert des millions de familles canadiennes à travers un réseau de conseillers indépendants comme nous."
-                : "Manulife is one of Canada's largest life insurers, offering term life, participating whole life, universal life, no-medical coverage, and the Manulife Vitality wellness program. Founded in 1887, Manulife serves millions of Canadian families through a network of independent advisors like us."}
+                ? "L'assurance vie Manuvie est l'un des plus importants fournisseurs de protection au Canada, offrant l'assurance temporaire, la vie entière participante, la vie universelle, la couverture sans examen médical, et le programme Vitalité Manuvie. Fondée en 1887, Manuvie sert des millions de familles canadiennes à travers un réseau de conseillers indépendants comme nous."
+                : "Manulife Life Insurance is one of Canada's leading life insurance providers, offering term life, participating whole life, universal life, no-medical coverage, and the Manulife Vitality wellness program. Founded in 1887, Manulife serves millions of Canadian families through a network of independent advisors like us."}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", minWidth: "160px" }}>

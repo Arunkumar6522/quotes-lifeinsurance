@@ -38,6 +38,9 @@ export default function ForestersPage() {
           overrideH1a="Foresters Life Insurance"
           overrideH1b="Compare & Get Your Free Quote"
           overrideSub="Foresters Financial has been protecting families since 1874 — and every policy comes with unique member benefits like orphan scholarships, community grants, and dental discounts, at no extra cost. We compare Foresters with 20+ carriers to find your best fit. Our advice is always"
+          overrideH1aFr="Assurance vie Foresters"
+          overrideH1bFr="Comparez et obtenez votre soumission gratuite"
+          overrideSubFr="Foresters Financière protège les familles depuis 1874 — chaque police comprend des avantages de membre exclusifs tels que bourses d'études et réductions, sans frais additionnels. Nous comparons Foresters à plus de 20 assureurs canadiens. Nos conseils sont toujours"
           carrierLogo="/company/foresters.png"
           carrierName="Foresters Financial"
         />
